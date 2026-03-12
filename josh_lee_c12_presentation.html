@@ -746,11 +746,11 @@ footer { background: var(--navy); padding: 1.2rem 1.5rem; display: flex; align-i
 
     <div class="org-chart fade-in">
 
-      <!-- Tier 1: Visionary + Integrator -->
+      <!-- Tier 0: CEO / Visionary -->
       <div class="org-tier">
         <div class="org-card org-card-visionary">
           <div class="org-avatar" style="background:var(--gold);color:var(--navy);">KL + JL</div>
-          <div class="org-role" style="color:var(--gold);">Visionary</div>
+          <div class="org-role" style="color:var(--gold);">CEO / Visionary</div>
           <div class="org-name" style="color:var(--white);">Keith Lee &amp; Josh Lee</div>
           <div class="org-resp" style="color:rgba(255,255,255,0.8);">
             <span>Identity and Purpose</span>
@@ -758,6 +758,13 @@ footer { background: var(--navy); padding: 1.2rem 1.5rem; display: flex; align-i
             <span>Creativity / Problem Solving</span>
           </div>
         </div>
+      </div>
+
+      <!-- Connector: Visionary to Integrator -->
+      <div class="org-connector-v"></div>
+
+      <!-- Tier 1: Integrator -->
+      <div class="org-tier">
         <div class="org-card org-card-integrator">
           <div class="org-avatar" style="background:var(--steel);color:var(--white);">RE</div>
           <div class="org-role" style="color:var(--steel);">Integrator</div>
@@ -770,7 +777,7 @@ footer { background: var(--navy); padding: 1.2rem 1.5rem; display: flex; align-i
         </div>
       </div>
 
-      <!-- Connector -->
+      <!-- Connector: Integrator to Departments -->
       <div class="org-connector-h"></div>
 
       <!-- Tier 2: Department Heads -->
