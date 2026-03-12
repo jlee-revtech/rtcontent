@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh Lee — C12 Group Presentation | Revelation Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1E3D;
+  --navy-mid: #122647;
+  --steel: #1C3A5C;
+  --gold: #C9A84C;
+  --gold-light: #E2C47A;
+  --cream: #F8F5EE;
+  --cream-dark: #EDE8DC;
+  --white: #FFFFFF;
+  --gray-mid: #9A9488;
+  --text-dark: #1A1A2E;
+  --text-body: #2C2C3E;
+  --text-muted: #6B6760;
+  --accent-red: #8B1A1A;
+  --gradient-hero: linear-gradient(165deg, #0B1E3D 0%, #1C3A5C 50%, #0D2847 100%);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Barlow', sans-serif; background: var(--cream); color: var(--text-body); overflow-x: hidden; }
+
+/* ====== NAV ====== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(11,30,61,0.97); backdrop-filter: blur(12px);
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+.nav-brand { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+.nav-links { display: flex; gap: 1.2rem; list-style: none; }
+.nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+.mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(11,30,61,0.98); z-index: 999; padding: 1.5rem; flex-direction: column; gap: 0; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: block; }
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu.open { display: flex; }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh; background: var(--gradient-hero); position: relative;
+  display: flex; align-items: center; overflow: hidden; padding-top: 60px;
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content { position: relative; z-index: 2; padding: 3rem 1.5rem; max-width: 680px; }
+.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; }
+.hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.2rem); font-weight: 700; line-height: 1.05; color: var(--white); margin-bottom: 0.4rem; }
+.hero-title span { color: var(--gold); font-style: italic; }
+.hero-subtitle { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(0.85rem, 2.5vw, 1.05rem); font-weight: 400; letter-spacing: 0.07em; color: rgba(255,255,255,0.5); margin-bottom: 2rem; text-transform: uppercase; }
+.hero-divider { width: 50px; height: 2px; background: var(--gold); margin-bottom: 1.5rem; }
+.hero-tagline { font-size: clamp(0.95rem, 2.5vw, 1.1rem); font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 500px; margin-bottom: 2.5rem; }
+.hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.hero-meta-value { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 4vw, 1.6rem); font-weight: 700; color: var(--gold); }
+.hero-meta-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; animation: pulse 2s infinite; }
+.scroll-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); }
+@keyframes pulse { 0%,100% { opacity:0.5; transform:translateX(-50%) translateY(0); } 50% { opacity:1; transform:translateX(-50%) translateY(6px); } }
+
+/* ====== SECTION UTILITY ====== */
+section { padding: 5rem 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+.section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 700; color: var(--navy); line-height: 1.15; margin-bottom: 0.8rem; }
+.section-title em { font-style: italic; color: var(--steel); }
+.section-intro { font-size: 1rem; font-weight: 300; line-height: 1.8; color: var(--text-muted); max-width: 640px; margin-bottom: 3rem; }
+.ornamental-divider { display: flex; align-items: center; gap: 1.2rem; margin: 0 0 3rem 0; }
+.ornamental-divider::before,.ornamental-divider::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
+.ornamental-diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+.ornamental-divider.dark::before,.ornamental-divider.dark::after { background: rgba(255,255,255,0.1); }
+
+/* ====== BULLET LISTS ====== */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.bullet-list li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.95rem; font-weight: 400; line-height: 1.65; color: var(--text-body); }
+.bullet-list li::before { content: ''; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; margin-top: 0.5rem; }
+.bullet-list.light li { color: rgba(255,255,255,0.72); }
+.bullet-list.light li::before { background: var(--gold); }
+.bullet-list.sm li { font-size: 0.85rem; }
+
+/* ====== FAMILY SECTION ====== */
+.family-section { background: var(--white); }
+.family-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.family-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.photo-card { position: relative; overflow: hidden; }
+.photo-card.tall { grid-column: 1; grid-row: 1 / 3; }
+.photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.photo-card:hover img { transform: scale(1.03); }
+.photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,30,61,0.85)); padding: 1.5rem 1rem 0.7rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.75); }
+.family-content { padding-top: 0.5rem; }
+.family-intro-text { font-size: 1rem; font-weight: 400; line-height: 1.85; color: var(--text-body); margin-bottom: 1.5rem; }
+.family-members { display: flex; flex-direction: column; gap: 0.9rem; border-top: 1px solid var(--cream-dark); padding-top: 1.5rem; margin-top: 0.5rem; }
+.family-member { display: flex; align-items: baseline; gap: 0.8rem; }
+.member-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--navy); min-width: 80px; }
+.member-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-bottom: 2px; }
+.member-desc { font-size: 0.88rem; font-weight: 300; color: var(--text-muted); line-height: 1.5; }
+
+/* ====== REVTECH SECTION ====== */
+.revtech-section { background: var(--navy); color: var(--white); position: relative; overflow: hidden; }
+.revtech-section .section-title { color: var(--white); }
+.revtech-section .section-intro { color: rgba(255,255,255,0.55); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); margin-bottom: 3rem; }
+.service-card { background: rgba(11,30,61,0.8); padding: 1.8rem; transition: background 0.3s; }
+.service-card:hover { background: rgba(28,58,92,0.9); }
+.service-number { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.7rem; font-weight: 600; }
+.service-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; line-height: 1.3; }
+.industries-strip { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.industry-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; padding: 0.45rem 1rem; border: 1px solid rgba(201,168,76,0.35); color: var(--gold-light); }
+.mach12-teaser { background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(28,58,92,0.4)); border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--gold); padding: 1.8rem 2rem; position: relative; }
+.mach12-teaser::after { content: 'COMING SOON'; position: absolute; top: 0.8rem; right: 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.22em; color: var(--gold); font-weight: 700; }
+.mach12-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.5rem; }
+
+/* ====== VALUES SECTION ====== */
+.values-section { background: var(--cream); }
+.values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.value-card { background: var(--white); padding: 2rem; border-bottom: 3px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; position: relative; }
+.value-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(11,30,61,0.07); }
+.value-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--cream-dark); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+.value-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.7rem; }
+
+/* ====== FINANCIAL SECTION ====== */
+.financial-section { background: var(--white); }
+.financial-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: start; }
+.kpi-card { padding: 1.5rem; background: var(--cream); border-left: 3px solid var(--gold); margin-bottom: 1.2rem; }
+.kpi-year { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.3rem; }
+.kpi-revenue { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 0.25rem; }
+.kpi-margin { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 500; color: var(--text-muted); }
+.kpi-bar-bg { height: 3px; background: var(--cream-dark); margin-top: 0.8rem; position: relative; }
+.kpi-bar-fill { position: absolute; top: 0; left: 0; height: 100%; background: var(--gold); }
+.chart-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.5rem; }
+.bar-chart { display: flex; align-items: flex-end; gap: 0.8rem; height: 250px; border-bottom: 1px solid var(--cream-dark); border-left: 1px solid var(--cream-dark); padding-top: 1rem; position: relative; }
+.bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; height: 100%; justify-content: flex-end; }
+.bar-label-top { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 600; color: var(--navy); white-space: nowrap; }
+.bar-fill { width: 100%; position: relative; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding-top: 0.2rem; }
+.bar-margin-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(201,168,76,0.22); display: flex; align-items: center; justify-content: center; }
+.bar-margin-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; color: var(--gold); font-weight: 700; }
+.bar-x-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); }
+.projection-note { margin-top: 1.5rem; padding: 1rem 1.2rem; background: var(--cream); border-left: 2px solid var(--accent-red); font-size: 0.83rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+.projection-note strong { color: var(--navy); font-weight: 600; }
+
+/* ====== LEADERSHIP SECTION ====== */
+.leadership-section { background: var(--cream); }
+.leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.leader-card { background: var(--white); padding: 1.8rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.leader-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.leader-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(11,30,61,0.09); }
+.leader-card:hover::before { transform: scaleX(1); }
+.leader-initials { width: 44px; height: 44px; background: var(--navy); color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.leader-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
+.leader-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+.leader-bio { font-size: 0.8rem; font-weight: 300; line-height: 1.65; color: var(--text-muted); }
+
+/* ====== CLOSING ====== */
+.closing-section { background: var(--gradient-hero); color: var(--white); text-align: center; padding: 7rem 0; position: relative; overflow: hidden; }
+.closing-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.closing-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 7vw, 3.8rem); font-weight: 700; color: var(--white); margin-bottom: 0.8rem; position: relative; }
+.closing-title em { color: var(--gold); font-style: italic; }
+.closing-sub { font-size: 0.95rem; font-weight: 300; color: rgba(255,255,255,0.55); margin-bottom: 3rem; letter-spacing: 0.05em; position: relative; }
+.closing-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; position: relative; margin-bottom: 3rem; }
+.closing-stat-value { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 3rem); font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.closing-stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.closing-url { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); position: relative; }
+
+/* ====== FOOTER ====== */
+footer { background: var(--navy); padding: 1.2rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid rgba(201,168,76,0.2); }
+.footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); }
+.footer-copy { font-family: 'Barlow', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.28); }
+
+/* ====== FADE IN ====== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+
+/* ====== DATA TABLES ====== */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.data-table thead tr { background: var(--navy); }
+.data-table thead th { padding: 0.65rem 0.9rem; text-align: left; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.1em; color: var(--white); font-size: 0.68rem; }
+.data-table thead th.gold { color: var(--gold); text-align: center; }
+.data-table tbody tr:nth-child(even) { background: var(--cream); }
+.data-table tbody tr { border-bottom: 1px solid var(--cream-dark); }
+.data-table tbody td { padding: 0.6rem 0.9rem; color: var(--text-body); }
+.data-table tbody td.center { text-align: center; }
+.data-table tbody td.bold { font-weight: 700; }
+.data-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ====== KEY QUESTION CARDS ====== */
+.kq-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.18); border-left: 4px solid var(--gold); padding: 2.5rem 2rem; margin-bottom: 2rem; }
+.kq-header { display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 2rem; }
+.kq-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: rgba(201,168,76,0.12); line-height: 1; flex-shrink: 0; }
+.kq-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.kq-title { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 3.5vw, 1.4rem); font-weight: 700; color: var(--white); line-height: 1.3; }
+.kq-body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+.kq-col-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.8rem; font-weight: 600; }
+.solution-item { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.8rem; }
+.solution-num { width: 18px; height: 18px; background: rgba(201,168,76,0.12); border: 1px solid var(--gold); color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+
+/* ====== 9-BOX ====== */
+.ninebox-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 2rem; }
+.ninebox { display: grid; grid-template-columns: 55px 1fr 1fr 1fr; grid-template-rows: 18px 1fr 1fr 1fr; gap: 2px; min-width: 400px; }
+.nb-header { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: center; display: flex; align-items: center; justify-content: center; }
+.nb-row-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; justify-content: flex-end; padding-right: 0.4rem; text-align: right; line-height: 1.3; }
+.nb-cell { padding: 0.8rem; min-height: 72px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.35rem; }
+.nb-cell-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.56rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
+.nb-name { padding: 0.18rem 0.55rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; }
+
+/* ====== STAT GRID ====== */
+.stat-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 3.5rem; }
+.stat-box { padding: 1.8rem; text-align: center; }
+.stat-box.dark { background: var(--navy); }
+.stat-box.light { background: var(--cream); border-bottom: 3px solid var(--gold); }
+.stat-val { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; line-height: 1; }
+.stat-val.gold { color: var(--gold); }
+.stat-val.navy { color: var(--navy); }
+.stat-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 0.35rem; }
+.stat-lbl.muted { color: rgba(255,255,255,0.4); }
+.stat-lbl.dark { color: var(--text-muted); }
+
+/* ====== FAMILY LEGACY ====== */
+.legacy-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem; }
+.legacy-photo { position: relative; overflow: hidden; }
+.legacy-photo img { width: 100%; display: block; object-fit: cover; }
+.legacy-photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(11,30,61,0.88)); padding: 1.5rem 1.2rem 0.8rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+.quote-block { background: var(--navy); padding: 1.5rem 1.8rem; border-left: 3px solid var(--gold); margin-top: 1.2rem; }
+.quote-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.82); line-height: 1.6; margin-bottom: 0.6rem; }
+.quote-attr { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
+.family-card { background: var(--white); padding: 1.3rem 1.6rem; border-bottom: 2px solid var(--gold); display: flex; align-items: center; gap: 1.2rem; margin-bottom: 0.8rem; }
+.family-card-initials { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; flex-shrink: 0; }
+.family-card-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+.family-card-role { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  
+  .family-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .family-photos { grid-template-columns: 1fr 1fr; }
+  .photo-card.tall { grid-column: 1; grid-row: auto; }
+  
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .financial-layout { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: 1fr 1fr; }
+  /* org chart 5-col to 2-col on tablet */
+  .orgchart-row { grid-template-columns: repeat(2, 1fr) !important; }
+  
+  .stat-grid-4 { grid-template-columns: 1fr 1fr; }
+  .legacy-layout { grid-template-columns: 1fr; gap: 2rem; }
+  
+  .kq-body { grid-template-columns: 1fr; gap: 1.5rem; }
+  
+  .closing-stats { gap: 2rem; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 1rem; }
+  .container { padding: 0 1rem; }
+  section { padding: 3.5rem 0; }
+  
+  .hero-content { padding: 2.5rem 1rem; }
+  
+  .family-photos { grid-template-columns: 1fr; }
+  .photo-card.tall { grid-column: auto; grid-row: auto; height: 280px !important; }
+  .photo-card { height: 220px !important; }
+  
+  .services-grid { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: 1fr; }
+  .stat-grid-4 { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .stat-val { font-size: 2rem; }
+  
+  .kq-card { padding: 1.5rem 1rem; }
+  .kq-header { flex-direction: column; gap: 0.5rem; }
+  .kq-number { font-size: 2.5rem; }
+  
+  .bar-chart { height: 180px; gap: 0.4rem; }
+  .bar-label-top { font-size: 0.58rem; }
+  .bar-x-label { font-size: 0.6rem; }
+  
+  .closing-stats { gap: 1.5rem; }
+  .closing-stat-value { font-size: 1.8rem; }
+  
+  footer { flex-direction: column; text-align: center; }
+  
+  .legacy-layout { grid-template-columns: 1fr; }
+  
+  .values-grid { grid-template-columns: 1fr; }
+  
+  .data-table { font-size: 0.75rem; }
+  .data-table thead th, .data-table tbody td { padding: 0.5rem 0.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand">Revelation Technologies</div>
+  <ul class="nav-links">
+    <li><a href="#family">Family</a></li>
+    <li><a href="#revtech">RevTech</a></li>
+    <li><a href="#legacy">Origin</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#leadership">Team</a></li>
+    <li><a href="#org">People</a></li>
+    <li><a href="#key-questions">Key Questions</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleMenu()" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#family" onclick="closeMenu()">Family</a>
+  <a href="#revtech" onclick="closeMenu()">RevTech</a>
+  <a href="#legacy" onclick="closeMenu()">Origin Story</a>
+  <a href="#values" onclick="closeMenu()">Values</a>
+  <a href="#financials" onclick="closeMenu()">Financials</a>
+  <a href="#leadership" onclick="closeMenu()">Leadership</a>
+  <a href="#org" onclick="closeMenu()">People & Org</a>
+  <a href="#key-questions" onclick="closeMenu()">Key Questions</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">C12 Group &mdash; Executive Presentation 2026</div>
+    <h1 class="hero-title">Josh <span>Lee</span></h1>
+    <div class="hero-subtitle">Co-Founder &amp; CEO/CRO &mdash; Revelation Technologies</div>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Faith-driven leader. Husband. Father. Building the nation's most trusted SAP consulting firm for the defense of America.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">$22M</span>
+        <span class="hero-meta-label">2025 Revenue</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">27%</span>
+        <span class="hero-meta-label">Gross Margin</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">A&amp;D</span>
+        <span class="hero-meta-label">Primary Market</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span class="scroll-label">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section class="family-section" id="family">
+  <div class="container">
+    <div class="section-eyebrow">The Foundation</div>
+    <h2 class="section-title fade-in">The People <em>Who Matter Most</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">Before the company, there is a family. Everything I build, I build for them.</p>
+    <div class="family-layout">
+      <div class="family-photos fade-in">
+        <div class="photo-card tall" style="height:460px;">
+          <img src="photos/leefam.jpeg" alt="The Lee Family" style="height:100%;object-position:center top;">
+          <div class="photo-caption">The Lee Family &mdash; Scottsdale, AZ</div>
+        </div>
+        <div class="photo-card" style="height:224px;">
+          <img src="photos/leefam_dis.jpg" alt="Family at Disneyland" style="height:100%;">
+          <div class="photo-caption">Disneyland &mdash; December 2025</div>
+        </div>
+        <div class="photo-card" style="height:224px;background:var(--navy);display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;padding:1.5rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;color:var(--gold);line-height:1.3;">"Train up a child in the way he should go..."</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.18em;color:rgba(255,255,255,0.35);margin-top:0.8rem;text-transform:uppercase;">Proverbs 22:6</div>
+          </div>
+        </div>
+      </div>
+      <div class="family-content fade-in fade-in-delay-2">
+        <p class="family-intro-text">My faith isn't a compartment — it's the lens through which I see everything. Every business decision, every leadership choice, every relationship is filtered through that conviction.</p>
+        <ul class="bullet-list" style="margin-bottom:1.5rem;">
+          <li>Based in Scottsdale, Arizona — faith and family are the north star</li>
+          <li>Abby and I are committed to raising kids who are grounded, courageous, and generous</li>
+          <li>What I build professionally doesn't mean anything if I lose the plot at home</li>
+          <li>The chaos of family life keeps everything in perspective</li>
+        </ul>
+        <div class="family-members">
+          <div class="family-member"><span class="member-name">Abby</span><span class="member-dot"></span><span class="member-desc">Wife — partner in everything, steadfast in faith and grace</span></div>
+          <div class="family-member"><span class="member-name">Audrey</span><span class="member-dot"></span><span class="member-desc">Daughter, 14 — bold, creative, fully herself</span></div>
+          <div class="family-member"><span class="member-name">Gavin</span><span class="member-dot"></span><span class="member-desc">Son, 9 — energetic, funny, sports-obsessed</span></div>
+          <div class="family-member"><span class="member-name">Alice</span><span class="member-dot"></span><span class="member-desc">Daughter, 7 — the youngest, fiercest heart in the house</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVTECH -->
+<section class="revtech-section" id="revtech">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--gold);">Who We Are</div>
+    <h2 class="section-title fade-in">Revelation <em style="color:var(--gold-light);">Technologies</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">The only SAP consulting firm purpose-built for the complexity of U.S. Government Contracting — where compliance isn't optional and mission readiness is non-negotiable.</p>
+    <div class="ornamental-divider dark"><div class="ornamental-diamond"></div></div>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <div class="service-title">Solution Strategy</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li style="color:rgba(255,255,255,0.55);">Select optimal SAP technology ecosystem</li>
+          <li style="color:rgba(255,255,255,0.55);">Strategic objectives + complex GovCon requirements</li>
+          <li style="color:rgba(255,255,255,0.55);">Before a single dollar is spent on implementation</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <div class="service-title">Solution Implementation</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li style="color:rgba(255,255,255,0.55);">SAP S/4HANA — Greenfield, Brownfield, hybrid</li>
+          <li style="color:rgba(255,255,255,0.55);">All U.S. citizen delivery team</li>
+          <li style="color:rgba(255,255,255,0.55);">Deep A&D and government contracting expertise</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <div class="service-title">Solution Architecture</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li style="color:rgba(255,255,255,0.55);">Unify IT and business design</li>
+          <li style="color:rgba(255,255,255,0.55);">Cross-functional SAP architecture</li>
+          <li style="color:rgba(255,255,255,0.55);">Government program accounting and ERP compliance</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <div class="service-title">Managed Services</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li style="color:rgba(255,255,255,0.55);">Onshore, U.S. citizen SAP sustainment</li>
+          <li style="color:rgba(255,255,255,0.55);">Scalable cleared support for ongoing needs</li>
+          <li style="color:rgba(255,255,255,0.55);">Compliance and operational continuity</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <div class="service-title">AI Adoption &amp; Application</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li style="color:rgba(255,255,255,0.55);">AI integration into existing SAP environments</li>
+          <li style="color:rgba(255,255,255,0.55);">Data structuring for regulated architectures</li>
+          <li style="color:rgba(255,255,255,0.55);">Target highest-value AI scenarios in GovCon</li>
+        </ul>
+      </div>
+      <div class="service-card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;color:rgba(255,255,255,0.06);line-height:1.3;margin-bottom:0.5rem;">"Real Intelligence Empowering Technology Transformation"</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.35);">RevTech Mission</div>
+      </div>
+    </div>
+    <div class="industries-strip fade-in fade-in-delay-2">
+      <span class="industry-tag">Aerospace &amp; Defense</span>
+      <span class="industry-tag">Space Contractors</span>
+      <span class="industry-tag">Government Contracting</span>
+      <span class="industry-tag">EVMS / CAS / FAR / DFARS</span>
+      <span class="industry-tag">CMMC Compliance</span>
+      <span class="industry-tag">SAP S/4HANA</span>
+    </div>
+    <div class="mach12-teaser fade-in fade-in-delay-3">
+      <div class="mach12-title">⚡ Mach12.ai</div>
+      <ul class="bullet-list" style="margin-top:0.5rem;">
+        <li style="color:rgba(255,255,255,0.6);">RevTech is expanding beyond consulting into software</li>
+        <li style="color:rgba(255,255,255,0.6);">AI-driven, AI-powered software enabler for A&D and GovCon</li>
+        <li style="color:rgba(255,255,255,0.6);">Built on deep domain knowledge accumulated over years in the field</li>
+        <li style="color:rgba(255,255,255,0.6);">Full announcement coming soon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY LEGACY -->
+<section style="background:var(--cream);padding:5rem 0;" id="legacy">
+  <div class="container">
+    <div class="section-eyebrow">Origin Story</div>
+    <h2 class="section-title fade-in">Standing on the <em>Shoulders of Giants</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">RevTech didn't start in a boardroom. It started between a father and son — two consultants with a shared belief they could build something better, together.</p>
+    <div class="legacy-layout fade-in">
+      <div class="legacy-photo">
+        <img src="photos/golive.PNG" alt="The RevTech Family — Josh, Keith, and team">
+        <div class="legacy-photo-caption">The RevTech Family &mdash; On-site with a client</div>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Keith &amp; Josh Lee — Co-Founders</div>
+        <ul class="bullet-list" style="margin-bottom:1.5rem;">
+          <li>Keith built a software company in the Aerospace &amp; Defense industry before RevTech existed</li>
+          <li>Josh went to work for his father's company straight out of university — 7 years learning the industry, the craft, and what it means to lead with integrity</li>
+          <li>In 2017, father and son made the leap together as two independent consultants</li>
+          <li>That partnership has grown into a $22M company built entirely on trust and deep domain expertise</li>
+          <li>Keith has been mentor, business partner, and the most consistent voice in Josh's corner throughout everything</li>
+        </ul>
+        <div class="quote-block">
+          <div class="quote-text">"I'm truly standing on the shoulders of giants — especially him."</div>
+          <div class="quote-attr">— Josh Lee</div>
+        </div>
+      </div>
+    </div>
+    <div class="ornamental-divider"><div class="ornamental-diamond"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="fade-in">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:1.2rem;">Family in Business — By Design</div>
+        <ul class="bullet-list">
+          <li>We haven't just tolerated working with family — we've embraced it as a competitive strength</li>
+          <li>Four members of the same family building the same mission side by side</li>
+          <li>The trust, shared values, and long-term commitment of family can't be manufactured</li>
+          <li>In a business built entirely on relationships, that depth of trust matters at every level</li>
+        </ul>
+      </div>
+      <div>
+        <div class="family-card">
+          <div class="family-card-initials" style="background:var(--navy);color:var(--gold);">KL</div>
+          <div><div class="family-card-name">Keith Lee</div><div class="family-card-role">Father &amp; Co-Founder — Founder's Industry Legacy</div></div>
+        </div>
+        <div class="family-card">
+          <div class="family-card-initials" style="background:var(--gold);color:var(--navy);">JL</div>
+          <div><div class="family-card-name">Josh Lee</div><div class="family-card-role">Son &amp; Co-Founder — CEO / CRO</div></div>
+        </div>
+        <div class="family-card" style="border-bottom-color:rgba(201,168,76,0.35);">
+          <div class="family-card-initials" style="background:var(--steel);color:rgba(255,255,255,0.75);font-size:1.1rem;">&#x2764;</div>
+          <div><div class="family-card-name">Younger Brother</div><div class="family-card-role">Josh's Brother — RevTech Team Member</div></div>
+        </div>
+        <div class="family-card" style="border-bottom-color:rgba(201,168,76,0.35);">
+          <div class="family-card-initials" style="background:var(--steel);color:rgba(255,255,255,0.75);font-size:1.1rem;">&#x2764;</div>
+          <div><div class="family-card-name">Brother-in-Law</div><div class="family-card-role">Abby's Brother — RevTech Team Member</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section" id="values">
+  <div class="container">
+    <div class="section-eyebrow">What Drives Us</div>
+    <h2 class="section-title fade-in">Core Values &amp; <em>Operating Principles</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">These aren't aspirational words — they're the operating commitments we hold each other accountable to every day.</p>
+    <div class="values-grid">
+      <div class="value-card fade-in fade-in-delay-1">
+        <div class="value-number">01</div>
+        <div class="value-title">Trust</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We earn trust through consistency, transparency, and delivering on our promises</li>
+          <li>In a relationship-driven industry, trust is the only currency that matters</li>
+          <li>Earned slowly — protected fiercely</li>
+        </ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-2">
+        <div class="value-number">02</div>
+        <div class="value-title">Grit</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We lean in when challenges arise — to create order out of chaos</li>
+          <li>GovCon ERP is complex, high-stakes, and unforgiving — we don't flinch</li>
+          <li>The hardest problems are where we do our best work</li>
+        </ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-3">
+        <div class="value-number">03</div>
+        <div class="value-title">Continuous Improvement</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We strive to raise the level of excellence in our team, to learn and grow</li>
+          <li>In order to raise it in our community</li>
+          <li>Standing still is falling behind in our industry</li>
+        </ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-1">
+        <div class="value-number">04</div>
+        <div class="value-title">Stewardship</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We take responsibility for educating and empowering the next generation of leaders in our industry</li>
+          <li>We treat client resources, mission-critical systems, and our team's time with that same care</li>
+        </ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-2">
+        <div class="value-number">05</div>
+        <div class="value-title">Collaboration</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We measure success not by what we achieve alone, but by how much we help others reach their potential</li>
+          <li>Internal teams, client teams, and partners — we win together</li>
+        </ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-3" style="border-left:3px solid var(--gold);">
+        <div class="value-number">06</div>
+        <div class="value-title">Relentlessly Innovative</div>
+        <ul class="bullet-list sm" style="margin-top:0.5rem;">
+          <li>We continuously reimagine how we unlock new possibilities and outperform expectations</li>
+          <li>Lead with confidence in every mission</li>
+          <li>Innovation is how we stay ahead in a market that demands it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIALS -->
+<section class="financial-section" id="financials">
+  <div class="container">
+    <div class="section-eyebrow">Business Performance</div>
+    <h2 class="section-title fade-in">Revenue &amp; <em>Margin Trajectory</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">Five years of consistent growth built on deep specialization. A major contract win in 2023 accelerated scale — and while that contract concluded at end of 2025, the foundation positions us for sustainable, margin-healthy growth.</p>
+    <div class="financial-layout">
+      <div class="fade-in">
+        <div class="kpi-card"><div class="kpi-year">2021</div><div class="kpi-revenue">$5M</div><div class="kpi-margin">20% gross margin</div><div class="kpi-bar-bg"><div class="kpi-bar-fill" style="width:23%"></div></div></div>
+        <div class="kpi-card"><div class="kpi-year">2022</div><div class="kpi-revenue">$7M</div><div class="kpi-margin">20% gross margin</div><div class="kpi-bar-bg"><div class="kpi-bar-fill" style="width:32%"></div></div></div>
+        <div class="kpi-card"><div class="kpi-year">2023</div><div class="kpi-revenue">$15M</div><div class="kpi-margin">22% gross margin</div><div class="kpi-bar-bg"><div class="kpi-bar-fill" style="width:68%"></div></div></div>
+        <div class="kpi-card"><div class="kpi-year">2024</div><div class="kpi-revenue">$21M</div><div class="kpi-margin">23% gross margin</div><div class="kpi-bar-bg"><div class="kpi-bar-fill" style="width:95%"></div></div></div>
+        <div class="kpi-card" style="border-left-color:var(--gold);background:var(--navy);">
+          <div class="kpi-year" style="color:var(--gold-light);">2025</div>
+          <div class="kpi-revenue" style="color:var(--gold);">$22M</div>
+          <div class="kpi-margin" style="color:rgba(255,255,255,0.5);">27% gross margin — Best year ever</div>
+          <div class="kpi-bar-bg" style="background:rgba(255,255,255,0.1);"><div class="kpi-bar-fill" style="width:100%;background:var(--gold);"></div></div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <ul class="bullet-list sm">
+            <li>Major contract (Aerospace Corp) drove accelerated 2023–2025 growth</li>
+            <li>That engagement concluded at end of 2025</li>
+            <li>2026 projection: $18M at 25% margin — planned transition year</li>
+            <li>Mach12.ai and new BD investment are the growth catalysts going forward</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-2">
+        <div class="chart-title">Annual Revenue ($M) with Gross Margin %</div>
+        <div class="bar-chart">
+          <div class="bar-group"><span class="bar-label-top">$5M</span><div class="bar-fill" style="height:22.7%;background:#1C3A5C;"><div class="bar-margin-overlay" style="height:20%;"><span class="bar-margin-label">20%</span></div></div><span class="bar-x-label">2021</span></div>
+          <div class="bar-group"><span class="bar-label-top">$7M</span><div class="bar-fill" style="height:31.8%;background:#1C3A5C;"><div class="bar-margin-overlay" style="height:20%;"><span class="bar-margin-label">20%</span></div></div><span class="bar-x-label">2022</span></div>
+          <div class="bar-group"><span class="bar-label-top">$15M</span><div class="bar-fill" style="height:68.2%;background:#122647;"><div class="bar-margin-overlay" style="height:22%;"><span class="bar-margin-label">22%</span></div></div><span class="bar-x-label">2023</span></div>
+          <div class="bar-group"><span class="bar-label-top">$21M</span><div class="bar-fill" style="height:95.5%;background:#0B1E3D;"><div class="bar-margin-overlay" style="height:23%;"><span class="bar-margin-label">23%</span></div></div><span class="bar-x-label">2024</span></div>
+          <div class="bar-group"><span class="bar-label-top" style="color:var(--gold);">$22M</span><div class="bar-fill" style="height:100%;background:linear-gradient(to top,#C9A84C,#8B6914);"><div class="bar-margin-overlay" style="height:27%;background:rgba(0,0,0,0.2);"><span class="bar-margin-label" style="color:white;">27%</span></div></div><span class="bar-x-label" style="color:var(--gold);">2025</span></div>
+          <div class="bar-group"><span class="bar-label-top" style="color:var(--text-muted);">$18M</span><div class="bar-fill" style="height:81.8%;background:repeating-linear-gradient(45deg,#e2d8c4,#e2d8c4 4px,#f0ebe0 4px,#f0ebe0 8px);border:1px dashed #9A9488;"><div class="bar-margin-overlay" style="height:25%;background:rgba(154,148,136,0.15);"><span class="bar-margin-label" style="color:#9A9488;">25%</span></div></div><span class="bar-x-label" style="color:var(--text-muted);">2026E</span></div>
+        </div>
+        <div class="projection-note"><strong>2026 Context:</strong> The large contract concluded at end of 2025. $18M at 25% margin reflects the transition as we build diversified pipeline and launch new product lines. This is a planned reset, not a reversal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<style>
+@media (max-width:900px) {
+  .orgchart-5col { grid-template-columns: repeat(2,1fr) !important; }
+  .orgchart-2col { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width:600px) {
+  .orgchart-5col { grid-template-columns: 1fr !important; }
+  .orgchart-2col { grid-template-columns: 1fr !important; }
+}
+</style>
+<section class="leadership-section" id="leadership">
+  <div class="container">
+    <div class="section-eyebrow">EOS Accountability Chart</div>
+    <h2 class="section-title fade-in">Leadership <em>Structure</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">RevTech runs on EOS. Every seat has an owner, every owner has clear roles and responsibilities. This is the structure we hold ourselves to.</p>
+
+    <!-- Visionary & Operator -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:0;" class="fade-in">
+
+      <!-- Visionary -->
+      <div style="width:100%;max-width:420px;">
+        <div style="background:var(--navy);border-top:4px solid var(--gold);padding:1.8rem 2rem;position:relative;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;font-weight:700;">Seat</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:0.1rem;">Visionary</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.55);margin-bottom:1.2rem;">Keith Lee &amp; Josh Lee</div>
+          <ul class="bullet-list sm" style="margin-top:0;">
+            <li style="color:rgba(255,255,255,0.65);">Identity and Purpose</li>
+            <li style="color:rgba(255,255,255,0.65);">Big Ideas</li>
+            <li style="color:rgba(255,255,255,0.65);">Partner Relationships</li>
+            <li style="color:rgba(255,255,255,0.65);">Creativity / Problem Solving</li>
+          </ul>
+        </div>
+        <!-- connector line down -->
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+      </div>
+
+      <!-- Operator -->
+      <div style="width:100%;max-width:420px;">
+        <div style="background:var(--cream);border-top:3px solid var(--steel);padding:1.8rem 2rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--steel);margin-bottom:0.3rem;font-weight:700;">Seat</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:0.1rem;">Operator</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;">Ryan Euler</div>
+          <ul class="bullet-list sm">
+            <li>Lead, Manage, Accountability</li>
+            <li>Profit &amp; Loss / Business Plan</li>
+            <li>Quality Control</li>
+            <li>Employee hiring, assessments, and management</li>
+          </ul>
+        </div>
+        <!-- connector line down -->
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+      </div>
+    </div>
+
+    <!-- Horizontal connector bar -->
+    <div style="position:relative;margin-bottom:0;" class="fade-in fade-in-delay-1">
+      <!-- The horizontal line -->
+      <div style="height:2px;background:var(--cream-dark);margin:0 auto;max-width:900px;"></div>
+      <!-- Vertical drops -->
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);max-width:900px;margin:0 auto;">
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+        <div style="width:2px;height:2rem;background:var(--cream-dark);margin:0 auto;"></div>
+      </div>
+    </div>
+
+    <!-- Five direct reports -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;max-width:900px;margin:0 auto;" class="orgchart-5col fade-in fade-in-delay-2">
+
+      <!-- Sales/Marketing -->
+      <div style="background:var(--white);border-top:3px solid var(--gold);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;font-weight:700;">Sales / Marketing</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Chief Outsiders<br><span style="font-weight:400;color:var(--text-muted);font-size:0.7rem;">(Fractional CMO)</span></div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">New Business</li>
+          <li style="font-size:0.78rem;">Lead Generation</li>
+          <li style="font-size:0.78rem;">Marketing</li>
+        </ul>
+      </div>
+
+      <!-- Accounting -->
+      <div style="background:var(--white);border-top:3px solid var(--gold);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;font-weight:700;">Accounting</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Erin West</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">Forecasting &amp; Budgets</li>
+          <li style="font-size:0.78rem;">Accounting &amp; Reporting</li>
+          <li style="font-size:0.78rem;">Taxes</li>
+          <li style="font-size:0.78rem;">Heritage Family Office</li>
+        </ul>
+      </div>
+
+      <!-- Operations - PwC -->
+      <div style="background:var(--white);border-top:3px solid var(--gold);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;font-weight:700;">Operations — PwC</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Jay Wilson</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">PwC Account Leadership</li>
+          <li style="font-size:0.78rem;">PwC Business Development</li>
+          <li style="font-size:0.78rem;">PwC Delivery Excellence</li>
+          <li style="font-size:0.78rem;">PwC Financial Performance</li>
+        </ul>
+      </div>
+
+      <!-- Operations - Direct -->
+      <div style="background:var(--white);border-top:3px solid var(--gold);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;font-weight:700;">Operations — Direct</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;color:var(--accent-red);">Open Seat</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">Direct Practice Leadership &amp; Strategy</li>
+          <li style="font-size:0.78rem;">Client Engagement &amp; BD</li>
+          <li style="font-size:0.78rem;">Delivery Excellence &amp; Methodology</li>
+        </ul>
+      </div>
+
+      <!-- Sustainment -->
+      <div style="background:var(--white);border-top:3px solid var(--gold);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;font-weight:700;">Sustainment</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Jennifer Muller</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">Sustainment Leadership &amp; Strategy</li>
+          <li style="font-size:0.78rem;">Strategic Growth &amp; Market Dev.</li>
+          <li style="font-size:0.78rem;">Client Relationship Management</li>
+          <li style="font-size:0.78rem;">Delivery &amp; Quality Management</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Second row: Training + Solution Architecture -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;max-width:900px;margin:0.8rem auto 0;" class="orgchart-5col fade-in fade-in-delay-3">
+      <div></div><div></div>
+      <!-- Training - spans under Operations Direct notionally but placed inline -->
+      <div style="background:var(--white);border-top:3px solid rgba(201,168,76,0.4);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:0.2rem;font-weight:700;">Training</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Kelly Behringer</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">Training Strategy &amp; Program Dev.</li>
+          <li style="font-size:0.78rem;">Content Creation &amp; Delivery</li>
+          <li style="font-size:0.78rem;">Internal Enablement</li>
+          <li style="font-size:0.78rem;">Career Growth &amp; Talent Dev.</li>
+        </ul>
+      </div>
+      <div style="background:var(--white);border-top:3px solid rgba(201,168,76,0.4);padding:1.2rem;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:0.2rem;font-weight:700;">Solution Architecture</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:600;color:var(--navy);margin-bottom:0.8rem;">Kris Fee</div>
+        <ul class="bullet-list sm" style="gap:0.45rem;">
+          <li style="font-size:0.78rem;">Solution Architecture</li>
+          <li style="font-size:0.78rem;">Pre-Sales</li>
+          <li style="font-size:0.78rem;">AI Strategy</li>
+          <li style="font-size:0.78rem;">Mentoring</li>
+        </ul>
+      </div>
+      <div></div>
+    </div>
+
+    <!-- Open seat callout -->
+    <div style="max-width:900px;margin:2rem auto 0;background:rgba(139,26,26,0.06);border:1px solid rgba(139,26,26,0.2);border-left:3px solid var(--accent-red);padding:1rem 1.5rem;" class="fade-in">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-red);margin-bottom:0.3rem;">Open Seat — Active Priority</div>
+      <p style="font-size:0.85rem;font-weight:400;color:var(--text-body);line-height:1.6;">The Operations – Direct Consulting seat is currently open. This hire is central to Key Question #2 — building a direct client pipeline and reducing single-client dependency. Target: filled within 90 days.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ORG & PEOPLE -->
+<section style="background:var(--white);padding:5rem 0;" id="org">
+  <div class="container">
+    <div class="section-eyebrow">Organizational Health</div>
+    <h2 class="section-title fade-in">People, <em>Performance &amp; Pipeline</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1">RevTech competes on talent. Our niche is narrow, our standards are high, and our retention tells the story — industry-leading turnover in a field where specialized SAP consultants are genuinely hard to find.</p>
+    <div class="stat-grid-4 fade-in">
+      <div class="stat-box dark"><div class="stat-val gold">50</div><div class="stat-lbl muted">Current FTE</div></div>
+      <div class="stat-box light"><div class="stat-val navy">0%</div><div class="stat-lbl dark">Turnover This Year</div></div>
+      <div class="stat-box light"><div class="stat-val navy">~3%</div><div class="stat-lbl dark">Turnover Last Year</div></div>
+      <div class="stat-box dark"><div class="stat-val gold">60</div><div class="stat-lbl muted">FTE Target (Next Year)</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:4rem;" class="fade-in">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-red);margin-bottom:1rem;">Key Challenge</div>
+        <ul class="bullet-list">
+          <li>Consultants carry highly specialized SAP skills that take years to develop — not quickly trained or recruited</li>
+          <li>Billable-hour model limits bandwidth for internal initiatives</li>
+          <li>Strong retention and niche brand make us attractive to the right talent</li>
+          <li>Leadership misalignment on prioritization — a personal growth challenge as much as an organizational one</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;">Team Flourishing Scorecard</div>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Metric</th><th class="gold" style="width:60px;">Status</th></tr></thead>
+            <tbody>
+              <tr><td>Overall employee performance &amp; value</td><td class="center bold" style="color:#2a7a2a;">+</td></tr>
+              <tr><td>Challenge &amp; encouragement balance in culture</td><td class="center bold" style="color:#2a7a2a;">+</td></tr>
+              <tr><td>Employee engagement scores</td><td class="center bold" style="color:#2a7a2a;">+</td></tr>
+              <tr><td>Upskilling &amp; training budget allocation</td><td class="center bold" style="color:var(--text-muted);">=</td></tr>
+              <tr><td>% employees in development programs</td><td class="center bold" style="color:#2a7a2a;">+</td></tr>
+              <tr><td>New hire performance in first year</td><td class="center bold" style="color:var(--text-muted);">=</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:0.6rem;font-size:0.72rem;color:var(--text-muted);font-style:italic;">+ Positive &nbsp;|&nbsp; = Maintaining &nbsp;|&nbsp; − Needs attention</div>
+      </div>
+    </div>
+
+    <div class="fade-in">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:0.5rem;">Nine-Box Talent Grid — Leadership Team</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;font-weight:300;">Performance vs. potential mapping for succession planning and development investment.</p>
+      <div class="ninebox-wrap">
+        <div class="ninebox">
+          <div></div>
+          <div class="nb-header">Low Potential</div>
+          <div class="nb-header">Med Potential</div>
+          <div class="nb-header">High Potential</div>
+          <div class="nb-row-label">High Perf</div>
+          <div class="nb-cell" style="background:#e8f4e8;"><span class="nb-cell-label" style="color:#2a6e2a;">High Professional</span><span class="nb-name" style="background:var(--navy);color:var(--white);">Kelly</span></div>
+          <div class="nb-cell" style="background:#ddeedd;"><span class="nb-cell-label" style="color:#2a6e2a;">Current Star</span><span class="nb-name" style="background:var(--navy);color:var(--white);">Jay</span><span class="nb-name" style="background:var(--navy);color:var(--white);">Keith</span></div>
+          <div class="nb-cell" style="background:#c8e6c8;"><span class="nb-cell-label" style="color:#1a5c1a;">Consistent Star</span><span class="nb-name" style="background:var(--gold);color:var(--navy);">Ryan</span></div>
+          <div class="nb-row-label">Med Perf</div>
+          <div class="nb-cell" style="background:#f5f0e8;"><span class="nb-cell-label" style="color:#7a6a2a;">Solid Professional</span><span class="nb-name" style="background:var(--navy);color:var(--white);">Kris</span></div>
+          <div class="nb-cell" style="background:#f0ece0;"><span class="nb-cell-label" style="color:#7a6a2a;">Core Player</span><span class="nb-name" style="background:var(--navy);color:var(--white);">Jennifer</span></div>
+          <div class="nb-cell" style="background:#eaebf5;"><span style="color:var(--text-muted);font-size:0.75rem;font-style:italic;">—</span></div>
+          <div class="nb-row-label">Low Perf</div>
+          <div class="nb-cell" style="background:var(--cream);"></div>
+          <div class="nb-cell" style="background:var(--cream);"></div>
+          <div class="nb-cell" style="background:var(--cream);"></div>
+        </div>
+      </div>
+
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin:2rem 0 1rem;">5Cs Assessment — Leadership Team</div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Name</th><th class="gold">Char</th><th class="gold">Call</th><th class="gold">Comp</th><th class="gold">Chem</th><th class="gold">Contr</th><th class="gold" style="border-left:1px solid rgba(255,255,255,0.15);">Total</th></tr></thead>
+          <tbody>
+            <tr><td class="bold">Jay</td><td class="center">10</td><td class="center">7</td><td class="center">10</td><td class="center">8</td><td class="center">10</td><td class="center bold" style="border-left:1px solid var(--cream-dark);">45</td></tr>
+            <tr><td class="bold">Kris</td><td class="center">5</td><td class="center">5</td><td class="center">8</td><td class="center">5</td><td class="center">8</td><td class="center bold" style="border-left:1px solid var(--cream-dark);">31</td></tr>
+            <tr><td class="bold">Jennifer</td><td class="center">8</td><td class="center">8</td><td class="center">5</td><td class="center">8</td><td class="center">5</td><td class="center bold" style="border-left:1px solid var(--cream-dark);">34</td></tr>
+            <tr><td class="bold">Ryan</td><td class="center">9</td><td class="center">10</td><td class="center">9</td><td class="center">10</td><td class="center">9</td><td class="center bold" style="border-left:1px solid var(--cream-dark);color:#1a6e1a;">47</td></tr>
+            <tr><td class="bold">Kelly</td><td class="center">8</td><td class="center">8</td><td class="center">5</td><td class="center">8</td><td class="center">5</td><td class="center bold" style="border-left:1px solid var(--cream-dark);">34</td></tr>
+            <tr style="background:#f0f4ff;"><td class="bold">Keith</td><td class="center">10</td><td class="center">10</td><td class="center">10</td><td class="center">10</td><td class="center">10</td><td class="center bold" style="border-left:1px solid var(--cream-dark);color:#1a6e1a;">50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:0.6rem;font-size:0.72rem;color:var(--text-muted);font-style:italic;">5Cs: Character · Calling · Competency · Chemistry · Contribution &nbsp;|&nbsp; Max score: 50</div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY QUESTIONS -->
+<section style="background:var(--navy);padding:5rem 0;" id="key-questions">
+  <div class="container">
+    <div class="section-eyebrow" style="color:var(--gold);">C12 Peer Advisory</div>
+    <h2 class="section-title fade-in" style="color:var(--white);">Key Questions <em style="color:var(--gold-light);">for the Group</em></h2>
+    <p class="section-intro fade-in fade-in-delay-1" style="color:rgba(255,255,255,0.5);">Two strategic challenges I'm bringing this quarter. Not looking for validation — looking for the perspective I can't see from inside.</p>
+
+    <div class="kq-card fade-in">
+      <div class="kq-header">
+        <div class="kq-number">01</div>
+        <div>
+          <div class="kq-meta">Organizational Development &nbsp;·&nbsp; 30 Days</div>
+          <h3 class="kq-title">How do I let go of control and build genuine trust with my leadership team?</h3>
+        </div>
+      </div>
+      <div class="kq-body">
+        <div>
+          <div class="kq-col-label">The Situation</div>
+          <ul class="bullet-list light sm">
+            <li>I work <em>in</em> the business more than <em>on</em> it</li>
+            <li>I direct and control because I don't fully trust my team to execute at my expected level</li>
+            <li>Creates a bottleneck — key decisions flow through me, limiting scale</li>
+            <li>We run EOS but I'm not fully deploying it</li>
+            <li>I recognize this is as much a personal growth issue as an organizational one</li>
+          </ul>
+        </div>
+        <div>
+          <div class="kq-col-label">Desired Outcome</div>
+          <ul class="bullet-list light sm">
+            <li>Leadership team that executes without my constant involvement</li>
+            <li>Clear accountability structures and empowered leaders</li>
+            <li>Transition from working <em>in</em> the business to working <em>on</em> it</li>
+            <li>A business that can scale beyond what I can personally manage</li>
+          </ul>
+        </div>
+        <div>
+          <div class="kq-col-label">Proposed Solutions</div>
+          <div class="solution-item"><div class="solution-num">1</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Work with a coach to identify trust/control triggers and build a personal delegation plan</p></div>
+          <div class="solution-item"><div class="solution-num">2</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Use EOS tools more rigorously — Accountability Chart, Rocks, L10s as the checkpoint rather than me</p></div>
+          <div class="solution-item"><div class="solution-num">3</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Invest in structured 1-on-1s and leader development — build confidence through demonstrated results, not assumptions</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kq-card fade-in fade-in-delay-1" style="border-left-color:rgba(201,168,76,0.45);">
+      <div class="kq-header">
+        <div class="kq-number">02</div>
+        <div>
+          <div class="kq-meta">Revenue Generation &nbsp;·&nbsp; 90 Days</div>
+          <h3 class="kq-title">How do we build a sustainable sales engine and reduce dependence on any single client?</h3>
+        </div>
+      </div>
+      <div class="kq-body">
+        <div>
+          <div class="kq-col-label">The Situation</div>
+          <ul class="bullet-list light sm">
+            <li>RevTech grew entirely on referrals and relationships — no formal sales or marketing</li>
+            <li>One client (Aerospace Corp) drove 73% of revenue over the past two years</li>
+            <li>That engagement concluded at end of 2025</li>
+            <li>Deal cycles are long — pipeline for 2027 needs to be built now</li>
+            <li>The market opportunity is real; we lack the infrastructure to capitalize on it consistently</li>
+          </ul>
+        </div>
+        <div>
+          <div class="kq-col-label">Desired Outcome</div>
+          <ul class="bullet-list light sm">
+            <li>Repeatable, scalable sales process generating consistent inbound and outbound leads</li>
+            <li>No single client exceeds 40% of revenue</li>
+            <li>Clear path to $20M+ with 5 new logos annually</li>
+            <li>Sales infrastructure that doesn't depend on me personally</li>
+          </ul>
+        </div>
+        <div>
+          <div class="kq-col-label">Proposed Solutions</div>
+          <div class="solution-item"><div class="solution-num">1</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Hire a dedicated BD professional within 90 days and build a formal sales playbook with defined stages and metrics</p></div>
+          <div class="solution-item"><div class="solution-num">2</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Launch targeted content and thought leadership strategy leveraging our GovCon/A&D niche positioning</p></div>
+          <div class="solution-item"><div class="solution-num">3</div><p style="font-size:0.82rem;font-weight:300;line-height:1.6;color:rgba(255,255,255,0.6);">Pursue direct client engagements vs. subcontracting; add sustainment and training as recurring revenue streams</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-section">
+  <div class="container">
+    <div class="closing-title">Built to <em>Last.</em></div>
+    <p class="closing-sub">Faith &bull; Family &bull; Mission &bull; Excellence</p>
+    <div class="closing-stats">
+      <div class="closing-stat"><div class="closing-stat-value">$22M</div><div class="closing-stat-label">2025 Revenue</div></div>
+      <div class="closing-stat"><div class="closing-stat-value">27%</div><div class="closing-stat-label">Gross Margin</div></div>
+      <div class="closing-stat"><div class="closing-stat-value">100%</div><div class="closing-stat-label">U.S. Citizens</div></div>
+      <div class="closing-stat"><div class="closing-stat-value">A&D</div><div class="closing-stat-label">Core Market</div></div>
+    </div>
+    <div class="closing-url">revtech.consulting</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Revelation Technologies, LLC</div>
+  <div class="footer-copy">Prepared for C12 Group — March 2026 &nbsp;&bull;&nbsp; Confidential</div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+// Close on outside click
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const toggle = document.getElementById('navToggle');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+// Fade in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
