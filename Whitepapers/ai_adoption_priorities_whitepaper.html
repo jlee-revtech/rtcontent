@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI-Ready Defense Contractor | Revelation Technologies</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #111318;
+  --navy-med: #1A1D24;
+  --navy-light: #252830;
+  --navy-pale: #2E323C;
+  --gold: #C17F4E;
+  --gold-dark: #A66B3C;
+  --gold-light: #F4EDE6;
+  --gold-muted: #D49B6E;
+  --blue-tint: #F0EEEB;
+  --light-gray: #F7F6F4;
+  --med-gray: #71757E;
+  --dark-text: #1A1A1A;
+  --white: #FFFFFF;
+  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-text);
+  background: var(--light-gray);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   COVER SECTION
+   ============================================ */
+.cover {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 80%;
+  height: 140%;
+  background: radial-gradient(ellipse at center, rgba(50,45,40,0.6) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gold);
+}
+
+/* Subtle grid pattern */
+.cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.cover-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 60px 40px;
+}
+
+.cover-logo {
+  height: 52px;
+  margin-bottom: 60px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.2s forwards;
+  filter: brightness(0) invert(1);
+}
+
+.cover-accent {
+  width: 80px;
+  height: 4px;
+  background: var(--gold);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.4s forwards;
+}
+
+.cover h1 {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.5s forwards;
+}
+
+.cover-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: #9A9DA6;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  max-width: 600px;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.7s forwards;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeSlideUp 0.8s ease-out 0.9s forwards;
+}
+
+.cover-meta span {
+  font-size: 14px;
+  color: #5C5F68;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cover-meta .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold-muted);
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 1.5s forwards;
+}
+
+.scroll-cue span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #5C5F68;
+}
+
+.scroll-cue .arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--gold-muted);
+  border-bottom: 2px solid var(--gold-muted);
+  transform: rotate(45deg);
+  animation: bobDown 2s ease-in-out infinite;
+}
+
+@keyframes bobDown {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+/* ============================================
+   NAVIGATION / TOC
+   ============================================ */
+.toc-section {
+  background: var(--white);
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.container-wide {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============================================
+   SECTION STYLING
+   ============================================ */
+.section {
+  padding: 80px 0;
+}
+
+.section-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.section-tint {
+  background: var(--blue-tint);
+}
+
+.section-white {
+  background: var(--white);
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.section-dark .section-title {
+  color: var(--white);
+}
+
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 20px 0 32px;
+}
+
+.body-text {
+  font-size: 16.5px;
+  line-height: 1.8;
+  color: var(--dark-text);
+  margin-bottom: 20px;
+}
+
+.section-dark .body-text {
+  color: #B8BAC0;
+}
+
+/* ============================================
+   CALLOUT BOX
+   ============================================ */
+.callout {
+  background: var(--gold-light);
+  border-top: 4px solid var(--gold);
+  border-radius: 0 0 6px 6px;
+  padding: 28px 32px;
+  margin: 32px 0;
+}
+
+.callout-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.callout-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dark-text);
+  font-style: italic;
+}
+
+.section-dark .callout {
+  background: rgba(193,127,78,0.12);
+  border-top-color: var(--gold);
+}
+
+.section-dark .callout .callout-title {
+  color: var(--gold);
+}
+
+.section-dark .callout .callout-body {
+  color: #B8BAC0;
+}
+
+/* ============================================
+   PRIORITIES OVERVIEW TABLE
+   ============================================ */
+.priorities-list {
+  list-style: none;
+  counter-reset: priority-counter;
+  margin: 40px 0;
+}
+
+.priorities-list li {
+  counter-increment: priority-counter;
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease;
+}
+
+.priorities-list li:hover {
+  transform: translateX(4px);
+}
+
+.priorities-list li .num {
+  flex-shrink: 0;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.priorities-list li .name {
+  flex: 1;
+  padding: 16px 24px;
+  background: var(--blue-tint);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--dark-text);
+  display: flex;
+  align-items: center;
+  border-left: none;
+}
+
+.priorities-list li:nth-child(even) .name {
+  background: var(--white);
+}
+
+.priorities-list li a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ============================================
+   PRIORITY DETAIL SECTIONS
+   ============================================ */
+.priority-section {
+  padding: 72px 0 80px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.priority-section:nth-child(even) {
+  background: var(--light-gray);
+}
+
+.priority-header {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 36px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(15,43,70,0.12);
+}
+
+.priority-num {
+  flex-shrink: 0;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--white);
+}
+
+.priority-title-bar {
+  flex: 1;
+  background: var(--navy);
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+}
+
+.priority-title-bar h2 {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ============================================
+   KPI TABLE
+   ============================================ */
+.kpi-section {
+  margin-top: 36px;
+}
+
+.kpi-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.kpi-label .gold { color: var(--gold-dark); }
+.kpi-label .gray { color: var(--med-gray); font-weight: 400; }
+
+.kpi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+.kpi-table thead th {
+  background: var(--navy);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 18px;
+}
+
+.kpi-table tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid #E5E7EB;
+  vertical-align: top;
+}
+
+.kpi-table tbody tr:nth-child(odd) td {
+  background: var(--light-gray);
+}
+
+.kpi-table tbody tr:nth-child(even) td {
+  background: var(--white);
+}
+
+.kpi-table .kpi-name {
+  color: var(--dark-text);
+  font-weight: 400;
+}
+
+.kpi-table .kpi-target {
+  color: var(--navy-med);
+  font-weight: 600;
+}
+
+/* ============================================
+   ROADMAP
+   ============================================ */
+.roadmap-grid {
+  display: grid;
+  gap: 0;
+  margin: 40px 0;
+}
+
+.roadmap-phase {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  min-height: 120px;
+  border-bottom: 3px solid var(--white);
+}
+
+.phase-label {
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.roadmap-phase:nth-child(2) .phase-label { background: var(--navy-med); }
+.roadmap-phase:nth-child(3) .phase-label { background: var(--navy-light); }
+
+.phase-label .phase-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.phase-label .phase-sub {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.phase-content {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+}
+
+.phase-time {
+  background: var(--gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+}
+
+.phase-activities {
+  background: var(--blue-tint);
+  padding: 20px 24px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--dark-text);
+  display: flex;
+  align-items: center;
+}
+
+.roadmap-phase:nth-child(even) .phase-activities {
+  background: var(--white);
+}
+
+/* ============================================
+   CONCLUSION / ABOUT
+   ============================================ */
+.conclusion-section {
+  background: var(--white);
+  padding: 80px 0;
+}
+
+.about-block {
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 40px 44px;
+  margin-top: 48px;
+}
+
+.about-block .about-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.about-block p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #A0A3AB;
+}
+
+.about-block .about-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 32px;
+}
+
+.about-block .about-links a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about-block .about-links a:hover {
+  color: var(--gold-muted);
+}
+
+.about-logo {
+  height: 36px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* ============================================
+   VALUE VECTOR CARDS
+   ============================================ */
+.vector-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 40px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(15,43,70,0.10);
+}
+
+.vector-card {
+  padding: 36px 32px;
+}
+
+.vector-card:first-child {
+  background: var(--navy);
+  border-right: 3px solid var(--gold);
+}
+
+.vector-card:last-child {
+  background: var(--navy-light);
+}
+
+.vector-card .vector-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.vector-card .vector-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.vector-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.vector-card p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #A0A3AB;
+}
+
+.vector-card .vector-examples {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.vector-card .vector-examples span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.vector-card .vector-examples p {
+  font-size: 14px;
+  color: #9A9DA6;
+  line-height: 1.7;
+}
+
+.vector-inline {
+  display: flex;
+  gap: 0;
+  margin: 28px 0;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14.5px;
+}
+
+.vector-inline .vi-label {
+  flex-shrink: 0;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+}
+
+.vector-inline .vi-label.automate { background: var(--navy); }
+.vector-inline .vi-label.build { background: var(--navy-med); }
+
+.vector-inline .vi-body {
+  flex: 1;
+  padding: 14px 20px;
+  background: var(--blue-tint);
+  color: var(--dark-text);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .vector-grid { grid-template-columns: 1fr; }
+  .vector-card:first-child { border-right: none; border-bottom: 3px solid var(--gold); }
+  .vector-inline { flex-direction: column; }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--navy);
+  text-align: center;
+  padding: 32px 40px;
+  border-top: 2px solid var(--gold);
+}
+
+.footer p {
+  font-size: 13px;
+  color: #5C5F68;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .cover { min-height: auto; page-break-after: always; }
+  .scroll-cue { display: none; }
+  .priority-section { page-break-inside: avoid; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  body { font-size: 11pt; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .container, .container-wide { padding: 0 24px; }
+  .cover-inner { padding: 40px 24px; }
+  .cover-meta { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .cover-meta .dot { display: none; }
+  .priority-header { flex-direction: column; }
+  .priority-num { width: 100%; height: 48px; font-size: 24px; }
+  .roadmap-phase { grid-template-columns: 1fr; }
+  .phase-content { grid-template-columns: 1fr; }
+  .phase-label { padding: 16px; }
+  .kpi-table { font-size: 13px; }
+  .kpi-table thead th, .kpi-table tbody td { padding: 10px 12px; }
+  .about-block { padding: 28px 24px; }
+  .about-block .about-links { flex-direction: column; gap: 12px; }
+  .priorities-list li .num { width: 44px; font-size: 14px; }
+  .priorities-list li .name { padding: 12px 16px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     COVER
+     ============================================ -->
+<section class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-inner">
+    <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" class="cover-logo">
+    <div class="cover-accent"></div>
+    <h1>The AI-Ready<br>Defense Contractor</h1>
+    <p class="cover-subtitle">10 Strategic Priorities for AI Adoption in Aerospace & Defense Organizations Operating Across Government and Commercial Markets</p>
+    <div class="cover-meta">
+      <span>Strategic White Paper</span>
+      <div class="dot"></div>
+      <span>Revelation Technologies</span>
+      <div class="dot"></div>
+      <span>2026</span>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     EXECUTIVE SUMMARY
+     ============================================ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Executive Summary</div>
+      <h2 class="section-title">Speed with Direction</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Artificial intelligence is no longer a future consideration for Aerospace & Defense organizations. It is a present-tense competitive requirement. The companies that move decisively and strategically on AI adoption will win more work, execute more efficiently, and deliver better outcomes across both their government and commercial portfolios. Those who wait for the market to settle or for a perfect regulatory framework will find themselves structurally disadvantaged on both sides of the house.</p>
+    </div>
+    <div class="reveal">
+      <p class="body-text">But speed without direction creates risk. Many A&D firms operate across both government and commercial markets, and that dual business model introduces a layer of complexity that purely commercial AI playbooks ignore. Controlled Unclassified Information (CUI), ITAR restrictions, FAR/DFARS compliance, and CMMC requirements govern the government side, while the commercial side may move faster but still intersects with the same data systems, workforce, and infrastructure. AI adoption strategies must account for both operating environments simultaneously, not treat them as separate initiatives.</p>
+    </div>
+    <div class="reveal">
+      <p class="body-text">This white paper presents 10 strategic priorities that provide a structured roadmap for A&D leaders who operate across government and commercial markets and are committed to AI adoption without sacrificing compliance, security, or operational discipline. Each priority includes specific Key Performance Indicators (KPIs) designed to give leadership teams the ability to measure progress objectively and hold their organizations accountable, regardless of which business segment benefits.</p>
+    </div>
+    <div class="reveal">
+      <div class="callout">
+        <div class="callout-title">Who This Is For</div>
+        <div class="callout-body">CEOs, CTOs, CIOs, and VP-level leaders at Aerospace & Defense firms with $50M+ in revenue that operate across both US Government and commercial markets. This paper is especially relevant for organizations managing commingled business lines where government compliance requirements and commercial speed-to-market pressures coexist. It delivers a practical, compliance-aware framework rather than abstract technology vision.</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">The priorities are sequenced to balance urgency with prudence. They begin with governance and data foundations, move through high-impact operational use cases that span both government and commercial segments, and conclude with the measurement and optimization practices required for sustained AI value creation. Organizations do not need to complete them sequentially, but all ten should be active considerations within the first 12 to 24 months of any serious AI program. Companies operating across both markets will find that many of these priorities create compounding benefits when applied enterprise-wide rather than within a single business segment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TWO VALUE VECTORS
+     ============================================ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Strategic Framework</div>
+      <h2 class="section-title">Two Value Vectors for AI Investment</h2>
+      <div class="section-divider"></div>
+      <p class="body-text">Before evaluating specific priorities, leadership teams need a clear lens for identifying where AI creates the most value. Across government and commercial A&D operations, AI investment opportunities fall into two distinct vectors. Every use case, pilot, and business case should be evaluated through one or both of these lenses. Organizations that fail to apply this framework tend to invest in generic AI experimentation that never connects to the operational bottlenecks or cost structures that actually constrain the business.</p>
+    </div>
+    <div class="reveal">
+      <div class="vector-grid">
+        <div class="vector-card">
+          <div class="vector-icon">&#9881;</div>
+          <div class="vector-label">Vector 1</div>
+          <h3>Automate What Is Manual Today</h3>
+          <p>Every A&D organization carries a heavy burden of manual, repetitive processes that consume skilled labor and introduce human error. Compliance cross-referencing, EVM data consolidation, contract clause review, timecard validation, variance analysis, and dozens of other workflows are still performed manually in spreadsheets, emails, and disconnected tools. AI can automate these tasks at a fraction of the current cost, freeing your most experienced people to focus on judgment-intensive work that actually requires their expertise.</p>
+          <div class="vector-examples">
+            <span>Common Targets</span>
+            <p>EVM variance analysis, proposal compliance matrices, invoice validation, data entry across disconnected systems, manual report generation, quality inspection documentation, contract modification tracking</p>
+          </div>
+        </div>
+        <div class="vector-card">
+          <div class="vector-icon">&#9879;</div>
+          <div class="vector-label">Vector 2</div>
+          <h3>Rationalize Your Software Portfolio</h3>
+          <p>Every A&D organization carries a portfolio of software tools beyond its core platforms. Some deliver deep, differentiated value. Others were the right answer at the time of purchase but no longer align with how the business operates. And some persist simply because building a tailored alternative was historically too expensive and too slow. AI-assisted development fundamentally changes that equation. Applications that once required six months and a dedicated development team can now be prototyped in days and deployed in weeks. This is not about replacing core business platforms. It is about rationalizing the long tail of tools, custom code, and point solutions that surround them, keeping what works and building better alternatives where it does not.</p>
+          <div class="vector-examples">
+            <span>Common Targets</span>
+            <p>Custom reporting dashboards, proposal content management systems, document comparison tools, program status trackers, supplier scorecards, training and compliance tracking portals, workflow approval engines, internal knowledge bases</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-divider" style="margin: 40px 0 28px;"></div>
+      <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 16px; line-height: 1.35;">The Convergence: From Automation to a Digital Workforce</h3>
+      <p class="body-text">There is a third outcome that emerges naturally when both vectors mature, and leaders should plan for it deliberately rather than discover it accidentally. As AI automates manual processes and replaces costly point solutions, the logical next step is not simply doing the same work faster. It is rethinking which work requires a human at all.</p>
+      <p class="body-text">The concept of a digital workforce, where AI agents handle defined scopes of work end-to-end rather than just assisting a human operator, is already operational in forward-leaning organizations. An AI agent that monitors EVM data, identifies variances, drafts the narrative explanation, and routes it for program manager review is not a productivity tool. It is a digital team member performing a role that previously required a full-time analyst. An AI agent that continuously scans your supply base for financial risk, cross-references delivery performance, and generates exception reports is doing work that a procurement analyst once did manually across spreadsheets and email threads.</p>
+      <p class="body-text">This is not about wholesale replacement of people. It is about honest assessment of where human judgment is essential and where it is not. The highest-value people in your organization, the program managers, engineers, capture leads, and strategic thinkers, are often buried in tasks that do not require their expertise. A digital workforce strategy frees those people to operate at the top of their capability while AI agents handle the volume, the routine, and the repetitive. Organizations that approach this thoughtfully will retain and redeploy their best talent into higher-impact roles. Organizations that ignore it will watch competitors do more with leaner teams and lower overhead rates, a structural disadvantage that compounds with every contract cycle.</p>
+      <p class="body-text">The practical path is incremental: start with AI-assisted workflows where a human remains in the loop, then graduate proven workflows to agent-led execution with human oversight, and eventually allow fully autonomous operation for well-defined, low-risk processes. Each step should be measurable, reversible, and aligned with the governance framework established in Priority 1.</p>
+    </div>
+    <div class="reveal">
+      <div class="callout">
+        <div class="callout-title">How to Apply This Framework</div>
+        <div class="callout-body">When evaluating any AI initiative, ask three questions: (1) Are we paying skilled people to do repetitive work that a well-designed AI workflow could handle? (2) Does our current software portfolio include tools we could now build faster, cheaper, and more tailored to our needs with AI-assisted development? (3) Once automated, could this entire workflow be handled by an AI agent with human oversight rather than human execution? If the answer to questions one or two is yes, the initiative deserves a pilot. If both, it should move to the front of the queue. If the answer to question three is also yes, you are looking at a digital workforce opportunity that fundamentally changes your cost structure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITIES OVERVIEW
+     ============================================ -->
+<section class="section section-tint">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Overview</div>
+      <h2 class="section-title">The 10 Strategic Priorities</h2>
+      <div class="section-divider"></div>
+      <p class="body-text">The following priorities represent the essential building blocks for responsible, high-impact AI adoption in Aerospace & Defense organizations that operate across both government and commercial markets. Each priority is designed to work within the realities of a mixed business model, where compliance requirements, data sensitivity, and operational tempo differ by segment. Each is supported by measurable KPIs to enable leadership accountability.</p>
+    </div>
+    <div class="reveal">
+      <ol class="priorities-list">
+        <li><a href="#p1"><span class="num">01</span><span class="name">Treat AI as a Board-Level Strategic Bet, Not an IT Project</span></a></li>
+        <li><a href="#p2"><span class="num">02</span><span class="name">Know Your Data or Your AI Will Be Useless</span></a></li>
+        <li><a href="#p3"><span class="num">03</span><span class="name">Kill the Pilot Graveyard: Ship to Production or Shut It Down</span></a></li>
+        <li><a href="#p4"><span class="num">04</span><span class="name">Automate the 10,000 Hours Nobody Talks About</span></a></li>
+        <li><a href="#p5"><span class="num">05</span><span class="name">Rethink Build vs. Buy: The Equation Has Changed</span></a></li>
+        <li><a href="#p6"><span class="num">06</span><span class="name">Make Your Best People 10x, Not Redundant</span></a></li>
+        <li><a href="#p7"><span class="num">07</span><span class="name">Build the Digital Workforce Before Your Competitors Do</span></a></li>
+        <li><a href="#p8"><span class="num">08</span><span class="name">Make Security the Accelerator, Not the Brake</span></a></li>
+        <li><a href="#p9"><span class="num">09</span><span class="name">Measure AI Like You Measure Programs: Ruthlessly</span></a></li>
+        <li><a href="#p10"><span class="num">10</span><span class="name">The Window Is Closing: Move Now or Move Aside</span></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 01
+     ============================================ -->
+<section class="priority-section" id="p1">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">01</div>
+        <div class="priority-title-bar"><h2>Treat AI as a Board-Level Strategic Bet, Not an IT Project</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">The single most common mistake in AI adoption is handing it to the IT department and calling it a technology initiative. AI is not a technology initiative. It is a business model transformation that touches every function, every cost structure, and every competitive dynamic in your organization. If your CEO is not personally accountable for AI outcomes, you are signaling to the entire organization that this is optional.</p>
+      <p class="body-text">In A&D organizations that operate across government and commercial markets, the governance challenge is compounded. The government side carries compliance constraints around data, security, and procurement that the commercial side does not. AI governance must account for both operating environments without creating a bureaucracy that paralyzes either. This requires a cross-functional AI Steering Committee with real decision-making authority, not an advisory body that produces slide decks. The committee should include program management, finance, contracts, security, legal, and the business unit leaders who own P&L. The charter should define funding thresholds, ethical boundaries, and a clear policy for when government-side constraints apply versus when the commercial business can move faster.</p>
+      <p class="body-text">The governance overhead should be proportional to the risk. Automating a manual reporting process should not require the same approval path as deploying an AI agent that touches CUI data. Build two lanes: a fast lane for low-risk automation and build initiatives, and a full review lane for anything involving sensitive data, government systems, or external-facing decisions. Organizations that apply one-size-fits-all governance to AI will either move too slowly to matter or too recklessly to survive an audit.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">CEO or COO named as executive accountable for AI outcomes</td><td class="kpi-target">Yes (not CIO/CTO alone)</td></tr>
+            <tr><td class="kpi-name">AI Steering Committee with charter and decision authority</td><td class="kpi-target">Operational within 90 days</td></tr>
+            <tr><td class="kpi-name">AI investment reviewed at board or senior leadership level</td><td class="kpi-target">Quarterly (minimum)</td></tr>
+            <tr><td class="kpi-name">Average time from AI initiative proposal to approval decision</td><td class="kpi-target">&lt;30 days for low-risk, &lt;60 days for high-risk</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 02
+     ============================================ -->
+<section class="priority-section" id="p2">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">02</div>
+        <div class="priority-title-bar"><h2>Know Your Data or Your AI Will Be Useless</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Every AI initiative that fails traces back to one of two root causes: bad data or no data. Before investing a dollar in AI tooling, models, or pilots, leadership must have an honest answer to a simple question: do we actually know where our data lives, what condition it is in, and what rules govern its use? In most A&D organizations, the honest answer is no.</p>
+      <p class="body-text">Data in this industry is uniquely complicated. Government programs generate CUI, ITAR-restricted technical data, and program-specific information that cannot be freely commingled with commercial data. But most organizations share ERP systems, engineering platforms, and analytical tools across both sides of the business. The result is a tangle of commingled datasets where nobody is entirely sure what is classified, what is restricted, and what is clean enough to feed an AI model. Organizations that deploy AI against this landscape without doing the classification work first are one audit away from a material compliance finding.</p>
+      <p class="body-text">The readiness assessment must go beyond data. It should produce three inventories that become the targeting map for every AI initiative that follows. First, a data maturity scorecard across both business segments. Second, a catalog of every significant manual process in the enterprise, ranked by hours consumed and error rates. Third, a landscape assessment of current vendor tools and custom applications, ranked by cost-to-value ratio and integration risk. These three inventories tell you where your data is ready, where your biggest automation opportunities hide, and where your vendor spend is vulnerable to disruption. Without them, you are guessing.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Enterprise data classified by sensitivity and regulatory constraint</td><td class="kpi-target">&gt;90% within 6 months</td></tr>
+            <tr><td class="kpi-name">Commingled datasets identified, segmented, and governed</td><td class="kpi-target">100% of shared systems assessed</td></tr>
+            <tr><td class="kpi-name">Manual process inventory completed and ranked</td><td class="kpi-target">Yes, with hours and error rates quantified</td></tr>
+            <tr><td class="kpi-name">Vendor/application landscape assessed with cost-to-value ratios</td><td class="kpi-target">Yes, completed within 120 days</td></tr>
+            <tr><td class="kpi-name">Data quality score against standardized rubric</td><td class="kpi-target">Baseline established, &gt;70% target</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 03
+     ============================================ -->
+<section class="priority-section" id="p3">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">03</div>
+        <div class="priority-title-bar"><h2>Kill the Pilot Graveyard: Ship to Production or Shut It Down</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Most A&D organizations do not have a pilot problem. They have a production problem. There is no shortage of AI experiments running in corners of the enterprise, usually driven by one enthusiastic team that convinced someone to fund a proof of concept. The problem is that almost none of these pilots are designed to become production systems. They live in sandboxes, they demonstrate potential, and they die when the champion moves to another program or the budget cycle resets.</p>
+      <p class="body-text">Every AI pilot should be born with a production plan or it should not be born at all. That means a defined problem statement, a quantified baseline of current performance, a target outcome, an executive sponsor with budget authority, and a clear decision gate: at 90 days, this either moves to production or it gets killed. No extensions, no "phase two studies," no indefinite incubation. Use the two value vectors as your selection filter. Vector 1: where are skilled people spending hours on repetitive work that AI could automate? Vector 2: where does your software portfolio include tools you could now build better and more tailored with AI-assisted development? Each pilot should attack one or both of those vectors with measurable baselines.</p>
+      <p class="body-text">For organizations with both government and commercial business, spread the pilots across segments deliberately. Commercial-side pilots can move faster and build internal confidence. Government-side pilots prove that AI can work within compliance constraints. The portfolio should include at least one automation pilot and one build-replacement pilot. The automation pilot generates a quick win that the organization can see. The build-replacement pilot demonstrates structural cost reduction that earns executive attention and funds the next round.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Active pilots with defined production decision gate</td><td class="kpi-target">3 to 5 within first 6 months</td></tr>
+            <tr><td class="kpi-name">Pilot-to-production conversion rate</td><td class="kpi-target">&gt;50%</td></tr>
+            <tr><td class="kpi-name">Average time from pilot approval to production decision</td><td class="kpi-target">&lt;90 days</td></tr>
+            <tr><td class="kpi-name">Pilots killed or pivoted due to weak results</td><td class="kpi-target">Tracked openly (not a failure metric)</td></tr>
+            <tr><td class="kpi-name">Pilot coverage across segments and value vectors</td><td class="kpi-target">At least 1 per segment, 1 per vector</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 04
+     ============================================ -->
+<section class="priority-section" id="p4">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">04</div>
+        <div class="priority-title-bar"><h2>Automate the 10,000 Hours Nobody Talks About</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Every A&D organization has thousands of hours per year buried in manual work that nobody has bothered to quantify because it has always been done that way. EVM variance narratives written by hand in spreadsheets. Compliance matrices built line-by-line from 300-page RFPs. Contract modifications tracked in email chains. Invoice validation performed by senior accountants who should be analyzing margins. Timecard exception reports assembled weekly by people who could be managing programs. This invisible labor is the single largest untapped ROI in your AI portfolio.</p>
+      <p class="body-text">The reason this gets overlooked is that no single manual process feels large enough to justify an AI investment. But in aggregate, these processes consume staggering quantities of your most expensive resource: skilled professionals billing at loaded rates against overhead or direct programs. When you map them collectively and sort by hours consumed, error rates, and labor cost, the business case builds itself. A 20-hour-per-week manual process running at a $150 loaded rate is $156,000 per year. Multiply that across a dozen similar processes and you are looking at seven figures in recoverable capacity.</p>
+      <p class="body-text">The strategic value goes beyond cost savings. Every hour you recover from manual work is an hour your people can spend on judgment-intensive, relationship-driven, and strategic activities that actually require human expertise. Proposal strategy. Customer relationship development. Program risk mitigation. Engineering innovation. The organizations that execute this priority are not cutting costs. They are reallocating human capital from low-value execution to high-value thinking.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Manual processes inventoried and ranked by cost</td><td class="kpi-target">Top 20 identified within 90 days</td></tr>
+            <tr><td class="kpi-name">Annualized hours of manual labor eliminated by AI automation</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Error rate reduction in automated vs. manual processes</td><td class="kpi-target">Measured per process with baseline comparison</td></tr>
+            <tr><td class="kpi-name">Recovered capacity redeployed to higher-value work</td><td class="kpi-target">Tracked by function (not headcount reduction)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 05
+     ============================================ -->
+<section class="priority-section" id="p5">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">05</div>
+        <div class="priority-title-bar"><h2>Rethink Build vs. Buy: The Equation Has Changed</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Every A&D organization accumulates software over time. Some of it is mission-critical. Some of it was the right answer three years ago but no longer fits the way the business operates today. And some of it persists simply because building a tailored alternative was too expensive and too slow to justify at the time of purchase. AI-assisted development has fundamentally changed that calculus, and leaders should be asking a strategic question about every tool outside their core business platforms: is this still the best way to solve this problem, or can we now build something better, faster, and more closely aligned to how our teams actually work?</p>
+      <p class="body-text">This is not an argument against software partnerships. The right vendor relationships are force multipliers, and platforms that deliver deep, differentiated value should be invested in, not replaced. The opportunity is in the long tail: the tools that were purchased to fill a gap, the legacy custom applications that have become brittle and expensive to maintain, and the solutions where your team spends more time working around the product than working with it. AI-assisted development makes it realistic to build purpose-fit alternatives to these tools in days or weeks rather than months, tailored to your specific compliance requirements, data structures, and workflows.</p>
+      <p class="body-text">The strategic value goes beyond cost savings. Every rationalized tool is a reduction in integration complexity, vendor dependency, and technical debt. For organizations where overhead rates directly impact contract pricing competitiveness, a disciplined approach to software portfolio rationalization is not an IT exercise. It is a structural cost advantage that shows up in every bid.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Software portfolio reviewed for rationalization opportunities</td><td class="kpi-target">Full landscape review within 120 days</td></tr>
+            <tr><td class="kpi-name">Annual cost reduction from rationalized or replaced tools</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Time-to-deploy for AI-built applications vs. procurement cycle</td><td class="kpi-target">Measured per project with comparison</td></tr>
+            <tr><td class="kpi-name">Legacy custom applications retired or modernized</td><td class="kpi-target">Tracked with technical debt reduction quantified</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 06
+     ============================================ -->
+<section class="priority-section" id="p6">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">06</div>
+        <div class="priority-title-bar"><h2>Make Your Best People 10x, Not Redundant</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">The workforce conversation around AI is usually framed wrong. It is not about how many people AI will replace. It is about how much more your best people can accomplish when AI removes the low-value work from their day. Your senior capture manager should be building customer relationships and shaping opportunities, not spending 15 hours formatting compliance matrices. Your program controls lead should be advising the PM on cost risk, not consolidating data from four different spreadsheets into a monthly report. Your engineers should be solving technical problems, not searching through document repositories for specifications they know exist but cannot find.</p>
+      <p class="body-text">Workforce enablement should operate at three tiers. First, broad AI literacy for all employees, with emphasis on identifying automation opportunities in their own workflows. Every person should be able to answer: what repetitive tasks do I perform that a machine could handle? Second, role-specific enablement that develops "citizen builder" capability, where functional experts learn to use AI-assisted development tools to prototype the applications and workflows they need rather than submitting IT requests or purchasing another vendor tool. A contracts manager who can build a custom clause comparison application in days rather than waiting six months for IT is a transformative capability. Third, deep technical training for a core team of AI builders who develop and maintain production AI solutions across the enterprise.</p>
+      <p class="body-text">Do not outsource your AI knowledge entirely. Building internal capability is essential for sustained advantage. The organizations that treat AI as a vendor-managed service rather than a core competency will always be one contract cycle behind. For mixed-business organizations, internal AI competency is the only way to ensure that solutions developed for the commercial side can be adapted responsibly for government use, and vice versa.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Workforce completing AI literacy training</td><td class="kpi-target">&gt;80% within 12 months</td></tr>
+            <tr><td class="kpi-name">Citizen builders trained and active across key functions</td><td class="kpi-target">5+ within 12 months</td></tr>
+            <tr><td class="kpi-name">Automation opportunities surfaced by frontline employees</td><td class="kpi-target">Tracked via intake process, reviewed monthly</td></tr>
+            <tr><td class="kpi-name">Internal AI technical team (FTEs or equivalents)</td><td class="kpi-target">Minimum 2 to 3 dedicated resources</td></tr>
+            <tr><td class="kpi-name">Employee AI adoption satisfaction score</td><td class="kpi-target">&gt;7/10 (survey-based)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 07
+     ============================================ -->
+<section class="priority-section" id="p7">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">07</div>
+        <div class="priority-title-bar"><h2>Build the Digital Workforce Before Your Competitors Do</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">Priorities 4, 5, and 6 create the conditions for a strategic shift that most A&D organizations have not yet confronted directly: the transition from AI as a tool that helps people work to AI as an agent that performs work. This is not science fiction and it is not a decade away. It is happening now, and the organizations that build this capability first will operate with fundamentally different cost structures than those that do not.</p>
+      <p class="body-text">A digital workforce means AI agents handling defined scopes of work end-to-end with human oversight rather than human execution. An agent that monitors EVM data, identifies variances, drafts narrative explanations, and routes them for program manager review is not a productivity tool. It is a digital team member performing a role that previously required a full-time analyst. An agent that continuously scans your supply base for financial risk, cross-references delivery performance, and generates exception reports eliminates a role that existed only because the volume of data exceeded human processing capacity. An agent that drafts initial proposal sections, cross-references compliance requirements, and flags gaps for a capture manager to resolve is doing the work of a junior proposal coordinator at machine speed.</p>
+      <p class="body-text">The practical path is incremental and measurable. Start with AI-assisted workflows where a human remains in the loop for every decision. Graduate proven workflows to agent-led execution with human oversight at key checkpoints. Eventually allow fully autonomous operation for well-defined, low-risk processes. Each step should be reversible and aligned with your governance framework. The competitive implication is straightforward: organizations that figure this out will field leaner teams with lower overhead rates. In an industry where overhead rates flow directly into contract pricing, that is a structural advantage that compounds with every bid.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Workflows transitioned from human-executed to agent-assisted</td><td class="kpi-target">3+ within 12 months</td></tr>
+            <tr><td class="kpi-name">Workflows operating in agent-led mode with human oversight</td><td class="kpi-target">1+ within 18 months</td></tr>
+            <tr><td class="kpi-name">FTE-equivalent capacity created by digital workforce</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Quality/error rate: agent-executed vs. human-executed workflows</td><td class="kpi-target">Parity or better</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 08
+     ============================================ -->
+<section class="priority-section" id="p8">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">08</div>
+        <div class="priority-title-bar"><h2>Make Security the Accelerator, Not the Brake</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">In too many organizations, security is the reason AI adoption stalls. Not because the security risks are insurmountable, but because nobody has done the work to define what "secure AI deployment" actually looks like. The result is a vague sense that AI is risky, which translates into indefinite delays while security teams evaluate threats they do not yet fully understand. Meanwhile, competitors who have solved this problem are deploying and learning.</p>
+      <p class="body-text">AI does introduce real attack surfaces: model poisoning, adversarial inputs, data exfiltration through inference endpoints, and prompt injection. These threats require specific defensive measures. But the response should be a defined security framework for AI, not a blanket prohibition. For mixed-business organizations, the answer is a tiered architecture: a high-security enclave for government AI workloads that meets CMMC, NIST 800-171, and FedRAMP requirements, and a separate, faster-moving environment for commercial AI applications. Clear boundaries, strong monitoring at the seams, and explicit data flow rules between the two. The commercial side should not be held hostage to government authorization timelines for tools that will never touch CUI.</p>
+      <p class="body-text">One dimension that leaders consistently underestimate: as AI-assisted development accelerates the pace of internal application building, the security review process must keep pace. Applications built rapidly with AI tools still require code review, vulnerability scanning, and access control validation before they touch production data. Build a lightweight but rigorous security gate for AI-built applications so the speed advantage of AI-assisted development does not become a security liability. Get this right and security becomes the enabler that gives leadership confidence to move faster. Get it wrong and it becomes the excuse for doing nothing.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">AI security framework published and operational</td><td class="kpi-target">Within 120 days</td></tr>
+            <tr><td class="kpi-name">AI systems included in SSP and risk assessment</td><td class="kpi-target">100%</td></tr>
+            <tr><td class="kpi-name">Average time from AI security review request to clearance</td><td class="kpi-target">&lt;15 business days (low-risk), &lt;45 days (high-risk)</td></tr>
+            <tr><td class="kpi-name">AI-built applications passing security review before production</td><td class="kpi-target">100%</td></tr>
+            <tr><td class="kpi-name">AI-specific penetration testing completed</td><td class="kpi-target">Annually (minimum)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 09
+     ============================================ -->
+<section class="priority-section" id="p9">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">09</div>
+        <div class="priority-title-bar"><h2>Measure AI Like You Measure Programs: Ruthlessly</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">A&D organizations know how to measure program performance with precision. Cost variance, schedule variance, EAC, TCPI. The discipline is rigorous because the consequences of poor measurement are severe: DCMA surveillance, DCAA audit findings, customer dissatisfaction, and margin erosion. AI investments deserve the same rigor, and most organizations are not applying it. They are tracking adoption metrics (how many people logged in) and satisfaction scores (do people like the tool) while ignoring the only question that matters: is this generating a return?</p>
+      <p class="body-text">Build an AI performance dashboard that tracks what actually moves the business. For automation initiatives: hours of manual labor eliminated, error rate improvements, cycle time reductions, and the dollar value of recovered capacity. For build-replacement initiatives: software costs rationalized, integration maintenance hours eliminated, and time-to-deployment compared to traditional procurement cycles. For digital workforce initiatives: FTE-equivalent capacity created, quality parity between agent and human execution, and overhead rate impact. Track these metrics by business segment so you can see where AI creates the most leverage on the government side versus the commercial side.</p>
+      <p class="body-text">Models drift. Business conditions change. Regulatory requirements evolve. Every production AI deployment needs a defined review cadence and a clear standard for continued investment. If an AI initiative cannot demonstrate a return within a defined measurement period, it gets retrained, refocused, or retired. No sacred cows. The organizations that build this measurement discipline will compound their AI advantage over time. Those that do not will accumulate a portfolio of tools that nobody can justify but nobody wants to kill.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">AI performance dashboard operational with real-time data</td><td class="kpi-target">Yes, within 6 months of first production deployment</td></tr>
+            <tr><td class="kpi-name">Portfolio-level AI ROI (aggregate)</td><td class="kpi-target">&gt;3:1 within 24 months</td></tr>
+            <tr><td class="kpi-name">Automation vector: annualized manual hours eliminated</td><td class="kpi-target">Tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Build vector: software costs rationalized or custom dev costs avoided</td><td class="kpi-target">Tracked quarterly</td></tr>
+            <tr><td class="kpi-name">AI initiatives retired or refocused due to underperformance</td><td class="kpi-target">Tracked openly and reported quarterly</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRIORITY 10
+     ============================================ -->
+<section class="priority-section" id="p10">
+  <div class="container">
+    <div class="reveal">
+      <div class="priority-header">
+        <div class="priority-num">10</div>
+        <div class="priority-title-bar"><h2>The Window Is Closing: Move Now or Move Aside</h2></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">This is not a priority in the traditional sense. It is a statement of competitive reality. The organizations that are executing on Priorities 1 through 9 right now are building advantages that compound with every quarter: lower overhead rates from automation and software portfolio rationalization, faster proposal cycles from AI-augmented capture, better program execution from predictive analytics, and leaner operating models from digital workforce deployment. Each of these advantages makes them harder to compete against in the next bid cycle. And the next one. And the one after that.</p>
+      <p class="body-text">The window for establishing AI as a competitive differentiator in A&D is measured in months, not years. Within 18 to 24 months, the organizations that moved early will have production-grade AI capabilities baked into their operations. They will bid with lower rates, execute with fewer errors, respond to RFPs faster, and demonstrate to government customers that they are investing in the technologies the DoD itself has identified as strategic priorities. Late movers will not just be behind on technology. They will be structurally disadvantaged on cost, speed, and credibility.</p>
+      <p class="body-text">The good news is that you do not need a massive transformation program to start. You need a governance decision (Priority 1), an honest assessment of your data and processes (Priority 2), and two or three well-chosen pilots (Priority 3) that attack your biggest manual labor sinks and your strongest software rationalization opportunities. The first meaningful results can arrive within 90 days. From there, momentum builds. But only if you start. The organizations that spend the next 12 months "studying the landscape" and "building a roadmap" will find that the landscape moved without them.</p>
+    </div>
+    <div class="reveal">
+      <div class="kpi-section">
+        <div class="kpi-label"><span class="gold">MEASUREMENT FRAMEWORK</span> <span class="gray">| Key Performance Indicators</span></div>
+        <table class="kpi-table">
+          <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td class="kpi-name">Time from today to first production AI deployment</td><td class="kpi-target">&lt;6 months</td></tr>
+            <tr><td class="kpi-name">Competitive overhead rate trend (AI-influenced)</td><td class="kpi-target">Measurable reduction within 18 months</td></tr>
+            <tr><td class="kpi-name">AI capability referenced in proposals and customer conversations</td><td class="kpi-target">Active within 12 months</td></tr>
+            <tr><td class="kpi-name">Leadership confidence in AI strategy (internal survey)</td><td class="kpi-target">&gt;8/10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     IMPLEMENTATION ROADMAP
+     ============================================ -->
+<section class="section section-tint">
+  <div class="container-wide">
+    <div class="reveal">
+      <div class="section-label">Implementation</div>
+      <h2 class="section-title">Phased Roadmap</h2>
+      <div class="section-divider"></div>
+      <p class="body-text">These 10 priorities are not meant to be executed sequentially. Effective AI adoption requires parallel effort across governance, data, and use case development. For organizations spanning government and commercial markets, this parallel execution is even more important: commercial-side pilots can build momentum while government-side governance and data classification work progresses. The following phased approach provides a practical timeline for organizations beginning their AI journey.</p>
+    </div>
+    <div class="reveal">
+      <div class="roadmap-grid">
+        <div class="roadmap-phase">
+          <div class="phase-label">
+            <div class="phase-name">Phase 1</div>
+            <div class="phase-sub">Foundation</div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-time">Months<br>1 to 6</div>
+            <div class="phase-activities">Stand up governance at the board level (P1), Execute data and process readiness assessment (P2), Launch first production-or-kill pilots targeting automation and software rationalization (P3), Begin workforce AI literacy and citizen builder training (P6)</div>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="phase-label">
+            <div class="phase-name">Phase 2</div>
+            <div class="phase-sub">Acceleration</div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-time">Months<br>4 to 12</div>
+            <div class="phase-activities">Scale automation across top manual processes (P4), Deploy first AI-built replacements for vendor tools (P5), Stand up AI security framework (P8), Transition first workflows to agent-assisted mode (P7)</div>
+          </div>
+        </div>
+        <div class="roadmap-phase">
+          <div class="phase-label">
+            <div class="phase-name">Phase 3</div>
+            <div class="phase-sub">Optimization</div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-time">Months<br>9 to 24</div>
+            <div class="phase-activities">Activate AI performance dashboard and ruthless ROI tracking (P9), Graduate proven workflows to agent-led execution (P7), Rationalize software portfolio based on build results, Quantify overhead rate impact, Expand digital workforce across enterprise</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="callout">
+        <div class="callout-title">A Note on Sequencing</div>
+        <div class="callout-body">Phases overlap intentionally. Phase 2 should begin before Phase 1 is complete. Waiting for perfection in governance or data classification before launching pilots is a common failure pattern. For mixed-business organizations, consider launching commercial-side pilots in Phase 1 while government-side data classification is still in progress. Move on multiple fronts simultaneously, but do not skip the foundational work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONCLUSION
+     ============================================ -->
+<section class="conclusion-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Conclusion</div>
+      <h2 class="section-title">Act with Speed and Discipline</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="reveal">
+      <p class="body-text">AI adoption in Aerospace & Defense is not optional, and it is not simple. Organizations that operate across both government and commercial markets face a unique version of this challenge: they must move fast enough to compete commercially while maintaining the compliance discipline that government customers require. The companies that approach AI with the same rigor they apply to program execution, compliance, and financial management will create sustainable competitive advantage across both segments. Those that treat it as a technology experiment disconnected from business strategy will generate cost without return.</p>
+      <p class="body-text">The 10 priorities in this paper are designed to be actionable, measurable, and specific to the realities of organizations that straddle government and commercial markets. They reflect the practical experience of working with companies that operate under the constraints of FAR, DFARS, CAS, CMMC, and the unique financial and programmatic structures that define government work, while also serving commercial customers who expect speed, innovation, and competitive pricing.</p>
+      <p class="body-text">The time to begin is now. Not with a massive, multi-year transformation program, but with a deliberate set of governance decisions, targeted pilots across both business segments, and honest assessments of organizational readiness. Start by identifying where you are paying skilled people to do work a machine should handle, and where your software portfolio includes tools that could now be built better, faster, and more tailored with AI-assisted development. These two vectors will generate the quick wins and structural cost reductions that fund the broader AI transformation. The organizations that act with both speed and discipline, and that leverage the cross-pollination advantages of a mixed business model, will define the next era of Aerospace & Defense.</p>
+    </div>
+    <div class="reveal">
+      <div class="about-block">
+        <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" class="about-logo">
+        <div class="about-title">About Revelation Technologies</div>
+        <p>Revelation Technologies (RevTech) is a specialized SAP consulting and solution architecture firm serving Aerospace & Defense organizations that operate across both US Government and commercial markets. RevTech combines deep domain expertise in GovCon compliance, program controls, and ERP architecture with a forward-looking approach to AI adoption and digital transformation. We understand the unique complexities of managing commingled business lines, from data segmentation and cost accounting to compliance and security, and we architect solutions that serve the full enterprise. Our mission is to architect, build, and sustain systems that empower organizations to unlock the full potential of their enterprise platforms.</p>
+        <div class="about-links">
+          <a href="https://revtech.consulting">revtech.consulting</a>
+          <a href="mailto:info@revtech.consulting">info@revtech.consulting</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <p>&copy; 2026 Revelation Technologies, LLC. All rights reserved.</p>
+</footer>
+
+<!-- ============================================
+     SCROLL REVEAL SCRIPT
+     ============================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var reveals = document.querySelectorAll('.reveal');
+  var fallback = setTimeout(function() {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }, 1500);
+  if ('IntersectionObserver' in window) {
+    var count = 0;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+          count++;
+          if (count >= reveals.length) clearTimeout(fallback);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    clearTimeout(fallback);
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }
+});
+</script>
+<noscript>
+<style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+</noscript>
+</body>
+</html>
