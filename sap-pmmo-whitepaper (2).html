@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP PMMO White Paper | Revelation Technologies</title>
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:16,h:16,m" sizes="16x16">
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:32,h:32,m" sizes="32x32">
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:48,h:48,m" sizes="48x48">
+<link rel="apple-touch-icon" sizes="180x180" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:180,h:180,m">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+
+  /* VARIABLES */
+  :root {
+    --blue:        #1e88e5;
+    --blue-dark:   #1255a0;
+    --blue-light:  #e8f1fc;
+    --navy:        #0d1f3c;
+    --ink:         #1a2535;
+    --body:        #2e3d52;
+    --muted:       #6b7e96;
+    --rule:        #d0daea;
+    --bg:          #ffffff;
+    --bg-alt:      #f5f8fd;
+    --red:         #c0392b;
+    --green-text:  #1a7a3c;
+    --green-bg:    #eaf7ee;
+    --green-border:#27ae60;
+    --red-text:    #b02020;
+    --red-bg:      #fdf0ef;
+    --red-border:  #c0392b;
+    --amber:       #b45309;
+    --amber-bg:    #fef3c7;
+    --amber-border:#d97706;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+    --page-width: 900px;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 15px; }
+  body {
+    background: #e8edf3;
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--body);
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: var(--page-width);
+    margin: 32px auto;
+    background: var(--bg);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+    .section { page-break-inside: avoid; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,136,229,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,136,229,0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+  .cover-topbar {
+    background: #ffffff;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    border-bottom: 3px solid var(--blue);
+  }
+  .cover-topbar img { height: 48px; width: auto; }
+  .cover-topbar-right {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    line-height: 1.5;
+  }
+  .cover-topbar-right span { display: block; color: #7a8898; font-size: 8.5px; }
+  .cover-body {
+    padding: 56px 48px 52px;
+    position: relative;
+    z-index: 2;
+  }
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--blue);
+  }
+  .cover-title {
+    font-family: var(--display);
+    font-size: 76px;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .cover-title span { color: var(--blue); }
+  .cover-subtitle {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    color: #a8c0dc;
+    margin-top: 18px;
+    line-height: 1.5;
+    max-width: 600px;
+  }
+  .cover-meta {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 48px;
+  }
+  .cover-meta-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5a7ea0;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    color: #c8d8ec;
+    font-weight: 400;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--rule);
+    padding: 36px 48px;
+  }
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 48px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--body);
+    padding: 5px 0;
+    border-bottom: 1px dotted #cdd8e8;
+  }
+  .toc-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 22px;
+  }
+  .toc-name { flex: 1; }
+
+  /* CONTENT */
+  .content { padding: 0 48px; }
+
+  .section {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--blue-light);
+  }
+  .section-num {
+    font-family: var(--display);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--blue-light);
+    min-width: 64px;
+    letter-spacing: 0.02em;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 5px;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  p {
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.72;
+    margin-bottom: 14px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  .subheading {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.65;
+    border-radius: 0 2px 2px 0;
+  }
+  .callout strong {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .callout.amber {
+    background: var(--amber-bg);
+    border-left-color: var(--amber-border);
+  }
+  .callout.amber strong { color: var(--amber); }
+  .callout.green {
+    background: var(--green-bg);
+    border-left-color: var(--green-border);
+  }
+  .callout.green strong { color: var(--green-text); }
+
+  /* BULLET LIST */
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bullet-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.6;
+    padding: 11px 16px;
+    background: var(--bg-alt);
+    border-left: 3px solid #c5d8ef;
+  }
+  .bullet-list li::before {
+    content: '▸';
+    color: var(--blue);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 11px;
+  }
+  .bullet-list li strong { color: var(--navy); font-weight: 600; }
+
+  /* RISK LIST */
+  .risk-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .risk-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.6;
+    padding: 11px 16px;
+    background: var(--red-bg);
+    border-left: 3px solid var(--red-border);
+  }
+  .risk-list li::before {
+    content: '⚠';
+    color: var(--red);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  .risk-list li strong { color: #8b1c1c; font-weight: 600; }
+
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .cards.two-col { grid-template-columns: repeat(2, 1fr); }
+  .cards.four-col { grid-template-columns: repeat(4, 1fr); }
+  .card {
+    background: var(--bg-alt);
+    padding: 18px 20px;
+    border-top: 3px solid var(--blue);
+    border-radius: 0 0 2px 2px;
+  }
+  .card.green { border-top-color: var(--green-border); }
+  .card.amber  { border-top-color: var(--amber-border); }
+  .card.red    { border-top-color: var(--red-border); }
+  .card-icon { font-size: 18px; margin-bottom: 8px; }
+  .card-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .card.green .card-title { color: var(--green-text); }
+  .card.amber .card-title { color: var(--amber); }
+  .card.red .card-title   { color: var(--red-text); }
+  .card-body { font-size: 12.5px; color: var(--body); line-height: 1.6; }
+
+  /* FLOW */
+  .tech-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--rule);
+  }
+  .flow-node {
+    background: var(--bg-alt);
+    padding: 16px 18px;
+    flex: 1;
+    border-top: 3px solid #c5d8ef;
+  }
+  .flow-node.highlight {
+    border-top-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--blue);
+    font-size: 16px;
+    padding: 0 6px;
+    background: var(--bg-alt);
+    border-top: 3px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .flow-node-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .flow-node.highlight .flow-node-label { color: var(--blue-dark); }
+  .flow-node-title { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .flow-node-detail { font-size: 11px; color: var(--body); line-height: 1.5; }
+
+  /* TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 8px 0;
+  }
+  .compare-table th {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    padding: 10px 14px;
+    text-align: left;
+    background: var(--navy);
+  }
+  .compare-table td {
+    padding: 10px 14px;
+    color: var(--body);
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:nth-child(even) td { background: var(--bg-alt); }
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 11.5px;
+    font-family: var(--mono);
+    width: 22%;
+    background: var(--bg-alt);
+    border-right: 1px solid var(--rule);
+  }
+  .compare-table tr:nth-child(even) td:first-child { background: #edf2f9; }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge.native  { background: var(--green-bg);   color: var(--green-text); border: 1px solid var(--green-border); }
+  .badge.pmmo    { background: var(--blue-light);  color: var(--blue-dark);  border: 1px solid var(--blue); }
+  .badge.caution { background: var(--amber-bg);    color: var(--amber);      border: 1px solid var(--amber-border); }
+  .badge.risk    { background: var(--red-bg);      color: var(--red-text);   border: 1px solid var(--red-border); }
+
+  /* PHASE BLOCKS */
+  .phase-block {
+    border-left: 4px solid var(--rule);
+    padding: 16px 20px;
+    margin-bottom: 6px;
+    background: var(--bg-alt);
+  }
+  .phase-block.active {
+    border-left-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .phase-block.success {
+    border-left-color: var(--green-border);
+    background: var(--green-bg);
+  }
+  .phase-block.amber {
+    border-left-color: var(--amber-border);
+    background: var(--amber-bg);
+  }
+  .phase-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .phase-block.active  .phase-label { color: var(--blue-dark); }
+  .phase-block.success .phase-label { color: var(--green-text); }
+  .phase-block.amber   .phase-label { color: var(--amber); }
+  .phase-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .phase-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .phase-items li {
+    font-size: 12.5px;
+    color: var(--body);
+    line-height: 1.55;
+    padding: 3px 0 3px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .phase-items li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 10px;
+  }
+
+  /* PYRAMID */
+  .pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin: 24px 0;
+  }
+  .pyramid-tier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 2px;
+    padding: 12px 20px;
+    position: relative;
+  }
+  .pyramid-tier-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .pyramid-tier-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .pyramid-tier-desc {
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+  .pyramid-badge {
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+
+  /* SECTION DIVIDER */
+  .section-rule {
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 60%, transparent 100%);
+    margin: 0;
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+
+  /* EXAMPLE BOX */
+  .example-box {
+    background: #f0f6ff;
+    border: 1px solid #b8d4f5;
+    padding: 20px 24px;
+    margin: 18px 0;
+    border-radius: 2px;
+  }
+  .example-box-title {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #b8d4f5;
+  }
+  .example-box p { font-size: 12.5px; margin-bottom: 10px; }
+
+  /* NUMBERED STEPS */
+  .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .steps li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--body);
+    line-height: 1.6;
+  }
+  .step-num {
+    font-family: var(--display);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--blue-light);
+    min-width: 28px;
+    flex-shrink: 0;
+    margin-top: -2px;
+  }
+  .step-content strong { color: var(--navy); display: block; font-size: 13px; margin-bottom: 2px; }
+
+  /* FOOTER */
+  .doc-footer {
+    background: var(--navy);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer img { height: 28px; width: auto; opacity: 0.9; }
+  .footer-center {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: #6a8aac;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: #405570;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-align: right;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, var(--navy) 0%, #1255a0 100%);
+    padding: 40px 48px;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,136,229,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,136,229,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .cta-inner { position: relative; z-index: 2; }
+  .cta-eyebrow {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #7ab8f5;
+    margin-bottom: 12px;
+  }
+  .cta-title {
+    font-family: var(--display);
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    color: #ffffff;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .cta-body {
+    font-size: 13.5px;
+    color: #a8c0dc;
+    line-height: 1.65;
+    max-width: 580px;
+    margin-bottom: 24px;
+  }
+  .cta-details {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .cta-detail-item { }
+  .cta-detail-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #5a7ea0;
+    margin-bottom: 3px;
+  }
+  .cta-detail-value {
+    font-size: 13px;
+    color: #c8d8ec;
+  }
+  .cta-detail-value a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  @media print {
+    @page { size: letter; margin: 0; }
+    .cover, .doc-footer, .cta-block, .card, .callout {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .compare-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { page-break-before: auto; }
+    h2 { page-break-after: avoid; }
+    .subheading { page-break-after: avoid; }
+    .cards { page-break-inside: avoid; }
+    .tech-flow { page-break-inside: avoid; }
+    .compare-table { page-break-inside: auto; }
+    .compare-table tr { page-break-inside: avoid; }
+    .phase-block { page-break-inside: avoid; }
+    .pyramid { page-break-inside: avoid; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-topbar">
+      <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" />
+      <div class="cover-topbar-right">
+        SAP Manufacturing Advisory
+        <span>Aerospace &amp; Defense Practice</span>
+      </div>
+    </div>
+    <div class="cover-body">
+      <div class="cover-eyebrow">Project Manufacturing SME Briefing</div>
+      <div class="cover-title">SAP<br><span>PMMO</span></div>
+      <div class="cover-subtitle">
+        A technical and strategic guide to SAP Project Manufacturing Management &amp; Optimization (PMMO): the S/4HANA-native successor to GPD. Covers Grouping, Pegging, and Distribution architecture; grouping strategy design; finance and costing integration; exception handling; known limitations; and practical guidance for discrete manufacturers in defense and commercial environments.
+      </div>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Prepared by</div>
+          <div class="cover-meta-value">Revelation Technologies, LLC</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Practice</div>
+          <div class="cover-meta-value">SAP Aerospace &amp; Defense</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Audience</div>
+          <div class="cover-meta-value">Program Finance, Supply Chain &amp; Manufacturing SMEs</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Classification</div>
+          <div class="cover-meta-value">Publicly Available Use</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">What is PMMO? Grouping, Pegging &amp; Distribution</span></div>
+      <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">Breakpoints: Flexible Cost Routing Across Projects</span></div>
+      <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Foundation: SAP PS, Plant Structures &amp; Project Stock</span></div>
+      <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Finance &amp; Accounting: Why PMMO Changes the Game</span></div>
+      <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Cross-Workstream Integration</span></div>
+      <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Exception Handling: Excess, Scrap, Loss &amp; Underpeg</span></div>
+      <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Getting the Design Right: Grouping Strategy Fundamentals</span></div>
+      <div class="toc-item"><span class="toc-num">09</span><span class="toc-name">Limitations, Drawbacks &amp; How to Address Them</span></div>
+      <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">The Grouping Pyramid: A Practical Framework</span></div>
+      <div class="toc-item"><span class="toc-num">10</span><span class="toc-name">PMMO in Commercial Manufacturing</span></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- SECTION 1 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <div class="section-label">Overview</div>
+          <h2>What is PMMO? Grouping, Pegging &amp; Distribution</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Bottom Line Up Front</strong>
+        SAP Project Manufacturing Management &amp; Optimization (PMMO) is the S/4HANA-native successor to the legacy GPD (Grouping, Pegging, Distribution) component originally developed within SAP's IS-Aerospace &amp; Defense industry solution. PMMO enables organizations to consolidate material requirements from multiple projects into shared procurement and production pools while maintaining precise, traceable, actual-cost assignment to every individual demand source throughout the full BOM lifecycle.
+      </div>
+
+      <p>At its core, PMMO solves a fundamental tension in project-based manufacturing: the need to buy and build efficiently in volume while still tracking exactly which costs belong to which contract, unit, or customer. Without a structured approach, manufacturers are forced to choose between operational efficiency (pool procurement, consolidated production runs) and financial traceability (discrete cost assignment per project). PMMO eliminates that tradeoff.</p>
+
+      <p class="subheading">The Three Pillars: Grouping, Pegging &amp; Distribution</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Grouping</div>
+          <div class="card-body">Combines material requirements from multiple WBS elements (across the same or different projects) into one or more <strong>grouping WBS elements</strong>. A grouping WBS element is a specially flagged WBS that owns the consolidated inventory and drives MRP planning. The result: fewer purchase orders, fewer production orders, and larger economic order quantities without sacrificing cost traceability.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Pegging</div>
+          <div class="card-body">Establishes a quantity-based assignment between grouped replenishment objects (purchase orders, production orders) and the individual operative WBS elements that generated the demand. Pegging creates the traceable chain from supply to demand and determines what share of each replenishment belongs to each project or contract. This is the engine that makes collective procurement financially defensible.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Distribution</div>
+          <div class="card-body">Uses pegging assignments to move actual costs from grouping WBS elements to individual operative WBS elements in proportion to their pegged quantities. Distribution reads actual cost postings on the account-assigned WBS in the order hierarchy and allocates them accordingly. It runs as a batch process (transaction PMMO_DISTRIBUTION) and is the mechanism by which actuals find their correct cost destination.</div>
+        </div>
+      </div>
+
+      <p class="subheading">From GPD to PMMO: What Changed</p>
+      <p>GPD (Grouping, Pegging, Distribution) was delivered as part of SAP's IS-A&amp;D industry add-on and ran on top of ECC. PMMO is its S/4HANA-native replacement, rebuilt from the ground up with Fiori-based reporting, expanded industry applicability, and a standard migration path (transaction <code style="font-family:var(--mono);font-size:11px;background:#f0f0f0;padding:1px 5px;border-radius:2px;">PMMO_MIGRATION</code>). GPD is deprecated and will not be supported on S/4HANA. Organizations running GPD on ECC face a design decision point: migrate PMMO as-is, redesign grouping strategy, or delay and accept accumulated technical debt.</p>
+
+      <div class="callout amber">
+        <strong>Key Design Implication</strong>
+        PMMO with non-valuated project stock means material is managed on a quantity basis only at the inventory level. Costs are not posted to inventory accounts at Goods Receipt. Instead, external procurement costs are posted directly to the Group WBS at receipt and production costs post directly to production orders. Distribution then moves those costs to the operative project WBS elements as either direct material or labor expense. Understanding this cost flow is critical before designing any PMMO implementation.
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <div class="section-label">Technical Foundation</div>
+          <h2>SAP PS, Plant Structures &amp; Project Stock</h2>
+        </div>
+      </div>
+
+      <p>PMMO does not stand alone. Its entire operating model is built on top of SAP Project Systems (PS) and the standard MM plant/organizational structure. Getting this foundation right is a prerequisite for a successful PMMO implementation. Gaps in PS design or organizational structure will surface as cost routing failures, pegging errors, and exception balances in PMMO.</p>
+
+      <p class="subheading">Grouping WBS Elements</p>
+      <p>The grouping WBS element is the central structural object in PMMO. It is a WBS element with a specific characteristic value that marks it as the account assignment target for grouped procurement and production. There are two configuration modes:</p>
+
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Type 1: Group for All Materials</div>
+          <div class="card-body">All material components assigned to the operative WBS elements beneath this group are consolidated at this single grouping WBS element, regardless of plant or MRP group. This is the simplest configuration and is appropriate when all materials in a project follow the same grouping strategy.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Type 2: Group for Selected MRP Groups</div>
+          <div class="card-body">Allows different materials within the same operative WBS elements to be routed to different grouping WBS elements based on plant/MRP group combinations. This enables a mixed strategy where some material types (e.g., customer-furnished material) group differently than standard production parts within the same project.</div>
+        </div>
+      </div>
+
+      <p class="subheading">Exception WBS Elements</p>
+      <p>Exception WBS elements serve as the designated cost collectors for costs that cannot be resolved through normal pegging and distribution. They are maintained in transaction <code style="font-family:var(--mono);font-size:11px;background:#f0f0f0;padding:1px 5px;border-radius:2px;">PMMO_PEGEXC</code> and are required for four exception categories: Excess, Scrap, Loss, and Underpeg. Exception WBS elements are not automatically created by the system; they must be explicitly designed and maintained as part of the PMMO configuration. Period-end close processes should include a review of balances on exception WBS elements before proceeding with settlement runs.</p>
+
+      <p class="subheading">Project Stock as a Unique Inventory Segment</p>
+      <p>In PMMO, each grouping WBS element manages its own stock segment using SAP's special stock indicator <strong>Q</strong> (project stock). This creates a physically and financially distinct inventory pool separate from unrestricted plant stock and from other project stock segments. The implications are significant:</p>
+
+      <ul class="bullet-list">
+        <li><strong>Inventory segregation is automatic:</strong> Material received against a grouping WBS element's purchase order goes into that group's stock segment. It cannot be consumed against a different group without an explicit transfer posting.</li>
+        <li><strong>Costs are demand-driven, not period-average:</strong> With non-valuated project stock, costs post at their actual transactional values directly to the WBS element at time of receipt or production confirmation, not at a period-weighted average standard cost. In reality, with Valuated Project Stock <em>Inventory</em> that is not valued using Standard Costing, the cost is in actuality Moving Average. <em>Example:</em> if there are 2 project stock POs for the same part number with the same WBS but with 2 different prices, the system will calculate a MAP for the stock on the WBS as Moving Average. This is done in table QBEW, which is the project stock equivalent of MBEW for plant stock. The goods issue of the material from Project Stock inventory would be at MAP in this scenario.</li>
+        <li><strong>MRP planning is group-specific:</strong> MRP runs independently for each grouping WBS element. Requirements from all assigned operative WBS elements are aggregated at the group level, and planned orders/purchase requisitions are created account-assigned to the grouping WBS element.</li>
+        <li><strong>Actual costs trace to every BOM level:</strong> Because procurement and production orders at every level of a multi-level BOM are account-assigned to grouping WBS elements, PMMO provides a continuous cost trace from raw material purchase through finished goods delivery to the demand source, with actuals at every step.</li>
+      </ul>
+
+      <p class="subheading">Plant Structure Alignment</p>
+      <p>PMMO operates within a single company code. Cross-company-code grouping is not supported. Plant structure decisions (which plants participate in which groups, how MRP areas are defined, whether separate plants are needed for customer-specific inventory segregation) must be made explicitly during design. The assignment of WBS elements to grouping WBS elements is maintained at the plant/MRP group level when using Type 2 grouping, meaning that MRP group configuration in the material master directly influences how materials flow through the PMMO grouping hierarchy.</p>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <div class="section-label">Integration Architecture</div>
+          <h2>Cross-Workstream Integration</h2>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <strong>Why Integration Breadth Matters</strong>
+        PMMO is not an isolated module. Its value compounds as it touches more workstreams. An organization that uses PMMO only for procurement consolidation captures perhaps 30% of the available value. Full integration across supply chain, production planning, finance, inventory management, and program management unlocks the complete picture: actual costs tied to demand sources at every point in the BOM's lifecycle.
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Supply Chain / MRP</div>
+          <div class="card-body">MRP aggregates requirements from all assigned operative WBS elements at the grouping WBS element level. The result is fewer, larger purchase requisitions and orders. Planners work against a single demand signal per group rather than individual project demands. Make-to-Project (MTP) and Engineer-to-Order (ETO) scenarios are natively supported.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Production Planning</div>
+          <div class="card-body">Production orders are account-assigned to grouping WBS elements. Multi-level BOM structures are fully supported, with each sub-assembly level tracked in PMMO_CONSUMPTION. Subcontracting (components sent to external vendors for rework, assembly, or refurbishment) is supported, with components tracked through vendor-held project stock.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Finance &amp; Costing</div>
+          <div class="card-body">PMMO Distribution (PMMO_DISTRIBUTION) moves actual costs from grouping WBS elements to operative WBS elements using business transaction RKL. Production orders on grouping WBS elements must NOT be settled via standard CO88/KO88 settlement, as this causes double-posting. PMMO replaces the standard settlement mechanism for these objects.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Program Management</div>
+          <div class="card-body">Costs roll up through the WBS hierarchy to support Earned Value Management (EVM) and program-level financial reporting. Breakpoints redirect distributed costs to financial performance obligation WBS elements, enabling proper revenue recognition alignment with program milestones and contract billing events.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Inventory Management</div>
+          <div class="card-body">PMMO_STOCK tracks current inventory positions per grouping WBS element. PMMO_STOCK_CHECK validates that PMMO stock records are in sync with core Inventory Management. Physical inventory adjustments, transfer postings, and scrap movements all feed back into PMMO's cost tracking through defined movement type mappings.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#9632;</div>
+          <div class="card-title">Contract Delivery Tracking</div>
+          <div class="card-body">Pegging relationships create a continuous chain of traceability from initial procurement through production and final delivery. The Order Cost Rollup Fiori report (App F6378, transaction PMMO_COSTROLLUP) provides real-time visibility into costs and quantities at every BOM level, enabling schedule performance analysis against contract delivery commitments.</div>
+        </div>
+      </div>
+
+      <p class="subheading">The PMMO Data Flow</p>
+      <div class="tech-flow">
+        <div class="flow-node">
+          <div class="flow-node-label">Step 1</div>
+          <div class="flow-node-title">Demand Creation</div>
+          <div class="flow-node-detail">Operative WBS elements generate material requirements. MRP aggregates at grouping WBS level.</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-node highlight">
+          <div class="flow-node-label">Step 2</div>
+          <div class="flow-node-title">Grouped Procurement / Production</div>
+          <div class="flow-node-detail">POs and production orders are account-assigned to the grouping WBS element. Costs post at GR/GI.</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-node">
+          <div class="flow-node-label">Step 3</div>
+          <div class="flow-node-title">Pegging</div>
+          <div class="flow-node-detail">PMMO_PEGGING assigns supply quantities to demand sources based on pegging rules and priorities.</div>
+        </div>
+        <div class="flow-arrow">&#8594;</div>
+        <div class="flow-node">
+          <div class="flow-node-label">Step 4</div>
+          <div class="flow-node-title">Distribution</div>
+          <div class="flow-node-detail">PMMO_DISTRIBUTION moves actual costs to operative WBS elements (or breakpoint targets) per pegging ratios.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <div class="section-label">Design Guidance</div>
+          <h2>Getting the Design Right: Grouping Strategy Fundamentals</h2>
+        </div>
+      </div>
+
+      <p>The grouping strategy is the single most consequential design decision in a PMMO implementation. Get it right, and PMMO becomes a force multiplier for both operational efficiency and financial transparency. Get it wrong, and teams spend the life of the program resolving pegging exceptions, explaining cost anomalies, and managing manual corrections at month-end.</p>
+
+      <div class="callout amber">
+        <strong>Design Principle</strong>
+        A grouping strategy is not just a technical configuration. It is a statement of how your organization wants to see costs, how your supply chain wants to procure, and how your finance organization wants to report. These three perspectives must be aligned before finalizing the design. Misalignment surfaces as exception balances, underpeg conditions, and audit findings.
+      </div>
+
+      <p class="subheading">Key Design Dimensions</p>
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Alignment with Material Management Design</div>
+          <div class="card-body">The grouping strategy must reflect the material management strategy. Materials planned as Make-to-Stock should not be pulled into PMMO grouping unless there is a specific contractual or financial reason. The decision about which materials belong to plant stock versus which should be group-managed is a fundamental design choice that affects MRP behavior, procurement execution, and cost visibility.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Inventory Segregation Requirements</div>
+          <div class="card-body">Each grouping WBS element is a distinct stock segment. If there is a regulatory, contractual, or operational requirement to physically or financially segregate inventory (e.g., government-furnished material, customer-owned tooling, export-controlled items), the grouping structure must reflect that requirement. Trying to retrofit segregation after go-live is extremely disruptive.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Material Type Alignment</div>
+          <div class="card-body">Not all material types are equal in PMMO. Trading goods, raw materials, semi-finished, and finished goods behave differently across movement types and cost postings. The grouping strategy should explicitly define which material types are assigned to which grouping levels, and those assignments should be enforced through MRP group configuration and MM master data governance.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Operational vs. Financial Granularity</div>
+          <div class="card-body">More granular grouping provides better cost traceability but reduces the procurement and production consolidation benefit. Coarser grouping maximizes efficiency but sacrifices direct cost attribution. The right balance depends on contract type, billing basis, customer reporting requirements, and the organization's cost accounting maturity. There is no universally correct answer.</div>
+        </div>
+      </div>
+
+      <p class="subheading">What Materials Should Be Plant Stock vs. Group-Managed?</p>
+      <ul class="bullet-list">
+        <li><strong>Plant stock candidates:</strong> High-volume consumables (fasteners, adhesives, sealants), standard hardware with no contractual attribution requirements, materials where standard cost is close enough to actual, items with very short lead times and frequent reorder cycles.</li>
+        <li><strong>Group-managed candidates:</strong> Materials that must be billed to a specific customer or contract, materials with regulatory traceability requirements (e.g., AS9100, ITAR), long-lead procurement items where demand consolidation provides significant cost or lead time benefit, materials where actuals deviate meaningfully from standard cost.</li>
+        <li><strong>The billing-eligibility test:</strong> A practical decision rule is to ask whether the cost of the material can be claimed as earned or billed before it has been issued to a production order or delivered to a customer. If yes, it likely belongs in a group. If not, plant stock may be more appropriate and simpler to manage.</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <div class="section-label">Grouping Architecture</div>
+          <h2>The Grouping Pyramid: A Practical Framework</h2>
+        </div>
+      </div>
+
+      <p>The most effective grouping strategies follow a pyramid model, where the base represents the broadest, most commoditized inventory and each tier up the pyramid narrows to more specific, contractually or technically distinct material pools. The right pyramid design depends heavily on production type, contract structure, and customer requirements. The example below illustrates a mature discrete manufacturing program in low-rate or production-phase.</p>
+
+      <div class="pyramid">
+        <!-- Tier 5: Unit-Effective (Top / narrowest) -->
+        <div class="pyramid-tier" style="width:35%;background:#0d1f3c;color:white;">
+          <div class="pyramid-tier-inner">
+            <div class="pyramid-tier-label" style="color:#7ab8f5;">Tier 5</div>
+            <div class="pyramid-tier-label">Parameter / Unit-Effective</div>
+            <div class="pyramid-tier-desc" style="color:#a8c0dc;">Serialized unit-specific parts. Applicable to a single end item serial number or effectivity range. Highest financial traceability.</div>
+            <div class="pyramid-badge" style="background:rgba(30,136,229,0.25);color:#7ab8f5;">Most Specific</div>
+          </div>
+        </div>
+        <!-- Tier 4 -->
+        <div class="pyramid-tier" style="width:52%;background:#1255a0;color:white;">
+          <div class="pyramid-tier-inner">
+            <div class="pyramid-tier-label" style="color:#a8c0dc;">Tier 4</div>
+            <div class="pyramid-tier-label">Project / Contract Specific</div>
+            <div class="pyramid-tier-desc" style="color:#c8d8ec;">Parts procured and tracked for a specific contract or project. Tightest financial control at the contract obligation level.</div>
+          </div>
+        </div>
+        <!-- Tier 3 -->
+        <div class="pyramid-tier" style="width:68%;background:#1e88e5;color:white;">
+          <div class="pyramid-tier-inner">
+            <div class="pyramid-tier-label" style="color:#dbeeff;">Tier 3</div>
+            <div class="pyramid-tier-label">Customer Specific</div>
+            <div class="pyramid-tier-desc" style="color:#e8f4ff;">Parts tied to a customer but shared across multiple contracts. Segregates customer-owned inventory (e.g., Government-Furnished Material) from other customers.</div>
+          </div>
+        </div>
+        <!-- Tier 2 -->
+        <div class="pyramid-tier" style="width:82%;background:#5baaee;color:white;">
+          <div class="pyramid-tier-inner">
+            <div class="pyramid-tier-label">Tier 2</div>
+            <div class="pyramid-tier-label">Common / Program Stock</div>
+            <div class="pyramid-tier-desc">Non-valuated grouped stock shared across multiple projects or product lines. Single grouping WBS serves as a common pool. Enables consolidation without full contractual attribution.</div>
+          </div>
+        </div>
+        <!-- Tier 1: Plant Stock (Bottom / widest) -->
+        <div class="pyramid-tier" style="width:96%;background:#d0e8fa;color:#1a2535;">
+          <div class="pyramid-tier-inner">
+            <div class="pyramid-tier-label">Tier 1</div>
+            <div class="pyramid-tier-label">Plant Stock (Unrestricted)</div>
+            <div class="pyramid-tier-desc">Consumables, standard hardware, high-volume / low-value parts. Managed as normal plant stock at standard cost. No PMMO grouping required. Costs post to project at time of goods issue to production order.</div>
+            <div class="pyramid-badge" style="background:rgba(13,31,60,0.1);color:#1255a0;">Broadest Pool</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="subheading">Pyramid Considerations by Manufacturing Scenario</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Low-Rate / Mature Production</div>
+          <div class="card-body">The full five-tier pyramid is typically appropriate for discrete manufacturers in a low-rate production phase (e.g., defense platforms, aerospace systems). High unit value and strong contract attribution requirements justify the additional complexity at the upper tiers.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Novel / Net-New Product Manufacturing</div>
+          <div class="card-body">Early-stage or development programs often benefit from a simpler, two-to-three tier structure. BOM stability is low, design change frequency is high, and the overhead of managing unit-effective groups often exceeds the benefit until the design matures. Migrate to a fuller pyramid at the production phase gate.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">High-Volume Commercial Manufacturing</div>
+          <div class="card-body">High-volume commercial environments typically use a much simpler grouping model, often collapsing to one or two tiers. The emphasis shifts from discrete cost traceability to throughput efficiency, and standard costing may adequately meet reporting needs without the full PMMO apparatus.</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Implementation Recommendation</strong>
+        Define the pyramid design before any WBS structure is built in the system. The grouping hierarchy must be aligned with the project hierarchy, the material master MRP group assignments, and the costing structure from day one. Retrofitting a grouping strategy onto an existing WBS structure is technically possible but operationally disruptive and carries significant risk of cost misallocation during the transition period.
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <div class="section-label">Advanced Configuration</div>
+          <h2>Breakpoints: Flexible Cost Routing Across Projects</h2>
+        </div>
+      </div>
+
+      <p>PMMO Breakpoints are one of the most powerful and least understood features in the solution. They allow costs that would normally distribute to an operative WBS element to be redirected to an alternative cost object: a different WBS element, a network activity, or a cost center. This capability is what makes PMMO practical in complex program environments where logistics and finance use different structures to represent the same work.</p>
+
+      <p class="subheading">How Breakpoints Work</p>
+      <ul class="bullet-list">
+        <li><strong>Master data location:</strong> Breakpoints are stored in table PMMO_PEG_BPT. They can be maintained individually or via Excel upload through transaction PMMO_BREAKPOINT_UPL. A hierarchy flag allows a breakpoint defined at a parent WBS level to cascade down to all subordinate WBS nodes automatically.</li>
+        <li><strong>Execution:</strong> When PMMO Distribution runs and encounters a pegging assignment that maps to an operative WBS element with a breakpoint, costs are redirected to the breakpoint target instead of posting to the operative WBS element directly.</li>
+        <li><strong>Non-valuated project stock only:</strong> Breakpoints cannot be used with valuated project stock. Valuated stock with breakpoints produces incorrect reporting figures due to the standard FI value flow. This constraint must be understood before selecting valuated vs. non-valuated stock in the design.</li>
+        <li><strong>Multiple target types:</strong> A single breakpoint definition can include a target WBS element, a cost center, or a network activity. This allows costs from manufacturing activities to be routed to financial cost objects that represent billing milestones, performance obligations, or overhead pools as needed.</li>
+      </ul>
+
+      <p class="subheading">Illustrative Example: Two Projects, One Common Assembly</p>
+
+      <div class="example-box">
+        <div class="example-box-title">Example: Common Avionics Assembly Across Two Contracts</div>
+        <p>Consider two defense contracts: <strong>Project Alpha</strong> (Unit 001-005) and <strong>Project Bravo</strong> (Unit 006-010), both requiring the same avionics line-replaceable unit (LRU). The LRU is produced in a single production run of 10 units to achieve favorable learning curve and subcontractor pricing.</p>
+        <p>Under PMMO: Both projects' requirements for the LRU group under a single <strong>Common LRU Grouping WBS</strong>. MRP generates one production order for 10 units account-assigned to the grouping WBS. Production costs (labor, components, overhead) accumulate on the grouping WBS element throughout the build cycle.</p>
+        <p>When the build completes, PMMO Pegging assigns 5 units to Project Alpha and 5 units to Project Bravo based on their relative demand. PMMO Distribution moves 50% of actual production costs to each project's operative WBS elements.</p>
+        <p><strong>Breakpoints then take over:</strong> Rather than posting costs to the individual unit delivery WBS elements (which represent logistics milestones), breakpoints redirect the distributed costs to a <strong>Financial Performance Obligation WBS</strong> for each project. This financial WBS rolls up to the billing element and program-level cost collector, enabling:
+        <br><br>
+        (1) Revenue recognition tied directly to the performance obligation, not the logistics event.<br>
+        (2) EVM reporting against the financial WBS hierarchy without disrupting logistics execution.<br>
+        (3) Clean separation between how operations tracks delivery (unit-level WBS) and how finance reports margin (performance obligation WBS).</p>
+      </div>
+
+      <p class="subheading">Breakpoint Design Guidance</p>
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Align Breakpoints to the Financial Structure</div>
+          <div class="card-body">Breakpoint targets should map to the WBS elements that finance uses for cost reporting, revenue recognition, and EVM. These are typically a separate "financial project" structure maintained in parallel to the logistics project structure. The financial structure should be designed before breakpoints are configured.</div>
+        </div>
+        <div class="card amber">
+          <div class="card-title">Automate Breakpoint Assignment</div>
+          <div class="card-body">In programs with many units and projects, manual breakpoint maintenance is impractical. Organizations should plan for a custom automation that generates breakpoint master data when new units or projects are added to the system. The hierarchy flag provides partial relief for stable hierarchies, but dynamic programs require a more systematic approach.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <div class="section-label">Finance &amp; Accounting</div>
+          <h2>Finance &amp; Accounting: Why PMMO Changes the Game</h2>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <strong>The Finance Case for PMMO</strong>
+        Traditional project manufacturing approaches force a choice between logistical efficiency and financial precision. PMMO collapses that tradeoff. Finance gets actual cost attribution to every demand source without requiring discrete procurement and production per contract. The result is more defensible cost reporting, faster revenue recognition, and real-time insight into which parts of the program are driving cost performance.
+      </div>
+
+      <p class="subheading">Key Financial Benefits</p>
+
+      <div class="phase-block success">
+        <div class="phase-label">Benefit 1</div>
+        <div class="phase-title">Direct Actual Costing Without Sacrificing Logistical Flexibility</div>
+        <ul class="phase-items">
+          <li>Procurement and production costs post at actual transaction values directly to WBS elements, not at period-weighted standard costs.</li>
+          <li>Finance receives actual unit costs in real time as production completes, not as end-of-period allocations or variance roll-ups.</li>
+          <li>Supply chain retains full flexibility to pool procurement and consolidate production runs. Finance does not see these as undifferentiated costs; PMMO disaggregates them per pegging assignment.</li>
+          <li>Eliminates the variance noise inherent in standard-cost-based reporting without requiring a full Material Ledger implementation.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block success">
+        <div class="phase-label">Benefit 2</div>
+        <div class="phase-title">Direct Line of Sight to BOM-Level Cost Drivers and Schedule Impact</div>
+        <ul class="phase-items">
+          <li>The Order Cost Rollup Fiori report (PMMO_COSTROLLUP, App F6378) shows true actual rolled-up costs at every level of the production order BOM, without requiring a full pegging or distribution run first.</li>
+          <li>Finance can see exactly which sub-assembly or purchased component is causing cost overrun, not just that a production order is over budget.</li>
+          <li>Logistical delays (a late part, a scrap event, a supplier rework) are immediately visible in the cost rollup and traceable to their impact on the affected contracts.</li>
+          <li>Program finance teams can perform cost-to-complete analysis at the component level with actual rather than estimated costs.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block success">
+        <div class="phase-label">Benefit 3</div>
+        <div class="phase-title">Actual Unit Costing Directly in the System</div>
+        <ul class="phase-items">
+          <li>Each unit delivered under a contract has a traceable, system-derived actual cost, built from the individual procurement and production transactions that supported its build.</li>
+          <li>Unit cost history is maintained in PMMO tables and available for analytics, parametric cost modeling, and should-cost analysis on future bids.</li>
+          <li>Eliminates the reliance on shadow spreadsheet models that finance teams commonly maintain outside of SAP to compute unit actuals.</li>
+          <li>Supports discrete variance analysis: planned vs. actual at the unit or lot level, with drill-through to the underlying transactions.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block success">
+        <div class="phase-label">Benefit 4</div>
+        <div class="phase-title">Direct Incorporation of Costs to Performance Obligations</div>
+        <ul class="phase-items">
+          <li>Through breakpoints, PMMO can route distributed costs directly to WBS elements that represent revenue performance obligations under ASC 606 or IFRS 15.</li>
+          <li>Costs are associated with their performance obligation at the time of distribution, not at period-end through manual journal entries or allocation cycles.</li>
+          <li>This supports percentage-of-completion revenue recognition with a direct, system-traceable link between cost incurrence and the performance obligation being satisfied.</li>
+          <li>Faster and more defensible revenue recognition: the cost data supporting the revenue claim is in the same system and derived from the same transactions, not assembled from separate reports.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block success">
+        <div class="phase-label">Benefit 5</div>
+        <div class="phase-title">Improved EVM and Program Financial Reporting</div>
+        <ul class="phase-items">
+          <li>Costs roll up through the WBS hierarchy in a manner consistent with the Earned Value Management structure, supporting BCWP, BCWS, and ACWP calculations at any level of the WBS.</li>
+          <li>Actual costs are available at the control account level without manual data pulls or reconciliation from separate systems.</li>
+          <li>The Cost Distribution Fiori report (introduced in S/4HANA 2023) enables program finance teams to analyze committed, actual, and vendor down-payment postings by distribution result in one view.</li>
+          <li>Distribution balance check (PMMO_DISTR_BALCHK) provides period-end audit capability, with the ability to set tolerance thresholds that gate month-close progression.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SECTION 8 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <div class="section-label">Exception Management</div>
+          <h2>Exception Handling: Excess, Scrap, Loss &amp; Underpeg</h2>
+        </div>
+      </div>
+
+      <p>No program runs perfectly. Material is scrapped. Quantities arrive that exceed what was needed. Inventory counts reveal losses. Supply falls short of demand. PMMO provides a structured exception management framework for each of these scenarios, but the framework must be configured correctly and monitored actively. Unresolved exception balances are one of the most common sources of cost reporting anomalies in PMMO-managed programs.</p>
+
+      <p class="subheading">The Four Exception Categories</p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Exception Type</th>
+            <th>Trigger Scenario</th>
+            <th>System Behavior</th>
+            <th>Resolution Path</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Excess</td>
+            <td>More supply is available at the grouping WBS than can be pegged to existing demand. Common in programs where schedules slip but procurement has already delivered.</td>
+            <td>Costs that cannot be assigned to an operative WBS element are routed to the Excess exception WBS element during the pegging and distribution run.</td>
+            <td>Manually reassign pegging in PMMO_PEGGING to redirect excess to an appropriate operative WBS, or assign to future demand if additional units are planned. If truly excess, manage through a surplus/disposition process.</td>
+          </tr>
+          <tr>
+            <td>Scrap</td>
+            <td>Material from grouped project stock is scrapped (movement type 551/Q). The scrapped quantity and its associated cost no longer represent value deliverable to any demand source.</td>
+            <td>Scrap costs post to the Scrap exception WBS. The scrapped quantity is removed from PMMO_STOCK and PMMO_CONSUMPTION records.</td>
+            <td>Review whether scrap is contractually recoverable. If billable (e.g., T&amp;M contract), move costs to the appropriate operative WBS. If not recoverable, close out the scrap exception WBS balance at period-end settlement.</td>
+          </tr>
+          <tr>
+            <td>Loss</td>
+            <td>Physical inventory differences identified through cycle count or annual physical inventory (movement type 701/Q). Material that should be in project stock is not physically present.</td>
+            <td>Cost of the inventory difference posts to the Loss exception WBS. PMMO_STOCK is updated to reflect the corrected quantity.</td>
+            <td>Investigate root cause. If recoverable from a supplier or subcontractor, reverse and repost after recovery. If unrecoverable, determine contractual treatment and settle the exception WBS accordingly.</td>
+          </tr>
+          <tr>
+            <td>Underpeg</td>
+            <td>PMMO cannot find sufficient supply to peg against all demands. Costs have posted to the grouping WBS element but cannot be distributed to operative WBS elements because the pegging assignment is incomplete.</td>
+            <td>Undistributed costs accumulate on the grouping WBS element. PMMO_DISTR_BALCHK identifies and reports these balances. Costs flow to Underpeg exception WBS where the system cannot self-resolve.</td>
+            <td>Investigate the pegging gap: missing purchase orders, production orders not yet confirmed, or manual pegging adjustments needed. The 2023 S/4HANA release added the ability to restore pegging assignments from history, enabling faster correction without manual reconstruction.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout amber">
+        <strong>Period-End Discipline</strong>
+        Exception WBS balances should be reviewed and resolved as part of every period-end close cycle. Unresolved balances that carry forward compound in subsequent periods and make root cause analysis progressively harder. Configure tolerance thresholds in PMMO_DISTR_BALCHK to automatically flag material exception balances before the distribution run completes, so the close team can address issues before they roll forward.
+      </div>
+    </div>
+
+    <!-- SECTION 9 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <div class="section-label">Known Constraints</div>
+          <h2>Limitations, Drawbacks &amp; How to Address Them</h2>
+        </div>
+      </div>
+
+      <p>PMMO is a sophisticated tool, and its power comes with genuine constraints. Understanding these limitations in advance is not a reason to avoid PMMO; it is a prerequisite for designing an implementation that works in production. Organizations that discover these constraints at go-live rather than during design typically spend months resolving them through costly workarounds or process exceptions.</p>
+
+      <p class="subheading">Structural and Movement Type Constraints</p>
+
+      <div class="phase-block">
+        <div class="phase-label">Constraint 1: Restricted Goods Movement Types</div>
+        <div class="phase-title">Supported and Unsupported Movements</div>
+        <ul class="phase-items">
+          <li>PMMO only supports goods movements that can be configured through standard Materials Management. Key supported movement types include: 101/Q (GR to project stock), 221/Q and 222/Q (GI/reversal for project), 261/Q and 262/Q (GI/reversal from project stock to order), 309/Q (material-to-material transfer), 411/Q and 412/Q (transfer between project and company stock), 415/Q (transfer to project stock from other segments), 551/Q (scrap), and 701/Q (physical inventory difference).</li>
+          <li>Stock transfers between grouping WBS elements and individual operative WBS elements in either direction are not supported without explicit design. Such movements risk creating residual costs on grouping WBS elements that distribution cannot resolve.</li>
+          <li>Negative stock quantities are not supported. Processes that would result in negative project stock require process redesign before PMMO go-live.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Constraint 2: Return to Vendor Complexity</div>
+        <div class="phase-title">RTV Requires Original Document References</div>
+        <ul class="phase-items">
+          <li>Returning material from project stock to a vendor requires identification of the original Purchase Order number, line item, and Goods Receipt document number. This is because project stock is tracked with specific PO references and the return must reverse a specific GR, not a generic stock position.</li>
+          <li>In high-volume environments or when time has elapsed since original receipt, locating the correct GR reference is operationally burdensome and error-prone.</li>
+          <li>A practical solution is to build a system automation that programmatically identifies and presents the appropriate GR document when a user initiates a return, eliminating the need for manual document lookup. This is a moderate-complexity ABAP or BTP enhancement that pays for itself quickly in environments with regular supplier returns.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Constraint 3: Automated Replenishment Limitations</div>
+        <div class="phase-title">Project Stock and MRP Reorder Logic</div>
+        <ul class="phase-items">
+          <li>This is technically a limitation of project stock (special stock Q) rather than PMMO specifically, but it has direct operational impact on PMMO implementations.</li>
+          <li>Standard MRP reorder point and forecast-based replenishment strategies do not natively account for project stock quantities returned from production or transferred between projects. MRP "sees" the return as a supply, but the planning logic may not correctly incorporate it into future demand netting for project stock segments.</li>
+          <li>The standard resolution is to develop a custom algorithm that generates Planned Independent Requirements (PIRs) for materials that need replenishment, effectively creating a demand signal that MRP can plan against in the project stock context. This is a common enhancement in mature PMMO implementations and is well-understood from a technical standpoint.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Constraint 4: Intercompany / Cross-Company Pegging</div>
+        <div class="phase-title">Single Company Code Boundary</div>
+        <ul class="phase-items">
+          <li>PMMO does not support cross-company-code grouping. Both the grouping WBS element and all assigned operative WBS elements must reside within the same company code. This is a hard architectural constraint, not a configuration option.</li>
+          <li>In multi-entity defense contractors or commercial manufacturers with manufacturing subsidiaries, intercompany transfer pricing creates a fundamental conflict with PMMO's actual-cost distribution model. Transfer prices between entities are established prices, not actual costs, and PMMO cannot distribute across the company code boundary.</li>
+          <li>Addressing this requires explicit intercompany design work before PMMO go-live: determining which entities participate in PMMO, how intercompany transactions are represented in the WBS structure, and where transfer pricing adjustments occur relative to the PMMO distribution boundary. This design should be treated as a hard dependency, not an item to be resolved post-implementation.</li>
+          <li>Delivery costs (freight, handling) for stock transfers between plants are also not supported by PMMO and require separate handling.</li>
+        </ul>
+      </div>
+
+      <div class="phase-block amber">
+        <div class="phase-label">Constraint 5: Common Automations Required</div>
+        <div class="phase-title">Where Custom Development Adds Value</div>
+        <ul class="phase-items">
+          <li><strong>Unit and project assignment automation:</strong> In programs with frequent contract additions or configuration changes, manually assigning new units and projects to the appropriate grouping WBS elements is operationally unsustainable. A custom automation that reads contract data and applies a business-rules-based assignment logic dramatically reduces setup time and error rate.</li>
+          <li><strong>Breakpoint logic automation:</strong> Breakpoint master data grows proportionally with the number of units, contracts, and WBS elements in the program. An automation that generates breakpoint records based on the WBS hierarchy and financial project structure eliminates manual maintenance and ensures consistency.</li>
+          <li><strong>Distribution scheduling and error handling:</strong> While PMMO_DISTRIBUTION is a standard transaction, production environments benefit from a custom scheduler with integrated error handling, retry logic, and alerting. A distribution run that silently fails because of a locked object or a data exception can leave finance with stale cost data for the entire period.</li>
+          <li><strong>Period-end validation routines:</strong> Automated pre-close validation that checks exception balances, confirms pegging completeness, and validates that distribution results reconcile to the expected cost postings reduces manual period-end work and closes the audit trail on the distribution process.</li>
+        </ul>
+      </div>
+
+      <p class="subheading">Additional Documented Restrictions</p>
+      <ul class="risk-list">
+        <li><strong>Serial numbers ignored:</strong> Serial number information in stock and goods movements is ignored by PMMO. Unit-effective tracking at the serial number level requires supplementary logic outside of PMMO's native pegging and distribution.</li>
+        <li><strong>Material interchangeability not supported:</strong> Form/fit/function substitutions at the material master level are not automatically recognized by PMMO. If a substitute material is used, it must be explicitly managed through a design change or manual pegging adjustment.</li>
+        <li><strong>Effectivity not natively supported:</strong> Engineering effectivity (which BOM configuration applies to which unit) is not a native PMMO concept. Unit-effective grouping strategies must be implemented through WBS structure design rather than through an effectivity date mechanism.</li>
+        <li><strong>Production order settlement restriction:</strong> Production orders account-assigned to grouping WBS elements must never be settled via standard CO88/KO88 transaction. Doing so causes a double-posting of costs and creates negative balances on the WBS element that are extremely difficult to correct after the fact.</li>
+      </ul>
+    </div>
+
+    <!-- SECTION 10 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <div class="section-label">Commercial Application</div>
+          <h2>PMMO in Commercial Manufacturing</h2>
+        </div>
+      </div>
+
+      <p>While PMMO has its deepest roots in Aerospace &amp; Defense, its applicability to commercial discrete manufacturing environments is increasingly recognized. SAP's deliberate move from GPD as an IS-A&amp;D add-on to PMMO as a broadly available S/4HANA capability reflects a recognition that the cost traceability and demand-driven costing problems PMMO solves are not unique to defense. Any manufacturer that produces against projects, contracts, or customer orders at a meaningful scale has something to gain from PMMO's architecture.</p>
+
+      <p class="subheading">Actual Cost vs. Standard Cost: The Commercial Case</p>
+      <p>The dominant cost accounting model in commercial manufacturing has historically been standard costing. Standards are set once per period (or annually), procurement and production costs are absorbed at standard, and variances are analyzed in aggregate. This model works when production is highly repetitive, BOM structures are stable, and material prices are predictable. It works less well when any of those conditions break down, which describes the reality facing most commercial manufacturers today: volatile input costs, supply chain disruptions, and increasing product customization.</p>
+
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Standard Cost: Where It Struggles</div>
+          <div class="card-body">In a standard cost environment, a 20% increase in a key raw material shows up as a purchase price variance in a cost center, not as a cost impact on a specific product or customer order. Finance knows something went wrong; it does not know which programs are affected, by how much, or whether pricing adjustments or contract re-negotiations are warranted. Margin reporting is a lagging, approximate signal.</div>
+        </div>
+        <div class="card green">
+          <div class="card-title">PMMO Actual Costing: The Improvement</div>
+          <div class="card-body">With PMMO, the 20% material price increase flows through pegging and distribution to the specific contracts and products that consumed the affected material. Finance sees the impact at the contract level in real time. Operations can quantify which open orders are most exposed. Sales can initiate commercial conversations with actual data, not projections. The cost information is actionable, not just explanatory.</div>
+        </div>
+      </div>
+
+      <p class="subheading">Implications for Planning and Analytics</p>
+      <ul class="bullet-list">
+        <li><strong>Better standards from actuals:</strong> Actual cost data accumulated through PMMO provides a more precise input for setting future standards. Instead of relying on engineering estimates or prior-year average costs, planners can set standards from observed actuals segmented by product, customer, or configuration, producing more useful variance analysis and more credible bid pricing.</li>
+        <li><strong>Discrete margin visibility:</strong> Commercial manufacturers with product mix complexity (multiple customers, contract types, or product configurations running through the same production environment) gain per-order or per-customer margin visibility that is not achievable with pooled standard costing.</li>
+        <li><strong>Analytics integration:</strong> PMMO's native Fiori reporting (Order Cost Rollup, Cost Distribution report) feeds SAP Analytics Cloud (SAC) and embedded HANA analytics without requiring additional ETL layers. Real-time actual cost data becomes available in planning and reporting tools at the same refresh rate as the underlying transactions.</li>
+        <li><strong>Reduced period-end effort:</strong> Standard cost environments require significant period-end work to allocate variances, revalue inventory, and reconcile management accounts to statutory accounts. PMMO's direct-cost model reduces this work by posting costs to their final destination at transaction time, not as period-end allocations.</li>
+        <li><strong>Contract and customer profitability:</strong> For commercial manufacturers selling on long-term supply agreements, blanket orders, or project-based contracts, PMMO provides a direct line from procurement and production transactions to the specific contractual obligation being fulfilled, enabling true contract-level profitability reporting without post-hoc cost allocation gymnastics.</li>
+      </ul>
+
+      <div class="callout green">
+        <strong>The Commercial Readiness Test</strong>
+        A commercial manufacturer is a strong candidate for PMMO if: (1) production is organized around customer orders, projects, or contracts rather than anonymous stock replenishment; (2) product customization or configuration variation makes standard costing imprecise; (3) contract profitability is a key management metric; or (4) the organization is moving to S/4HANA and has the opportunity to adopt PMMO without a legacy GPD migration burden. For manufacturers meeting two or more of these criteria, PMMO deserves serious evaluation alongside the standard costing and Material Ledger options.
+      </div>
+    </div>
+
+  </div> <!-- /content -->
+
+  <div class="section-rule"></div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">Revelation Technologies &mdash; SAP Aerospace &amp; Defense Practice</div>
+      <div class="cta-title">Ready to Architect Your PMMO Strategy?</div>
+      <div class="cta-body">
+        PMMO is not a product you configure and forget. It is a strategic architecture decision that shapes how your program finances, supply chain, and production operations interact for the life of your programs. Revelation Technologies brings deep SAP PS, MM, and CO expertise combined with hands-on experience in defense and commercial manufacturing environments to help you design a PMMO implementation that works in the real world: one that your supply chain team will operate confidently, your finance team will trust, and your auditors will be able to follow.
+      </div>
+      <div class="cta-details">
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Website</div>
+          <div class="cta-detail-value"><a href="https://revtech.consulting">revtech.consulting</a></div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Services</div>
+          <div class="cta-detail-value">SAP S/4HANA Advisory &amp; Implementation</div>
+        </div>
+        <div class="cta-detail-item">
+          <div class="cta-detail-label">Focus Areas</div>
+          <div class="cta-detail-value">PMMO, Project Systems, Costing, A&amp;D Manufacturing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:60,cg:true,m/qt=q:95" alt="Revelation Technologies" />
+    <div class="footer-center">
+      SAP Project Manufacturing Management &amp; Optimization (PMMO)<br>
+      &copy; 2025 Revelation Technologies, LLC &mdash; All Rights Reserved
+    </div>
+    <div class="footer-right">
+      Publicly Available Use<br>
+      revtech.consulting
+    </div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
