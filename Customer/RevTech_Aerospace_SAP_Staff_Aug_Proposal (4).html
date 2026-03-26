@@ -583,9 +583,108 @@
     section { padding: 32px 0; }
     .value-grid { grid-template-columns: repeat(3, 1fr); }
   }
+  /* ─── PASSWORD GATE ─── */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0F1D35 0%, #1A2D4D 100%);
+    font-family: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
+  }
+  #password-gate .gate-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    max-width: 400px;
+    width: 90%;
+  }
+  #password-gate .gate-box h2 {
+    font-size: 20px;
+    color: #0F1D35;
+    margin-bottom: 6px;
+  }
+  #password-gate .gate-box p {
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 24px;
+  }
+  #password-gate .gate-box input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  #password-gate .gate-box input:focus {
+    border-color: #C9A84C;
+  }
+  #password-gate .gate-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #0F1D35, #1A2D4D);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #password-gate .gate-box button:hover {
+    opacity: .9;
+  }
+  #password-gate .gate-error {
+    color: #DC2626;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+  }
+  body.locked { overflow: hidden; }
+  body.locked > *:not(#password-gate) { display: none; }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="password-gate">
+  <div class="gate-box">
+    <h2>Confidential Document</h2>
+    <p>Please enter the access code to view this proposal.</p>
+    <input type="password" id="gate-input" placeholder="Access Code" autofocus>
+    <button onclick="checkPassword()">Unlock</button>
+    <div class="gate-error" id="gate-error">Incorrect access code. Please try again.</div>
+  </div>
+</div>
+
+<script>
+var HASH = '50348396c00d43cd015a961121d8b254bb95c456fec0ae9694c583ab6e3d8967';
+async function sha256(str) {
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+}
+async function checkPassword() {
+  var input = document.getElementById('gate-input').value;
+  var hash = await sha256(input);
+  if (hash === HASH) {
+    document.getElementById('password-gate').remove();
+    document.body.classList.remove('locked');
+  } else {
+    document.getElementById('gate-error').style.display = 'block';
+    document.getElementById('gate-input').value = '';
+    document.getElementById('gate-input').focus();
+  }
+}
+document.getElementById('gate-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
+</script>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <header class="hero">
