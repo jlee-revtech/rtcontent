@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls c:/Users/joshl/papm/*.html)",
+      "WebSearch"
+    ]
+  }
+}
