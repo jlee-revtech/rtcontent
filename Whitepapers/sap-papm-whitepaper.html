@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP PaPM White Paper | Revelation Technologies</title>
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:16,h:16,m" sizes="16x16">
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:32,h:32,m" sizes="32x32">
+<link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:48,h:48,m" sizes="48x48">
+<link rel="apple-touch-icon" sizes="180x180" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:180,h:180,m">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+
+  /* ─── VARIABLES ─────────────────────────────────── */
+  :root {
+    --blue:        #1e88e5;
+    --blue-dark:   #1255a0;
+    --blue-light:  #e8f1fc;
+    --navy:        #0d1f3c;
+    --ink:         #1a2535;
+    --body:        #2e3d52;
+    --muted:       #6b7e96;
+    --rule:        #d0daea;
+    --bg:          #ffffff;
+    --bg-alt:      #f5f8fd;
+    --red:         #c0392b;
+    --green-text:  #1a7a3c;
+    --green-bg:    #eaf7ee;
+    --green-border:#27ae60;
+    --red-text:    #b02020;
+    --red-bg:      #fdf0ef;
+    --red-border:  #c0392b;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+    --page-width: 900px;
+  }
+
+  /* ─── RESET ─────────────────────────────────────── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ─── BASE ──────────────────────────────────────── */
+  html { font-size: 15px; }
+  body {
+    background: #e8edf3;
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--body);
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ─── PAGE WRAPPER ──────────────────────────────── */
+  .page {
+    max-width: var(--page-width);
+    margin: 32px auto;
+    background: var(--bg);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; box-shadow: none; max-width: 100%; }
+    .section { page-break-inside: avoid; }
+    .section-block { page-break-inside: avoid; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  /* ─── COVER ─────────────────────────────────────── */
+  .cover {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(30,136,229,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,136,229,0.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .cover-topbar {
+    background: #ffffff;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    border-bottom: 3px solid var(--blue);
+  }
+
+  .cover-topbar img { height: 48px; width: auto; }
+
+  .cover-topbar-right {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    line-height: 1.5;
+  }
+  .cover-topbar-right span { display: block; color: #7a8898; font-size: 8.5px; }
+
+  .cover-body {
+    padding: 56px 48px 52px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--blue);
+  }
+
+  .cover-title {
+    font-family: var(--display);
+    font-size: 76px;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+  .cover-title span { color: var(--blue); }
+
+  .cover-subtitle {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 16px;
+    color: #a8c0dc;
+    margin-top: 18px;
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  .cover-meta {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 48px;
+  }
+  .cover-meta-item { }
+  .cover-meta-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5a7ea0;
+    margin-bottom: 4px;
+  }
+  .cover-meta-value {
+    font-size: 13px;
+    color: #c8d8ec;
+    font-weight: 400;
+  }
+
+  /* ─── TOC ───────────────────────────────────────── */
+  .toc {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--rule);
+    padding: 36px 48px;
+  }
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 48px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--body);
+    padding: 5px 0;
+    border-bottom: 1px dotted #cdd8e8;
+  }
+  .toc-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 22px;
+  }
+  .toc-name { flex: 1; }
+  .toc-dots { flex: 1; border-bottom: none; }
+
+  /* ─── CONTENT AREA ──────────────────────────────── */
+  .content { padding: 0 48px; }
+
+  /* ─── SECTION ───────────────────────────────────── */
+  .section {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--blue-light);
+  }
+  .section-num {
+    font-family: var(--display);
+    font-size: 64px;
+    line-height: 1;
+    color: var(--blue-light);
+    min-width: 64px;
+    letter-spacing: 0.02em;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 5px;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+
+  /* ─── SUBHEADING ────────────────────────────────── */
+  .subheading {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ─── CALLOUT ───────────────────────────────────── */
+  .callout {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.65;
+    border-radius: 0 2px 2px 0;
+  }
+  .callout strong {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ─── BULLET LIST ───────────────────────────────── */
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bullet-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.6;
+    padding: 11px 16px;
+    background: var(--bg-alt);
+    border-left: 3px solid #c5d8ef;
+  }
+  .bullet-list li::before {
+    content: '▸';
+    color: var(--blue);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 11px;
+  }
+  .bullet-list li strong { color: var(--navy); font-weight: 600; }
+
+  /* ─── RISK LIST ─────────────────────────────────── */
+  .risk-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .risk-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 13.5px;
+    color: var(--body);
+    line-height: 1.6;
+    padding: 11px 16px;
+    background: var(--red-bg);
+    border-left: 3px solid var(--red-border);
+  }
+  .risk-list li::before {
+    content: '⚠';
+    color: var(--red);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+  .risk-list li strong { color: #8b1c1c; font-weight: 600; }
+
+  /* ─── CARDS ─────────────────────────────────────── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .cards.two-col { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: var(--bg-alt);
+    padding: 18px 20px;
+    border-top: 3px solid var(--blue);
+    border-radius: 0 0 2px 2px;
+  }
+  .card-icon { font-size: 18px; margin-bottom: 8px; }
+  .card-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+  }
+  .card-body { font-size: 12.5px; color: var(--body); line-height: 1.6; }
+
+  /* ─── TECH FLOW ─────────────────────────────────── */
+  .tech-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--rule);
+  }
+  .flow-node {
+    background: var(--bg-alt);
+    padding: 16px 18px;
+    flex: 1;
+    border-top: 3px solid #c5d8ef;
+  }
+  .flow-node.highlight {
+    border-top-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--blue);
+    font-size: 16px;
+    padding: 0 6px;
+    background: var(--bg-alt);
+    border-top: 3px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .flow-node-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .flow-node-title { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .flow-node-detail { font-size: 11px; color: var(--body); line-height: 1.5; }
+
+  /* ─── TABLE ─────────────────────────────────────── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin: 8px 0;
+  }
+  .compare-table th {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    padding: 10px 14px;
+    text-align: left;
+    background: var(--navy);
+  }
+  .compare-table td {
+    padding: 10px 14px;
+    color: var(--body);
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:nth-child(even) td { background: var(--bg-alt); }
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 11.5px;
+    font-family: var(--mono);
+    width: 20%;
+    background: var(--bg-alt);
+    border-right: 1px solid var(--rule);
+  }
+  .compare-table tr:nth-child(even) td:first-child { background: #edf2f9; }
+
+  /* ─── BADGES ────────────────────────────────────── */
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge.native { background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border); }
+  .badge.papm   { background: var(--blue-light); color: var(--blue-dark); border: 1px solid var(--blue); }
+  .badge.gap    { background: var(--red-bg); color: var(--red-text); border: 1px solid var(--red-border); }
+
+  /* ─── PHASE BLOCKS ──────────────────────────────── */
+  .phase-block {
+    border-left: 4px solid var(--rule);
+    padding: 16px 20px;
+    margin-bottom: 6px;
+    background: var(--bg-alt);
+  }
+  .phase-block.active {
+    border-left-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .phase-block.success {
+    border-left-color: var(--green-border);
+    background: var(--green-bg);
+  }
+  .phase-label {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .phase-block.active .phase-label { color: var(--blue-dark); }
+  .phase-block.success .phase-label { color: var(--green-text); }
+  .phase-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .phase-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .phase-items li {
+    font-size: 12.5px;
+    color: var(--body);
+    line-height: 1.55;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-left: 14px;
+    position: relative;
+  }
+  .phase-items li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 10px;
+  }
+
+  /* ─── SECTION DIVIDER ───────────────────────────── */
+  .section-rule {
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 60%, transparent 100%);
+    margin: 0;
+  }
+
+  /* ─── FOOTER ────────────────────────────────────── */
+  .doc-footer {
+    background: var(--navy);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-footer img { height: 28px; width: auto; opacity: 0.9; }
+  .footer-center {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: #6a8aac;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: #405570;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-align: right;
+  }
+
+  /* ─── PRINT STYLES ──────────────────────────────── */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0;
+    }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .compare-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { page-break-before: auto; }
+    h2 { page-break-after: avoid; }
+    .subheading { page-break-after: avoid; }
+    .cards { page-break-inside: avoid; }
+    .tech-flow { page-break-inside: avoid; }
+    .compare-table { page-break-inside: auto; }
+    .compare-table tr { page-break-inside: avoid; }
+    .phase-block { page-break-inside: avoid; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ═══════════ COVER ═══════════ -->
+  <div class="cover">
+    <div class="cover-topbar">
+      <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" />
+      <div class="cover-topbar-right">
+        SAP Costing Advisory
+        <span>Aerospace &amp; Defense Practice</span>
+      </div>
+    </div>
+    <div class="cover-body">
+      <div class="cover-eyebrow">Costing SME Briefing: Aerospace &amp; Defense</div>
+      <div class="cover-title">SAP<br><span>PaPM</span></div>
+      <div class="cover-subtitle">
+        A technical and strategic assessment of SAP Profitability &amp; Performance Management for CAS-compliant government contractors, including S/4HANA integration, costing sheet architecture, the FPRP-to-FPRA lifecycle, and an honest evaluation of native S/4 alternatives.
+      </div>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Prepared by</div>
+          <div class="cover-meta-value">Revelation Technologies, LLC</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Practice</div>
+          <div class="cover-meta-value">SAP Aerospace &amp; Defense</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Audience</div>
+          <div class="cover-meta-value">Costing SMEs &amp; Program Finance</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="cover-meta-label">Classification</div>
+          <div class="cover-meta-value">Publicly Available Use</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ TABLE OF CONTENTS ═══════════ -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">What is SAP PaPM &amp; What Problems Does It Solve?</span></div>
+      <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">How Standard S/4HANA Accomplishes the Same Capabilities</span></div>
+      <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">How PaPM Technically Integrates with SAP S/4HANA</span></div>
+      <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">SAP Costing Sheets &amp; FPRA Rate Application</span></div>
+      <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Restrictions, Limitations &amp; Potential Downsides</span></div>
+      <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">The Forward Pricing Rate Proposal to Agreement Process</span></div>
+      <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">How PaPM Applies to a Large Aerospace &amp; Defense Company</span></div>
+      <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Why Major A&amp;D Companies Are Not Widely Using PaPM</span></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- ═══════════ SECTION 1 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <div class="section-label">Overview</div>
+          <h2>What is SAP PaPM &amp; What Problems Does It Solve?</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Bottom Line Up Front</strong>
+        SAP Profitability and Performance Management (PaPM) is a cloud-native, in-memory allocation and costing engine built on SAP HANA. It enables finance and costing teams to model complex allocation logic, simulate scenarios, and disaggregate costs to granular profit objects, without requiring custom ABAP development or locking logic inside S/4HANA's embedded analytics or SAC Planning layer.
+      </div>
+
+      <p class="subheading">Core Capabilities</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">Multi-Dimensional Allocation Engine</div>
+          <div class="card-body">Supports rule-based, statistical, and driver-based allocation methods across cost centers, business units, products, contracts, and customers simultaneously. Handles thousands of allocation steps in a single model.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <div class="card-title">Flexible Cost Object Modeling</div>
+          <div class="card-body">Define custom profitability dimensions beyond SAP's standard CO-PA, including program, contract CLIN, customer, region, or any user-defined attribute. Enables margin analysis at whatever grain the business requires.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔁</div>
+          <div class="card-title">Scenario Simulation &amp; What-If Analysis</div>
+          <div class="card-body">Model alternate rate structures, overhead pools, or driver assumptions without affecting actuals. Enables pre-award cost modeling, bid pricing, and EAC sensitivity analysis in an isolated environment.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Shared Service &amp; Overhead Chargeback</div>
+          <div class="card-body">Purpose-built for allocating shared service costs (IT, HR, facilities, engineering overhead) across consuming business units or programs using consumption-based or negotiated rates.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧮</div>
+          <div class="card-title">Transfer Pricing &amp; Intercompany Costing</div>
+          <div class="card-body">Supports cost-plus, market-based, and dual-rate intercompany pricing models. Particularly relevant for A&amp;D entities with intracompany manufacturing, service delivery, or government-compliant cost buildup requirements.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">Real-Time Calculation on HANA</div>
+          <div class="card-body">Leverages SAP HANA's in-memory columnar processing for near-real-time cost calculations. Eliminates batch-only overnight allocation runs and enables iterative, ad hoc cost analysis during the month.</div>
+        </div>
+      </div>
+
+      <p class="subheading">Key Business Problems Solved</p>
+      <ul class="bullet-list">
+        <li><strong>Opaque overhead allocation:</strong> Replaces black-box cost center assessment cycles with transparent, auditable, driver-based logic visible to finance and program teams.</li>
+        <li><strong>Inflexible CO-PA:</strong> Overcomes the fixed-dimension constraints of SAP costing-based CO-PA, enabling dynamic profitability views without schema changes.</li>
+        <li><strong>Disconnected planning vs. actuals:</strong> Bridges the gap between SAC Planning (formerly BPC) / Integrated Business Planning allocation assumptions and actual CO postings by unifying models in one engine.</li>
+        <li><strong>Manual Excel-based allocations:</strong> Replaces shadow spreadsheet models that finance teams build outside SAP to simulate allocations, eliminating reconciliation burden and audit risk.</li>
+        <li><strong>Slow period-close allocation cycles:</strong> Reduces multi-hour batch allocation runs to minutes using HANA's parallel processing architecture.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ SECTION 2 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <div class="section-label">Technical Architecture</div>
+          <h2>How PaPM Interfaces with SAP S/4HANA</h2>
+        </div>
+      </div>
+
+      <div class="tech-flow">
+        <div class="flow-node">
+          <div class="flow-node-label">Source</div>
+          <div class="flow-node-title">S/4HANA</div>
+          <div class="flow-node-detail">FI/CO actuals, cost centers, internal orders, WBS elements, material ledger</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight">
+          <div class="flow-node-label">Extraction</div>
+          <div class="flow-node-title">HANA Views / CDS</div>
+          <div class="flow-node-detail">Core Data Services views expose S/4 data to PaPM functions without data replication</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node highlight">
+          <div class="flow-node-label">Processing</div>
+          <div class="flow-node-title">PaPM Engine</div>
+          <div class="flow-node-detail">Allocation functions, rate tables, driver quantities, simulation environments</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-node-label">Output</div>
+          <div class="flow-node-title">Writeback / Reporting</div>
+          <div class="flow-node-detail">CO-PA, ACDOCA, S/4HANA Embedded Analytics, SAC, or custom HANA tables</div>
+        </div>
+      </div>
+
+      <p class="subheading">Integration Mechanisms</p>
+      <ul class="bullet-list">
+        <li><strong>SAP HANA Native Connectivity:</strong> When PaPM and S/4HANA share the same HANA database (on-premise or RISE), PaPM reads source tables (ACDOCA, COSP, COSS) directly via HANA views: zero data movement, no latency.</li>
+        <li><strong>Remote HANA Connection (SDA):</strong> For separate HANA instances, Smart Data Access (SDA) federates S/4 tables into PaPM as virtual tables. Suitable for cloud-to-on-prem hybrid deployments.</li>
+        <li><strong>BTP Integration / OData APIs:</strong> PaPM on BTP exposes OData services for loading master data, rate tables, and driver quantities from S/4 or third-party systems (e.g., project management, HR headcount feeds).</li>
+        <li><strong>Posting Logic: Writeback to CO-PA (ACDOCA):</strong> PaPM can post calculated profitability records directly back into the Universal Journal (ACDOCA) as actual line items, maintaining a single source of truth in S/4. Postings carry full document trail with reference to PaPM function and model version.</li>
+        <li><strong>Posting Logic: Statistical vs. Actual:</strong> PaPM supports both statistical postings (for reporting/analysis without impacting CO actuals) and actual FI/CO postings (for period-close and financial reporting). This dual-mode is critical for scenario work that must not contaminate live books.</li>
+        <li><strong>Master Data Synchronization:</strong> Cost center hierarchies, profit center structures, and WBS element attributes can be replicated from S/4 MDG or directly via HANA views, ensuring PaPM models stay aligned with the controlling area structure.</li>
+        <li><strong>Quantity-Based Driver Tables:</strong> Headcount, square footage, machine hours, throughput, and other non-financial drivers are loaded from S/4 HR, PM, PP modules or external files and used as allocation keys within PaPM functions.</li>
+        <li><strong>SAP Analytics Cloud Integration:</strong> PaPM results surface natively in SAC for live plan/actual reporting, margin dashboards, and variance analysis, using S/4HANA's embedded analytics layer without a separate data movement step.</li>
+      </ul>
+
+      <p class="subheading">Deployment Options</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">On-Premise / RISE with SAP</div>
+          <div class="card-body">PaPM deployed on same HANA appliance as S/4. Tightest integration, lowest latency. Requires adequate HANA memory sizing. Common for large enterprise deployments prioritizing data residency.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">SAP BTP (Cloud)</div>
+          <div class="card-body">PaPM as a cloud service on BTP. Connected to S/4 (on-prem or cloud) via HANA Cloud connections or replication. Preferred for greenfield or companies not on HANA in-house.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Hybrid</div>
+          <div class="card-body">S/4HANA on-premise + PaPM on BTP. Connected via SDA or data replication. Common migration path; introduces latency and replication complexity that must be managed.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ SECTION 3 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <div class="section-label">Honest Assessment</div>
+          <h2>Restrictions, Limitations &amp; Potential Downsides</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>SME Perspective</strong>
+        PaPM is powerful but not a universal answer. The following constraints are material to an A&amp;D organization with complex program cost structures, government accounting requirements, and significant existing SAP investment. These should be weighed carefully before committing to PaPM as the primary costing engine.
+      </div>
+
+      <ul class="risk-list">
+        <li><strong>Not a native CAS / DCAA-compliant system:</strong> PaPM has no built-in FAR/DFARS cost accounting standard logic. Indirect rate structures (G&amp;A, Fringe, OH) must be custom-configured, and audit trail requirements under DCAA must be enforced through design decisions, not product defaults.</li>
+        <li><strong>Limited native project/WBS costing:</strong> PaPM does not replace PS (Project System) or the CO product costing module. It is an allocation and profitability layer, not a job costing or standard cost estimate engine. EAC management remains in PS/CO. costing or standard cost estimate engine. EAC management remains in PS/CO.</li>
+        <li><strong>Significant model design complexity:</strong> Building allocation models that accurately reflect an A&amp;D indirect rate structure requires deep knowledge of both PaPM's function types and the underlying CO configuration. Poorly designed models produce misleading results that are hard to audit.</li>
+        <li><strong>Separate licensing cost:</strong> PaPM is not included in the base S/4HANA license. It requires a separate SAP subscription, adding cost that must be justified against the value delivered over existing CO capabilities.</li>
+        <li><strong>HANA dependency:</strong> PaPM on-premise requires an SAP HANA database. Organizations on AnyDB (Oracle, SQL Server, DB2) running S/4 cannot deploy on-premise PaPM without a HANA migration or BTP deployment.</li>
+        <li><strong>Writeback performance &amp; locking risks:</strong> When PaPM posts results back to ACDOCA at scale, it can create database lock contention during period-close windows if not carefully sequenced with other CO closing steps.</li>
+        <li><strong>Steep learning curve for costing SMEs:</strong> PaPM's function-based modeling paradigm is unfamiliar to traditional CO consultants. Talent scarcity is real. Experienced PaPM architects are rare compared to CO or CO-PA specialists.</li>
+        <li><strong>Versioning &amp; change management complexity:</strong> Managing multiple allocation model versions (plan, actual, simulation, prior period restatements) requires rigorous governance. Without it, version proliferation leads to reconciliation nightmares.</li>
+        <li><strong>Limited out-of-the-box A&amp;D content:</strong> SAP's industry best-practice content for PaPM is generic. There are no pre-built templates for CPFF/CPIF/FFP contract types, forward pricing rate development, or CAS-compliant pool/base structures.</li>
+        <li><strong>Cloud deployment data residency concerns:</strong> For classified or ITAR-sensitive environments, deploying PaPM on BTP public cloud may conflict with data residency and access control requirements without dedicated sovereign cloud arrangements.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ SECTION 4 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <div class="section-label">Industry Application</div>
+          <h2>How PaPM Applies to a Large Aerospace &amp; Defense Company</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Core A&amp;D Costing Challenge</strong>
+        Large A&amp;D primes operate under Cost Accounting Standards (CAS), DCAA audit scrutiny, and multi-layered indirect rate structures across dozens of business units, sites, and contract types. The challenge is not just computing costs: tracing, allocating, and defending them across a complex, regulated cost pool hierarchy.
+      </div>
+
+      <p class="subheading">High-Value Use Cases</p>
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Indirect Rate Development &amp; Simulation</div>
+          <div class="card-body">Model forward pricing indirect rates (labor overhead, fringe, G&amp;A, material handling) using PaPM's scenario engine. Compare Negotiated rates vs. Actuals vs. Budget rates. Simulate impact of headcount changes, facilities consolidation, or R&amp;D reclassification on pool/base ratios before locking rates for bid submissions.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Program-Level Profitability Allocation</div>
+          <div class="card-body">Allocate shared engineering, tooling, test, and G&amp;A costs down to individual programs, contracts, or CLINs using driver-based logic (direct labor hours, direct cost, headcount). Enables true program margin visibility beyond what standard CO-PA provides with fixed dimensions.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Segment Reporting &amp; Business Unit Costing</div>
+          <div class="card-body">For A&amp;D companies organized into business segments (Space, Defense Systems, Aviation), PaPM enables segment-level cost buildup with inter-segment service cost transfers, consistent with ASC 280 / IFRS 8 segment reporting requirements.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Make vs. Buy &amp; Subcontract Analysis</div>
+          <div class="card-body">Simulate fully-burdened cost of internal manufacturing vs. subcontracting by repointing allocation bases and driver tables. PaPM's what-if environment allows rapid scenario turnaround without touching live CO data.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Bid &amp; Proposal Cost Modeling</div>
+          <div class="card-body">Prototype cost buildup for new contract proposals using historical actuals and forward rates as inputs. Model multiple rate scenarios (most likely, ceiling, floor) to stress-test bid economics before submission.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Intracompany Transfer Pricing</div>
+          <div class="card-body">Manage cost-plus or negotiated-rate intercompany charges between manufacturing sites, shared service centers, and program offices within the same corporate structure, with full audit trail back to the originating cost element.</div>
+        </div>
+      </div>
+
+      <p class="subheading">Integration Points with A&amp;D-Specific SAP Landscape</p>
+      <ul class="bullet-list">
+        <li><strong>PS / cProjects (Project System):</strong> Pull WBS-level actuals from Project System as PaPM source data to allocate overhead to specific programs and contracts by CLIN or deliverable.</li>
+        <li><strong>SAP Manufacturing / PP-PC:</strong> Use standard cost estimates and actual order costs from Production Planning as inputs to program cost calculations, bridging shop floor to contract-level profitability.</li>
+        <li><strong>SAP HR / Time Management:</strong> Drive labor overhead allocations using actual direct/indirect labor hours from CATS timekeeping, ensuring rate calculations reflect actual workforce deployment, which is critical for DCAA floor checks.</li>
+        <li><strong>GovCon Billing (SD/PSCD):</strong> Cross-reference PaPM allocated costs against billed costs on T&amp;M and CPFF contracts to identify over/under-recovery situations before invoicing.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ SECTION 5 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <div class="section-label">Alternative Path</div>
+          <h2>How Standard S/4HANA Accomplishes the Same Capabilities Without PaPM</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Key Point for SMEs</strong>
+        Many PaPM capabilities are achievable within standard S/4HANA, requiring deeper CO configuration, potentially S/4HANA's embedded analytics or SAC for reporting layers, and acceptance of certain flexibility limitations. The question is not "can S/4 do this" but "at what configuration cost, flexibility, and maintenance burden."
+      </div>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>PaPM Approach</th>
+            <th>Standard S/4HANA Alternative</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Multi-step overhead allocation</td>
+            <td>PaPM function chains with full auditability and scenario support</td>
+            <td>CO Assessment / Distribution cycles with iterative cycle configuration. Functional but rigid: changing allocation logic requires CO cycle reconfiguration and retesting. <span class="badge native">Native</span></td>
+          </tr>
+          <tr>
+            <td>Profitability analysis beyond fixed CO-PA dims</td>
+            <td>User-defined environments with unlimited custom characteristics</td>
+            <td>Account-based CO-PA (ACDOCA-based) supports additional characteristics via enhancement, but requires ABAP development and schema changes. <span class="badge gap">Effort Required</span></td>
+          </tr>
+          <tr>
+            <td>Scenario / simulation costing</td>
+            <td>Native simulation environments in PaPM, isolated from actuals</td>
+            <td>Separate controlling area or plan version in CO. Operationally cumbersome; requires duplicating master data and actuals manually. <span class="badge gap">Workaround</span></td>
+          </tr>
+          <tr>
+            <td>Driver-based allocation (headcount, sq ft)</td>
+            <td>PaPM statistical key figure integration with any data source</td>
+            <td>CO Statistical Key Figures (SKFs) natively support driver-based allocation, but are limited to CO master data objects. External driver data requires custom load programs. <span class="badge native">Mostly Native</span></td>
+          </tr>
+          <tr>
+            <td>Real-time / on-demand allocation</td>
+            <td>HANA in-memory execution; near-real-time for ad hoc requests</td>
+            <td>CO period-end allocation runs are batch jobs. Some real-time cost splitting possible via activity-based cost objects, but not equivalent. <span class="badge gap">Batch Only</span></td>
+          </tr>
+          <tr>
+            <td>Transfer pricing / intercompany rates</td>
+            <td>Built-in rate tables, dual-rate support, scenario modeling</td>
+            <td>SAP Intercompany (SD/MM/FI-based) or CO activity type price planning. Configurable but complex for multi-entity structures. <span class="badge native">Native</span></td>
+          </tr>
+          <tr>
+            <td>Indirect rate development / forward pricing</td>
+            <td>Custom rate simulation within PaPM environments</td>
+            <td>No native forward pricing rate tool. Must use SAC Planning (formerly BPC), IBP, or Excel-based rate models with CO plan integration. <span class="badge gap">Gap: External Tool</span></td>
+          </tr>
+          <tr>
+            <td>Fixed burden rate application (FPRA)</td>
+            <td>PaPM rate tables store FPRA rates; scenario versions compare FPRA vs. actuals</td>
+            <td>SAP Costing Sheets (CO) natively apply fixed overhead rates (fringe, OH, G&amp;A, material handling) to cost objects. Primary mechanism A&amp;D companies use to apply FPRA rates. <span class="badge native">Native: Preferred</span></td>
+          </tr>
+          <tr>
+            <td>Granular program/contract margin reporting</td>
+            <td>PaPM environments write to custom HANA tables or ACDOCA; consumed in SAC</td>
+            <td>CO-PA account-based + profit center accounting. Sufficient for many use cases if profit centers are structured at program level. <span class="badge native">Mostly Native</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="subheading">The S/4 Native Argument</p>
+      <ul class="bullet-list">
+        <li><strong>CO Assessment Cycles</strong> cover the majority of cost center-to-cost center and cost center-to-profitability segment allocations when configured properly. For companies with well-structured CO hierarchies, this is often sufficient.</li>
+        <li><strong>Account-Based CO-PA (ACDOCA)</strong> in S/4HANA eliminates many of the reconciliation problems of costing-based CO-PA and provides a solid foundation for multi-dimensional margin analysis without PaPM.</li>
+        <li><strong>SAC Planning (formerly BPC)</strong> can cover rate simulation and forward pricing scenarios by connecting to CO plan versions, avoiding the need for a separate PaPM environment for planning-only use cases.</li>
+        <li><strong>SAP Costing Sheets</strong> are the single most important native capability for FPRA-based burden application. They allow government contractors to apply negotiated fringe, overhead, G&amp;A, and material handling rates directly to manufacturing orders, production orders, internal orders, and project WBS elements, with full traceability to the originating cost element base. This is standard CO functionality and does not require PaPM.</li>
+        <li><strong>The honest trade-off:</strong> Standard S/4 requires more CO configuration expertise, ABAP for edge cases, and acceptance of batch-only allocation timing. PaPM trades those constraints for additional licensing cost and a new skill domain.</li>
+      </ul>
+      <p class="subheading">SAP-Embedded Third-Party Solutions for GovCon Costing &amp; ICS</p>
+      <div class="callout">
+        <strong>Closing the Gap Without PaPM</strong>
+        A category of SAP-certified, embedded GovCon solutions addresses the ICS/ICR gap that standard S/4HANA leaves open. These products run natively within the SAP environment, draw directly from ACDOCA and CO cost objects, and produce DCAA-adequate ICS schedules without requiring a separate analytics platform or manual Excel preparation. For organizations weighing PaPM against the standard S/4 toolkit, these solutions represent a targeted and proven alternative for the indirect rate calculation and annual submission use case specifically.
+      </div>
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">Dassian GovCon: ICR &amp; Forward Pricing Application (FPA)</div>
+          <div class="card-body">
+            SAP channel partner solution with two relevant modules: the ICR module generates the full FAR 52.216-7 ICS schedule package (Schedules A–O) directly from SAP cost objects, and the FPA automates indirect rate calculation by pool and base from SAP actuals and projections. Together they cover the indirect rate lifecycle from FPRA development through final ICS submission, within the existing SAP environment.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Cognitus CIS-GovCon: Incurred Cost Reporting</div>
+          <div class="card-body">
+            SAP-endorsed, S/4HANA-embedded solution supporting FAR, DFARS, CAS, and DCAA compliance. The incurred cost reporting module automates ICS schedule preparation directly from S/4HANA cost and contract data, aligned to the DCAA adequacy checklist, alongside NICRA rate management, contract flowdown, and audit readiness in a unified SAP-native footprint.
+          </div>
+        </div>
+      </div>
+      <ul class="bullet-list" style="margin-top: 8px;">
+        <li><strong>Key distinction from PaPM:</strong> Both Dassian ICR/FPA and Cognitus CIS-GovCon are purpose-built for the GovCon indirect rate and ICS use case, with pre-configured DCAA schedule formats, CAS-aligned pool/base structures, and contract-level cost traceability. PaPM is a general-purpose allocation and profitability modeling engine that can be configured to address similar scenarios but requires significant custom design to replicate this compliance-specific functionality.</li>
+        <li><strong>Complementary positioning:</strong> These solutions and PaPM are not mutually exclusive. A contractor could deploy Dassian or Cognitus for ICS production and FPRA rate development within SAP, while using PaPM for broader program profitability modeling, segment reporting, and scenario analysis that extends beyond the indirect rate lifecycle.</li>
+        <li><strong>Evaluation consideration:</strong> For organizations whose primary unmet need is ICS automation and indirect rate calculation within SAP, a targeted GovCon add-on solution may offer a faster path to value, lower implementation risk, and stronger DCAA audit defensibility than a PaPM-based custom build.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ SECTION 6 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <div class="section-label">Native SAP Functionality</div>
+          <h2>SAP Costing Sheets &amp; FPRA Rate Application in S/4HANA</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>The Most Important Native Capability SMEs Must Understand</strong>
+        For CAS-compliant government contractors, SAP Costing Sheets are the workhorse of burden rate application. They are how most A&amp;D companies apply FPRA-negotiated rates to contracts today , without PaPM, without custom code, and with DCAA-auditable traceability baked into the CO posting logic. Understanding costing sheets is prerequisite to any honest evaluation of PaPM's incremental value.
+      </div>
+
+      <p class="subheading">What is an SAP Costing Sheet?</p>
+      <ul class="bullet-list">
+        <li><strong>Definition:</strong> A Costing Sheet is a CO configuration object that defines how overhead surcharges are calculated and applied to cost objects (production orders, internal orders, WBS elements, cost estimates). It specifies a base cost element group, an overhead rate or percentage, a credit object (overhead cost center), and the conditions under which the rate applies.</li>
+        <li><strong>How it maps to FPRA:</strong> Each FPRA rate type, including Fringe, Labor Overhead (by department or labor category), Material Overhead, Other Direct Cost (ODC) burden, and G&amp;A, can be represented as a row in a costing sheet. The negotiated rate percentage is stored in Overhead Rate configuration, updated annually (or upon rate renegotiation) without touching program data.</li>
+        <li><strong>Condition-based rate logic:</strong> Costing sheets support condition tables that vary rates by plant, controlling area, company code, order type, or custom fields, enabling a prime with multiple sites and business units to apply different FPRA rates by location or segment within a single SAP system.</li>
+        <li><strong>Credit posting:</strong> When overhead is applied via costing sheet, SAP automatically posts a credit to the designated overhead cost center, maintaining the balance between absorbed overhead and actual cost pool spend. This is the core reconciliation mechanism for over/under-absorption tracking.</li>
+      </ul>
+
+      <p class="subheading">Costing Sheet Architecture for A&amp;D FPRA Rate Structure</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <div class="card-title">Fringe Benefits Rate</div>
+          <div class="card-body">Applied as a percentage of direct and indirect labor cost elements. Condition logic can differentiate regular vs. overtime, exempt vs. non-exempt, or union vs. non-union labor categories. Credit posts to Fringe Benefits cost center pool.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Labor Overhead (OH) Rate</div>
+          <div class="card-body">Applied as a percentage of direct labor (post-fringe or pre-fringe depending on contractor's CAS disclosure). Typically defined by department, division, or site. Credit posts to corresponding overhead cost center pool for absorption tracking.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Material Handling (MH) Rate</div>
+          <div class="card-body">Applied as a percentage of purchased parts, subcontract, or raw material cost elements. Covers procurement, receiving, inspection, and storage costs. Isolates labor-driven pools per CAS 410/418 requirements.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏢</div>
+          <div class="card-title">G&amp;A Rate</div>
+          <div class="card-body">Applied as a percentage of total cost input (TCI) or value-added base per the contractor's CAS disclosure. Typically applied as the final layer after all other burden has been absorbed. Credit posts to G&amp;A expense pool.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <div class="card-title">IR&amp;D / B&amp;P Surcharge</div>
+          <div class="card-body">Configurable as a separate costing sheet row to apply IR&amp;D and B&amp;P cost recovery rates, keeping allowable vs. unallowable cost separation explicit within the CO posting chain, supporting FAR 31.205 compliance.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">Special Tooling / Facilities</div>
+          <div class="card-body">Dedicated costing sheet rows for facilities capital cost of money (FCCM) per CAS 414 and cost of money per CAS 417, applied separately from labor overhead for contractors with GFF or contractor-acquired special tooling.</div>
+        </div>
+      </div>
+
+      <p class="subheading">How Costing Sheets Interact with the Broader CO Architecture</p>
+      <ul class="bullet-list">
+        <li><strong>Standard Cost Estimates (CK11N / CK40N):</strong> Costing sheets feed directly into material cost estimates, building the full cost-rolled standard cost (direct material + direct labor + overhead burden) that becomes the inventory valuation basis and the cost estimate used in contract proposals.</li>
+        <li><strong>Production &amp; Manufacturing Orders (CO-OBJ):</strong> During actual order execution, costing sheets recalculate overhead surcharges on actual costs posted to the order. WIP and variance calculation at period-end reflects actual vs. planned overhead absorption, which is the basis for over/under-recovery reporting.</li>
+        <li><strong>Internal Orders &amp; WBS Elements (CO-OPA / PS):</strong> For cost-reimbursable contracts, costing sheets apply burden to program WBS elements as direct costs are posted, creating a real-time burdened cost view without manual allocation runs. Costs on the WBS are burdened at the negotiated FPRA rate in real time. This is the most direct DCAA-relevant application.</li>
+        <li><strong>Actual Costing / Material Ledger:</strong> In S/4HANA with actual costing enabled, costing sheet surcharges participate in the actual cost rollup, allowing end-of-period revaluation of WIP and finished goods at actual (vs. standard) overhead absorption rates.</li>
+        <li><strong>Period-End Overhead Calculation (KGI2 / CO43):</strong> The overhead calculation transaction reprocesses all open orders and WBS elements against current costing sheet rates at period-end, the mechanism for applying rate changes mid-year upon FPRA amendment.</li>
+      </ul>
+
+      <p class="subheading">PaPM and Costing Sheets: Two Deployment Approaches</p>
+      <div class="callout">
+        <strong>Not an Either/Or Decision</strong>
+        PaPM and costing sheets are not mutually exclusive. There are two credible deployment models for organizations considering PaPM alongside an existing costing sheet architecture. Understanding the trade-offs of each is essential before committing to either path.
+      </div>
+
+      <p class="subheading" style="margin-top: 16px;">Option A: PaPM in Conjunction with Costing Sheets</p>
+      <ul class="bullet-list">
+        <li><strong>How it works:</strong> Costing sheets continue to apply FPRA-negotiated burden rates directly to production orders, WBS elements, and internal orders in real time, as they do today. PaPM is layered alongside as the rate development and simulation engine, used to model pool/base projections, stress-test rate scenarios, and support FPRP negotiations. Once rates are agreed, they are loaded into costing sheet configuration as normal.</li>
+        <li><strong>Why this is the lower-risk path:</strong> Costing sheets remain the system of record for rate application. All downstream modules and tools that reference costing sheet rates, including standard cost estimates (CK11N), material ledger actual costing, and third-party tools that read CO configuration, continue to function without modification.</li>
+        <li><strong>What PaPM adds in this model:</strong> It addresses the gap that costing sheets cannot fill, specifically the rate development, simulation, and scenario modeling work that today lives in Excel or SAC Planning. The rest of the architecture is unchanged.</li>
+        <li><strong>The analysis in this document applies to this model.</strong> Where this paper evaluates PaPM capabilities relative to standard S/4 functionality, it assumes costing sheets remain in place for rate application and PaPM is used for modeling and analysis upstream of that process.</li>
+      </ul>
+
+      <p class="subheading" style="margin-top: 16px;">Option B: PaPM Replaces Costing Sheets for Rate Application</p>
+      <ul class="bullet-list">
+        <li><strong>How it works:</strong> Rather than loading agreed FPRA rates into costing sheet configuration, the rates are stored in PaPM rate tables. PaPM applies the overhead burden calculations and writes results back to ACDOCA or CO-PA, replacing the costing sheet mechanism for overhead posting entirely.</li>
+        <li><strong>The appeal:</strong> PaPM offers more flexibility for complex, iterative rate structures where interrelated pools require circular or multi-pass resolution logic that costing sheets cannot handle natively. Rate changes can be applied within PaPM models without touching CO configuration directly.</li>
+        <li><strong>The significant downside:</strong> Costing sheets are deeply embedded in the standard SAP A&D architecture. Standard cost estimates (CK11N/CK40N), production order costing, material ledger actual costing, and a range of third-party GovCon tools and reporting configurations reference costing sheet rates as a native data source. Replacing costing sheets with PaPM as the rate application mechanism requires those dependencies to be identified and rerouted to PaPM. In a mature A&D SAP environment, this is a non-trivial effort with material audit risk during transition.</li>
+        <li><strong>When it may be justified:</strong> If a contractor's indirect rate structure has complexity that genuinely exceeds what costing sheets can model, such as multi-tier iterative pool interactions or real-time mid-period rate adjustments at scale, Option B may be worth the implementation cost. For most large primes with established CO architectures, Option A is the more practical starting point.</li>
+      </ul>
+
+      <p class="subheading" style="margin-top: 16px;">Where Costing Sheets Fall Short Regardless of PaPM Deployment</p>
+      <ul class="bullet-list">
+        <li><strong>Costing sheets apply rates; they do not build them.</strong> The FPRA percentage stored in costing sheet configuration must come from somewhere, typically an Excel model or SAC Planning. This is the gap PaPM is positioned to address in both deployment options.</li>
+        <li><strong>No what-if simulation capability.</strong> Costing sheets cannot model alternate rate scenarios against live program costs without changing production configuration, a risk no program controller would accept during an active contract period.</li>
+        <li><strong>Audit support for rate justification</strong> is entirely outside the costing sheet framework. Demonstrating to DCAA how the FPRA rate was derived, what assumptions drove pool and base projections, and how sensitivity was tested requires a separate planning and modeling environment regardless of which deployment option is chosen.</li>
+      </ul>
+    </div>
+
+    <!-- ═══════════ SECTION 7 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <div class="section-label">Government Contracting Process</div>
+          <h2>The Forward Pricing Rate Proposal to Agreement Process</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Why This Process Matters to SAP Configuration</strong>
+        The FPRP-to-FPRA lifecycle is the single most consequential input to how SAP costing sheets, overhead cost centers, and indirect rate structures are configured and maintained. Every SAP rate table, every costing sheet percentage, and every overhead cost center budget ties back to a negotiated rate agreement with the cognizant federal agency.
+      </div>
+
+      <p class="subheading">Key Definitions</p>
+      <div class="cards two-col">
+        <div class="card">
+          <div class="card-title">FPRP: Forward Pricing Rate Proposal</div>
+          <div class="card-body">A contractor-submitted document proposing the indirect rates it expects to incur in a future period, typically the next 1–5 fiscal years. Includes pool and base projections, methodology narrative, and supporting schedules. Submitted to the ACO and audited by DCAA.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">FPRA: Forward Pricing Rate Agreement</div>
+          <div class="card-body">A bilateral agreement between the contractor and the ACO establishing the indirect rates to be used for pricing proposals, contract modifications, and progress payments during the covered period. Subject to final settlement via incurred cost audit.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">FPRR: Forward Pricing Rate Recommendation</div>
+          <div class="card-body">When a formal FPRA cannot be reached, DCAA issues an FPRR that the ACO uses instead. Contractors may use FPRR rates for proposal pricing but assume the risk of rate variance at final settlement.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Provisional Billing Rates</div>
+          <div class="card-body">Interim rates used for billing on cost-reimbursable contracts when FPRA rates have not yet been negotiated for the current period. Set by ACO agreement; adjusted at year-end when final rates are established.</div>
+        </div>
+      </div>
+
+      <p class="subheading">The Full FPRP → FPRA Lifecycle</p>
+
+      <div class="phase-block active">
+        <div class="phase-label">Phase 1: Internal Preparation</div>
+        <div class="phase-title">Rate Development &amp; Pool/Base Projection</div>
+        <ul class="phase-items">
+          <li>Finance / contracts pricing team builds multi-year forecast of indirect cost pools (labor, fringe, facilities, G&amp;A expenses) and allocation bases (direct labor hours, direct costs, total cost input)</li>
+          <li>Assumptions include headcount plans, facility lease/depreciation schedules, major capital investments, and anticipated direct business volume by segment</li>
+          <li>CAS disclosure statement reviewed to confirm pool/base methodology is consistent with disclosed practices</li>
+          <li><em>SAP touchpoint:</em> Historical actuals extracted from ACDOCA / cost center reports form the base year anchor for projections; prior year costing sheet rates compared to actuals to compute over/under-recovery history</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Phase 2: Proposal Submission</div>
+        <div class="phase-title">FPRP Package Submission to ACO / DCAA</div>
+        <ul class="phase-items">
+          <li>Contractor submits FPRP per FAR 42.1701 requirements: rate schedules, pool/base worksheets, narrative methodology, organizational charts, and supporting cost data</li>
+          <li>Proposal covers each indirect cost pool separately: Fringe, Site-specific Labor Overhead, Material Handling, Subcontract Administration, IR&amp;D/B&amp;P, and G&amp;A</li>
+          <li>Submission typically 6–12 months before the start of the rate period to allow DCAA audit and ACO negotiation time</li>
+          <li>Large primes with multiple business segments may submit segment-specific FRPPs, potentially audited by a different DCAA office</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Phase 3 — DCAA Audit</div>
+        <div class="phase-title">Audit of Forward Pricing Rate Proposal</div>
+        <ul class="phase-items">
+          <li>DCAA auditors review historical cost trends from the contractor's books (typically from SAP) against projections, verifying reasonableness, allowability (FAR Part 31), and consistency with CAS disclosures</li>
+          <li>Floor checks: DCAA may physically verify headcount, confirm time charging practices, and validate that labor categories in proposals match actual job assignments in SAP HR / CATS timekeeping</li>
+          <li>DCAA issues an audit report with questioned costs, unsupported projections, or recommended rate adjustments, typically expressed as a range or point estimate per pool as a range or point estimate per pool</li>
+          <li><em>SAP touchpoint:</em> Cost center actual reports, cost element line item details (KSB1), and statistical key figure actuals are the primary exhibits supporting DCAA inquiries. System-generated reports carry higher credibility than Excel-compiled summaries</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Phase 4 — Negotiation</div>
+        <div class="phase-title">ACO Negotiation &amp; Rate Settlement</div>
+        <ul class="phase-items">
+          <li>The ACO (supported by DCAA audit findings) negotiates each rate with the contractor's pricing and contracts team; PCO/ACO has authority to accept, modify, or reject proposed rates</li>
+          <li>Contractor may provide supplemental analysis, revised forecasts, or sensitivity models to support its proposed rates. This is a primary use case for PaPM or SAC Planning (formerly BPC) scenario modeling</li>
+          <li>If parties agree, an FPRA is executed as a bilateral agreement; if not, DCAA issues an FPRR and the ACO proceeds unilaterally for pricing purposes</li>
+          <li>Negotiated rates are documented by rate type, base, period, and any special conditions (e.g., ceilings, escalation adjustments)</li>
+        </ul>
+      </div>
+
+      <div class="phase-block success">
+        <div class="phase-label">Phase 5: SAP Implementation</div>
+        <div class="phase-title">Loading Agreed Rates into SAP Costing Sheets</div>
+        <ul class="phase-items">
+          <li>Once FPRA is executed, negotiated rates for each pool are entered into SAP overhead rate configuration (KZS2 / costing sheet overhead rates), effective-dated to the start of the rate period</li>
+          <li>Costing sheet assignment is verified on all relevant order types, WBS element profiles, and cost estimate variants to ensure rates flow to the correct cost objects</li>
+          <li>New standard cost estimates are released (CK11N / CK24) incorporating the new FPRA rates, updating inventory valuation and the cost baseline for all active programs</li>
+          <li>Overhead cost center budgets (KP06) are updated to reflect expected absorption at the new rates, enabling over/under-absorption monitoring throughout the year</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Phase 6: In-Year Monitoring</div>
+        <div class="phase-title">Rate Monitoring, Amendment &amp; Over/Under-Absorption Tracking</div>
+        <ul class="phase-items">
+          <li>Monthly: compare actual indirect pool spend against absorbed overhead (posted via costing sheets) to compute cumulative over/under-absorption by pool, a critical metric for billing rate sufficiency</li>
+          <li>If actual costs are tracking materially above or below FPRA rates, contractor may initiate an FPRA amendment, resubmitting a revised proposal for the remaining rate period</li>
+          <li>Over-absorbed overhead (rates too high vs. actual pool) creates a liability to the government on cost-type contracts; under-absorbed (rates too low) indicates unrecovered costs. Both have contract financial implications</li>
+          <li><em>SAP touchpoint:</em> Cost center variance reports, plan/actual comparisons (S_ALR_87013611), and activity price variance reports are the primary monitoring tools; PaPM or SAC Planning (formerly BPC) can provide forward-looking absorption forecasts</li>
+        </ul>
+      </div>
+
+      <div class="phase-block">
+        <div class="phase-label">Phase 7: Final Settlement</div>
+        <div class="phase-title">Final Indirect Rate Audit &amp; Rate Closure</div>
+        <ul class="phase-items">
+          <li>After fiscal year-end, contractor submits final indirect cost rate proposal per FAR 42.705 (Incurred Cost Submission / ICS), typically within 6 months of fiscal year close</li>
+          <li>DCAA audits the ICS against actual costs in SAP; establishes final rates for the year which supersede FPRA rates for billing and contract settlement purposes</li>
+          <li>Differences between FPRA (billing) rates and final audit rates result in upward or downward contract billing adjustments across all affected cost-reimbursable contracts</li>
+          <li>Final rates close the FPRA period and become the historical actuals that anchor the next FPRP cycle, completing the loop back to Phase 1</li>
+        </ul>
+      </div>
+
+      <p class="subheading">Where SAP Supports vs. Gaps in the FPRP Process</p>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>FPRP Stage</th>
+            <th>What SAP Natively Provides</th>
+            <th>Gap / External Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rate Development</td>
+            <td>Historical actuals from ACDOCA, cost center reports, SKF actuals as base data</td>
+            <td>Projection modeling, pool/base forecasting, and sensitivity analysis requires SAC Planning (formerly BPC), IBP, PaPM, or Excel <span class="badge gap">Gap</span></td>
+          </tr>
+          <tr>
+            <td>DCAA Audit Support</td>
+            <td>System-generated cost element reports (KSB1), cost center actuals (KSB2), activity price reports, which carry high credibility with DCAA</td>
+            <td>Narrative rate justification, management assertions, and cost allowability analysis are manual and outside SAP <span class="badge gap">Partial</span></td>
+          </tr>
+          <tr>
+            <td>Rate Loading</td>
+            <td>Overhead rate configuration in costing sheets (KZS2); effective-dated rate changes; automatic recalculation on orders</td>
+            <td>None. This is a core SAP strength <span class="badge native">Native</span></td>
+          </tr>
+          <tr>
+            <td>In-Year Monitoring</td>
+            <td>Plan/actual variance reports, cost center over/under-absorption via KO8G / period-end reporting</td>
+            <td>Forward-looking absorption forecast (rest-of-year) requires planning tool integration <span class="badge gap">Partial</span></td>
+          </tr>
+          <tr>
+            <td>FPRA Amendment</td>
+            <td>Rate update in costing sheet config; re-release of cost estimates with new rates; retroactive overhead recalculation</td>
+            <td>Mid-year rate renegotiation modeling and impact analysis on open contracts is outside SAP <span class="badge gap">Partial</span></td>
+          </tr>
+          <tr>
+            <td>Final Rate Settlement (ICS)</td>
+            <td>Actual cost extraction for ICS preparation; cost element actuals by pool and base are available natively</td>
+            <td>ICS report formatting and billing adjustment processing requires contractor-specific development or GovCon add-on <span class="badge gap">Gap</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top: 20px;">
+        <strong>PaPM's Role in the FPRP Lifecycle</strong>
+        PaPM is most directly valuable in Phases 1, 2, and 4, where rate projection modeling, scenario sensitivity analysis, and negotiation support data are needed. Its ability to simulate pool/base interactions, model headcount or volume changes, and compare rate scenarios makes it a credible upgrade over Excel for contractors with complex, multi-segment rate structures. However, it does not replace the DCAA audit interface, the FAR/CAS compliance framework, or the costing sheet mechanism that applies agreed rates in production.
+      </div>
+    </div>
+
+    <!-- ═══════════ SECTION 8 ═══════════ -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <div class="section-label">Market Reality</div>
+          <h2>Why Major A&amp;D Companies Are Not Widely Using PaPM</h2>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Candid Industry Assessment</strong>
+        PaPM adoption among large A&amp;D primes remains limited. Understanding why is as strategically important as understanding the product's capabilities. These are not reasons to dismiss PaPM, but they are the real objections your peers have raised and the barriers that must be addressed for a successful implementation.
+      </div>
+
+      <ul class="bullet-list">
+        <li><strong>Significant existing CO investment is "good enough":</strong> Most large A&amp;D primes spent decades and hundreds of millions configuring SAP R/3 and ECC CO to support DCAA-auditable indirect rate structures. Migrating that logic to PaPM models carries reaudit risk and business disruption that is hard to justify without a compelling capability gap.</li>
+        <li><strong>CAS compliance requires proven tooling:</strong> Government contractors operating under CAS 401–420 need demonstrable, auditable, consistent cost accounting practices. Introducing a new calculation engine that DCAA auditors are unfamiliar with creates audit friction and disclosure statement amendment requirements, a significant deterrent.</li>
+        <li><strong>Niche talent pool:</strong> Qualified PaPM architects who also understand government contracting cost structures are extremely rare. Most SAP A&amp;D SI partners have limited PaPM bench strength, raising delivery risk for complex implementations.</li>
+        <li><strong>Product maturity and awareness:</strong> PaPM (formerly HANA Profitability and Cost Management / PCM) has been through multiple rebrands and capability shifts. Many A&amp;D CIOs and CFOs are not aware of the current product's capabilities or differentiation from legacy CO tooling.</li>
+        <li><strong>Competing investments:</strong> Major A&amp;D primes are currently prioritizing S/4HANA migration, cloud transition (RISE), and cybersecurity (CMMC) investments. PaPM is not seen as a migration prerequisite and therefore deprioritized in capital planning cycles.</li>
+        <li><strong>Shadow Excel models are entrenched:</strong> Finance and program control teams have built sophisticated Excel-based indirect rate models and allocation simulators over many years. These are politically difficult to displace even when inferior, because they are owned by the people doing the analysis.</li>
+        <li><strong>Insufficient A&amp;D-specific content from SAP:</strong> SAP has not invested heavily in pre-built A&amp;D PaPM content libraries, GovCon templates, or DCAA audit trail accelerators. Without this, implementation requires full custom design, increasing cost and risk.</li>
+        <li><strong>SAC Planning (formerly BPC) / IBP incumbency:</strong> Companies that have invested in SAC Planning or IBP for planning and rate scenario modeling often see PaPM as redundant, or at minimum, struggle to articulate a clear boundary between the tools in a joint architecture.</li>
+      </ul>
+
+      <p class="subheading">Where PaPM Is Gaining Traction</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Commercial Aerospace</div>
+          <div class="card-body">Airlines and MRO providers with complex shared service cost structures and margin-by-route or margin-by-tail analysis needs are earlier PaPM adopters than defense primes.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Greenfield RISE Deployments</div>
+          <div class="card-body">Companies starting fresh on RISE with SAP have no legacy CO investment to protect and are more open to adopting PaPM's cloud-native architecture from the outset.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Finance Transformation Programs</div>
+          <div class="card-body">A&amp;D companies undertaking broad finance transformation (zero-based budgeting, cost transparency initiatives) sometimes include PaPM as the allocation transparency engine within a larger program.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .content -->
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <div class="doc-footer">
+    <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" />
+    <div class="footer-center">
+      © 2026 Revelation Technologies, LLC &nbsp;·&nbsp; revtech.consulting<br>
+      SAP PaPM — A&amp;D Costing SME White Paper
+    </div>
+    <div class="footer-right">
+      Publicly Available Use
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+</body>
+</html>

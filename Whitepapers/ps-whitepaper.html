@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAP Project Systems White Paper | Revelation Technologies</title>
+  <link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:16,h:16,m" sizes="16x16">
+  <link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:32,h:32,m" sizes="32x32">
+  <link rel="icon" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/favicon/c518daa7-b7f0-42f5-817a-9f133eb84dc5/2e0eb589-4cd6-42d8-945a-fff9ed393d0d.png/:/rs=w:48,h:48,m" sizes="48x48">
+  <link rel="apple-touch-icon" sizes="180x180" href="//img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:180,h:180,m">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:    #1e293b;
+      --dark:    #0f172a;
+      --mid:     #334155;
+      --accent:  #1d4ed8;
+      --accent2: #2563eb;
+      --accent-light: #dbeafe;
+      --gold:    #b45309;
+      --gold-bg: #fef3c7;
+      --text:    #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --white:   #ffffff;
+      --bg:      #f8fafc;
+      --bg-warm: #fafaf9;
+      --card:    #ffffff;
+      --border:  #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -4px rgba(0,0,0,0.04);
+      --radius:  8px;
+      --radius-lg: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 16.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+    .site-header img { height: 44px; }
+    .site-header .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(170deg, var(--dark) 0%, #1e3a5f 50%, #1e293b 100%);
+      padding: 5rem 2rem 4.5rem;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 3.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(135deg, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.75rem;
+      flex-wrap: wrap;
+    }
+    .hero-meta div {
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+    .hero-meta .label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    .hero-meta .value {
+      font-family: 'Inter', sans-serif;
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .toc h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 3rem;
+    }
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .toc-item:hover { color: var(--accent2); }
+    .toc-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      min-width: 1.5rem;
+    }
+    .toc-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .sec-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+    .section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+    .section h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 2.25rem 0 0.75rem;
+    }
+    .section p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+    .section p strong { color: var(--text); }
+    .section ul, .section ol {
+      margin: 0.5rem 0 1.5rem 1.5rem;
+    }
+    .section li {
+      margin-bottom: 0.6rem;
+      color: var(--text-secondary);
+    }
+    .section li strong { color: var(--text); }
+
+    /* ── BLUF BOX ── */
+    .bluf {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent2);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .bluf p { color: var(--text-secondary); margin-bottom: 0; }
+    .bluf p strong { color: var(--text); }
+    .bluf .bluf-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── CARDS GRID ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 1.75rem 0;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.4rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+    .card .icon {
+      font-size: 1.35rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .card h4 {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .card p {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ── TABLES ── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    thead th {
+      background: var(--navy);
+      color: var(--white);
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    thead th:first-child { border-radius: var(--radius) 0 0 0; }
+    thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+    tbody td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+      color: var(--text-secondary);
+    }
+    tbody td strong { color: var(--text); }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .callout p { color: var(--text-secondary); }
+    .callout p strong { color: var(--text); }
+    .callout .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── WBS HIERARCHY DIAGRAM ── */
+    .wbs-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: 2rem 0;
+      padding: 2.5rem 2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .wbs-level {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+      max-width: 680px;
+    }
+    .wbs-level .level-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--accent2);
+      min-width: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius) 0 0 var(--radius);
+      padding: 0.5rem;
+    }
+    .wbs-level .level-box {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: none;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.9rem 1.25rem;
+      text-align: left;
+    }
+    .wbs-level .level-box strong {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .wbs-level .level-box span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .wbs-connector {
+      width: 2px;
+      height: 16px;
+      background: var(--accent2);
+      margin-left: 36px;
+      opacity: 0.35;
+    }
+
+    /* ── SHOULD / SHOULD-NOT GRID ── */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 2rem 0;
+    }
+    .dual-col {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .dual-col.positive { border-top: 3px solid #16a34a; }
+    .dual-col.negative { border-top: 3px solid #dc2626; }
+    .dual-col h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .dual-col.positive h4 { color: #16a34a; }
+    .dual-col.negative h4 { color: #dc2626; }
+    .dual-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .dual-col li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .dual-col li:last-child { border-bottom: none; }
+    .dual-col li::before {
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .dual-col.positive li::before { content: "✓"; color: #16a34a; }
+    .dual-col.negative li::before { content: "✗"; color: #dc2626; }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      margin: 2rem 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .flow-box {
+      flex: 1;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border-light);
+    }
+    .flow-box:last-of-type { border-right: none; }
+    .flow-box .flow-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.35rem;
+    }
+    .flow-box strong {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .flow-box span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      padding: 0 0.15rem;
+      background: var(--border-light);
+      font-weight: 600;
+    }
+
+    /* ── MULTI-HIERARCHY VISUAL ── */
+    .hierarchy-visual {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .hierarchy-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.25rem 1.25rem;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s;
+    }
+    .hierarchy-card:hover { box-shadow: var(--shadow-md); }
+    .hierarchy-card.primary {
+      border-color: var(--accent2);
+      border-width: 2px;
+    }
+    .hierarchy-card.external {
+      border-color: #d97706;
+      border-style: dashed;
+    }
+    .hierarchy-card .h-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .hierarchy-card h4 {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .hierarchy-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .hierarchy-card .badge {
+      position: absolute;
+      top: -9px;
+      right: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .hierarchy-card.primary .badge {
+      background: var(--accent2);
+      color: var(--white);
+    }
+    .hierarchy-card.external .badge {
+      background: #fbbf24;
+      color: #78350f;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--navy);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+    .site-footer img { height: 36px; margin-bottom: 0.75rem; }
+
+    /* ── LINK STYLES ── */
+    a.xref {
+      color: var(--accent2);
+      text-decoration: underline;
+      text-decoration-color: #93c5fd;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    a.xref:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .dual-grid { grid-template-columns: 1fr; }
+      .hierarchy-visual { grid-template-columns: 1fr; }
+      .hero-meta { gap: 1.5rem; }
+      .cards { grid-template-columns: 1fr; }
+      .flow { flex-direction: column; }
+      .flow-arrow { padding: 0.25rem 0; justify-content: center; }
+      .flow-box { border-right: none; border-bottom: 1px solid var(--border-light); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="site-header">
+  <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" />
+  <div class="tagline">SAP Solution Architecture Advisory<br/>Aerospace &amp; Defense Practice</div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="eyebrow">Solution Architecture Briefing: Aerospace &amp; Defense</div>
+  <h1>SAP<br/><span>Project Systems</span></h1>
+  <p class="subtitle">A technical and strategic assessment of SAP Project Systems (PS) as the center of the integration universe for US Government Contractors and Aerospace &amp; Defense companies. This paper covers WBS architecture, multi-hierarchy design, integration touchpoints, revenue recognition, and an evaluation of implementation challenges.</p>
+  <div class="hero-meta">
+    <div><div class="label">Prepared by</div><div class="value">Revelation Technologies, LLC</div></div>
+    <div><div class="label">Practice</div><div class="value">SAP Aerospace &amp; Defense</div></div>
+    <div><div class="label">Audience</div><div class="value">Solution Architects, Program Finance &amp; IT Leadership</div></div>
+    <div><div class="label">Classification</div><div class="value">Publicly Available Use</div></div>
+  </div>
+</section>
+
+<!-- ── TOC ── -->
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a class="toc-item" href="#overview"><span class="toc-num">01</span><span class="toc-title">SAP PS: The Center of the Universe</span></a>
+    <a class="toc-item" href="#wbs-hierarchy"><span class="toc-num">06</span><span class="toc-title">What the WBS Hierarchy Should &amp; Should Not Be</span></a>
+    <a class="toc-item" href="#integration"><span class="toc-num">02</span><span class="toc-title">Integration Landscape &amp; Touchpoints</span></a>
+    <a class="toc-item" href="#challenges"><span class="toc-num">07</span><span class="toc-title">Implementation Challenges</span></a>
+    <a class="toc-item" href="#wbs-design"><span class="toc-num">03</span><span class="toc-title">WBS Architecture &amp; Design Patterns</span></a>
+    <a class="toc-item" href="#conclusion"><span class="toc-num">08</span><span class="toc-title">Why It's Worth It</span></a>
+    <a class="toc-item" href="#project-types"><span class="toc-num">04</span><span class="toc-title">Direct &amp; Indirect Project Types</span></a>
+    <a class="toc-item" href="#related"><span class="toc-num">09</span><span class="toc-title">Related: SAP PaPM White Paper</span></a>
+    <a class="toc-item" href="#revrec"><span class="toc-num">05</span><span class="toc-title">Revenue Recognition &amp; Results Analysis</span></a>
+    <a class="toc-item" href="#about"><span class="toc-num">10</span><span class="toc-title">About Revelation Technologies</span></a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 01: OVERVIEW ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="overview">
+  <div class="sec-label">Section 01: Overview</div>
+  <h2>SAP Project Systems: The Center of the Universe</h2>
+
+  <div class="bluf">
+    <div class="bluf-label">Bottom Line Up Front</div>
+    <p>For US Government Contractors and Aerospace &amp; Defense companies, SAP Project Systems (PS) is not simply another module. It is the center of the entire ERP landscape. Every major business process (contract management, cost accounting, procurement, production, billing, time entry, and financial reporting) either originates from, passes through, or settles back to a Project System WBS element. Getting PS right is the single most consequential design decision in an A&amp;D SAP implementation.</p>
+  </div>
+
+  <p>In project-centric industries, the fundamental unit of work is the <strong>project</strong>, not the product. Revenue is earned by executing contracts. Costs are collected, burdened, and reported against work breakdown structures. Cash is generated through milestone deliveries or cost-reimbursable billing tied to project progress. This reality makes SAP Project Systems the natural integration hub: the module that every other module must connect to, and the one whose design most directly determines whether the SAP implementation succeeds or fails.</p>
+
+  <p>PS provides the WBS hierarchy that serves as the <strong>financial and logistic backbone</strong> of each project. The WBS is the account assignment object for cost collection, the demand source for procurement and production, the billing element for customer invoicing, the budget control point for funds management, and the settlement object for revenue recognition. No other SAP object carries this breadth of integration responsibility.</p>
+
+  <h3>Why PS Becomes the Center</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">📄</div>
+      <h4>Contract Accounting</h4>
+      <p>SD contracts and sales orders link to PS billing elements, creating the bridge between commercial terms and project execution. Contract line items (CLINs) map to WBS elements for billing and revenue tracking.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💰</div>
+      <h4>Cost Accounting (CAS/FAR)</h4>
+      <p>WBS elements serve as the primary cost collection object for direct costs under CAS and FAR Part 31. Costing sheets apply FPRA-negotiated burden rates in real time. Cost element detail on the WBS supports DCAA audit requirements.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📊</div>
+      <h4>Estimating &amp; Pricing</h4>
+      <p>Historical project data (actuals, rates, resource consumption) feeds future estimates. PS enables "similar-to" project copy functionality, allowing pricing teams to rapidly produce new estimates by leveraging prior program data as a baseline.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔗</div>
+      <h4>Supply Chain &amp; Procurement</h4>
+      <p>Purchase requisitions and purchase orders are account-assigned to WBS elements, connecting procurement spend directly to the program. Material requirements flow from project stock reservations to MRP-driven supply.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏭</div>
+      <h4>Production Planning / MRP</h4>
+      <p>Project stock-based demand (individual customer requirements on the WBS) drives MRP planning. Plant stock supply for common materials serves project stock demand, enabling a hybrid model where shared inventory supports project-specific builds.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📋</div>
+      <h4>Portfolio Management</h4>
+      <p>PS projects integrate with Portfolio &amp; Project Management (PPM) tools for enterprise-level visibility across the project portfolio, including resource capacity, pipeline health, and strategic alignment across programs.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏦</div>
+      <h4>Financial Accounting / PCA</h4>
+      <p>WBS settlement posts to profit centers, enabling contract-level and segment-level P&amp;L reporting. Universal Journal (ACDOCA) entries carry the WBS as an account assignment, providing real-time financial visibility.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧾</div>
+      <h4>Customer Billing</h4>
+      <p>Billing events, whether milestone-based (FFP), cost-based (CPFF/T&amp;M), or progress-based, originate from PS billing elements. Add-on solutions like Dassian and Cognitus extend native SD billing with project-driven billing based on cost results and milestone delivery.</p>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h4>HR/HCM: Time Entry &amp; Workforce Planning</h4>
+      <p>CATS time entry charges labor hours directly to WBS elements. Labor distribution drives direct vs. indirect cost classification, supports DCAA timekeeping requirements, and feeds workforce planning for resource-loaded schedules.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h4>Project Cost Management</h4>
+      <p>Budgeting, baseline management, Estimate at Completion (EAC), Estimate to Complete (ETC), and earned value metrics are managed through PS budget profiles and the project cost forecasting framework.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 02: INTEGRATION ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="integration">
+  <div class="sec-label">Section 02: Integration Architecture</div>
+  <h2>Integration Landscape &amp; Touchpoints</h2>
+
+  <p>The integration density around PS is what makes it both indispensable and challenging. A single WBS element simultaneously serves as the account assignment for MM procurement, HR time entry, PP production orders, SD billing, CO overhead allocation, and FI settlement. This is not a theoretical concern; it means that a configuration decision in PS ripples across every integrated module.</p>
+
+  <div class="flow">
+    <div class="flow-box">
+      <div class="flow-label">Contracts</div>
+      <strong>SD / Contract Accounting</strong>
+      <span>Sales Orders, CLINs</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">
+      <div class="flow-label">Backbone</div>
+      <strong>PS / WBS</strong>
+      <span>Cost Collection, Demand</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">
+      <div class="flow-label">Execution</div>
+      <strong>MM / PP / HR</strong>
+      <span>Procure, Produce, Labor</span>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">
+      <div class="flow-label">Finance</div>
+      <strong>FI / CO / RA</strong>
+      <span>Settle, Recognize, Report</span>
+    </div>
+  </div>
+
+  <h3>Key Integration Patterns</h3>
+  <ul>
+    <li><strong>SD → PS (Contract to Project):</strong> Sales orders and contracts become SD documents that are linked to project WBS billing elements. This linkage drives billing plan generation, revenue element assignment, and customer-facing invoice creation. The SD contract represents the commercial agreement; the PS WBS represents the execution structure.</li>
+    <li><strong>PS → MM (Project to Procurement):</strong> Purchase requisitions generated from PS (either manually or via MRP) carry the WBS element as account assignment. Goods receipts post directly to the project, and invoice verification settles to the WBS cost collector. Project stock management enables material segregation by project.</li>
+    <li><strong>PS → PP (Project to Production):</strong> For manufacturing A&amp;D companies, production orders and process orders are created with WBS account assignment. MRP runs against project stock requirements, generating planned orders that are converted to production orders. The relationship between project stock demand (WBS) and plant stock supply (for common materials) is a critical configuration decision.</li>
+    <li><strong>HR → PS (Time to Project):</strong> CATS time entry or SAP SuccessFactors time tracking charges labor hours to WBS elements. This is the primary mechanism for direct labor cost collection and the foundation for DCAA-compliant timekeeping.</li>
+    <li><strong>PS → CO (Project to Controlling):</strong> Costing sheets apply FPRA burden rates to WBS elements. Overhead calculation, settlement, and results analysis all execute against the WBS structure. Period-end processes depend on correct PS/CO configuration.</li>
+    <li><strong>PS → FI (Project to Financial Accounting):</strong> Settlement from WBS elements posts to profit centers and the Universal Journal (ACDOCA). Revenue recognition via Results Analysis (RA) determines how and when revenue is recorded on the P&amp;L.</li>
+  </ul>
+
+  <h3>The PMMO / Production Integration for Unitized Programs</h3>
+  <p>For A&amp;D companies with mature <strong>unitized programs</strong> (where deliverables are discrete, serialized units such as aircraft, satellites, missiles, and engines), SAP PS's integration with Plant Maintenance / Manufacturing Operations (PMMO) provides a powerful architecture. A separate logistic project structure manages the physical units and their associated manufacturing, assembly, and test operations, while the cost WBS structure manages the financial view. The material master, plant assignment, and demand WBS relationship drives costs seamlessly to the cost-collecting WBS elements.</p>
+
+  <p>This dual-structure approach allows program management to track physical unit progress independently from financial cost collection, but getting the linkages right is one of the most technically demanding aspects of an A&amp;D PS implementation. The relationship between the logistic unit structure and the financial WBS must be designed with precision to avoid either cost leakage or double-counting.</p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 03: WBS DESIGN ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="wbs-design">
+  <div class="sec-label">Section 03: WBS Architecture</div>
+  <h2>WBS Architecture &amp; Design Patterns for Direct Projects</h2>
+
+  <div class="bluf">
+    <div class="bluf-label">Design Philosophy</div>
+    <p>The WBS structure is the single most impactful design decision in an A&amp;D PS implementation. It must simultaneously satisfy cost accounting requirements (CAS compliance, DCAA auditability), financial reporting needs (ASC 606 revenue recognition), billing mechanics (FFP milestones, cost-reimbursable invoicing), and budget control (AVAC, EVM baseline). No single hierarchy can perfectly serve all of these purposes, which is why understanding the Multi-Hierarchy concept (covered in Section 06) is essential.</p>
+  </div>
+
+  <h3>Proposed WBS Hierarchy for Direct (Customer-Facing) Projects</h3>
+
+  <div class="wbs-tree">
+    <div class="wbs-level">
+      <div class="level-label">Level 1</div>
+      <div class="level-box">
+        <strong>Project Header: Operational Contract</strong>
+        <span>The top-level project definition represents the operational contract. One project per contract execution entity. Carries the contract master data, project profile, and overall project attributes.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label">Level 2</div>
+      <div class="level-box">
+        <strong>Performance Obligation</strong>
+        <span>Assumes ASC 606 over-time percentage-of-completion (POC) revenue recognition method. Each Level 2 WBS element represents a distinct performance obligation under the contract. Revenue recognition via Results Analysis (RA) is configured at this level.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label">Level 3</div>
+      <div class="level-box">
+        <strong>Billing Element</strong>
+        <span>Linked to SD billing plan. For Firm Fixed Price (FFP): milestone-based billing. For Cost Derivative (CPFF, T&amp;M): cost-based billing. Billing element designation in WBS element master data enables SD integration.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label">Level 4</div>
+      <div class="level-box">
+        <strong>Control Account (Optional)</strong>
+        <span>Aligns with the accounting/EVMS control account structure when integrated with earned value management. Enables budget control and variance analysis at the CAM (Control Account Manager) level. Pros: tighter cost control, EVM alignment. Cons: WBS complexity increases, more master data to maintain.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label">Level 5</div>
+      <div class="level-box">
+        <strong>Cost Collector (Lowest Level)</strong>
+        <span>The actual account assignment object where costs post. Time entry, purchase orders, production orders, and overhead surcharges all post to this level. Must be the lowest WBS element with "account assignment" enabled.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label" style="background: #7c3aed;">Network</div>
+      <div class="level-box" style="border-left: 3px solid #7c3aed;">
+        <strong>Network (Assigned to Cost Collector WBS)</strong>
+        <span>A PS Network is assigned to the lowest-level cost collector WBS element (unless managed on a separate logistic hierarchy). The Network serves as the container for activities and is the primary object that drives scheduling, material component demand, and capacity requirements against the project.</span>
+      </div>
+    </div>
+    <div class="wbs-connector"></div>
+    <div class="wbs-level">
+      <div class="level-label" style="background: #7c3aed;">Activity</div>
+      <div class="level-box" style="border-left: 3px solid #7c3aed;">
+        <strong>Network Activities</strong>
+        <span>Individual activities within the Network represent discrete work steps (e.g., fabrication, assembly, test, integration). Material components are assigned at the activity level, generating material reservations and purchase requisitions that drive MRP demand for the project. Activities also carry internal processing (labor), external processing (subcontract), and general cost planning. Costs posted through activities settle to the parent WBS cost collector.</span>
+      </div>
+    </div>
+  </div>
+
+  <p>The Network and Network Activity structure is the primary mechanism through which material component demand flows to the project. When a material component is assigned to a network activity, SAP generates either a reservation (for plant/warehouse stock) or a purchase requisition (for externally procured items), linking the material demand directly to the project WBS through the activity's account assignment. This is how PS drives MRP: the network activity creates the demand, MRP generates the supply response, and the resulting costs post to the WBS cost collector.</p>
+
+  <p>In the standard design, networks are assigned to the lowest-level WBS element (the cost collector). However, for companies with unitized programs or complex logistic structures, networks may be managed on a <strong>separate logistic hierarchy</strong> (e.g., a PMMO-based structure) while still settling costs to the financial WBS. This separation is discussed further in the Multi-Hierarchy section.</p>
+
+  <h3>Design Considerations: Performance Obligation as Level 2</h3>
+  <p>The inclusion of a Performance Obligation (POB) level in the WBS is driven by whether the company has ASC 606-relevant performance obligation-based accounting and revenue recognition. For companies that recognize revenue using the over-time percentage-of-completion method, this level is where Results Analysis (RA) is configured and where earned revenue is calculated. If the company does not recognize revenue on an over-time POC basis, this level may not be needed at all.</p>
+
+  <p>A key structural consideration: there is often a <strong>many-to-one relationship between billing elements and a single performance obligation.</strong> A contract may have multiple CLINs, funding line items, or billing arrangements that all roll up to one performance obligation for revenue recognition purposes. The WBS must reflect this. Multiple Level 3 billing elements can (and frequently do) sit beneath a single Level 2 performance obligation, allowing billing mechanics and revenue recognition to operate independently at the correct level of the hierarchy.</p>
+
+  <p>Including the POB level also enables a <strong>Performance Obligation ID</strong> to be carried as an attribute of the WBS element. This POB ID allows grouping of performance obligations across projects or across company codes into a single Estimate at Completion (EAC), which is particularly relevant for companies that need cross-company performance obligation reporting or that have performance obligations spanning multiple legal entities within a corporate structure.</p>
+
+  <div class="dual-grid">
+    <div class="dual-col positive">
+      <h4>Pros of Including the Performance Obligation</h4>
+      <ul>
+        <li>Required for ASC 606 over-time POC revenue recognition via Results Analysis (RA); this is the level where earned revenue is calculated</li>
+        <li>Supports the many-to-one relationship between billing elements and a single performance obligation, keeping billing and RevRec structurally independent</li>
+        <li>Enables a Performance Obligation ID as a WBS attribute, allowing grouping of POBs into a consolidated EAC across projects or company codes</li>
+        <li>Supports cross-company performance obligation reporting for organizations with multi-entity contract structures</li>
+        <li>Provides clear separation between the revenue recognition unit (POB) and the billing unit (billing element), reducing reconciliation complexity at period-end</li>
+      </ul>
+    </div>
+    <div class="dual-col negative">
+      <h4>Cons of Including the Performance Obligation</h4>
+      <ul>
+        <li>Adds a WBS level that may not be needed if the company does not use over-time POC revenue recognition (e.g., point-in-time recognition or no ASC 606 applicability)</li>
+        <li>Increases WBS depth and master data volume on every direct project, even on simple contracts where the performance obligation and billing element are one-to-one</li>
+        <li>Requires RA key assignment and planned revenue/cost maintenance at this level, adding period-end processing steps and configuration complexity</li>
+        <li>POB-level EAC maintenance must be governed carefully; if planned values are not kept current, POC percentages and earned revenue will be incorrect</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Design Considerations: Control Account in the WBS</h3>
+  <p>The inclusion of a control account level in the WBS is <strong>optional but strategically significant</strong>. Here are the trade-offs:</p>
+
+  <div class="dual-grid">
+    <div class="dual-col positive">
+      <h4>Pros of Including the Control Account</h4>
+      <ul>
+        <li>Aligns WBS directly with the Earned Value Management System (EVMS) control account structure</li>
+        <li>Enables budget control (AVAC) at the CAM level, preventing unauthorized spend</li>
+        <li>Provides natural cost variance analysis point for EAC/ETC management</li>
+        <li>Supports DCAA-auditable cost segregation by work package</li>
+      </ul>
+    </div>
+    <div class="dual-col negative">
+      <h4>Cons of Including the Control Account</h4>
+      <ul>
+        <li>Significantly increases WBS element count and master data maintenance burden</li>
+        <li>Budget distribution across more levels creates AVAC configuration complexity</li>
+        <li>May force the WBS to mirror the project schedule structure, reducing design flexibility</li>
+        <li>Can create friction if the control account structure changes during contract execution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 04: PROJECT TYPES ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="project-types">
+  <div class="sec-label">Section 04: Project Classification</div>
+  <h2>Direct &amp; Indirect Project Types</h2>
+
+  <p>One of PS's greatest strengths is its flexibility to manage very different project types within a single module. A&amp;D companies require WBS structures for both direct (customer-facing, revenue-generating) and indirect (internal, overhead-supporting) projects. PS accommodates both through project profile configuration, account assignment categories, and settlement rules.</p>
+
+  <h3>Direct Projects: Customer-Facing Contract Execution</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">📋</div>
+      <h4>Firm Fixed Price (FFP)</h4>
+      <p>Milestone-based billing, full cost risk on contractor. WBS billing elements link to SD milestone billing plan. Revenue recognized via Results Analysis (RA) at the performance obligation level using POC method.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💵</div>
+      <h4>Cost Plus Fixed Fee (CPFF)</h4>
+      <p>Cost-reimbursable billing with fixed fee component. Provisional billing rates applied via costing sheets. WBS billing elements drive periodic cost-based invoicing. Fee recognized proportionally to cost incurred.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⏱️</div>
+      <h4>Time &amp; Materials (T&amp;M)</h4>
+      <p>Billing based on actual hours and material costs plus markup. CATS time entry feeds billing rates. Material costs from MM post to WBS and flow through to invoicing at agreed rates.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h4>Partially Funded Contracts</h4>
+      <p>Common in government contracting where funding is incremental. PS budget management tracks authorized funding vs. total contract value. AVAC controls prevent spending beyond funded ceiling.</p>
+    </div>
+  </div>
+
+  <h3>Indirect Projects: Internal &amp; Overhead</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h4>IR&amp;D (Independent Research &amp; Development)</h4>
+      <p>Internal R&amp;D projects tracked as indirect cost, allocated through G&amp;A or dedicated IR&amp;D pool. WBS structure enables project-level cost tracking while costs flow to the appropriate indirect rate pool.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📝</div>
+      <h4>B&amp;P (Bid &amp; Proposal)</h4>
+      <p>Pre-award proposal effort captured on dedicated WBS structures. Costs accumulate during pursuit phase and are allocated through the B&amp;P cost pool. Supports FAR 31.205-18 cost allowability requirements.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏢</div>
+      <h4>Overhead &amp; Facilities Projects</h4>
+      <p>Capital improvement, facilities maintenance, and IT infrastructure projects managed through PS. Settlement to assets (for capex) or to overhead cost centers (for period expense).</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏗️</div>
+      <h4>Capital &amp; Expense Projects (CAPEX / AuC)</h4>
+      <p>Projects focused on the buildout of a fixed asset, where costs are captured in Capital in Process (CIP) or Asset under Construction (AuC) accounts until the asset is placed into service. PS settlement rules direct capitalizable costs to the AuC asset and expense portions to period cost centers. This structure allows both the capitalized cost and the related expense to be managed on the same WBS hierarchy, giving project managers a single view of total project spend while maintaining the accounting separation required for fixed asset capitalization. Upon go-live of the asset, the AuC is settled to the final asset master record.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h4>Internal Service Projects</h4>
+      <p>Shared service delivery, internal training, process improvement initiatives. Cost collection on WBS with settlement to consuming organizations via CO assessment or activity allocation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 05: REVENUE RECOGNITION ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="revrec">
+  <div class="sec-label">Section 05: Revenue Recognition</div>
+  <h2>Revenue Recognition &amp; Results Analysis</h2>
+
+  <div class="bluf">
+    <div class="bluf-label">Critical Distinction</div>
+    <p>For project-centric A&amp;D and GovCon companies, revenue recognition is handled through SAP Project Systems' <strong>Results Analysis (RA)</strong>, not through SAP's RAR (Revenue Accounting &amp; Reporting). RAR is designed for subscription-based, consumption-based, or multi-element arrangement revenue models typical of SaaS, telecom, or media industries. RA is the purpose-built mechanism for project-based, over-time POC revenue recognition that A&amp;D companies require under ASC 606.</p>
+  </div>
+
+  <h3>SAP PS Results Analysis (RA): The Right Tool for Project Revenue</h3>
+
+  <p>Results Analysis is a period-end process within SAP Project Systems that calculates work in process (WIP), reserves for unrealized costs, accrued revenue, and cost of sales based on the relationship between actual costs incurred, planned costs, and contract revenue. For government contractors operating under ASC 606 with over-time revenue recognition, RA is the standard mechanism.</p>
+
+  <h3>How Results Analysis Works</h3>
+  <ul>
+    <li><strong>RA Key Configuration:</strong> A Results Analysis key is assigned to each WBS element (typically at the performance obligation level, Level 2 in the proposed hierarchy). The RA key determines which valuation method is applied: cost-based POC, revenue-based POC, completed contract, or zero-profit margin methods.</li>
+    <li><strong>POC Calculation:</strong> For the most common A&amp;D method, cost-based percentage of completion, RA calculates the ratio of actual costs incurred to total planned costs (the EAC). This percentage is applied to the total contract revenue to determine earned revenue for the period.</li>
+    <li><strong>WIP &amp; Accrued Revenue Posting:</strong> RA posts WIP to the balance sheet and accrues revenue that has been earned but not yet billed. The settlement process posts these results to FI, creating the journal entries required for ASC 606-compliant financial statements.</li>
+    <li><strong>Reserves for Unrealized Costs:</strong> When billing exceeds earned revenue (advance billing on milestones), RA calculates reserves and posts deferred revenue. When costs exceed billing, RA posts unbilled receivables.</li>
+    <li><strong>Integration with Billing:</strong> RA works alongside the SD billing plan. Billed amounts are compared against RA-calculated earned revenue to determine over/under-billing positions by contract.</li>
+  </ul>
+
+  <h3>Results Analysis vs. RAR: When to Use Which</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Results Analysis (RA)</th>
+          <th>RAR (Revenue Accounting &amp; Reporting)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Revenue Model</strong></td>
+          <td>Project-based, over-time POC, long-term contracts</td>
+          <td>Subscription, consumption, license, multi-element arrangements</td>
+        </tr>
+        <tr>
+          <td><strong>Industry Fit</strong></td>
+          <td>A&amp;D, GovCon, Construction, Engineering, Professional Services</td>
+          <td>SaaS, Telecom, Media, High-Tech (product + service bundles)</td>
+        </tr>
+        <tr>
+          <td><strong>Cost Object</strong></td>
+          <td>WBS elements within SAP Project System</td>
+          <td>Performance obligations defined in RAR contract model</td>
+        </tr>
+        <tr>
+          <td><strong>ASC 606 Method</strong></td>
+          <td>Over-time recognition (input or output method)</td>
+          <td>Point-in-time or over-time (typically allocation-based)</td>
+        </tr>
+        <tr>
+          <td><strong>Integration</strong></td>
+          <td>Native to PS, tightly coupled with project cost data, EAC, billing plans</td>
+          <td>Separate module; consumes SD billing documents, applies standalone allocation rules</td>
+        </tr>
+        <tr>
+          <td><strong>Typical A&amp;D Use</strong></td>
+          <td><strong>Primary mechanism for project RevRec</strong></td>
+          <td>Only if the company also has subscription or consumption-based revenue streams alongside project revenue</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Practical Guidance</div>
+    <p>For the vast majority of A&amp;D and GovCon companies, <strong>Results Analysis is the correct and sufficient tool for revenue recognition.</strong> RAR should only be considered if the company has a material revenue stream that is subscription-based, consumption-based, or involves complex multi-element arrangements where standalone selling prices must be allocated across bundled deliverables. Deploying RAR for standard project-based revenue adds unnecessary complexity, licensing cost, and implementation risk with no incremental benefit over RA.</p>
+  </div>
+
+  <h3>RA Configuration Highlights for A&amp;D</h3>
+  <ul>
+    <li><strong>RA Valuation Method 15 (Revenue-based POC):</strong> Commonly used for FFP contracts where revenue is driven by milestone achievement. Actual revenue (billed) compared to planned revenue determines POC percentage.</li>
+    <li><strong>RA Valuation Method 09 (Cost-based POC):</strong> Standard for CPFF and hybrid contracts. Actual cost vs. planned cost (EAC) drives the completion percentage. Earned revenue = POC × total contract value.</li>
+    <li><strong>Loss Recognition:</strong> RA automatically recognizes anticipated contract losses when the EAC exceeds total contract revenue, posting a provision for losses in accordance with ASC 606 and US GAAP requirements.</li>
+    <li><strong>Period-End Process Sequence:</strong> Overhead calculation → Results Analysis (KKAJ/KKA2) → Settlement (KO88/CJ88) → the required sequence ensures burdened costs are included in the POC calculation before revenue is recognized and settled to FI.</li>
+  </ul>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 06: WBS HIERARCHY SHOULD/SHOULD NOT ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="wbs-hierarchy">
+  <div class="sec-label">Section 06: Multi-Hierarchy Concept</div>
+  <h2>What the WBS Hierarchy Should Be, and What It Should Not Be</h2>
+
+  <div class="bluf">
+    <div class="bluf-label">Critical Design Principle</div>
+    <p>One of the most common and consequential mistakes in A&amp;D SAP implementations is attempting to make the SAP PS WBS hierarchy serve every purpose: cost collection, scheduling, earned value management, customer reporting, and organizational accountability, all in a single structure. It cannot. Understanding what the WBS <em>should</em> be and what it <em>should not</em> be is foundational to a successful PS design, and this understanding leads directly to the <strong>Multi-Hierarchy</strong> concept that is unique to project-centric industries.</p>
+  </div>
+
+  <h3>What the SAP PS WBS Hierarchy Should Be</h3>
+
+  <p>The SAP PS WBS hierarchy is, first and foremost, the <strong>financial and logistic backbone</strong> of the project within the ERP system. It serves three non-negotiable roles:</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🏗️</div>
+      <h4>Financial Backbone</h4>
+      <p>The WBS is the primary cost collection and cost control structure. All direct costs (labor, material, subcontract, ODC) post to WBS elements. Overhead burden is applied via costing sheets. Budget control (AVAC) is enforced at WBS levels. Revenue recognition via Results Analysis operates against the WBS. Settlement to FI/profit centers flows from the WBS. This is the core purpose of the WBS.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📦</div>
+      <h4>Logistic Backbone</h4>
+      <p>The WBS is the demand source for procurement (purchase requisitions account-assigned to WBS), production (manufacturing orders account-assigned to WBS), and inventory management (project stock segregation by WBS). MRP planning runs against project stock requirements generated by the WBS hierarchy. This logistic integration is what makes PS the "center of the universe."</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h4>Demand Source</h4>
+      <p>The WBS defines what the project needs (labor hours, purchased materials, manufactured assemblies, subcontracted services) and when it needs them. This demand drives the entire supply chain response within SAP: MRP, capacity planning, procurement cycles, and production scheduling all originate from WBS-level requirements.</p>
+    </div>
+  </div>
+
+  <h3>What the SAP PS WBS Hierarchy Should Not Be</h3>
+
+  <p>This is where A&amp;D implementations frequently go wrong. The WBS hierarchy in SAP PS <strong>should not necessarily</strong> be the structure that drives all project management disciplines. Specifically:</p>
+
+  <div class="dual-grid">
+    <div class="dual-col positive">
+      <h4>The WBS Should Be</h4>
+      <ul>
+        <li>The financial cost collection and control structure within SAP</li>
+        <li>The logistic demand source for procurement, production, and material management</li>
+        <li>The billing element structure linked to SD contracts</li>
+        <li>The budget control hierarchy for AVAC funds management</li>
+        <li>The settlement and revenue recognition structure for Results Analysis</li>
+        <li>The account assignment object for all direct cost transactions</li>
+      </ul>
+    </div>
+    <div class="dual-col negative">
+      <h4>The WBS Should Not Necessarily Be</h4>
+      <ul>
+        <li>The hierarchy that drives Project Cost Management (EAC/ETC, variance analysis, cost performance reporting) in its entirety</li>
+        <li>The hierarchy that drives the Project Integrated Master Schedule (IMS)</li>
+        <li>The hierarchy in which the customer receives their information (CDRLs, contract status reports, deliverable tracking)</li>
+        <li>The sole organizational accountability structure (CAM assignments, work team ownership)</li>
+        <li>A mirror image of the project schedule / network logic</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The Multi-Hierarchy Concept</h3>
+
+  <p>This distinction leads to a concept that is <strong>unique to project-centric industries</strong> and frequently misunderstood by SAP practitioners who come from non-project environments: the requirement for <strong>multiple, co-existing project hierarchies</strong> that serve different purposes and different audiences.</p>
+
+  <p>In project-centric A&amp;D and GovCon companies, a single project typically requires several hierarchical views:</p>
+
+  <div class="hierarchy-visual">
+    <div class="hierarchy-card primary">
+      <div class="badge">SAP PS</div>
+      <div class="h-icon">🏗️</div>
+      <h4>Financial / Logistic WBS</h4>
+      <p>Lives in SAP Project Systems. Cost collection, demand sourcing, billing, budget control, revenue recognition. The ERP backbone.</p>
+    </div>
+    <div class="hierarchy-card external">
+      <div class="badge">External / Integrated</div>
+      <div class="h-icon">📅</div>
+      <h4>Integrated Master Schedule (IMS)</h4>
+      <p>Lives in scheduling tools (Primavera P6, MS Project, Deltek Open Plan). Activity-level scheduling, critical path, resource loading, milestone tracking. Integrated with SAP but not resident in PS.</p>
+    </div>
+    <div class="hierarchy-card external">
+      <div class="badge">External / Integrated</div>
+      <div class="h-icon">📊</div>
+      <h4>Cost Management / EVM Hierarchy</h4>
+      <p>Lives in EVMS tools (Deltek Cobra, MPM, Empower) or custom EVM solutions. Control accounts, work packages, earned value calculations, IPMR/CPR reporting. May map to SAP WBS but is not structurally identical.</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">📄</div>
+      <h4>Customer Reporting Hierarchy</h4>
+      <p>The structure in which the customer receives their Contract Data Requirements List (CDRL) deliverables, progress reports, and status information. Often organized by contract CLIN, Statement of Work (SOW) paragraph, or deliverable rather than by the internal WBS structure. Typically managed in external project hierarchy management tools, EVM tools (which often maintain their own customer-facing reporting structures), BI/analytics platforms, or document management systems outside SAP PS.</p>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h4>Organizational / Responsibility Hierarchy</h4>
+      <p>The structure that defines who is accountable for what: Integrated Product Teams (IPTs), Control Account Managers (CAMs), functional leads. May overlap with the WBS but is often a distinct organizational view managed in workforce planning or EVMS tools.</p>
+    </div>
+  </div>
+
+  <h3>Where These Alternative Hierarchies Live</h3>
+
+  <p>A critical point for SAP solution architects: <strong>these alternative hierarchies typically live outside of SAP Project Systems.</strong> They are resident in integrated tools, some within the broader SAP ecosystem and others in best-of-breed third-party solutions:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Hierarchy</th>
+          <th>Primary Tooling</th>
+          <th>Integration with SAP PS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Financial / Logistic WBS</strong></td>
+          <td>SAP Project Systems (native)</td>
+          <td>This <em>is</em> the SAP PS structure</td>
+        </tr>
+        <tr>
+          <td><strong>Integrated Master Schedule</strong></td>
+          <td>Primavera P6, MS Project, Deltek Open Plan, and other integrated master scheduling tools</td>
+          <td>Bi-directional integration via middleware (cProjects, Open PS, or third-party connectors). Schedule dates and milestones map to PS network activities or WBS dates.</td>
+        </tr>
+        <tr>
+          <td><strong>EVM / Cost Management</strong></td>
+          <td>Deltek Cobra, MPM, Empower, Forproject, PPM</td>
+          <td>Actuals pulled from SAP PS/CO. Budgets and EACs may flow bi-directionally. Control account mapping to WBS elements.</td>
+        </tr>
+        <tr>
+          <td><strong>Customer Reporting</strong></td>
+          <td>External project hierarchy management tools, EVM tools (which often maintain customer-facing report structures), BI/Analytics (SAC, Tableau, Power BI), document management</td>
+          <td>Consumes SAP data but presents it in a customer-aligned hierarchy that differs from the internal WBS. The reporting structure is typically maintained in the external tool and mapped back to SAP WBS elements for data extraction.</td>
+        </tr>
+        <tr>
+          <td><strong>Organizational Accountability</strong></td>
+          <td>PPM tools, EVMS tools, workforce planning tools</td>
+          <td>CAM assignments may map to WBS elements but organizational hierarchy is managed externally.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Multi-Hierarchy Imperative</div>
+    <p>Many times, <strong>multiple hierarchies are needed to successfully execute a project.</strong> This is not a deficiency in SAP PS; it is a reality of project-centric industries. The SAP PS WBS should be designed to serve its core role well (financial/logistic backbone and demand source) and should be designed with clean integration points to the other hierarchies that serve scheduling, earned value, customer reporting, and organizational accountability. Attempting to force all of these views into a single SAP PS WBS hierarchy results in a structure that is too deep, too complex, too rigid, and ultimately fails to serve any of its purposes well.</p>
+    <p style="margin-top: 1rem;">The organizations that get this right design the SAP PS WBS for its financial and logistic purpose first, then establish clear mapping and integration patterns to the external hierarchies. The organizations that get it wrong try to replicate the schedule or the customer reporting structure inside PS and end up with a WBS that is both unmanageable in SAP and inadequate for the external tools.</p>
+  </div>
+
+  <h3>Implications for SAP Solution Architecture</h3>
+  <ul>
+    <li><strong>WBS depth should be driven by financial and logistic requirements,</strong> not by scheduling granularity or customer CDRL structure. If the schedule needs 500 activities, that does not mean the WBS needs 500 elements.</li>
+    <li><strong>Integration architecture is paramount.</strong> The design of how data flows between SAP PS and external scheduling, EVM, and reporting tools is as important as the WBS design itself. Budget these integration workstreams explicitly.</li>
+    <li><strong>Master data mapping between hierarchies</strong> (e.g., which WBS element maps to which control account, which schedule activity, which customer CLIN) must be defined during design and maintained as a governed data set throughout the project lifecycle.</li>
+    <li><strong>Within the SAP ecosystem,</strong> tools like PPM (Portfolio and Project Management), SAP Analytics Cloud, and SAP S/4HANA Embedded Analytics can host some of these alternative views. But for many A&amp;D programs, particularly those with EVMS requirements under DFARS 252.234-7002, the external tooling ecosystem (Primavera, Cobra, etc.) is the established standard.</li>
+    <li><strong>Don't fight the ecosystem.</strong> The A&amp;D industry has mature, proven toolsets for scheduling and earned value. SAP PS's value is as the financial and logistic backbone that feeds and receives data from these tools, not as a replacement for them.</li>
+  </ul>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 07: CHALLENGES ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="challenges">
+  <div class="sec-label">Section 07: Implementation Challenges</div>
+  <h2>Implementation Challenges</h2>
+
+  <div class="bluf">
+    <div class="bluf-label">Perspective</div>
+    <p>SAP Project Systems is among the most complex and mature modules in the SAP ecosystem. For production and manufacturing A&amp;D companies in particular, PS implementation carries risks and challenges that are routinely underestimated. These are not reasons to avoid PS; they are reasons to invest in proper design, testing, and change management.</p>
+  </div>
+
+  <h3>1. Module Complexity &amp; Maturity</h3>
+  <p>PS has been in the SAP portfolio since R/3. Its configuration surface area is enormous: project profiles, WBS element profiles, network types, activity types, milestone profiles, budget profiles, settlement rules, Results Analysis keys, billing plan types, and dozens of intersecting configuration objects. The permutations create a configuration matrix that takes experienced consultants months to navigate correctly. For A&amp;D companies with both manufacturing and service delivery, the PS/PP/CO intersection is particularly dense.</p>
+
+  <h3>2. WBS Design Complexity for Manufacturing A&amp;D</h3>
+  <p>Companies that build physical products (aircraft, satellites, missile systems) face a materially different PS design challenge than pure services companies. The WBS must accommodate both cost management (financial view) and logistics (demand/supply for production). The interaction between project stock, plant stock, MRP, and production orders creates dependencies that, if misconfigured, result in either unplanned procurement, production shortages, or cost postings to the wrong WBS elements. The PMMO integration for unitized programs adds another layer of complexity.</p>
+
+  <h3>3. Period-End Processing Sensitivity</h3>
+  <p>PS period-end is unforgiving. The sequence (overhead calculation, Results Analysis, settlement) must execute in the correct order with the correct scope. A single missed step or incorrect scope selection can cascade errors through WIP, revenue recognition, and P&amp;L postings. In S/4HANA, the period-end close is tighter and more automated, but the consequences of misconfiguration are equally severe.</p>
+
+  <h3>4. Budget Control (AVAC) Configuration</h3>
+  <p>Availability Control (AVAC) is PS's mechanism for preventing spending beyond authorized budgets, a critical requirement for partially funded government contracts. However, AVAC is notoriously difficult to configure correctly. Tolerance keys, budget profiles, and the interaction between overall, annual, and distributed budgets create a configuration matrix that frequently results in either over-controlling (blocking legitimate transactions) or under-controlling (failing to prevent overruns). Most organizations require multiple post-go-live iterations to achieve a functioning AVAC configuration.</p>
+
+  <h3>5. End-to-End Integration Testing Scope</h3>
+  <p>Because PS sits at the center of the integration landscape, testing is more complex than any other module combination. A single WBS element must be tested as the account assignment object for MM procurement, HR time entry, PP production orders, SD billing, CO overhead allocation, and FI settlement, simultaneously, in sequence, with correct master data. End-to-end scenario testing from contract award through final billing is essential and requires significantly more time than most implementation schedules allow.</p>
+
+  <h3>6. Organizational Change Management</h3>
+  <p>PS implementations change how program managers, CAMs, contracts administrators, and cost accountants interact with their work. The transition from spreadsheet-based cost tracking, desktop EVM tools, and manual billing processes to a fully integrated PS-driven model is a significant behavioral change, one routinely underestimated in OCM planning. Adoption failure is more common than technology failure in PS implementations.</p>
+
+  <div class="callout">
+    <div class="callout-label">The Bottom Line</div>
+    <p>None of these challenges are insurmountable. RevTech has designed and implemented PS architectures for some of the most complex GovCon and A&amp;D programs in the country. But enter with clear eyes. <strong>Plan for more design time, more integration testing, and more change management than your initial estimate suggests.</strong> The cost of getting PS right upfront is a fraction of the cost of fixing a poorly designed implementation on live contracts.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 08: CONCLUSION ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="conclusion">
+  <div class="sec-label">Section 08: Conclusion</div>
+  <h2>Why It's Worth It</h2>
+
+  <p>After articulating the complexity and the risks, the question is fair: <em>is SAP Project Systems worth it?</em> For US Government Contractors and Aerospace &amp; Defense companies operating in a CAS/FAR-regulated, EVMS-required, multi-contract environment, <strong>the answer is yes.</strong></p>
+
+  <p>No other ERP module provides the integrated financial and logistic backbone that PS delivers. The ability to collect costs, control budgets, drive procurement and production demand, recognize revenue, and generate customer billing from a single, auditable WBS hierarchy is a capability that cannot be replicated by any combination of spreadsheets, standalone tools, or alternative ERP modules.</p>
+
+  <h3>The Strategic Value Proposition</h3>
+  <ul>
+    <li><strong>Single source of truth:</strong> PS eliminates the reconciliation burden between disconnected systems. When cost, schedule, billing, and financial data all flow through the WBS, the "which number is right?" question disappears.</li>
+    <li><strong>DCAA audit readiness:</strong> System-generated cost reports from PS carry higher credibility with auditors than manually compiled data. The traceability from time entry to cost posting to overhead application to settlement is unbroken and auditable.</li>
+    <li><strong>Real-time visibility:</strong> Program managers see burdened cost, budget consumption, and billing status in real time, not in last month's spreadsheet. This enables proactive management of EACs, funding requirements, and margin at risk.</li>
+    <li><strong>Scalability:</strong> PS handles everything from a $50K T&amp;M task order to a multi-billion-dollar, multi-year platform development program within the same architecture. The WBS design patterns scale; the integration patterns repeat.</li>
+    <li><strong>Multi-Hierarchy readiness:</strong> When properly designed as the financial and logistic backbone (not as a do-everything hierarchy), PS integrates cleanly with external scheduling, EVM, and reporting tools, enabling the Multi-Hierarchy approach that complex programs require.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="callout-label">RevTech's Perspective</div>
+    <p>We've seen PS implementations fail, and we've seen them transform how companies manage their programs. The difference is almost never the technology. It's the quality of the design, the depth of the integration testing, the rigor of the change management, and the willingness to invest in getting the WBS architecture right before going live. If you're going to do it, do it right. The ROI is real, but only if the foundation is sound.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 09: RELATED WHITEPAPER ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="related">
+  <div class="sec-label">Section 09: Related Content</div>
+  <h2>Related: SAP PaPM White Paper</h2>
+
+  <p>For a detailed technical and strategic assessment of SAP Profitability and Performance Management (PaPM) and its role in CAS-compliant government contractor costing, including S/4HANA integration, costing sheet architecture, the FPRP-to-FPRA lifecycle, and an evaluation of native S/4 alternatives, see our companion white paper:</p>
+
+  <div class="callout">
+    <div class="callout-label">Companion White Paper</div>
+    <p><strong><a class="xref" href="https://blogs.revtech.consulting/sap-papm-whitepaper.html" target="_blank">SAP PaPM: A&amp;D Costing SME Briefing</a></strong></p>
+    <p>Covers: What PaPM is and what problems it solves, technical integration with S/4HANA, restrictions and limitations, A&amp;D-specific use cases, how standard S/4 accomplishes the same capabilities, SAP Costing Sheets and FPRA rate application, the full FPRP-to-FPRA lifecycle, and why major A&amp;D companies are not widely using PaPM.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- ── SECTION 10: ABOUT ── -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="sec-label">Section 10: About</div>
+  <h2>About Revelation Technologies</h2>
+
+  <p>Revelation Technologies (RevTech) offers specialized SAP consulting and solution architecture services to Aerospace &amp; Defense and US Government Contractors. Our team of US citizens specializes in complex SAP S/4HANA implementations and business transformations for government contractors operating under CAS, FAR, and DFARS compliance requirements.</p>
+
+  <p>Our Aerospace &amp; Defense practice brings deep expertise in SAP Project Systems, Controlling, Production Planning, and the integrated GovCon solution landscape, including Dassian, Cognitus, and the broader ecosystem of SAP-native tools that serve the A&amp;D industry.</p>
+
+  <p>For more information, visit <a class="xref" href="https://revtech.consulting" target="_blank">revtech.consulting</a>.</p>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" /><br/>
+  &copy; 2026 Revelation Technologies, LLC &middot; revtech.consulting<br/>
+  SAP Project Systems: A&amp;D Solution Architecture White Paper<br/><br/>
+  Publicly Available Use
+</footer>
+
+</body>
+</html>

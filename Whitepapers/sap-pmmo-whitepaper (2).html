@@ -849,7 +849,7 @@
 
       <div class="callout amber">
         <strong>Key Design Implication</strong>
-        PMMO with non-valuated project stock means material is managed on a quantity basis only at the inventory level. Costs are not posted to inventory accounts at Goods Receipt. Instead, procurement and production costs post directly to the WBS element. Distribution then moves those costs to the operative project WBS elements. Understanding this cost flow is critical before designing any PMMO implementation.
+        PMMO with non-valuated project stock means material is managed on a quantity basis only at the inventory level. Costs are not posted to inventory accounts at Goods Receipt. Instead, external procurement costs are posted directly to the Group WBS at receipt and production costs post directly to production orders. Distribution then moves those costs to the operative project WBS elements as either direct material or labor expense. Understanding this cost flow is critical before designing any PMMO implementation.
       </div>
     </div>
 
@@ -887,7 +887,7 @@
 
       <ul class="bullet-list">
         <li><strong>Inventory segregation is automatic:</strong> Material received against a grouping WBS element's purchase order goes into that group's stock segment. It cannot be consumed against a different group without an explicit transfer posting.</li>
-        <li><strong>Costs are demand-driven, not period-average:</strong> With non-valuated project stock, costs post at their actual transactional values directly to the WBS element at time of receipt or production confirmation, not at a period-weighted average standard cost.</li>
+        <li><strong>Costs are demand-driven, not period-average:</strong> With non-valuated project stock, costs post at their actual transactional values directly to the WBS element at time of receipt or production confirmation, not at a period-weighted average standard cost. In reality, with Valuated Project Stock <em>Inventory</em> that is not valued using Standard Costing, the cost is in actuality Moving Average. <em>Example:</em> if there are 2 project stock POs for the same part number with the same WBS but with 2 different prices, the system will calculate a MAP for the stock on the WBS as Moving Average. This is done in table QBEW, which is the project stock equivalent of MBEW for plant stock. The goods issue of the material from Project Stock inventory would be at MAP in this scenario.</li>
         <li><strong>MRP planning is group-specific:</strong> MRP runs independently for each grouping WBS element. Requirements from all assigned operative WBS elements are aggregated at the group level, and planned orders/purchase requisitions are created account-assigned to the grouping WBS element.</li>
         <li><strong>Actual costs trace to every BOM level:</strong> Because procurement and production orders at every level of a multi-level BOM are account-assigned to grouping WBS elements, PMMO provides a continuous cost trace from raw material purchase through finished goods delivery to the demand source, with actuals at every step.</li>
       </ul>
