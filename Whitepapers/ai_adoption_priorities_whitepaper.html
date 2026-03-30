@@ -3,7 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The AI-Ready Defense Contractor | Revelation Technologies</title>
+<title>The Organizations That Move Now Will Win the Next Decade | Revelation Technologies</title>
+
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTK4KQMXD7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FTK4KQMXD7');
+</script>
+
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "9828377";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script>
+<script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9828377&fmt=gif" />
+</noscript>
+
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -26,7 +56,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--light-gray); }
 
 body {
   font-family: var(--font-body);
@@ -221,10 +251,12 @@ body {
 
 .section-tint {
   background: var(--blue-tint);
+  color: var(--dark-text);
 }
 
 .section-white {
   background: var(--white);
+  color: var(--dark-text);
 }
 
 .section-label {
@@ -372,6 +404,7 @@ body {
 .priority-section {
   padding: 72px 0 80px;
   border-bottom: 1px solid #E5E7EB;
+  background: var(--white);
 }
 
 .priority-section:nth-child(even) {
@@ -559,6 +592,7 @@ body {
 .conclusion-section {
   background: var(--white);
   padding: 80px 0;
+  color: var(--dark-text);
 }
 
 .about-block {
@@ -725,6 +759,61 @@ body {
 }
 
 /* ============================================
+   USE CASE CARDS
+   ============================================ */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.usecase-card {
+  background: var(--white);
+  border-radius: 6px;
+  padding: 24px 28px;
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.usecase-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.usecase-content h4 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.usecase-content p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--med-gray);
+}
+
+@media (max-width: 768px) {
+  .usecase-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer {
@@ -806,7 +895,7 @@ body {
   <div class="cover-inner">
     <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" class="cover-logo">
     <div class="cover-accent"></div>
-    <h1>The AI-Ready<br>Defense Contractor</h1>
+    <h1>The Organizations<br>That Move Now Will<br>Win the Next Decade</h1>
     <p class="cover-subtitle">10 Strategic Priorities for AI Adoption in Aerospace & Defense Organizations Operating Across Government and Commercial Markets</p>
     <div class="cover-meta">
       <span>Strategic White Paper</span>
@@ -829,26 +918,20 @@ body {
   <div class="container">
     <div class="reveal">
       <div class="section-label">Executive Summary</div>
-      <h2 class="section-title">Speed with Direction</h2>
+      <h2 class="section-title">AI Adoption for A&D Organizations</h2>
       <div class="section-divider"></div>
     </div>
     <div class="reveal">
-      <p class="body-text">Artificial intelligence is no longer a future consideration for Aerospace & Defense organizations. It is a present-tense competitive requirement. The companies that move decisively and strategically on AI adoption will win more work, execute more efficiently, and deliver better outcomes across both their government and commercial portfolios. Those who wait for the market to settle or for a perfect regulatory framework will find themselves structurally disadvantaged on both sides of the house.</p>
+      <p class="body-text">AI adoption in Aerospace & Defense is accelerating, and organizations that operate across both government and commercial markets face a unique version of this challenge. The government side carries compliance constraints around CUI, ITAR, FAR/DFARS, and CMMC. The commercial side moves faster with fewer regulatory requirements. Most A&D companies share systems, data, and people across both segments. AI adoption strategies need to account for that reality.</p>
     </div>
     <div class="reveal">
-      <p class="body-text">But speed without direction creates risk. Many A&D firms operate across both government and commercial markets, and that dual business model introduces a layer of complexity that purely commercial AI playbooks ignore. Controlled Unclassified Information (CUI), ITAR restrictions, FAR/DFARS compliance, and CMMC requirements govern the government side, while the commercial side may move faster but still intersects with the same data systems, workforce, and infrastructure. AI adoption strategies must account for both operating environments simultaneously, not treat them as separate initiatives.</p>
-    </div>
-    <div class="reveal">
-      <p class="body-text">This white paper presents 10 strategic priorities that provide a structured roadmap for A&D leaders who operate across government and commercial markets and are committed to AI adoption without sacrificing compliance, security, or operational discipline. Each priority includes specific Key Performance Indicators (KPIs) designed to give leadership teams the ability to measure progress objectively and hold their organizations accountable, regardless of which business segment benefits.</p>
+      <p class="body-text">This paper presents 10 priorities for AI adoption designed for organizations managing this dual operating environment. Each priority includes a practical framework and measurable KPIs. The priorities are organized around three themes: getting the foundation right, capturing value through process redesign and AI-native tooling, and building the organizational capabilities to sustain AI over time.</p>
     </div>
     <div class="reveal">
       <div class="callout">
         <div class="callout-title">Who This Is For</div>
-        <div class="callout-body">CEOs, CTOs, CIOs, and VP-level leaders at Aerospace & Defense firms with $50M+ in revenue that operate across both US Government and commercial markets. This paper is especially relevant for organizations managing commingled business lines where government compliance requirements and commercial speed-to-market pressures coexist. It delivers a practical, compliance-aware framework rather than abstract technology vision.</div>
+        <div class="callout-body">CEOs, CTOs, CIOs, and VP-level leaders at Aerospace & Defense firms with $50M+ in revenue that operate across government and commercial markets. This paper provides a practical, compliance-aware framework for AI adoption, not abstract technology vision.</div>
       </div>
-    </div>
-    <div class="reveal">
-      <p class="body-text">The priorities are sequenced to balance urgency with prudence. They begin with governance and data foundations, move through high-impact operational use cases that span both government and commercial segments, and conclude with the measurement and optimization practices required for sustained AI value creation. Organizations do not need to complete them sequentially, but all ten should be active considerations within the first 12 to 24 months of any serious AI program. Companies operating across both markets will find that many of these priorities create compounding benefits when applied enterprise-wide rather than within a single business segment.</p>
     </div>
   </div>
 </section>
@@ -860,46 +943,44 @@ body {
   <div class="container">
     <div class="reveal">
       <div class="section-label">Strategic Framework</div>
-      <h2 class="section-title">Two Value Vectors for AI Investment</h2>
+      <h2 class="section-title">Two Categories of AI Value</h2>
       <div class="section-divider"></div>
-      <p class="body-text">Before evaluating specific priorities, leadership teams need a clear lens for identifying where AI creates the most value. Across government and commercial A&D operations, AI investment opportunities fall into two distinct vectors. Every use case, pilot, and business case should be evaluated through one or both of these lenses. Organizations that fail to apply this framework tend to invest in generic AI experimentation that never connects to the operational bottlenecks or cost structures that actually constrain the business.</p>
+      <p class="body-text">The most common mistake in AI adoption is treating it as an automation layer bolted onto existing processes. Organizations that limit AI to speeding up how things work today will capture a fraction of the available value. The real opportunity is rethinking how work gets done and what tools support it in an environment where AI is a foundational capability, not an add-on.</p>
     </div>
     <div class="reveal">
       <div class="vector-grid">
         <div class="vector-card">
           <div class="vector-icon">&#9881;</div>
-          <div class="vector-label">Vector 1</div>
-          <h3>Automate What Is Manual Today</h3>
-          <p>Every A&D organization carries a heavy burden of manual, repetitive processes that consume skilled labor and introduce human error. Compliance cross-referencing, EVM data consolidation, contract clause review, timecard validation, variance analysis, and dozens of other workflows are still performed manually in spreadsheets, emails, and disconnected tools. AI can automate these tasks at a fraction of the current cost, freeing your most experienced people to focus on judgment-intensive work that actually requires their expertise.</p>
+          <div class="vector-label">Category 1</div>
+          <h3>Redesign How Work Gets Done</h3>
+          <p>Instead of automating a manual process as it exists today, ask whether the process should exist in its current form at all. Many workflows in A&D were designed around the constraints of manual execution: sequential approvals, spreadsheet-based analysis, document-centric handoffs. AI removes those constraints. The opportunity is to redesign workflows from the outcome backward, with AI as a core participant rather than a bolt-on accelerator.</p>
           <div class="vector-examples">
-            <span>Common Targets</span>
-            <p>EVM variance analysis, proposal compliance matrices, invoice validation, data entry across disconnected systems, manual report generation, quality inspection documentation, contract modification tracking</p>
+            <span>Shift in Thinking</span>
+            <p>Monthly reporting cycles become continuous AI-monitored exception management. Sequential review processes become real-time requirement mapping as source documents are ingested. Manual data assembly becomes a living dashboard fed by AI synthesis, not a periodic human effort.</p>
           </div>
         </div>
         <div class="vector-card">
           <div class="vector-icon">&#9879;</div>
-          <div class="vector-label">Vector 2</div>
-          <h3>Rationalize Your Software Portfolio</h3>
-          <p>Every A&D organization carries a portfolio of software tools beyond its core platforms. Some deliver deep, differentiated value. Others were the right answer at the time of purchase but no longer align with how the business operates. And some persist simply because building a tailored alternative was historically too expensive and too slow. AI-assisted development fundamentally changes that equation. Applications that once required six months and a dedicated development team can now be prototyped in days and deployed in weeks. This is not about replacing core business platforms. It is about rationalizing the long tail of tools, custom code, and point solutions that surround them, keeping what works and building better alternatives where it does not.</p>
+          <div class="vector-label">Category 2</div>
+          <h3>Rethink Your Technology Stack</h3>
+          <p>AI-assisted development has changed what is possible to build, how fast, and at what cost. This creates an opportunity to re-evaluate your technology portfolio with fresh eyes. Which tools were purchased to compensate for manual limitations that AI now eliminates? Which platforms no longer reflect how your teams actually operate? Where can purpose-built, AI-native applications replace legacy tooling that was designed for a pre-AI world?</p>
           <div class="vector-examples">
-            <span>Common Targets</span>
-            <p>Custom reporting dashboards, proposal content management systems, document comparison tools, program status trackers, supplier scorecards, training and compliance tracking portals, workflow approval engines, internal knowledge bases</p>
+            <span>Shift in Thinking</span>
+            <p>Move from buying generic platforms and adapting your processes to fit them, to building targeted solutions designed around your actual workflows, compliance requirements, and data structures, deployed in weeks instead of months.</p>
           </div>
         </div>
       </div>
     </div>
     <div class="reveal">
       <div class="section-divider" style="margin: 40px 0 28px;"></div>
-      <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 16px; line-height: 1.35;">The Convergence: From Automation to a Digital Workforce</h3>
-      <p class="body-text">There is a third outcome that emerges naturally when both vectors mature, and leaders should plan for it deliberately rather than discover it accidentally. As AI automates manual processes and replaces costly point solutions, the logical next step is not simply doing the same work faster. It is rethinking which work requires a human at all.</p>
-      <p class="body-text">The concept of a digital workforce, where AI agents handle defined scopes of work end-to-end rather than just assisting a human operator, is already operational in forward-leaning organizations. An AI agent that monitors EVM data, identifies variances, drafts the narrative explanation, and routes it for program manager review is not a productivity tool. It is a digital team member performing a role that previously required a full-time analyst. An AI agent that continuously scans your supply base for financial risk, cross-references delivery performance, and generates exception reports is doing work that a procurement analyst once did manually across spreadsheets and email threads.</p>
-      <p class="body-text">This is not about wholesale replacement of people. It is about honest assessment of where human judgment is essential and where it is not. The highest-value people in your organization, the program managers, engineers, capture leads, and strategic thinkers, are often buried in tasks that do not require their expertise. A digital workforce strategy frees those people to operate at the top of their capability while AI agents handle the volume, the routine, and the repetitive. Organizations that approach this thoughtfully will retain and redeploy their best talent into higher-impact roles. Organizations that ignore it will watch competitors do more with leaner teams and lower overhead rates, a structural disadvantage that compounds with every contract cycle.</p>
-      <p class="body-text">The practical path is incremental: start with AI-assisted workflows where a human remains in the loop, then graduate proven workflows to agent-led execution with human oversight, and eventually allow fully autonomous operation for well-defined, low-risk processes. Each step should be measurable, reversible, and aligned with the governance framework established in Priority 1.</p>
+      <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 16px; line-height: 1.35;">Where This Leads: The Digital Workforce</h3>
+      <p class="body-text">When processes are redesigned with AI as a core participant rather than a helper, a natural next step emerges: certain workflows transition from human-executed to agent-executed. AI agents handle defined scopes of work end-to-end with human oversight. This is not about replacing people. It is about deploying human judgment where it matters most and letting AI handle the volume, the routine, and the data-intensive work it is better suited for.</p>
+      <p class="body-text">The path is incremental. Start with AI-assisted workflows where a human stays in the loop. Graduate proven workflows to agent-led execution with human review at key checkpoints. Each step should be measurable, reversible, and governed.</p>
     </div>
     <div class="reveal">
       <div class="callout">
-        <div class="callout-title">How to Apply This Framework</div>
-        <div class="callout-body">When evaluating any AI initiative, ask three questions: (1) Are we paying skilled people to do repetitive work that a well-designed AI workflow could handle? (2) Does our current software portfolio include tools we could now build faster, cheaper, and more tailored to our needs with AI-assisted development? (3) Once automated, could this entire workflow be handled by an AI agent with human oversight rather than human execution? If the answer to questions one or two is yes, the initiative deserves a pilot. If both, it should move to the front of the queue. If the answer to question three is also yes, you are looking at a digital workforce opportunity that fundamentally changes your cost structure.</div>
+        <div class="callout-title">Evaluation Framework</div>
+        <div class="callout-body">For each AI initiative, ask three questions: (1) If we were designing this process from scratch with AI available, would it look anything like it does today? (2) Is our current tooling built for how we work now, or for how we worked five years ago? (3) Once redesigned, could this workflow be handled by an AI agent with human oversight? If the answer to any of these is yes, the initiative warrants a pilot.</div>
       </div>
     </div>
   </div>
@@ -912,22 +993,22 @@ body {
   <div class="container">
     <div class="reveal">
       <div class="section-label">Overview</div>
-      <h2 class="section-title">The 10 Strategic Priorities</h2>
+      <h2 class="section-title">The 10 Priorities</h2>
       <div class="section-divider"></div>
-      <p class="body-text">The following priorities represent the essential building blocks for responsible, high-impact AI adoption in Aerospace & Defense organizations that operate across both government and commercial markets. Each priority is designed to work within the realities of a mixed business model, where compliance requirements, data sensitivity, and operational tempo differ by segment. Each is supported by measurable KPIs to enable leadership accountability.</p>
+      <p class="body-text">These priorities cover the full lifecycle of AI adoption: governance and data foundations, process redesign and technology rationalization, workforce capability building, security, and measurement. Each includes KPIs for leadership accountability.</p>
     </div>
     <div class="reveal">
       <ol class="priorities-list">
-        <li><a href="#p1"><span class="num">01</span><span class="name">Treat AI as a Board-Level Strategic Bet, Not an IT Project</span></a></li>
-        <li><a href="#p2"><span class="num">02</span><span class="name">Know Your Data or Your AI Will Be Useless</span></a></li>
-        <li><a href="#p3"><span class="num">03</span><span class="name">Kill the Pilot Graveyard: Ship to Production or Shut It Down</span></a></li>
-        <li><a href="#p4"><span class="num">04</span><span class="name">Automate the 10,000 Hours Nobody Talks About</span></a></li>
-        <li><a href="#p5"><span class="num">05</span><span class="name">Rethink Build vs. Buy: The Equation Has Changed</span></a></li>
-        <li><a href="#p6"><span class="num">06</span><span class="name">Make Your Best People 10x, Not Redundant</span></a></li>
-        <li><a href="#p7"><span class="num">07</span><span class="name">Build the Digital Workforce Before Your Competitors Do</span></a></li>
-        <li><a href="#p8"><span class="num">08</span><span class="name">Make Security the Accelerator, Not the Brake</span></a></li>
-        <li><a href="#p9"><span class="num">09</span><span class="name">Measure AI Like You Measure Programs: Ruthlessly</span></a></li>
-        <li><a href="#p10"><span class="num">10</span><span class="name">The Window Is Closing: Move Now or Move Aside</span></a></li>
+        <li><a href="#p1"><span class="num">01</span><span class="name">Put AI on the Executive Agenda, Not Buried in IT</span></a></li>
+        <li><a href="#p2"><span class="num">02</span><span class="name">Know Your Data: What's CUI, What's Commingled, What's Clean</span></a></li>
+        <li><a href="#p3"><span class="num">03</span><span class="name">Run Pilots That Ship to Production or Get Killed at 90 Days</span></a></li>
+        <li><a href="#p4"><span class="num">04</span><span class="name">Redesign Your Highest-Cost Workflows as if AI Existed from Day One</span></a></li>
+        <li><a href="#p5"><span class="num">05</span><span class="name">Rebuild the Tools That No Longer Fit How Your Teams Operate</span></a></li>
+        <li><a href="#p6"><span class="num">06</span><span class="name">Train Your Workforce to Rethink Processes, Not Just Use New Tools</span></a></li>
+        <li><a href="#p7"><span class="num">07</span><span class="name">Build a Digital Workforce for Repeatable, High-Volume Operations</span></a></li>
+        <li><a href="#p8"><span class="num">08</span><span class="name">Build Security That Enables AI Adoption Instead of Blocking It</span></a></li>
+        <li><a href="#p9"><span class="num">09</span><span class="name">Measure AI ROI with Rigor</span></a></li>
+        <li><a href="#p10"><span class="num">10</span><span class="name">Start Now Because Overhead Rates, Win Rates, and Cycle Times Are All at Stake</span></a></li>
       </ol>
     </div>
   </div>
@@ -941,13 +1022,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">01</div>
-        <div class="priority-title-bar"><h2>Treat AI as a Board-Level Strategic Bet, Not an IT Project</h2></div>
+        <div class="priority-title-bar"><h2>Put AI on the Executive Agenda, Not Buried in IT</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">The single most common mistake in AI adoption is handing it to the IT department and calling it a technology initiative. AI is not a technology initiative. It is a business model transformation that touches every function, every cost structure, and every competitive dynamic in your organization. If your CEO is not personally accountable for AI outcomes, you are signaling to the entire organization that this is optional.</p>
-      <p class="body-text">In A&D organizations that operate across government and commercial markets, the governance challenge is compounded. The government side carries compliance constraints around data, security, and procurement that the commercial side does not. AI governance must account for both operating environments without creating a bureaucracy that paralyzes either. This requires a cross-functional AI Steering Committee with real decision-making authority, not an advisory body that produces slide decks. The committee should include program management, finance, contracts, security, legal, and the business unit leaders who own P&L. The charter should define funding thresholds, ethical boundaries, and a clear policy for when government-side constraints apply versus when the commercial business can move faster.</p>
-      <p class="body-text">The governance overhead should be proportional to the risk. Automating a manual reporting process should not require the same approval path as deploying an AI agent that touches CUI data. Build two lanes: a fast lane for low-risk automation and build initiatives, and a full review lane for anything involving sensitive data, government systems, or external-facing decisions. Organizations that apply one-size-fits-all governance to AI will either move too slowly to matter or too recklessly to survive an audit.</p>
+      <p class="body-text">AI governance should sit at the executive level, not within IT. A cross-functional AI Steering Committee with representation from program management, finance, contracts, security, legal, and business unit leadership should own decision rights, funding thresholds, and ethical boundaries. For organizations operating across government and commercial markets, the governance framework should define when government-side compliance requirements apply versus when the commercial side can move with fewer constraints.</p>
+      <p class="body-text">Governance overhead should be proportional to risk. Low-risk process redesign initiatives need a fast approval path. Initiatives involving sensitive data or government systems need a full review. Two lanes, clearly defined, with decision timelines attached to each.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -955,10 +1035,10 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">CEO or COO named as executive accountable for AI outcomes</td><td class="kpi-target">Yes (not CIO/CTO alone)</td></tr>
-            <tr><td class="kpi-name">AI Steering Committee with charter and decision authority</td><td class="kpi-target">Operational within 90 days</td></tr>
-            <tr><td class="kpi-name">AI investment reviewed at board or senior leadership level</td><td class="kpi-target">Quarterly (minimum)</td></tr>
-            <tr><td class="kpi-name">Average time from AI initiative proposal to approval decision</td><td class="kpi-target">&lt;30 days for low-risk, &lt;60 days for high-risk</td></tr>
+            <tr><td class="kpi-name">AI Steering Committee operational with executive sponsor</td><td class="kpi-target">Within 90 days</td></tr>
+            <tr><td class="kpi-name">AI investment reviewed at senior leadership level</td><td class="kpi-target">Quarterly</td></tr>
+            <tr><td class="kpi-name">Average approval time: low-risk initiatives</td><td class="kpi-target">&lt;30 days</td></tr>
+            <tr><td class="kpi-name">Average approval time: high-risk initiatives</td><td class="kpi-target">&lt;60 days</td></tr>
           </tbody>
         </table>
       </div>
@@ -974,13 +1054,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">02</div>
-        <div class="priority-title-bar"><h2>Know Your Data or Your AI Will Be Useless</h2></div>
+        <div class="priority-title-bar"><h2>Know Your Data: What's CUI, What's Commingled, What's Clean</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">Every AI initiative that fails traces back to one of two root causes: bad data or no data. Before investing a dollar in AI tooling, models, or pilots, leadership must have an honest answer to a simple question: do we actually know where our data lives, what condition it is in, and what rules govern its use? In most A&D organizations, the honest answer is no.</p>
-      <p class="body-text">Data in this industry is uniquely complicated. Government programs generate CUI, ITAR-restricted technical data, and program-specific information that cannot be freely commingled with commercial data. But most organizations share ERP systems, engineering platforms, and analytical tools across both sides of the business. The result is a tangle of commingled datasets where nobody is entirely sure what is classified, what is restricted, and what is clean enough to feed an AI model. Organizations that deploy AI against this landscape without doing the classification work first are one audit away from a material compliance finding.</p>
-      <p class="body-text">The readiness assessment must go beyond data. It should produce three inventories that become the targeting map for every AI initiative that follows. First, a data maturity scorecard across both business segments. Second, a catalog of every significant manual process in the enterprise, ranked by hours consumed and error rates. Third, a landscape assessment of current vendor tools and custom applications, ranked by cost-to-value ratio and integration risk. These three inventories tell you where your data is ready, where your biggest automation opportunities hide, and where your vendor spend is vulnerable to disruption. Without them, you are guessing.</p>
+      <p class="body-text">Before investing in AI, leadership needs an honest picture of three things. First, data maturity: where does the data live, what condition is it in, and what regulatory constraints govern its use? In organizations with both government and commercial business, commingled datasets that blend program data across segments are common and must be identified and governed. Second, a manual process inventory: which processes consume the most skilled labor hours on repetitive, rules-based work? Third, a software landscape assessment: which tools deliver strong value and which could be built better and more tailored with AI-assisted development?</p>
+      <p class="body-text">These three inventories become the targeting map for every AI initiative that follows. Without them, pilot selection is guesswork and ROI measurement has no baseline.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -989,10 +1068,9 @@ body {
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
             <tr><td class="kpi-name">Enterprise data classified by sensitivity and regulatory constraint</td><td class="kpi-target">&gt;90% within 6 months</td></tr>
-            <tr><td class="kpi-name">Commingled datasets identified, segmented, and governed</td><td class="kpi-target">100% of shared systems assessed</td></tr>
-            <tr><td class="kpi-name">Manual process inventory completed and ranked</td><td class="kpi-target">Yes, with hours and error rates quantified</td></tr>
-            <tr><td class="kpi-name">Vendor/application landscape assessed with cost-to-value ratios</td><td class="kpi-target">Yes, completed within 120 days</td></tr>
-            <tr><td class="kpi-name">Data quality score against standardized rubric</td><td class="kpi-target">Baseline established, &gt;70% target</td></tr>
+            <tr><td class="kpi-name">Manual process inventory completed and ranked by cost</td><td class="kpi-target">Top 20 identified within 90 days</td></tr>
+            <tr><td class="kpi-name">Software landscape assessed with cost-to-value ratios</td><td class="kpi-target">Completed within 120 days</td></tr>
+            <tr><td class="kpi-name">Commingled datasets identified and segmented</td><td class="kpi-target">100% of shared systems assessed</td></tr>
           </tbody>
         </table>
       </div>
@@ -1008,13 +1086,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">03</div>
-        <div class="priority-title-bar"><h2>Kill the Pilot Graveyard: Ship to Production or Shut It Down</h2></div>
+        <div class="priority-title-bar"><h2>Run Pilots That Ship to Production or Get Killed at 90 Days</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">Most A&D organizations do not have a pilot problem. They have a production problem. There is no shortage of AI experiments running in corners of the enterprise, usually driven by one enthusiastic team that convinced someone to fund a proof of concept. The problem is that almost none of these pilots are designed to become production systems. They live in sandboxes, they demonstrate potential, and they die when the champion moves to another program or the budget cycle resets.</p>
-      <p class="body-text">Every AI pilot should be born with a production plan or it should not be born at all. That means a defined problem statement, a quantified baseline of current performance, a target outcome, an executive sponsor with budget authority, and a clear decision gate: at 90 days, this either moves to production or it gets killed. No extensions, no "phase two studies," no indefinite incubation. Use the two value vectors as your selection filter. Vector 1: where are skilled people spending hours on repetitive work that AI could automate? Vector 2: where does your software portfolio include tools you could now build better and more tailored with AI-assisted development? Each pilot should attack one or both of those vectors with measurable baselines.</p>
-      <p class="body-text">For organizations with both government and commercial business, spread the pilots across segments deliberately. Commercial-side pilots can move faster and build internal confidence. Government-side pilots prove that AI can work within compliance constraints. The portfolio should include at least one automation pilot and one build-replacement pilot. The automation pilot generates a quick win that the organization can see. The build-replacement pilot demonstrates structural cost reduction that earns executive attention and funds the next round.</p>
+      <p class="body-text">Every AI pilot should be designed with a production path from day one. That means a defined problem statement, a quantified baseline of current performance, a target outcome, an executive sponsor, and a clear decision gate: at 90 days, the pilot either moves to production, pivots, or shuts down. Use the two value categories as a selection filter. Category 1: where could processes be fundamentally redesigned with AI as a core participant? Category 2: where does the technology stack include tools that could be rebuilt as AI-native solutions?</p>
+      <p class="body-text">For mixed-business organizations, spread pilots across both segments. Commercial-side pilots can move faster and build internal confidence. Government-side pilots prove that AI works within compliance constraints. The portfolio should include at least one process redesign pilot and one technology rebuild pilot.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1024,9 +1101,8 @@ body {
           <tbody>
             <tr><td class="kpi-name">Active pilots with defined production decision gate</td><td class="kpi-target">3 to 5 within first 6 months</td></tr>
             <tr><td class="kpi-name">Pilot-to-production conversion rate</td><td class="kpi-target">&gt;50%</td></tr>
-            <tr><td class="kpi-name">Average time from pilot approval to production decision</td><td class="kpi-target">&lt;90 days</td></tr>
-            <tr><td class="kpi-name">Pilots killed or pivoted due to weak results</td><td class="kpi-target">Tracked openly (not a failure metric)</td></tr>
-            <tr><td class="kpi-name">Pilot coverage across segments and value vectors</td><td class="kpi-target">At least 1 per segment, 1 per vector</td></tr>
+            <tr><td class="kpi-name">Average time from approval to production decision</td><td class="kpi-target">&lt;90 days</td></tr>
+            <tr><td class="kpi-name">Coverage across segments and value categories</td><td class="kpi-target">At least 1 per segment, 1 per category</td></tr>
           </tbody>
         </table>
       </div>
@@ -1042,13 +1118,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">04</div>
-        <div class="priority-title-bar"><h2>Automate the 10,000 Hours Nobody Talks About</h2></div>
+        <div class="priority-title-bar"><h2>Redesign Your Highest-Cost Workflows as if AI Existed from Day One</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">Every A&D organization has thousands of hours per year buried in manual work that nobody has bothered to quantify because it has always been done that way. EVM variance narratives written by hand in spreadsheets. Compliance matrices built line-by-line from 300-page RFPs. Contract modifications tracked in email chains. Invoice validation performed by senior accountants who should be analyzing margins. Timecard exception reports assembled weekly by people who could be managing programs. This invisible labor is the single largest untapped ROI in your AI portfolio.</p>
-      <p class="body-text">The reason this gets overlooked is that no single manual process feels large enough to justify an AI investment. But in aggregate, these processes consume staggering quantities of your most expensive resource: skilled professionals billing at loaded rates against overhead or direct programs. When you map them collectively and sort by hours consumed, error rates, and labor cost, the business case builds itself. A 20-hour-per-week manual process running at a $150 loaded rate is $156,000 per year. Multiply that across a dozen similar processes and you are looking at seven figures in recoverable capacity.</p>
-      <p class="body-text">The strategic value goes beyond cost savings. Every hour you recover from manual work is an hour your people can spend on judgment-intensive, relationship-driven, and strategic activities that actually require human expertise. Proposal strategy. Customer relationship development. Program risk mitigation. Engineering innovation. The organizations that execute this priority are not cutting costs. They are reallocating human capital from low-value execution to high-value thinking.</p>
+      <p class="body-text">Most A&D organizations have thousands of hours per year embedded in workflows that were designed for a world without AI: periodic reporting cycles built around manual data assembly, review processes structured as sequential document passes, analysis performed by hand across disconnected systems. The opportunity is not just to automate these processes as they exist. It is to redesign them with AI as a foundational participant. A reporting process redesigned for AI does not just produce outputs faster. It shifts to continuous monitoring with exception-based human review, fundamentally changing when and how leaders engage with operational data.</p>
+      <p class="body-text">Start by mapping the highest-volume workflows and asking: if we were designing this from scratch today, with AI available, would it look anything like it does now? The ones where the answer is clearly no are your highest-value redesign targets. The result is not just efficiency. It is experienced professionals redeployed from process execution to the judgment-intensive work that actually requires their expertise.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1056,10 +1131,10 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">Manual processes inventoried and ranked by cost</td><td class="kpi-target">Top 20 identified within 90 days</td></tr>
-            <tr><td class="kpi-name">Annualized hours of manual labor eliminated by AI automation</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
-            <tr><td class="kpi-name">Error rate reduction in automated vs. manual processes</td><td class="kpi-target">Measured per process with baseline comparison</td></tr>
-            <tr><td class="kpi-name">Recovered capacity redeployed to higher-value work</td><td class="kpi-target">Tracked by function (not headcount reduction)</td></tr>
+            <tr><td class="kpi-name">High-volume workflows assessed for AI-native redesign</td><td class="kpi-target">Top 20 identified within 90 days</td></tr>
+            <tr><td class="kpi-name">Workflows redesigned with AI as core participant</td><td class="kpi-target">Tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Cycle time and error rate improvement in redesigned workflows</td><td class="kpi-target">Measured per workflow with baseline</td></tr>
+            <tr><td class="kpi-name">Recovered capacity redeployed to higher-value work</td><td class="kpi-target">Tracked by function</td></tr>
           </tbody>
         </table>
       </div>
@@ -1075,13 +1150,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">05</div>
-        <div class="priority-title-bar"><h2>Rethink Build vs. Buy: The Equation Has Changed</h2></div>
+        <div class="priority-title-bar"><h2>Rebuild the Tools That No Longer Fit How Your Teams Operate</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">Every A&D organization accumulates software over time. Some of it is mission-critical. Some of it was the right answer three years ago but no longer fits the way the business operates today. And some of it persists simply because building a tailored alternative was too expensive and too slow to justify at the time of purchase. AI-assisted development has fundamentally changed that calculus, and leaders should be asking a strategic question about every tool outside their core business platforms: is this still the best way to solve this problem, or can we now build something better, faster, and more closely aligned to how our teams actually work?</p>
-      <p class="body-text">This is not an argument against software partnerships. The right vendor relationships are force multipliers, and platforms that deliver deep, differentiated value should be invested in, not replaced. The opportunity is in the long tail: the tools that were purchased to fill a gap, the legacy custom applications that have become brittle and expensive to maintain, and the solutions where your team spends more time working around the product than working with it. AI-assisted development makes it realistic to build purpose-fit alternatives to these tools in days or weeks rather than months, tailored to your specific compliance requirements, data structures, and workflows.</p>
-      <p class="body-text">The strategic value goes beyond cost savings. Every rationalized tool is a reduction in integration complexity, vendor dependency, and technical debt. For organizations where overhead rates directly impact contract pricing competitiveness, a disciplined approach to software portfolio rationalization is not an IT exercise. It is a structural cost advantage that shows up in every bid.</p>
+      <p class="body-text">Every organization accumulates software tools over time. Some deliver strong value. Others were the right answer when they were purchased but no longer fit how the business operates. AI-assisted development makes it practical to build purpose-fit alternatives in days or weeks rather than months, tailored to your specific compliance requirements, data structures, and workflows. This is not an argument against software partnerships. The right vendor relationships are force multipliers. The opportunity is in the long tail: tools that fill gaps, legacy custom applications that have become brittle, and solutions where the team spends more time working around the product than with it.</p>
+      <p class="body-text">Every rationalized tool reduces integration complexity, dependency risk, and technical debt. For organizations where overhead rates directly impact contract pricing, disciplined software portfolio management is a structural cost advantage.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1089,10 +1163,10 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">Software portfolio reviewed for rationalization opportunities</td><td class="kpi-target">Full landscape review within 120 days</td></tr>
-            <tr><td class="kpi-name">Annual cost reduction from rationalized or replaced tools</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
-            <tr><td class="kpi-name">Time-to-deploy for AI-built applications vs. procurement cycle</td><td class="kpi-target">Measured per project with comparison</td></tr>
-            <tr><td class="kpi-name">Legacy custom applications retired or modernized</td><td class="kpi-target">Tracked with technical debt reduction quantified</td></tr>
+            <tr><td class="kpi-name">Software portfolio reviewed for rationalization opportunities</td><td class="kpi-target">Completed within 120 days</td></tr>
+            <tr><td class="kpi-name">Annual cost reduction from rationalized tools</td><td class="kpi-target">Tracked quarterly</td></tr>
+            <tr><td class="kpi-name">AI-built application time-to-deploy vs. procurement cycle</td><td class="kpi-target">Measured per project</td></tr>
+            <tr><td class="kpi-name">Legacy custom applications retired or modernized</td><td class="kpi-target">Tracked with debt reduction quantified</td></tr>
           </tbody>
         </table>
       </div>
@@ -1108,13 +1182,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">06</div>
-        <div class="priority-title-bar"><h2>Make Your Best People 10x, Not Redundant</h2></div>
+        <div class="priority-title-bar"><h2>Train Your Workforce to Rethink Processes, Not Just Use New Tools</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">The workforce conversation around AI is usually framed wrong. It is not about how many people AI will replace. It is about how much more your best people can accomplish when AI removes the low-value work from their day. Your senior capture manager should be building customer relationships and shaping opportunities, not spending 15 hours formatting compliance matrices. Your program controls lead should be advising the PM on cost risk, not consolidating data from four different spreadsheets into a monthly report. Your engineers should be solving technical problems, not searching through document repositories for specifications they know exist but cannot find.</p>
-      <p class="body-text">Workforce enablement should operate at three tiers. First, broad AI literacy for all employees, with emphasis on identifying automation opportunities in their own workflows. Every person should be able to answer: what repetitive tasks do I perform that a machine could handle? Second, role-specific enablement that develops "citizen builder" capability, where functional experts learn to use AI-assisted development tools to prototype the applications and workflows they need rather than submitting IT requests or purchasing another vendor tool. A contracts manager who can build a custom clause comparison application in days rather than waiting six months for IT is a transformative capability. Third, deep technical training for a core team of AI builders who develop and maintain production AI solutions across the enterprise.</p>
-      <p class="body-text">Do not outsource your AI knowledge entirely. Building internal capability is essential for sustained advantage. The organizations that treat AI as a vendor-managed service rather than a core competency will always be one contract cycle behind. For mixed-business organizations, internal AI competency is the only way to ensure that solutions developed for the commercial side can be adapted responsibly for government use, and vice versa.</p>
+      <p class="body-text">AI adoption requires capability at three levels. First, broad AI literacy for all employees so they can identify opportunities to redesign workflows and rethink how their function operates. Second, role-specific enablement that develops "citizen builder" capability, where functional experts use AI-assisted tools to prototype applications and workflows rather than submitting IT requests or purchasing additional vendor tools. Third, deep technical training for a core team of AI builders who develop and maintain production solutions across the enterprise.</p>
+      <p class="body-text">Building internal AI capability is essential. Strategic partnerships accelerate early adoption, but organizations that treat AI as entirely vendor-managed will not build the institutional knowledge required to adapt solutions across business segments or sustain them long-term.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1123,10 +1196,9 @@ body {
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
             <tr><td class="kpi-name">Workforce completing AI literacy training</td><td class="kpi-target">&gt;80% within 12 months</td></tr>
-            <tr><td class="kpi-name">Citizen builders trained and active across key functions</td><td class="kpi-target">5+ within 12 months</td></tr>
-            <tr><td class="kpi-name">Automation opportunities surfaced by frontline employees</td><td class="kpi-target">Tracked via intake process, reviewed monthly</td></tr>
-            <tr><td class="kpi-name">Internal AI technical team (FTEs or equivalents)</td><td class="kpi-target">Minimum 2 to 3 dedicated resources</td></tr>
-            <tr><td class="kpi-name">Employee AI adoption satisfaction score</td><td class="kpi-target">&gt;7/10 (survey-based)</td></tr>
+            <tr><td class="kpi-name">Citizen builders active across key functions</td><td class="kpi-target">5+ within 12 months</td></tr>
+            <tr><td class="kpi-name">Internal AI technical team size</td><td class="kpi-target">Minimum 2 to 3 dedicated resources</td></tr>
+            <tr><td class="kpi-name">Workflow redesign opportunities surfaced by employees</td><td class="kpi-target">Tracked via intake, reviewed monthly</td></tr>
           </tbody>
         </table>
       </div>
@@ -1142,13 +1214,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">07</div>
-        <div class="priority-title-bar"><h2>Build the Digital Workforce Before Your Competitors Do</h2></div>
+        <div class="priority-title-bar"><h2>Build a Digital Workforce for Repeatable, High-Volume Operations</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">Priorities 4, 5, and 6 create the conditions for a strategic shift that most A&D organizations have not yet confronted directly: the transition from AI as a tool that helps people work to AI as an agent that performs work. This is not science fiction and it is not a decade away. It is happening now, and the organizations that build this capability first will operate with fundamentally different cost structures than those that do not.</p>
-      <p class="body-text">A digital workforce means AI agents handling defined scopes of work end-to-end with human oversight rather than human execution. An agent that monitors EVM data, identifies variances, drafts narrative explanations, and routes them for program manager review is not a productivity tool. It is a digital team member performing a role that previously required a full-time analyst. An agent that continuously scans your supply base for financial risk, cross-references delivery performance, and generates exception reports eliminates a role that existed only because the volume of data exceeded human processing capacity. An agent that drafts initial proposal sections, cross-references compliance requirements, and flags gaps for a capture manager to resolve is doing the work of a junior proposal coordinator at machine speed.</p>
-      <p class="body-text">The practical path is incremental and measurable. Start with AI-assisted workflows where a human remains in the loop for every decision. Graduate proven workflows to agent-led execution with human oversight at key checkpoints. Eventually allow fully autonomous operation for well-defined, low-risk processes. Each step should be reversible and aligned with your governance framework. The competitive implication is straightforward: organizations that figure this out will field leaner teams with lower overhead rates. In an industry where overhead rates flow directly into contract pricing, that is a structural advantage that compounds with every bid.</p>
+      <p class="body-text">As redesigned workflows mature, certain processes can transition from AI-assisted (human executes with AI support) to agent-led (AI executes with human oversight). An AI agent that monitors operational data, identifies exceptions, drafts analysis, and routes it for leadership review is performing a defined role. An agent that continuously scans external data sources, cross-references performance metrics, and generates risk reports is handling work that previously required manual effort across multiple systems. These are practical applications available today, not speculative ones.</p>
+      <p class="body-text">The maturity path has three stages: AI-assisted (human in the loop for every step), agent-led with human oversight (AI executes, human reviews at checkpoints), and autonomous for well-defined, low-risk processes. Each transition should be measurable, reversible, and aligned with the governance framework.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1156,10 +1227,10 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">Workflows transitioned from human-executed to agent-assisted</td><td class="kpi-target">3+ within 12 months</td></tr>
-            <tr><td class="kpi-name">Workflows operating in agent-led mode with human oversight</td><td class="kpi-target">1+ within 18 months</td></tr>
-            <tr><td class="kpi-name">FTE-equivalent capacity created by digital workforce</td><td class="kpi-target">Quantified and tracked quarterly</td></tr>
-            <tr><td class="kpi-name">Quality/error rate: agent-executed vs. human-executed workflows</td><td class="kpi-target">Parity or better</td></tr>
+            <tr><td class="kpi-name">Workflows transitioned to agent-assisted mode</td><td class="kpi-target">3+ within 12 months</td></tr>
+            <tr><td class="kpi-name">Workflows operating in agent-led mode with oversight</td><td class="kpi-target">1+ within 18 months</td></tr>
+            <tr><td class="kpi-name">FTE-equivalent capacity created</td><td class="kpi-target">Quantified quarterly</td></tr>
+            <tr><td class="kpi-name">Quality: agent-executed vs. human-executed</td><td class="kpi-target">Parity or better</td></tr>
           </tbody>
         </table>
       </div>
@@ -1175,13 +1246,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">08</div>
-        <div class="priority-title-bar"><h2>Make Security the Accelerator, Not the Brake</h2></div>
+        <div class="priority-title-bar"><h2>Build Security That Enables AI Adoption Instead of Blocking It</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">In too many organizations, security is the reason AI adoption stalls. Not because the security risks are insurmountable, but because nobody has done the work to define what "secure AI deployment" actually looks like. The result is a vague sense that AI is risky, which translates into indefinite delays while security teams evaluate threats they do not yet fully understand. Meanwhile, competitors who have solved this problem are deploying and learning.</p>
-      <p class="body-text">AI does introduce real attack surfaces: model poisoning, adversarial inputs, data exfiltration through inference endpoints, and prompt injection. These threats require specific defensive measures. But the response should be a defined security framework for AI, not a blanket prohibition. For mixed-business organizations, the answer is a tiered architecture: a high-security enclave for government AI workloads that meets CMMC, NIST 800-171, and FedRAMP requirements, and a separate, faster-moving environment for commercial AI applications. Clear boundaries, strong monitoring at the seams, and explicit data flow rules between the two. The commercial side should not be held hostage to government authorization timelines for tools that will never touch CUI.</p>
-      <p class="body-text">One dimension that leaders consistently underestimate: as AI-assisted development accelerates the pace of internal application building, the security review process must keep pace. Applications built rapidly with AI tools still require code review, vulnerability scanning, and access control validation before they touch production data. Build a lightweight but rigorous security gate for AI-built applications so the speed advantage of AI-assisted development does not become a security liability. Get this right and security becomes the enabler that gives leadership confidence to move faster. Get it wrong and it becomes the excuse for doing nothing.</p>
+      <p class="body-text">AI introduces specific security considerations: model poisoning, adversarial inputs, data exfiltration through inference endpoints, and prompt injection. These require defined defensive measures, not blanket prohibitions. For mixed-business organizations, a tiered approach works well: a high-security environment for government AI workloads meeting CMMC, NIST 800-171, and FedRAMP requirements, and a separate environment for commercial AI applications with appropriate but less restrictive controls. Clear boundaries and monitoring between the two.</p>
+      <p class="body-text">As AI-assisted development accelerates internal application building, security review processes need to keep pace. AI-built applications still require code review, vulnerability scanning, and access control validation before touching production data. Build a lightweight security gate that maintains rigor without creating bottlenecks.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1191,9 +1261,8 @@ body {
           <tbody>
             <tr><td class="kpi-name">AI security framework published and operational</td><td class="kpi-target">Within 120 days</td></tr>
             <tr><td class="kpi-name">AI systems included in SSP and risk assessment</td><td class="kpi-target">100%</td></tr>
-            <tr><td class="kpi-name">Average time from AI security review request to clearance</td><td class="kpi-target">&lt;15 business days (low-risk), &lt;45 days (high-risk)</td></tr>
-            <tr><td class="kpi-name">AI-built applications passing security review before production</td><td class="kpi-target">100%</td></tr>
-            <tr><td class="kpi-name">AI-specific penetration testing completed</td><td class="kpi-target">Annually (minimum)</td></tr>
+            <tr><td class="kpi-name">AI-built applications passing security review</td><td class="kpi-target">100% before production</td></tr>
+            <tr><td class="kpi-name">AI-specific penetration testing</td><td class="kpi-target">Annually</td></tr>
           </tbody>
         </table>
       </div>
@@ -1209,13 +1278,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">09</div>
-        <div class="priority-title-bar"><h2>Measure AI Like You Measure Programs: Ruthlessly</h2></div>
+        <div class="priority-title-bar"><h2>Measure AI ROI with Rigor</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">A&D organizations know how to measure program performance with precision. Cost variance, schedule variance, EAC, TCPI. The discipline is rigorous because the consequences of poor measurement are severe: DCMA surveillance, DCAA audit findings, customer dissatisfaction, and margin erosion. AI investments deserve the same rigor, and most organizations are not applying it. They are tracking adoption metrics (how many people logged in) and satisfaction scores (do people like the tool) while ignoring the only question that matters: is this generating a return?</p>
-      <p class="body-text">Build an AI performance dashboard that tracks what actually moves the business. For automation initiatives: hours of manual labor eliminated, error rate improvements, cycle time reductions, and the dollar value of recovered capacity. For build-replacement initiatives: software costs rationalized, integration maintenance hours eliminated, and time-to-deployment compared to traditional procurement cycles. For digital workforce initiatives: FTE-equivalent capacity created, quality parity between agent and human execution, and overhead rate impact. Track these metrics by business segment so you can see where AI creates the most leverage on the government side versus the commercial side.</p>
-      <p class="body-text">Models drift. Business conditions change. Regulatory requirements evolve. Every production AI deployment needs a defined review cadence and a clear standard for continued investment. If an AI initiative cannot demonstrate a return within a defined measurement period, it gets retrained, refocused, or retired. No sacred cows. The organizations that build this measurement discipline will compound their AI advantage over time. Those that do not will accumulate a portfolio of tools that nobody can justify but nobody wants to kill.</p>
+      <p class="body-text">AI investments should be measured with the same discipline applied to program performance. For process redesign initiatives, track cycle time improvements, error rate reduction, and the value of recovered capacity. For technology rebuild initiatives, track software costs rationalized, integration maintenance reduced, and time-to-deploy. For agent deployments, track FTE-equivalent capacity created and quality comparisons between agent and human execution. Segment all metrics by business line.</p>
+      <p class="body-text">Every production AI deployment needs a defined review cadence and a clear standard for continued investment. Models drift. Business conditions change. If an initiative cannot demonstrate a return within its measurement period, it should be retrained, refocused, or retired.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1223,11 +1291,10 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">AI performance dashboard operational with real-time data</td><td class="kpi-target">Yes, within 6 months of first production deployment</td></tr>
-            <tr><td class="kpi-name">Portfolio-level AI ROI (aggregate)</td><td class="kpi-target">&gt;3:1 within 24 months</td></tr>
-            <tr><td class="kpi-name">Automation vector: annualized manual hours eliminated</td><td class="kpi-target">Tracked quarterly</td></tr>
-            <tr><td class="kpi-name">Build vector: software costs rationalized or custom dev costs avoided</td><td class="kpi-target">Tracked quarterly</td></tr>
-            <tr><td class="kpi-name">AI initiatives retired or refocused due to underperformance</td><td class="kpi-target">Tracked openly and reported quarterly</td></tr>
+            <tr><td class="kpi-name">AI performance dashboard operational</td><td class="kpi-target">Within 6 months of first production deployment</td></tr>
+            <tr><td class="kpi-name">Portfolio-level AI ROI</td><td class="kpi-target">&gt;3:1 within 24 months</td></tr>
+            <tr><td class="kpi-name">Cycle time and capacity improvements from redesigned workflows</td><td class="kpi-target">Tracked quarterly</td></tr>
+            <tr><td class="kpi-name">Software costs rationalized</td><td class="kpi-target">Tracked quarterly</td></tr>
           </tbody>
         </table>
       </div>
@@ -1243,13 +1310,12 @@ body {
     <div class="reveal">
       <div class="priority-header">
         <div class="priority-num">10</div>
-        <div class="priority-title-bar"><h2>The Window Is Closing: Move Now or Move Aside</h2></div>
+        <div class="priority-title-bar"><h2>Start Now Because Overhead Rates, Win Rates, and Cycle Times Are All at Stake</h2></div>
       </div>
     </div>
     <div class="reveal">
-      <p class="body-text">This is not a priority in the traditional sense. It is a statement of competitive reality. The organizations that are executing on Priorities 1 through 9 right now are building advantages that compound with every quarter: lower overhead rates from automation and software portfolio rationalization, faster proposal cycles from AI-augmented capture, better program execution from predictive analytics, and leaner operating models from digital workforce deployment. Each of these advantages makes them harder to compete against in the next bid cycle. And the next one. And the one after that.</p>
-      <p class="body-text">The window for establishing AI as a competitive differentiator in A&D is measured in months, not years. Within 18 to 24 months, the organizations that moved early will have production-grade AI capabilities baked into their operations. They will bid with lower rates, execute with fewer errors, respond to RFPs faster, and demonstrate to government customers that they are investing in the technologies the DoD itself has identified as strategic priorities. Late movers will not just be behind on technology. They will be structurally disadvantaged on cost, speed, and credibility.</p>
-      <p class="body-text">The good news is that you do not need a massive transformation program to start. You need a governance decision (Priority 1), an honest assessment of your data and processes (Priority 2), and two or three well-chosen pilots (Priority 3) that attack your biggest manual labor sinks and your strongest software rationalization opportunities. The first meaningful results can arrive within 90 days. From there, momentum builds. But only if you start. The organizations that spend the next 12 months "studying the landscape" and "building a roadmap" will find that the landscape moved without them.</p>
+      <p class="body-text">AI adoption does not require a massive transformation program. It requires a governance decision (Priority 1), an honest assessment (Priority 2), and two or three well-chosen pilots (Priority 3). The first meaningful results can arrive within 90 days. From there, each successful deployment funds and informs the next. The advantages of early adoption compound: lower overhead from redesigned workflows, faster cycle times, better program visibility, and the institutional knowledge that comes from learning by doing.</p>
+      <p class="body-text">Organizations that start with small, well-defined initiatives and build from results will make more progress in 12 months than those that spend the same period building a comprehensive strategy document. The priorities in this paper can be executed in parallel. Start where the data is ready, the pain is clear, and the business case is strongest.</p>
     </div>
     <div class="reveal">
       <div class="kpi-section">
@@ -1257,10 +1323,9 @@ body {
         <table class="kpi-table">
           <thead><tr><th>Key Performance Indicator</th><th>Target / Benchmark</th></tr></thead>
           <tbody>
-            <tr><td class="kpi-name">Time from today to first production AI deployment</td><td class="kpi-target">&lt;6 months</td></tr>
-            <tr><td class="kpi-name">Competitive overhead rate trend (AI-influenced)</td><td class="kpi-target">Measurable reduction within 18 months</td></tr>
-            <tr><td class="kpi-name">AI capability referenced in proposals and customer conversations</td><td class="kpi-target">Active within 12 months</td></tr>
-            <tr><td class="kpi-name">Leadership confidence in AI strategy (internal survey)</td><td class="kpi-target">&gt;8/10</td></tr>
+            <tr><td class="kpi-name">Time to first production AI deployment</td><td class="kpi-target">&lt;6 months</td></tr>
+            <tr><td class="kpi-name">Overhead rate impact from AI initiatives</td><td class="kpi-target">Measurable within 18 months</td></tr>
+            <tr><td class="kpi-name">AI capability referenced in customer engagements</td><td class="kpi-target">Active within 12 months</td></tr>
           </tbody>
         </table>
       </div>
@@ -1277,7 +1342,7 @@ body {
       <div class="section-label">Implementation</div>
       <h2 class="section-title">Phased Roadmap</h2>
       <div class="section-divider"></div>
-      <p class="body-text">These 10 priorities are not meant to be executed sequentially. Effective AI adoption requires parallel effort across governance, data, and use case development. For organizations spanning government and commercial markets, this parallel execution is even more important: commercial-side pilots can build momentum while government-side governance and data classification work progresses. The following phased approach provides a practical timeline for organizations beginning their AI journey.</p>
+      <p class="body-text">These priorities are designed for parallel execution. The phased approach below provides a practical timeline, with phases overlapping intentionally.</p>
     </div>
     <div class="reveal">
       <div class="roadmap-grid">
@@ -1288,35 +1353,129 @@ body {
           </div>
           <div class="phase-content">
             <div class="phase-time">Months<br>1 to 6</div>
-            <div class="phase-activities">Stand up governance at the board level (P1), Execute data and process readiness assessment (P2), Launch first production-or-kill pilots targeting automation and software rationalization (P3), Begin workforce AI literacy and citizen builder training (P6)</div>
+            <div class="phase-activities">Establish governance (P1), Complete data and process assessment (P2), Launch first pilots with production intent (P3), Begin workforce AI literacy training (P6)</div>
           </div>
         </div>
         <div class="roadmap-phase">
           <div class="phase-label">
             <div class="phase-name">Phase 2</div>
-            <div class="phase-sub">Acceleration</div>
+            <div class="phase-sub">Execution</div>
           </div>
           <div class="phase-content">
             <div class="phase-time">Months<br>4 to 12</div>
-            <div class="phase-activities">Scale automation across top manual processes (P4), Deploy first AI-built replacements for vendor tools (P5), Stand up AI security framework (P8), Transition first workflows to agent-assisted mode (P7)</div>
+            <div class="phase-activities">Redesign priority workflows with AI (P4), Deploy first AI-native technology rebuilds (P5), Implement AI security framework (P8), Begin agent-assisted workflows (P7)</div>
           </div>
         </div>
         <div class="roadmap-phase">
           <div class="phase-label">
             <div class="phase-name">Phase 3</div>
-            <div class="phase-sub">Optimization</div>
+            <div class="phase-sub">Scale</div>
           </div>
           <div class="phase-content">
             <div class="phase-time">Months<br>9 to 24</div>
-            <div class="phase-activities">Activate AI performance dashboard and ruthless ROI tracking (P9), Graduate proven workflows to agent-led execution (P7), Rationalize software portfolio based on build results, Quantify overhead rate impact, Expand digital workforce across enterprise</div>
+            <div class="phase-activities">Activate AI performance dashboard (P9), Graduate proven workflows to agent-led execution (P7), Rationalize software portfolio, Expand across enterprise</div>
           </div>
         </div>
       </div>
     </div>
     <div class="reveal">
       <div class="callout">
-        <div class="callout-title">A Note on Sequencing</div>
-        <div class="callout-body">Phases overlap intentionally. Phase 2 should begin before Phase 1 is complete. Waiting for perfection in governance or data classification before launching pilots is a common failure pattern. For mixed-business organizations, consider launching commercial-side pilots in Phase 1 while government-side data classification is still in progress. Move on multiple fronts simultaneously, but do not skip the foundational work.</div>
+        <div class="callout-title">Sequencing Note</div>
+        <div class="callout-body">Phases overlap by design. Phase 2 should begin before Phase 1 is complete. Commercial-side pilots can run in Phase 1 while government-side data classification is still in progress. Start where the data is ready and the business case is clear.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TOP 10 USE CASES
+     ============================================ -->
+<section class="section section-white">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Where to Start</div>
+      <h2 class="section-title">Top 10 AI Use Cases Delivering the Biggest Impact</h2>
+      <div class="section-divider"></div>
+      <p class="body-text">Across the A&D and GovCon organizations we work with, these are the use cases where AI pilots are generating the most measurable value today. They span both value categories (process redesign and technology rationalization) and range from quick wins to strategic capability shifts.</p>
+    </div>
+    <div class="reveal">
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <div class="usecase-num">1</div>
+          <div class="usecase-content">
+            <h4>Proposal Content Generation and Compliance Mapping</h4>
+            <p>AI ingests RFPs, extracts requirements, maps them to your solution architecture, and generates first-draft content. Reduces proposal cycle time by 20-40% and frees capture teams to focus on strategy and win themes.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">2</div>
+          <div class="usecase-content">
+            <h4>EVM Variance Analysis and Predictive Cost Forecasting</h4>
+            <p>AI continuously monitors cost and schedule data, identifies variances, drafts narrative explanations, and generates predictive EACs based on historical patterns. Shifts program controls from monthly reporting to real-time exception management.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">3</div>
+          <div class="usecase-content">
+            <h4>Contract Clause Analysis and Modification Tracking</h4>
+            <p>AI parses contract documents, flags non-standard clauses against FAR/DFARS baselines, and tracks modifications across the contract lifecycle. Reduces legal and contracts team review time by 50%+ on routine modifications.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">4</div>
+          <div class="usecase-content">
+            <h4>Supplier Risk Monitoring and Early Warning</h4>
+            <p>AI continuously scans financial, geopolitical, and delivery performance data across the supply base. Flags emerging risks 30+ days before they impact production schedules, replacing manual quarterly reviews.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">5</div>
+          <div class="usecase-content">
+            <h4>Engineering Document Search and Knowledge Retrieval</h4>
+            <p>AI-powered semantic search across technical document repositories, specifications, and past program data. Engineers find what they need in seconds instead of hours, with context-aware results that understand technical terminology.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">6</div>
+          <div class="usecase-content">
+            <h4>Automated Financial Close and Invoice Validation</h4>
+            <p>AI validates invoices against contract terms, purchase orders, and receiving data. Flags exceptions for human review rather than requiring manual line-by-line validation. Accelerates close cycles and reduces error rates.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">7</div>
+          <div class="usecase-content">
+            <h4>Program Status Reporting and Executive Dashboards</h4>
+            <p>AI synthesizes data from multiple program systems into real-time dashboards and auto-generated status narratives. Replaces the weekly manual report assembly cycle and gives leadership continuous visibility into program health.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">8</div>
+          <div class="usecase-content">
+            <h4>Regulatory Compliance Monitoring and Audit Preparation</h4>
+            <p>AI continuously monitors operational data against FAR, DFARS, CAS, and CMMC requirements. Flags potential compliance gaps in real time and pre-assembles audit documentation, reducing audit preparation from weeks to days.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">9</div>
+          <div class="usecase-content">
+            <h4>Demand Forecasting and Production Planning</h4>
+            <p>AI analyzes program milestones, contract modifications, and historical demand patterns to generate forecasts that feed directly into MRP and production scheduling. Improves forecast accuracy by 15-25% over manual methods.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-num">10</div>
+          <div class="usecase-content">
+            <h4>Internal AI-Built Tools Replacing Legacy Point Solutions</h4>
+            <p>Organizations are using AI-assisted development to build purpose-fit replacements for underperforming vendor tools and brittle custom applications. Deployed in weeks instead of months, tailored to actual workflows and compliance requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="callout">
+        <div class="callout-title">Pilot Selection Guidance</div>
+        <div class="callout-body">Start with the use cases where your data is cleanest, the manual burden is highest, and the business case is most straightforward to measure. For most organizations, use cases 1 through 4 offer the strongest combination of near-term impact and organizational learning.</div>
       </div>
     </div>
   </div>
@@ -1329,27 +1488,27 @@ body {
   <div class="container">
     <div class="reveal">
       <div class="section-label">Conclusion</div>
-      <h2 class="section-title">Act with Speed and Discipline</h2>
+      <h2 class="section-title">A Practical Path Forward</h2>
       <div class="section-divider"></div>
     </div>
     <div class="reveal">
-      <p class="body-text">AI adoption in Aerospace & Defense is not optional, and it is not simple. Organizations that operate across both government and commercial markets face a unique version of this challenge: they must move fast enough to compete commercially while maintaining the compliance discipline that government customers require. The companies that approach AI with the same rigor they apply to program execution, compliance, and financial management will create sustainable competitive advantage across both segments. Those that treat it as a technology experiment disconnected from business strategy will generate cost without return.</p>
-      <p class="body-text">The 10 priorities in this paper are designed to be actionable, measurable, and specific to the realities of organizations that straddle government and commercial markets. They reflect the practical experience of working with companies that operate under the constraints of FAR, DFARS, CAS, CMMC, and the unique financial and programmatic structures that define government work, while also serving commercial customers who expect speed, innovation, and competitive pricing.</p>
-      <p class="body-text">The time to begin is now. Not with a massive, multi-year transformation program, but with a deliberate set of governance decisions, targeted pilots across both business segments, and honest assessments of organizational readiness. Start by identifying where you are paying skilled people to do work a machine should handle, and where your software portfolio includes tools that could now be built better, faster, and more tailored with AI-assisted development. These two vectors will generate the quick wins and structural cost reductions that fund the broader AI transformation. The organizations that act with both speed and discipline, and that leverage the cross-pollination advantages of a mixed business model, will define the next era of Aerospace & Defense.</p>
+      <p class="body-text">AI adoption in A&D requires the same discipline that organizations apply to program execution, compliance, and financial management. The 10 priorities in this paper provide a structured, measurable approach for organizations operating across both government and commercial markets. They address governance, data readiness, value capture, workforce development, security, and measurement as interconnected elements of a single strategy.</p>
+      <p class="body-text">The practical starting point is straightforward: establish governance, assess your data and processes honestly, and launch a small number of well-defined pilots that target your highest-value workflow redesign and technology rationalization opportunities. Results within 90 days are achievable. From there, momentum builds as each success informs the next initiative.</p>
     </div>
     <div class="reveal">
       <div class="about-block">
         <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=h:80,cg:true,m/qt=q:95" alt="Revelation Technologies" class="about-logo">
         <div class="about-title">About Revelation Technologies</div>
-        <p>Revelation Technologies (RevTech) is a specialized SAP consulting and solution architecture firm serving Aerospace & Defense organizations that operate across both US Government and commercial markets. RevTech combines deep domain expertise in GovCon compliance, program controls, and ERP architecture with a forward-looking approach to AI adoption and digital transformation. We understand the unique complexities of managing commingled business lines, from data segmentation and cost accounting to compliance and security, and we architect solutions that serve the full enterprise. Our mission is to architect, build, and sustain systems that empower organizations to unlock the full potential of their enterprise platforms.</p>
+        <p>Revelation Technologies (RevTech) is a specialized SAP consulting and solution architecture firm serving Aerospace & Defense organizations that operate across both US Government and commercial markets. RevTech combines deep domain expertise in GovCon compliance, program controls, and ERP architecture with a forward-looking approach to AI adoption and digital transformation. Our mission is to architect, build, and sustain systems that empower organizations to unlock the full potential of their enterprise platforms.</p>
         <div class="about-links">
           <a href="https://revtech.consulting">revtech.consulting</a>
-          <a href="mailto:info@revtech.consulting">info@revtech.consulting</a>
+          <a class="email-link" href="#">info<span>@</span>revtech.consulting</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============================================
      FOOTER
@@ -1386,8 +1545,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<noscript>
-<style>.reveal { opacity: 1 !important; transform: none !important; }</style>
-</noscript>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </body>
 </html>
