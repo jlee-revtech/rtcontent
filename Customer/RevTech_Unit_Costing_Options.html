@@ -281,9 +281,130 @@
 
     a[href]::after { content:none !important; }
   }
+
+  /* ─── PASSWORD GATE ─── */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  #password-gate .gate-box {
+    background: #fff;
+    border-radius: 14px;
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    max-width: 400px;
+    width: 90%;
+  }
+  #password-gate .gate-box h2 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 6px;
+  }
+  #password-gate .gate-box p {
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 24px;
+  }
+  #password-gate .gate-box input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  #password-gate .gate-box input:focus {
+    border-color: var(--accent);
+  }
+  #password-gate .gate-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #111827, #1F2937);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #password-gate .gate-box button:hover {
+    opacity: .9;
+  }
+  #password-gate .gate-error {
+    color: #DC2626;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+  }
+  body.locked { overflow: hidden; }
+  body.locked > *:not(#password-gate) { display: none; }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="password-gate">
+  <div class="gate-box">
+    <h2>Confidential Document</h2>
+    <p>Please enter the access code to view this document.</p>
+    <input type="password" id="gate-input" placeholder="Access Code" autofocus>
+    <button onclick="checkGatePassword()">Unlock</button>
+    <div class="gate-error" id="gate-error">Incorrect access code. Please try again.</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function() {
+  var SB_URL = 'https://xdwduopeyxxtlzugyrtu.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkd2R1b3BleXh4dGx6dWd5cnR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NDc2MzcsImV4cCI6MjA5MDEyMzYzN30.yz-fJAPVeRrq7ftlXmGjwqlfOY3IEz26eDtZLmAaGlQ';
+  var gateSb = supabase.createClient(SB_URL, SB_KEY);
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  window.checkGatePassword = async function() {
+    var input = document.getElementById('gate-input').value;
+    if (!input) return;
+    var hash = await sha256(input);
+    try {
+      var { data, error } = await gateSb
+        .from('access_keys')
+        .select('id')
+        .eq('key_hash', hash)
+        .eq('document', 'unit-costing-options')
+        .single();
+      if (!error && data) {
+        document.getElementById('password-gate').remove();
+        document.body.classList.remove('locked');
+      } else {
+        document.getElementById('gate-error').style.display = 'block';
+        document.getElementById('gate-input').value = '';
+        document.getElementById('gate-input').focus();
+      }
+    } catch(e) {
+      document.getElementById('gate-error').style.display = 'block';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  };
+
+  document.getElementById('gate-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkGatePassword();
+  });
+})();
+</script>
 
 <nav class="sticky-nav" id="stickyNav">
   <img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech" class="sn-logo">
