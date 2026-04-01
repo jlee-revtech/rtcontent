@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentex Corporation — SAP S/4HANA Architecture Review | Outline Agreement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #132F55;
+    --navy-light: #1D4070;
+    --gold: #C4913A;
+    --gold-light: #D9AB5C;
+    --gold-pale: #F0DDB8;
+    --white: #FFFFFF;
+    --off-white: #F7F5F0;
+    --light-gray: #EAE8E3;
+    --mid-gray: #8A8A8A;
+    --dark-text: #1A1A1A;
+    --body-text: #2E2E2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--body-text);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 110% 60%, rgba(196,145,58,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at -10% 20%, rgba(29,64,112,0.6) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(196,145,58,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,145,58,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .cover-top-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 56px;
+    border-bottom: 1px solid rgba(196,145,58,0.2);
+  }
+
+  .cover-logo-area {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .logo-tag {
+    font-size: 10px;
+    color: var(--gold-light);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-weight: 300;
+  }
+
+  .cover-doc-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(196,145,58,0.7);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .cover-body {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 56px 0;
+  }
+
+  .cover-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .cover-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cover-eyebrow-text {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 8px;
+  }
+
+  .cover-title span {
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 40px;
+  }
+
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0;
+    max-width: 560px;
+  }
+
+  .cover-meta-item {
+    padding-right: 36px;
+    border-right: 1px solid rgba(196,145,58,0.25);
+    margin-right: 36px;
+  }
+
+  .cover-meta-item:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .cover-meta-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .cover-meta-value {
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .cover-bottom {
+    position: relative;
+    z-index: 2;
+    padding: 36px 56px;
+    border-top: 1px solid rgba(196,145,58,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cover-prepared-for {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .cover-prepared-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  .cover-client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .cover-contacts {
+    text-align: right;
+  }
+
+  .cover-contact-item {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .cover-contact-item strong {
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
+  /* ─── DOCUMENT BODY ─── */
+  .doc-body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin: 64px 0 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--gold-pale);
+    margin-bottom: 8px;
+  }
+
+  /* ─── INTRO BLOCK ─── */
+  .intro-block {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 44px 48px;
+    margin-top: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  }
+
+  .intro-block-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .intro-block-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.82);
+    font-weight: 300;
+  }
+
+  .intro-block-text strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ─── TWO-COL ─── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 28px 30px;
+  }
+
+  .card-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .card-sub {
+    font-size: 12px;
+    color: var(--mid-gray);
+    line-height: 1.5;
+  }
+
+  /* ─── SCOPE AREAS ─── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .scope-item {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .scope-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-light);
+    font-weight: 500;
+    padding-top: 3px;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .scope-content {}
+
+  .scope-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .scope-detail {
+    font-size: 11.5px;
+    color: var(--mid-gray);
+    line-height: 1.5;
+  }
+
+  /* ─── ARCH FRAMEWORK ─── */
+  .framework-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .framework-item {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .framework-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  .framework-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .framework-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .framework-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* ─── DELIVERABLES LIST ─── */
+  .deliverables-list {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .deliverables-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--light-gray);
+    font-size: 13.5px;
+  }
+
+  .deliverables-list li:last-child {
+    border-bottom: none;
+  }
+
+  .deliv-marker {
+    width: 20px;
+    height: 20px;
+    background: var(--navy);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .deliv-marker svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .deliv-text strong {
+    color: var(--navy);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .deliv-text span {
+    color: var(--mid-gray);
+    font-size: 12px;
+  }
+
+  /* ─── TERMS / CONDITIONS ─── */
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .term-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 22px 22px;
+  }
+
+  .term-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .term-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .term-body {
+    font-size: 11.5px;
+    color: var(--mid-gray);
+    line-height: 1.55;
+  }
+
+  /* ─── NEXT STEPS ─── */
+  .next-steps {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 4px;
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .next-steps::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  }
+
+  .next-steps-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .next-steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 14px;
+  }
+
+  .step-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .step-text strong {
+    display: block;
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .step-text span {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* ─── SIGNATURE BLOCK ─── */
+  .sig-section {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: 36px 40px;
+    margin-bottom: 28px;
+  }
+
+  .sig-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .sig-intro {
+    font-size: 13px;
+    color: var(--mid-gray);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .sig-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .sig-block-title {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .sig-field {
+    margin-bottom: 20px;
+  }
+
+  .sig-field label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 6px;
+  }
+
+  .sig-line {
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 6px;
+    font-size: 13px;
+    color: var(--body-text);
+    min-height: 26px;
+  }
+
+  /* ─── FOOTER ─── */
+  .doc-footer {
+    background: var(--navy);
+    padding: 32px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 48px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-brand span {
+    color: var(--gold-light);
+  }
+
+  .footer-contact {
+    text-align: right;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .footer-contact a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  .footer-conf {
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── PROSE ─── */
+  .prose {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--body-text);
+    margin-bottom: 20px;
+  }
+
+  .prose strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ─── HIGHLIGHT BAR ─── */
+  .highlight-bar {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 16px 22px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: var(--body-text);
+    line-height: 1.65;
+  }
+
+  .highlight-bar strong {
+    color: var(--navy);
+  }
+
+  /* ─── PAGE BREAK UTILITY ─── */
+  .page-break {
+    margin: 56px 0 0;
+    padding-top: 56px;
+    border-top: 1px solid var(--light-gray);
+  }
+
+  @media print {
+    .cover { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ COVER PAGE ═══════════════════════ -->
+<div class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-grid"></div>
+
+  <div class="cover-top-bar">
+    <div class="cover-logo-area">
+      <div class="logo-name">Revelation Technologies</div>
+      <div class="logo-tag">Precision SAP ERP · GovCon · Aerospace &amp; Defense</div>
+    </div>
+    <div class="cover-doc-type">Outline Agreement · Confidential</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-eyebrow">
+      <div class="cover-eyebrow-line"></div>
+      <div class="cover-eyebrow-text">Prepared for Gentex Corporation</div>
+    </div>
+
+    <div class="cover-title">
+      SAP S/4HANA<br><span>Solution Architecture</span><br>Review
+    </div>
+    <div class="cover-subtitle">Offer-to-Cash · Outline Agreement &amp; Scope Summary</div>
+    <div class="cover-divider"></div>
+
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Date Issued</div>
+        <div class="cover-meta-value">March 2026</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Document Type</div>
+        <div class="cover-meta-value">Outline Agreement</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Contacts — Gentex</div>
+        <div class="cover-meta-value">Ashley Quinn · Greg Alpaka</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-prepared-for">
+      <div class="cover-prepared-label">Prepared for</div>
+      <div class="cover-client-name">Gentex Corporation</div>
+    </div>
+    <div class="cover-contacts">
+      <div class="cover-contact-item"><strong>Joshua K. Lee</strong> — Co-Founder, CEO / Visionary</div>
+      <div class="cover-contact-item">jlee@revtech.consulting · (817) 692-0235</div>
+      <div class="cover-contact-item">revtech.consulting</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DOCUMENT BODY ═══════════════════════ -->
+<div class="doc-body">
+
+  <!-- ─── EXECUTIVE CONTEXT ─── -->
+  <div class="intro-block">
+    <div class="intro-block-label">Executive Context</div>
+    <div class="intro-block-text">
+      Following our conversation at <strong>SAP Aerospace &amp; Defense Innovation Days (SAP ADID)</strong>, this document serves as a structured playback of what the RevTech team heard from the Gentex team regarding your SAP S/4HANA environment, your current state, and where you are looking to go. This outline is intended to <strong>confirm alignment on scope and intent</strong> before we move into a formal engagement proposal. Please review, correct, or refine anything that does not accurately reflect our discussion.
+    </div>
+  </div>
+
+  <!-- ─── SECTION 1: WHAT WE HEARD ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">01</span>
+      <span class="section-title">What We Heard</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="prose">
+    Based on our conversation at SAP ADID, RevTech's understanding of Gentex's current position and strategic direction is captured below. This represents our good-faith playback — not a contractual commitment — and is subject to your review and correction.
+  </p>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-label">Where You Are Today</div>
+      <div class="card-value">Maturing SAP Foundation</div>
+      <div class="card-sub">Gentex has an operational SAP S/4HANA environment in place with a solid foundation. The emphasis now is on extracting maximum value from that investment and designing for scale — balancing the agility and throughput demands of commercial production with the compliance rigor required by defense contracts.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">What You're Looking For</div>
+      <div class="card-value">Independent End-to-End Review</div>
+      <div class="card-sub">An objective, end-to-end review of the current environment — not just a health check, but a forward-looking architecture perspective grounded in industry-standard best practices across A&amp;D, optimizing for commercial speed and flexibility while ensuring every defense compliance requirement is met without compromise.</div>
+    </div>
+  </div>
+
+  <div class="highlight-bar">
+    <strong>Overarching Objective:</strong> A holistic Solution Architecture Review spanning <strong>People &amp; Personas, Process, Technology, and Data Integration</strong> — not just what the system does today, but how it should be designed to scale with Gentex across both commercial and defense lines of business. The architecture must be flexible enough to maximize throughput and efficiency on the commercial side while maintaining full compliance posture (DCAA, DFARS, CAS, FAR/DFAR) on the defense side.
+  </div>
+
+  <!-- ─── SECTION 2: SCOPE ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">02</span>
+      <span class="section-title">Proposed Scope — Full Solution Architecture Review</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="prose">
+    The following eleven functional domains represent the scope of the Solution Architecture Review as discussed. Each domain will be evaluated from a current-state and future-state lens, with a dual focus: ensuring compliance integrity for defense programs while enabling operational flexibility and optimization for commercial lines of business. This balance is central to every recommendation.
+  </p>
+
+  <div class="scope-grid">
+    <div class="scope-item">
+      <div class="scope-num">01</div>
+      <div class="scope-content">
+        <div class="scope-title">Proposal Management, Estimating &amp; Contract Intake</div>
+        <div class="scope-detail">Including future-state platform evaluation — TwentyFive IPE, Cognitus, and/or Dassian — and integration with downstream SAP processes. Streamlined estimating workflows for commercial bids alongside compliant, auditable proposal structures for defense contracts.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">02</div>
+      <div class="scope-content">
+        <div class="scope-title">Cost Accounting &amp; Finance Design</div>
+        <div class="scope-detail">Dual costing architecture — lean, throughput-oriented cost structures for commercial programs alongside DCAA-compliant indirect rate pools, CAS-aligned cost allocation, and auditable financial reporting for defense contracts.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">03</div>
+      <div class="scope-content">
+        <div class="scope-title">Production Planning &amp; Execution / Supply Chain</div>
+        <div class="scope-detail">MRP, shop floor integration, and demand planning, including alignment to Projects / demand networks. Optimized for high-volume commercial throughput while supporting traceability and lot control requirements on defense programs. Forward-looking roadmap evaluation: SAC and advanced planning capabilities within S/4HANA.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">04</div>
+      <div class="scope-content">
+        <div class="scope-title">Logistics, Material Management &amp; Inventory</div>
+        <div class="scope-detail">End-to-end material flow, inventory accuracy, and logistics integration within the S/4HANA environment — flexible warehouse design for commercial velocity alongside controlled, auditable material segregation and tracking for defense programs.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">05</div>
+      <div class="scope-content">
+        <div class="scope-title">SAP Project Systems (PS) Design</div>
+        <div class="scope-detail">WBS structure optimization, potential future program management alignment, and earned value reporting architecture. Lightweight project structures for commercial work; full WBS hierarchy with earned value management and IPMR/IPMDAR support for defense contracts.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">06</div>
+      <div class="scope-content">
+        <div class="scope-title">Program / Project / Resource Management Integration</div>
+        <div class="scope-detail">Including evaluation of solutions such as Cora PPM and how they connect to and enhance the SAP backbone for program execution.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">07</div>
+      <div class="scope-content">
+        <div class="scope-title">Billing, Revenue Recognition &amp; Cash Management</div>
+        <div class="scope-detail">Contract billing design, revenue recognition compliance, and treasury / cash management integration within S/4HANA. Streamlined milestone and progress billing for commercial contracts; compliant cost-plus, T&amp;M, and CPFF billing structures with proper fund control for government contracts.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">08</div>
+      <div class="scope-content">
+        <div class="scope-title">Time Recording &amp; Labor Costing Design</div>
+        <div class="scope-detail">Labor capture, cost allocation, and timekeeping design — simplified time entry for commercial operations while enforcing DCAA-compliant total-time accounting, floor-check readiness, and segregation of direct/indirect labor charges on defense programs.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">09</div>
+      <div class="scope-content">
+        <div class="scope-title">Timesheets &amp; Manufacturing Labor</div>
+        <div class="scope-detail">Cross-Application Time Sheet (CATS) integration, manufacturing labor confirmation workflows, shop floor time capture, and alignment of production labor postings with cost objects and project structures in S/4HANA. Efficient bulk confirmation for commercial production lines; granular, auditable labor tracking by cost object for defense programs to support incurred-cost submissions.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">10</div>
+      <div class="scope-content">
+        <div class="scope-title">Procurement &amp; Source-to-Pay</div>
+        <div class="scope-detail">End-to-end procurement lifecycle in S/4HANA — purchase requisitions, purchase orders, supplier management, contract purchasing, goods receipt, and invoice verification. Optimized catalog-driven purchasing for commercial efficiency; controlled, FAR/DFAR-compliant procurement workflows with cost-allowability checks, adequate price competition documentation, and consent-to-subcontract support for defense programs.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">11</div>
+      <div class="scope-content">
+        <div class="scope-title">Available-to-Promise (ATP) &amp; Order Fulfillment</div>
+        <div class="scope-detail">Evaluation of SAP S/4HANA ATP capabilities — including basic ATP, product allocation, and advanced ATP (aATP) with backorder processing. Assessment of how ATP rules can be tuned for rapid commercial order confirmation and delivery commitment while respecting priority allocation and controlled release logic for defense program fulfillment schedules.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 3: ARCHITECTURE FRAMEWORK ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">03</span>
+      <span class="section-title">Solution Architecture Review Framework</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="prose">
+    Each of the eleven scope areas above will be evaluated through RevTech's four-lens Solution Architecture framework. This ensures that findings are actionable across all dimensions of enterprise transformation — not limited to system configuration alone. In every lens, we will distinguish between what must be optimized for commercial agility and what must be hardened for defense compliance, delivering an architecture that serves both without forcing unnecessary overhead on either. RevTech's evaluations are benchmarked against industry-standard practices observed across leading A&amp;D organizations — ensuring recommendations reflect what works at scale in the sector, not just theoretical best practice.
+  </p>
+
+  <div class="framework-row">
+    <div class="framework-item">
+      <span class="framework-icon">👥</span>
+      <div class="framework-title">People &amp; Personas</div>
+      <div class="framework-desc">User roles, access design, organizational alignment, and change readiness — including role differentiation between commercial and defense program teams</div>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">⚙️</span>
+      <div class="framework-title">Process</div>
+      <div class="framework-desc">End-to-end process flows designed for commercial throughput, with compliance control points embedded where defense programs require them</div>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">🔧</span>
+      <div class="framework-title">Technology</div>
+      <div class="framework-desc">SAP configuration, ecosystem tools, integration architecture, and forward-looking roadmap — leveraging a shared platform backbone with configurable controls by business segment</div>
+    </div>
+    <div class="framework-item">
+      <span class="framework-icon">🔗</span>
+      <div class="framework-title">Data Integration</div>
+      <div class="framework-desc">Data flows, master data governance, integration design, and reporting / analytics foundation — with clear segmentation to support both commercial KPIs and defense audit trails</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 4: AI READINESS ASSESSMENT ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">04</span>
+      <span class="section-title">AI Readiness Assessment &amp; Use Case Roadmap</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="prose">
+    As part of the Solution Architecture Review, RevTech will conduct a dedicated AI Readiness Assessment across three dimensions — <strong>process, data, and systems</strong> — to evaluate Gentex's current posture and chart a pragmatic path toward high-value AI adoption. This assessment is grounded in RevTech's industry-standard perspective across aerospace &amp; defense, drawing on patterns we see working at scale across the sector — not theoretical possibilities, but proven approaches already delivering ROI in comparable A&amp;D environments.
+  </p>
+
+  <div class="scope-grid">
+    <div class="scope-item">
+      <div class="scope-num">AI-1</div>
+      <div class="scope-content">
+        <div class="scope-title">Process Readiness</div>
+        <div class="scope-detail">Evaluation of current business processes for AI augmentation potential — identifying where manual effort, decision latency, or repetitive pattern recognition creates opportunity. On the commercial side, focus on throughput acceleration and predictive operations; on the defense side, focus on compliance automation and audit-trail generation without introducing risk.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">AI-2</div>
+      <div class="scope-content">
+        <div class="scope-title">Data Readiness</div>
+        <div class="scope-detail">Assessment of data quality, completeness, accessibility, and governance maturity across SAP and adjacent systems. AI solutions are only as strong as the data they consume — this evaluation identifies gaps in master data, transactional data pipelines, and data integration architecture that must be addressed before or alongside AI deployment.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">AI-3</div>
+      <div class="scope-content">
+        <div class="scope-title">Systems &amp; Platform Readiness</div>
+        <div class="scope-detail">Review of the current technology landscape for AI enablement — SAP BTP, embedded AI capabilities in S/4HANA, integration architecture, and third-party AI/ML platform fit. Evaluation of what can be activated within the existing stack versus what requires new investment, informed by industry-standard reference architectures in the A&amp;D sector.</div>
+      </div>
+    </div>
+    <div class="scope-item">
+      <div class="scope-num">AI-4</div>
+      <div class="scope-content">
+        <div class="scope-title">High-Value Use Case Roadmap</div>
+        <div class="scope-detail">Identification and prioritization of AI use cases mapped to Gentex's specific business context — from demand forecasting and intelligent MRP to automated compliance checking, predictive maintenance, and contract risk analysis. Each use case will be evaluated for feasibility, data readiness, expected ROI, and implementation complexity, delivered as a sequenced roadmap with clear quick wins and longer-horizon initiatives.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-bar">
+    <strong>RevTech's Perspective:</strong> Our recommendations are anchored in what we see working across the aerospace &amp; defense industry — not vendor marketing. We bring an independent, industry-standard lens shaped by real implementations across A&amp;D organizations of similar scale and complexity, ensuring Gentex benefits from proven patterns rather than experimental approaches.
+  </div>
+
+  <!-- ─── SECTION 5: EXPECTED DELIVERABLES ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">05</span>
+      <span class="section-title">Expected Deliverables</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <ul class="deliverables-list">
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>Current State Assessment Report</strong>
+        <span>A documented evaluation of the existing S/4HANA environment across all eleven scope domains, identifying gaps, risks, and areas of underutilization — with findings segmented by impact on commercial operations versus defense compliance posture.</span>
+      </div>
+    </li>
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>Future State Solution Architecture Blueprint</strong>
+        <span>A forward-looking architecture design recommendation covering People, Process, Technology, and Data — designed to scale with Gentex's production and contract growth while maintaining a unified platform that flexes between commercial optimization and defense compliance requirements.</span>
+      </div>
+    </li>
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>Platform Evaluation Recommendations</strong>
+        <span>Independent analysis of third-party platforms (TwentyFive IPE, Cognitus, Dassian, Cora PPM) where applicable — with fit/gap analysis and integration considerations.</span>
+      </div>
+    </li>
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>Prioritized Roadmap &amp; Recommendations</strong>
+        <span>A sequenced, prioritized roadmap of recommended actions organized by effort, impact, and compliance urgency — clearly distinguishing quick wins for commercial efficiency from must-haves for defense audit readiness.</span>
+      </div>
+    </li>
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>Executive Readout Presentation</strong>
+        <span>A stakeholder-ready presentation summarizing findings, architecture vision, and recommended next steps for leadership alignment.</span>
+      </div>
+    </li>
+    <li>
+      <div class="deliv-marker">
+        <svg viewBox="0 0 10 10" fill="none"><polyline points="2,5 4,7 8,3" stroke="#C4913A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="deliv-text">
+        <strong>AI Readiness Assessment &amp; Use Case Roadmap</strong>
+        <span>A dedicated report covering process, data, and systems readiness for AI adoption — accompanied by a prioritized roadmap of high-value AI use cases with feasibility ratings, data prerequisites, and expected ROI, grounded in industry-standard patterns from across the A&amp;D sector.</span>
+      </div>
+    </li>
+  </ul>
+
+  <!-- ─── SECTION 6: PROPOSED TERMS ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">06</span>
+      <span class="section-title">Proposed Engagement Terms &amp; Conditions</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="prose">
+    The following terms represent the proposed framework for this engagement. Final terms will be confirmed upon scope alignment and the execution of a formal Statement of Work.
+  </p>
+
+  <div class="terms-grid">
+    <div class="term-card">
+      <span class="term-icon">🗓</span>
+      <div class="term-title">Engagement Type</div>
+      <div class="term-body">Fixed-scope advisory engagement with defined deliverables and timeline. Not an open-ended retainer.</div>
+    </div>
+    <div class="term-card">
+      <span class="term-icon">🔒</span>
+      <div class="term-title">Independence</div>
+      <div class="term-body">RevTech will act as an independent, vendor-neutral advisor. No platform vendor financial relationships will influence our recommendations.</div>
+    </div>
+    <div class="term-card">
+      <span class="term-icon">👤</span>
+      <div class="term-title">Staffing</div>
+      <div class="term-body">Senior, US-citizen resources with direct A&D and GovCon SAP delivery experience. No offshore. No junior-led delivery.</div>
+    </div>
+    <div class="term-card">
+      <span class="term-icon">📋</span>
+      <div class="term-title">Compliance Lens</div>
+      <div class="term-body">All recommendations will be evaluated against CAS, FAR/DFARS, and DCAA compliance requirements applicable to defense contractors.</div>
+    </div>
+    <div class="term-card">
+      <span class="term-icon">🤝</span>
+      <div class="term-title">NDA / Confidentiality</div>
+      <div class="term-body">RevTech will execute a mutual NDA prior to the initiation of any discovery or access to Gentex's systems, data, or documentation.</div>
+    </div>
+    <div class="term-card">
+      <span class="term-icon">📁</span>
+      <div class="term-title">IP &amp; Deliverable Ownership</div>
+      <div class="term-body">All deliverables produced during the engagement will be owned by Gentex Corporation upon payment of applicable fees.</div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 6: NEXT STEPS ─── -->
+  <div class="next-steps">
+    <div class="next-steps-title">Proposed Next Steps</div>
+    <div class="next-steps-row">
+      <div class="step-item">
+        <div class="step-dot">01</div>
+        <div class="step-text">
+          <strong>Alignment Call (45–60 min)</strong>
+          <span>Confirm scope, identify the right stakeholders from both sides, and align on timing. Target: within the next two weeks.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-dot">02</div>
+        <div class="step-text">
+          <strong>Mutual NDA Execution</strong>
+          <span>Execute mutual NDA to enable open discovery conversations and access to relevant documentation and system context.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-dot">03</div>
+        <div class="step-text">
+          <strong>Formal SOW Issuance</strong>
+          <span>RevTech to issue a formal Statement of Work upon scope confirmation — inclusive of timeline, deliverables, and fee structure.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 7: ACKNOWLEDGMENT / SIGNATURE ─── -->
+  <div class="section-header">
+    <div>
+      <span class="section-number">08</span>
+      <span class="section-title">Acknowledgment of Understanding</span>
+    </div>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="sig-section">
+    <div class="sig-title">Mutual Acknowledgment</div>
+    <div class="sig-intro">
+      By signing below, both parties confirm that this document accurately reflects the scope of discussions held at SAP ADID in March 2026, and that each party agrees to proceed to an Alignment Call to advance toward a formal Statement of Work. This document does not constitute a binding contract or commitment to engage.
+    </div>
+
+    <div class="sig-row">
+      <div>
+        <div class="sig-block-title">Revelation Technologies, LLC</div>
+        <div class="sig-field">
+          <label>Authorized Signature</label>
+          <div class="sig-line"></div>
+        </div>
+        <div class="sig-field">
+          <label>Printed Name</label>
+          <div class="sig-line">Joshua K. Lee</div>
+        </div>
+        <div class="sig-field">
+          <label>Title</label>
+          <div class="sig-line">Co-Founder, CEO / Visionary</div>
+        </div>
+        <div class="sig-field">
+          <label>Date</label>
+          <div class="sig-line"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sig-block-title">Gentex Corporation</div>
+        <div class="sig-field">
+          <label>Authorized Signature</label>
+          <div class="sig-line"></div>
+        </div>
+        <div class="sig-field">
+          <label>Printed Name</label>
+          <div class="sig-line"></div>
+        </div>
+        <div class="sig-field">
+          <label>Title</label>
+          <div class="sig-line"></div>
+        </div>
+        <div class="sig-field">
+          <label>Date</label>
+          <div class="sig-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end doc-body -->
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<div class="doc-footer">
+  <div>
+    <div class="footer-brand">Revelation <span>Technologies</span></div>
+    <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px;letter-spacing:0.08em;">CONFIDENTIAL — PREPARED FOR GENTEX CORPORATION</div>
+  </div>
+  <div class="footer-conf">
+    This document is confidential and intended solely for the named recipient.<br>
+    Unauthorized distribution is prohibited.
+  </div>
+  <div class="footer-contact">
+    <div>Joshua K. Lee</div>
+    <a href="mailto:jlee@revtech.consulting">jlee@revtech.consulting</a><br>
+    <span>(817) 692-0235</span>
+  </div>
+</div>
+
+</body>
+</html>
