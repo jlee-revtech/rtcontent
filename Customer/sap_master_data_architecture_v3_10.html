@@ -137,35 +137,23 @@
     border-radius:14px; overflow:hidden; margin-top:20px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
-  .acdoca-table-scroll {
-    overflow-x:auto; -webkit-overflow-scrolling:touch;
-  }
   .acdoca-table-title {
     padding:14px 24px 10px;
     font-family:'IBM Plex Mono',monospace; font-size:10px;
     text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:500;
     border-bottom:1px solid rgba(0,0,0,0.06);
   }
-  .acdoca-table-subtitle {
-    padding:4px 24px 12px;
-    font-family:'Outfit',sans-serif; font-size:12px; color:var(--gray-light); line-height:1.5;
-  }
-  table.acdoca { width:100%; border-collapse:collapse; font-size:12px; min-width:1200px; }
+  table.acdoca { width:100%; border-collapse:collapse; font-size:12px; }
   table.acdoca th {
     font-family:'IBM Plex Mono',monospace; font-size:9px; text-transform:uppercase;
     letter-spacing:1.5px; color:var(--gray); font-weight:600;
     padding:10px 14px; text-align:left; background:rgba(0,0,0,0.02);
     border-bottom:1px solid rgba(0,0,0,0.08); white-space:nowrap;
   }
-  table.acdoca th.th-scenario {
-    text-align:center; min-width:140px; white-space:normal; line-height:1.4;
-  }
-  table.acdoca th.th-field { min-width:115px; }
-  table.acdoca th.th-tech { min-width:80px; }
   table.acdoca td {
-    padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.04);
+    padding:9px 14px; border-bottom:1px solid rgba(0,0,0,0.04);
     color:var(--gray-light); font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px; vertical-align:top; line-height:1.5;
+    font-size:11px; vertical-align:top; line-height:1.5;
   }
   table.acdoca tr:hover td { background:rgba(158,116,36,0.04); }
   table.acdoca .f-org { color:var(--gold); font-weight:600; }
@@ -182,17 +170,6 @@
     font-family:'Outfit',sans-serif; font-size:11px; font-weight:400;
     color:var(--gray); font-style:italic;
   }
-  table.acdoca .section-row td {
-    background:rgba(158,116,36,0.06); font-family:'Outfit',sans-serif;
-    font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px;
-    color:var(--gold); padding:7px 12px; border-bottom:1px solid rgba(158,116,36,0.12);
-  }
-  table.acdoca td.cell-val {
-    font-size:10px; text-align:center; color:#475569;
-  }
-  table.acdoca td.cell-val .cv-val { display:block; font-weight:600; color:#0f172a; font-size:10.5px; }
-  table.acdoca td.cell-val .cv-src { display:block; font-size:9px; color:#94a3b8; margin-top:2px; font-style:italic; }
-  table.acdoca td.cell-na { text-align:center; color:#cbd5e1; font-size:9px; font-style:italic; }
 
   .sec-divider {
     height:1px; margin:56px 0;
@@ -566,7 +543,7 @@
 <div class="section">
   <div class="sec-eyebrow">Diagram 04 of 07</div>
   <div class="sec-title">The WBS Element: <em>Center of the Universe</em></div>
-  <p class="sec-desc">In SAP S/4HANA for A&D, the WBS Element is the primary CO cost collector — the gravitational center around which every master data object orbits. Organizational structures assign context. Cost centers feed labor. Materials flow in. Profit centers drive reporting. Revenue recognition, billing, and settlement all anchor here. Every dollar on a Boeing program ultimately lands on a WBS.</p>
+  <p class="sec-desc">In SAP S/4HANA for A&D, the WBS Element is the primary CO cost collector — the gravitational center around which every master data object orbits. Organizational structures assign context. Cost centers feed labor. Materials flow in. Profit centers drive reporting. Revenue recognition, billing, and settlement all anchor here. At period-end, Results Analysis reads the WBS to calculate WIP, reserves, and POC revenue. Every dollar on a Boeing program ultimately lands on a WBS.</p>
 
   <div class="diagram-wrap">
     <div class="diagram-label">WBS Element — Primary Cost Collector & Master Data Convergence Point</div>
@@ -590,236 +567,176 @@
         </radialGradient>
       </defs>
 
-      <!-- CONNECTIONS LAYER (bottom) -->
-      <g id="connections">
+      <!-- ════ LAYER 1: ORBIT RINGS (background) ════ -->
       <circle cx="600" cy="390" r="130" fill="none" stroke="rgba(124,58,237,0.07)" stroke-width="1"/>
       <circle cx="600" cy="390" r="240" fill="none" stroke="rgba(124,58,237,0.07)" stroke-width="1" stroke-dasharray="4,4"/>
       <circle cx="600" cy="390" r="350" fill="none" stroke="rgba(124,58,237,0.05)" stroke-width="1" stroke-dasharray="2,6"/>
-      <line x1="130" y1="155" x2="130" y2="168" stroke="rgba(146,97,10,0.4)" stroke-width="1"/>
-      <path d="M230,190 L310,220 L480,340" stroke="#92610a" stroke-width="2" fill="none" marker-end="url(#w-gold)"/>
-      <line x1="600" y1="167" x2="600" y2="258" stroke="#059669" stroke-width="2.5" fill="none" marker-end="url(#w-green)"/>
-      <line x1="1030" y1="155" x2="1030" y2="168" stroke="rgba(5,150,105,0.4)" stroke-width="1"/>
-      <path d="M930,190 L850,220 L720,340" stroke="#059669" stroke-width="1.5" fill="none" marker-end="url(#w-green)"/>
-      <line x1="130" y1="343" x2="130" y2="356" stroke="rgba(13,148,136,0.4)" stroke-width="1"/>
-      <line x1="130" y1="396" x2="130" y2="409" stroke="rgba(29,78,216,0.4)" stroke-width="1"/>
-      <line x1="230" y1="430" x2="470" y2="405" stroke="#0891b2" stroke-width="2.5" fill="none" marker-end="url(#w-cyan)"/>
-      <path d="M360,535 L520,478" stroke="#92610a" stroke-width="1.8" fill="none" stroke-dasharray="6,3" marker-end="url(#w-gold)"/>
-      <line x1="1040" y1="393" x2="1040" y2="406" stroke="rgba(8,145,178,0.4)" stroke-width="1"/>
-      <line x1="940" y1="385" x2="730" y2="385" stroke="#0891b2" stroke-width="2.5" fill="none" marker-end="url(#w-cyan)"/>
-      <path d="M940,545 L730,460" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#w-purple-out)"/>
-      <line x1="500" y1="593" x2="530" y2="615" stroke="#d97706" stroke-width="1.2" marker-end="url(#w-orange-out)"/>
-      <line x1="700" y1="593" x2="670" y2="615" stroke="#d97706" stroke-width="1.2" marker-end="url(#w-orange-out)"/>
-      <line x1="600" y1="618" x2="600" y2="520" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#w-orange)"/>
-      <line x1="600" y1="666" x2="600" y2="690" stroke="rgba(124,58,237,0.3)" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+      <!-- ════ LAYER 2: ALL CONNECTION LINES (behind everything) ════ -->
+      <g id="lines">
+        <line x1="130" y1="155" x2="130" y2="168" stroke="rgba(146,97,10,0.4)" stroke-width="1"/>
+        <path d="M230,190 L310,220 L480,340" stroke="#92610a" stroke-width="2" fill="none" marker-end="url(#w-gold)"/>
+        <line x1="600" y1="167" x2="600" y2="258" stroke="#059669" stroke-width="2.5" fill="none" marker-end="url(#w-green)"/>
+        <line x1="1030" y1="155" x2="1030" y2="168" stroke="rgba(5,150,105,0.4)" stroke-width="1"/>
+        <path d="M930,190 L850,220 L720,340" stroke="#059669" stroke-width="1.5" fill="none" marker-end="url(#w-green)"/>
+        <line x1="130" y1="343" x2="130" y2="356" stroke="rgba(13,148,136,0.4)" stroke-width="1"/>
+        <line x1="130" y1="396" x2="130" y2="409" stroke="rgba(29,78,216,0.4)" stroke-width="1"/>
+        <line x1="230" y1="430" x2="470" y2="405" stroke="#0891b2" stroke-width="2.5" fill="none" marker-end="url(#w-cyan)"/>
+        <path d="M360,535 L520,478" stroke="#92610a" stroke-width="1.8" fill="none" stroke-dasharray="6,3" marker-end="url(#w-gold)"/>
+        <line x1="1040" y1="393" x2="1040" y2="406" stroke="rgba(8,145,178,0.4)" stroke-width="1"/>
+        <line x1="940" y1="385" x2="730" y2="385" stroke="#0891b2" stroke-width="2.5" fill="none" marker-end="url(#w-cyan)"/>
+        <path d="M940,545 L730,460" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#w-purple-out)"/>
+        <line x1="500" y1="593" x2="530" y2="615" stroke="#d97706" stroke-width="1.2" marker-end="url(#w-orange-out)"/>
+        <line x1="700" y1="593" x2="670" y2="615" stroke="#d97706" stroke-width="1.2" marker-end="url(#w-orange-out)"/>
+        <line x1="600" y1="618" x2="600" y2="520" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#w-orange)"/>
+        <line x1="600" y1="666" x2="600" y2="690" stroke="rgba(124,58,237,0.3)" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <!-- WBS → Results Analysis (outbound from WBS at 5 o'clock) -->
+        <path d="M680,440 L920,620" stroke="#7c3aed" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#w-purple-out)"/>
       </g>
 
-      <!-- NODES LAYER (top) -->
-      <g id="nodes">
-
-      <!-- ═══ ORBIT RINGS ═══ -->
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- CENTER: WBS ELEMENT                     -->
-      <!-- ═══════════════════════════════════════ -->
+      <!-- ════ LAYER 3: WBS CENTER (on top of lines) ════ -->
       <circle cx="600" cy="390" r="85" fill="url(#wbs-bg)" stroke="#7c3aed" stroke-width="3" filter="url(#wbs-glow)"/>
       <text x="600" y="370" text-anchor="middle" font-size="10" fill="#64748b" font-family="IBM Plex Mono" letter-spacing="2">PRIMARY CO OBJECT</text>
       <text x="600" y="393" text-anchor="middle" font-size="20" font-weight="800" fill="#6d28d9">WBS Element</text>
       <text x="600" y="415" text-anchor="middle" font-size="11" fill="#64748b" font-family="IBM Plex Mono">Cost Collector</text>
       <text x="600" y="432" text-anchor="middle" font-size="9" fill="#94a3b8">D-1000.01.01.01</text>
 
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 10 O'CLOCK: ORG HIERARCHY               -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="130" y="100" text-anchor="middle" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">ORG HIERARCHY</text>
+      <!-- ════ LAYER 4: ALL BOXES (on top of everything) ════ -->
+      <g id="boxes">
+        <!-- ORG HIERARCHY -->
+        <text x="130" y="100" text-anchor="middle" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">ORG HIERARCHY</text>
+        <rect x="30" y="115" width="200" height="40" rx="8" fill="#ffffff" stroke="#92610a" stroke-width="1.5"/>
+        <text x="130" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#92610a">Controlling Area</text>
+        <text x="130" y="148" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">KOKRS A000</text>
+        <rect x="30" y="170" width="200" height="40" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="130" y="189" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Company Code</text>
+        <text x="130" y="203" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">BUKRS 1000 — Defense</text>
+        <rect x="270" y="230" width="145" height="36" rx="6" fill="#ffffff" stroke="rgba(146,97,10,0.2)"/>
+        <text x="342" y="246" text-anchor="middle" font-size="8" font-weight="600" fill="#92610a" font-family="IBM Plex Mono">WBS ASSIGNED TO:</text>
+        <text x="342" y="258" text-anchor="middle" font-size="8" fill="#64748b">Company Code + CO Area</text>
 
-      <rect x="30" y="115" width="200" height="40" rx="8" fill="rgba(146,97,10,0.08)" stroke="#92610a" stroke-width="1.5"/>
-      <text x="130" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#92610a">Controlling Area</text>
-      <text x="130" y="148" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">KOKRS A000</text>
+        <!-- PROFIT CENTER -->
+        <text x="600" y="100" text-anchor="middle" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">PROFITABILITY</text>
+        <rect x="470" y="115" width="260" height="52" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+        <text x="600" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">Profit Center</text>
+        <text x="600" y="156" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">PC-DEF-BDS → Segment "BDS"</text>
+        <rect x="520" y="198" width="160" height="36" rx="6" fill="#ffffff" stroke="rgba(5,150,105,0.2)"/>
+        <text x="600" y="213" text-anchor="middle" font-size="8" font-weight="600" fill="#059669" font-family="IBM Plex Mono">ASSIGNED ON WBS MASTER</text>
+        <text x="600" y="226" text-anchor="middle" font-size="8" fill="#64748b">Drives segment in ACDOCA</text>
 
+        <!-- PLANT / LOGISTICS -->
+        <text x="1030" y="100" text-anchor="middle" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">LOGISTICS</text>
+        <rect x="930" y="115" width="200" height="40" rx="8" fill="#ffffff" stroke="#059669" stroke-width="1.5"/>
+        <text x="1030" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">Plant</text>
+        <text x="1030" y="148" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">WERKS 1100 — Ft. Worth</text>
+        <rect x="930" y="170" width="200" height="40" rx="8" fill="#ffffff" stroke="#059669" stroke-dasharray="4,3"/>
+        <text x="1030" y="189" text-anchor="middle" font-size="11" font-weight="500" fill="#059669">Storage Location</text>
+        <text x="1030" y="203" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">LGORT 0001</text>
+        <rect x="780" y="230" width="120" height="30" rx="6" fill="#ffffff" stroke="rgba(5,150,105,0.2)"/>
+        <text x="840" y="243" text-anchor="middle" font-size="8" font-weight="600" fill="#059669" font-family="IBM Plex Mono">PLANT ON WBS</text>
+        <text x="840" y="254" text-anchor="middle" font-size="8" fill="#64748b">via project profile</text>
 
-      <rect x="30" y="170" width="200" height="40" rx="8" fill="rgba(29,78,216,0.08)" stroke="#1d4ed8" stroke-width="1.5"/>
-      <text x="130" y="189" text-anchor="middle" font-size="12" font-weight="600" fill="#1d4ed8">Company Code</text>
-      <text x="130" y="203" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">BUKRS 1000 — Defense</text>
+        <!-- LABOR COST FLOW -->
+        <text x="130" y="290" text-anchor="middle" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">LABOR COST FLOW</text>
+        <rect x="30" y="305" width="200" height="38" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="1.5"/>
+        <text x="130" y="323" text-anchor="middle" font-size="11" font-weight="600" fill="#0d9488">Personnel #</text>
+        <text x="130" y="336" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">PERNR 00045821</text>
+        <rect x="30" y="358" width="200" height="38" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="130" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Cost Center</text>
+        <text x="130" y="389" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">KOSTL ENG-1100</text>
+        <rect x="30" y="411" width="200" height="38" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5"/>
+        <text x="130" y="429" text-anchor="middle" font-size="11" font-weight="600" fill="#0891b2">Activity Type</text>
+        <text x="130" y="442" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">DIR-ENG @ $125/hr</text>
+        <rect x="280" y="400" width="145" height="40" rx="6" fill="#ffffff" stroke="rgba(8,145,178,0.2)"/>
+        <text x="352" y="415" text-anchor="middle" font-size="8" font-weight="600" fill="#0891b2" font-family="IBM Plex Mono">CATS TIME CONFIRM</text>
+        <text x="352" y="427" text-anchor="middle" font-size="8" fill="#64748b">8 hrs × $125 = $1,000</text>
+        <text x="352" y="438" text-anchor="middle" font-size="7" fill="#94a3b8">DR WBS / CR Cost Center</text>
 
-      <!-- Org → WBS line (routed below org boxes) -->
+        <!-- OVERHEAD ABSORPTION -->
+        <text x="170" y="520" text-anchor="middle" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">OVERHEAD ABSORPTION</text>
+        <rect x="30" y="535" width="120" height="36" rx="7" fill="#ffffff" stroke="rgba(146,97,10,0.3)"/>
+        <text x="90" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">Fringe</text>
+        <text x="90" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC FRNG</text>
+        <rect x="165" y="535" width="120" height="36" rx="7" fill="#ffffff" stroke="rgba(146,97,10,0.3)"/>
+        <text x="225" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">Overhead</text>
+        <text x="225" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC OH-ENG</text>
+        <rect x="300" y="535" width="120" height="36" rx="7" fill="#ffffff" stroke="rgba(146,97,10,0.3)"/>
+        <text x="360" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">G&A</text>
+        <text x="360" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC GA</text>
+        <rect x="390" y="480" width="130" height="36" rx="6" fill="#ffffff" stroke="rgba(146,97,10,0.2)"/>
+        <text x="455" y="495" text-anchor="middle" font-size="8" font-weight="600" fill="#92610a" font-family="IBM Plex Mono">KSV5 ALLOCATION</text>
+        <text x="455" y="507" text-anchor="middle" font-size="8" fill="#64748b">Fringe + OH + G&A</text>
 
-      <!-- Label positioned along the line, not overlapping boxes -->
-      <rect x="270" y="230" width="145" height="36" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(146,97,10,0.25)"/>
-      <text x="342" y="246" text-anchor="middle" font-size="8" font-weight="600" fill="#92610a" font-family="IBM Plex Mono">WBS ASSIGNED TO:</text>
-      <text x="342" y="258" text-anchor="middle" font-size="8" fill="#64748b">Company Code + CO Area</text>
+        <!-- MATERIAL COST FLOW -->
+        <text x="1040" y="340" text-anchor="middle" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">MATERIAL COST FLOW</text>
+        <rect x="940" y="355" width="200" height="38" rx="8" fill="#ffffff" stroke="#0891b2" stroke-width="1.5"/>
+        <text x="1040" y="373" text-anchor="middle" font-size="11" font-weight="600" fill="#0891b2">Material Master</text>
+        <text x="1040" y="386" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">MATNR TI6AL4V</text>
+        <rect x="940" y="408" width="200" height="38" rx="8" fill="#ffffff" stroke="#0d9488" stroke-dasharray="4,3"/>
+        <text x="1040" y="426" text-anchor="middle" font-size="11" font-weight="500" fill="#0d9488">Valuation Class</text>
+        <text x="1040" y="439" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">BKLAS 3000 → GL 400100</text>
+        <rect x="740" y="365" width="150" height="42" rx="6" fill="#ffffff" stroke="rgba(8,145,178,0.2)"/>
+        <text x="815" y="380" text-anchor="middle" font-size="8" font-weight="600" fill="#0891b2" font-family="IBM Plex Mono">GOODS ISSUE 261</text>
+        <text x="815" y="392" text-anchor="middle" font-size="8" fill="#64748b">Material consumed → WBS</text>
+        <text x="815" y="403" text-anchor="middle" font-size="7" fill="#94a3b8">DR COGS / CR Inventory</text>
 
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 12 O'CLOCK: PROFIT CENTER / SEGMENT     -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="600" y="100" text-anchor="middle" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">PROFITABILITY</text>
+        <!-- PRODUCTION SETTLEMENT -->
+        <text x="1040" y="510" text-anchor="middle" font-size="9" fill="#7c3aed" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">PRODUCTION SETTLEMENT</text>
+        <rect x="940" y="525" width="200" height="48" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+        <text x="1040" y="548" text-anchor="middle" font-size="12" font-weight="600" fill="#6d28d9">Production Order</text>
+        <text x="1040" y="564" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">AUFNR 400012345</text>
+        <rect x="785" y="470" width="125" height="30" rx="6" fill="#ffffff" stroke="rgba(124,58,237,0.2)"/>
+        <text x="847" y="483" text-anchor="middle" font-size="8" font-weight="600" fill="#6d28d9" font-family="IBM Plex Mono">KO88 SETTLEMENT</text>
+        <text x="847" y="494" text-anchor="middle" font-size="8" fill="#64748b">All mfg costs → WBS</text>
 
-      <rect x="470" y="115" width="260" height="52" rx="10" fill="rgba(5,150,105,0.08)" stroke="#059669" stroke-width="2"/>
-      <text x="600" y="138" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">Profit Center</text>
-      <text x="600" y="156" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">PC-DEF-BDS → Segment "BDS"</text>
+        <!-- REVENUE & BILLING -->
+        <text x="600" y="540" text-anchor="middle" font-size="9" fill="#d97706" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">REVENUE & BILLING</text>
+        <rect x="528" y="520" width="145" height="30" rx="6" fill="#ffffff" stroke="rgba(217,119,6,0.2)"/>
+        <text x="600" y="533" text-anchor="middle" font-size="8" font-weight="600" fill="#d97706" font-family="IBM Plex Mono">BILLING WBS NODE</text>
+        <text x="600" y="544" text-anchor="middle" font-size="8" fill="#64748b">Revenue rec & invoicing</text>
+        <rect x="380" y="555" width="140" height="38" rx="8" fill="#ffffff" stroke="#d97706" stroke-dasharray="4,3"/>
+        <text x="450" y="573" text-anchor="middle" font-size="10" font-weight="500" fill="#d97706">Sales Area</text>
+        <text x="450" y="586" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="IBM Plex Mono">Org + Ch + Div</text>
+        <text x="450" y="604" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="IBM Plex Mono">attribute of</text>
+        <rect x="680" y="555" width="140" height="38" rx="8" fill="#ffffff" stroke="#d97706" stroke-dasharray="4,3"/>
+        <text x="750" y="573" text-anchor="middle" font-size="10" font-weight="500" fill="#d97706">Sales Org</text>
+        <text x="750" y="586" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="IBM Plex Mono">VKORG 1000</text>
+        <text x="750" y="604" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="IBM Plex Mono">attribute of</text>
+        <rect x="510" y="618" width="180" height="48" rx="10" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+        <text x="600" y="639" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">Sales Document</text>
+        <text x="600" y="656" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">SO / Contract / Sched Agmt</text>
 
-      <!-- Profit Center → WBS (straight down, no overlap) -->
+        <!-- 5 O'CLOCK: RESULTS ANALYSIS (RA) — OUTPUT FROM WBS -->
+        <text x="1040" y="610" text-anchor="middle" font-size="9" fill="#7c3aed" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">RESULTS ANALYSIS (RA)</text>
+        <rect x="920" y="622" width="220" height="52" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+        <text x="1030" y="643" text-anchor="middle" font-size="12" font-weight="700" fill="#6d28d9">Results Analysis</text>
+        <text x="1030" y="659" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">RA Key → WIP / Reserves / Accruals</text>
 
-      <rect x="520" y="198" width="160" height="36" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(5,150,105,0.25)"/>
-      <text x="600" y="213" text-anchor="middle" font-size="8" font-weight="600" fill="#059669" font-family="IBM Plex Mono">ASSIGNED ON WBS MASTER</text>
-      <text x="600" y="226" text-anchor="middle" font-size="8" fill="#64748b">Drives segment in ACDOCA</text>
+        <rect x="920" y="684" width="105" height="26" rx="5" fill="rgba(124,58,237,0.05)" stroke="rgba(124,58,237,0.15)"/>
+        <text x="972" y="701" text-anchor="middle" font-size="8" font-weight="500" fill="#6d28d9">WIP Calc</text>
+        <rect x="1035" y="684" width="105" height="26" rx="5" fill="rgba(124,58,237,0.05)" stroke="rgba(124,58,237,0.15)"/>
+        <text x="1087" y="701" text-anchor="middle" font-size="8" font-weight="500" fill="#6d28d9">POC Revenue</text>
+        <rect x="920" y="716" width="105" height="26" rx="5" fill="rgba(124,58,237,0.05)" stroke="rgba(124,58,237,0.15)"/>
+        <text x="972" y="733" text-anchor="middle" font-size="8" font-weight="500" fill="#6d28d9">Cost Reserves</text>
+        <rect x="1035" y="716" width="105" height="26" rx="5" fill="rgba(124,58,237,0.05)" stroke="rgba(124,58,237,0.15)"/>
+        <text x="1087" y="733" text-anchor="middle" font-size="8" font-weight="500" fill="#6d28d9">Settlement</text>
 
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 2 O'CLOCK: PLANT / LOGISTICS            -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="1030" y="100" text-anchor="middle" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">LOGISTICS</text>
+        <rect x="830" y="630" width="80" height="30" rx="6" fill="#ffffff" stroke="rgba(124,58,237,0.2)"/>
+        <text x="870" y="643" text-anchor="middle" font-size="7" font-weight="600" fill="#6d28d9" font-family="IBM Plex Mono">KKA2 / KKAJ</text>
+        <text x="870" y="654" text-anchor="middle" font-size="7" fill="#64748b">Period-end</text>
 
-      <rect x="930" y="115" width="200" height="40" rx="8" fill="rgba(5,150,105,0.08)" stroke="#059669" stroke-width="1.5"/>
-      <text x="1030" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#059669">Plant</text>
-      <text x="1030" y="148" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">WERKS 1100 — Ft. Worth</text>
+        <!-- TAX & ORIGIN -->
+        <rect x="30" y="475" width="110" height="30" rx="6" fill="#ffffff" stroke="#e11d48"/>
+        <text x="85" y="494" text-anchor="middle" font-size="9" font-weight="500" fill="#e11d48">Tax Jurisdiction</text>
+        <rect x="155" y="475" width="110" height="30" rx="6" fill="#ffffff" stroke="#0d9488"/>
+        <text x="210" y="494" text-anchor="middle" font-size="9" font-weight="500" fill="#0d9488">Origin Group</text>
+      </g>
 
-
-      <rect x="930" y="170" width="200" height="40" rx="8" fill="rgba(5,150,105,0.06)" stroke="#059669" stroke-dasharray="4,3"/>
-      <text x="1030" y="189" text-anchor="middle" font-size="11" font-weight="500" fill="#059669">Storage Location</text>
-      <text x="1030" y="203" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">LGORT 0001</text>
-
-      <!-- Plant → WBS line (routed below plant boxes) -->
-
-      <rect x="780" y="230" width="120" height="30" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(5,150,105,0.25)"/>
-      <text x="840" y="243" text-anchor="middle" font-size="8" font-weight="600" fill="#059669" font-family="IBM Plex Mono">PLANT ON WBS</text>
-      <text x="840" y="254" text-anchor="middle" font-size="8" fill="#64748b">via project profile</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 9 O'CLOCK: LABOR COST FLOW              -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="130" y="290" text-anchor="middle" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">LABOR COST FLOW</text>
-
-      <rect x="30" y="305" width="200" height="38" rx="8" fill="rgba(13,148,136,0.08)" stroke="#0d9488" stroke-width="1.5"/>
-      <text x="130" y="323" text-anchor="middle" font-size="11" font-weight="600" fill="#0d9488">Personnel #</text>
-      <text x="130" y="336" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">PERNR 00045821</text>
-
-
-      <rect x="30" y="358" width="200" height="38" rx="8" fill="rgba(29,78,216,0.08)" stroke="#1d4ed8" stroke-width="1.5"/>
-      <text x="130" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Cost Center</text>
-      <text x="130" y="389" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">KOSTL ENG-1100</text>
-
-
-      <rect x="30" y="411" width="200" height="38" rx="8" fill="rgba(8,145,178,0.08)" stroke="#0891b2" stroke-width="1.5"/>
-      <text x="130" y="429" text-anchor="middle" font-size="11" font-weight="600" fill="#0891b2">Activity Type</text>
-      <text x="130" y="442" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">DIR-ENG @ $125/hr</text>
-
-      <!-- Activity → WBS (horizontal right into WBS, no overlap) -->
-
-      <rect x="280" y="400" width="145" height="40" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(8,145,178,0.25)"/>
-      <text x="352" y="415" text-anchor="middle" font-size="8" font-weight="600" fill="#0891b2" font-family="IBM Plex Mono">CATS TIME CONFIRM</text>
-      <text x="352" y="427" text-anchor="middle" font-size="8" fill="#64748b">8 hrs × $125 = $1,000</text>
-      <text x="352" y="438" text-anchor="middle" font-size="7" fill="#94a3b8">DR WBS / CR Cost Center</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 7 O'CLOCK: OVERHEAD ALLOCATION          -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="170" y="520" text-anchor="middle" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">OVERHEAD ABSORPTION</text>
-
-      <rect x="30" y="535" width="120" height="36" rx="7" fill="rgba(146,97,10,0.06)" stroke="rgba(146,97,10,0.3)"/>
-      <text x="90" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">Fringe</text>
-      <text x="90" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC FRNG</text>
-
-      <rect x="165" y="535" width="120" height="36" rx="7" fill="rgba(146,97,10,0.06)" stroke="rgba(146,97,10,0.3)"/>
-      <text x="225" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">Overhead</text>
-      <text x="225" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC OH-ENG</text>
-
-      <rect x="300" y="535" width="120" height="36" rx="7" fill="rgba(146,97,10,0.06)" stroke="rgba(146,97,10,0.3)"/>
-      <text x="360" y="553" text-anchor="middle" font-size="10" font-weight="500" fill="#92610a">G&A</text>
-      <text x="360" y="565" text-anchor="middle" font-size="8" fill="#94a3b8">CC GA</text>
-
-      <!-- OH → WBS (angled up-right, clear of boxes) -->
-
-      <rect x="390" y="480" width="130" height="36" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(146,97,10,0.25)"/>
-      <text x="455" y="495" text-anchor="middle" font-size="8" font-weight="600" fill="#92610a" font-family="IBM Plex Mono">KSV5 ALLOCATION</text>
-      <text x="455" y="507" text-anchor="middle" font-size="8" fill="#64748b">Fringe + OH + G&A</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 3 O'CLOCK: MATERIAL COST FLOW           -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="1040" y="340" text-anchor="middle" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">MATERIAL COST FLOW</text>
-
-      <rect x="940" y="355" width="200" height="38" rx="8" fill="rgba(8,145,178,0.08)" stroke="#0891b2" stroke-width="1.5"/>
-      <text x="1040" y="373" text-anchor="middle" font-size="11" font-weight="600" fill="#0891b2">Material Master</text>
-      <text x="1040" y="386" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">MATNR TI6AL4V</text>
-
-
-      <rect x="940" y="408" width="200" height="38" rx="8" fill="rgba(13,148,136,0.06)" stroke="#0d9488" stroke-dasharray="4,3"/>
-      <text x="1040" y="426" text-anchor="middle" font-size="11" font-weight="500" fill="#0d9488">Valuation Class</text>
-      <text x="1040" y="439" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">BKLAS 3000 → GL 400100</text>
-
-      <!-- Material → WBS (horizontal left into WBS, no overlap) -->
-
-      <rect x="770" y="365" width="150" height="42" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(8,145,178,0.25)"/>
-      <text x="845" y="380" text-anchor="middle" font-size="8" font-weight="600" fill="#0891b2" font-family="IBM Plex Mono">GOODS ISSUE 261</text>
-      <text x="845" y="392" text-anchor="middle" font-size="8" fill="#64748b">Material consumed → WBS</text>
-      <text x="845" y="403" text-anchor="middle" font-size="7" fill="#94a3b8">DR COGS / CR Inventory</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 4 O'CLOCK: PRODUCTION ORDER SETTLEMENT  -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="1040" y="510" text-anchor="middle" font-size="9" fill="#7c3aed" font-family="IBM Plex Mono" font-weight="600" letter-spacing="2">PRODUCTION SETTLEMENT</text>
-
-      <rect x="940" y="525" width="200" height="48" rx="8" fill="rgba(124,58,237,0.08)" stroke="#7c3aed" stroke-width="1.5"/>
-      <text x="1040" y="548" text-anchor="middle" font-size="12" font-weight="600" fill="#6d28d9">Production Order</text>
-      <text x="1040" y="564" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">AUFNR 400012345</text>
-
-      <!-- Prod Order → WBS (angled up-left, clear path) -->
-
-      <rect x="785" y="470" width="125" height="30" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(124,58,237,0.25)"/>
-      <text x="847" y="483" text-anchor="middle" font-size="8" font-weight="600" fill="#6d28d9" font-family="IBM Plex Mono">KO88 SETTLEMENT</text>
-      <text x="847" y="494" text-anchor="middle" font-size="8" fill="#64748b">All mfg costs → WBS</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 6 O'CLOCK: REVENUE / BILLING            -->
-      <!-- Sales Area + Sales Org → Sales Doc → WBS -->
-      <!-- ═══════════════════════════════════════ -->
-      <text x="300" y="555" text-anchor="middle" font-size="8" fill="#d97706" font-family="IBM Plex Mono" font-weight="600" letter-spacing="1.5">REVENUE / BILLING</text>
-
-      <!-- Sales Area -->
-      <rect x="380" y="555" width="140" height="38" rx="8" fill="rgba(217,119,6,0.06)" stroke="#d97706" stroke-dasharray="4,3"/>
-      <text x="450" y="573" text-anchor="middle" font-size="10" font-weight="500" fill="#d97706">Sales Area</text>
-      <text x="450" y="586" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="IBM Plex Mono">Org + Ch + Div</text>
-
-      <!-- Sales Org -->
-      <rect x="680" y="555" width="140" height="38" rx="8" fill="rgba(217,119,6,0.06)" stroke="#d97706" stroke-dasharray="4,3"/>
-      <text x="750" y="573" text-anchor="middle" font-size="10" font-weight="500" fill="#d97706">Sales Org</text>
-      <text x="750" y="586" text-anchor="middle" font-size="8" fill="#94a3b8" font-family="IBM Plex Mono">VKORG 1000</text>
-
-      <!-- Sales Area → Sales Document -->
-      <!-- Sales Org → Sales Document -->
-
-      <!-- SALES DOCUMENT (new node) -->
-      <rect x="510" y="618" width="180" height="48" rx="10" fill="rgba(217,119,6,0.1)" stroke="#d97706" stroke-width="2"/>
-      <text x="600" y="639" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">Sales Document</text>
-      <text x="600" y="656" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="IBM Plex Mono">SO / Contract / Sched Agmt</text>
-
-      <!-- Sales Doc → WBS (straight up) -->
-
-      <rect x="528" y="520" width="145" height="30" rx="6" fill="rgba(255,255,255,0.95)" stroke="rgba(217,119,6,0.25)"/>
-      <text x="600" y="533" text-anchor="middle" font-size="8" font-weight="600" fill="#d97706" font-family="IBM Plex Mono">BILLING WBS NODE</text>
-      <text x="600" y="544" text-anchor="middle" font-size="8" fill="#64748b">Revenue rec & invoicing</text>
-
-      <!-- Labels for Sales Area/Org as attributes -->
-      <text x="450" y="604" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="IBM Plex Mono">attribute of</text>
-      <text x="750" y="604" text-anchor="middle" font-size="7" fill="#94a3b8" font-family="IBM Plex Mono">attribute of</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- 8 O'CLOCK: TAX & ORIGIN                 -->
-      <!-- ═══════════════════════════════════════ -->
-      <rect x="30" y="475" width="110" height="30" rx="6" fill="rgba(225,29,72,0.06)" stroke="#e11d48"/>
-      <text x="85" y="494" text-anchor="middle" font-size="9" font-weight="500" fill="#e11d48">Tax Jurisdiction</text>
-
-      <rect x="155" y="475" width="110" height="30" rx="6" fill="rgba(13,148,136,0.06)" stroke="#0d9488"/>
-      <text x="210" y="494" text-anchor="middle" font-size="9" font-weight="500" fill="#0d9488">Origin Group</text>
-
-      <!-- ═══════════════════════════════════════ -->
-      <!-- BOTTOM: ACDOCA OUTPUT                   -->
-      <!-- ═══════════════════════════════════════ -->
+      <!-- ════ LAYER 5: ACDOCA (bottom) ════ -->
       <text x="620" y="685" font-size="8" fill="#7c3aed" font-family="IBM Plex Mono">posts to</text>
-
       <rect x="310" y="695" width="580" height="105" rx="14" fill="rgba(146,97,10,0.04)" stroke="rgba(146,97,10,0.25)" stroke-width="2"/>
       <rect x="470" y="683" width="260" height="24" rx="6" fill="#ffffff" stroke="rgba(146,97,10,0.3)"/>
       <text x="600" y="700" text-anchor="middle" font-size="12" font-weight="700" fill="#92610a" font-family="IBM Plex Mono" letter-spacing="2">ACDOCA — UNIVERSAL JOURNAL</text>
-
       <text x="340" y="728" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="500">RBUKRS</text>
       <text x="398" y="728" font-size="8" fill="#94a3b8">1000</text>
       <text x="450" y="728" font-size="9" fill="#1d4ed8" font-family="IBM Plex Mono" font-weight="500">RACCT</text>
@@ -828,7 +745,6 @@
       <text x="632" y="728" font-size="8" fill="#94a3b8">D-1000.01.01.01</text>
       <text x="740" y="728" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="500">PRCTR</text>
       <text x="790" y="728" font-size="8" fill="#94a3b8">PC-DEF-BDS</text>
-
       <text x="340" y="750" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="500">WERKS</text>
       <text x="393" y="750" font-size="8" fill="#94a3b8">1100</text>
       <text x="450" y="750" font-size="9" fill="#0891b2" font-family="IBM Plex Mono" font-weight="500">LSTAR</text>
@@ -837,7 +753,6 @@
       <text x="612" y="750" font-size="8" fill="#94a3b8">00045821</text>
       <text x="695" y="750" font-size="9" fill="#059669" font-family="IBM Plex Mono" font-weight="500">SEGMENT</text>
       <text x="760" y="750" font-size="8" fill="#94a3b8">BDS</text>
-
       <text x="340" y="772" font-size="9" fill="#92610a" font-family="IBM Plex Mono" font-weight="500">KOKRS</text>
       <text x="393" y="772" font-size="8" fill="#94a3b8">A000</text>
       <text x="450" y="772" font-size="9" fill="#e11d48" font-family="IBM Plex Mono" font-weight="500">TXJCD</text>
@@ -846,14 +761,13 @@
       <text x="607" y="772" font-size="8" fill="#94a3b8">DLABR</text>
       <text x="680" y="772" font-size="9" fill="#0f172a" font-family="IBM Plex Mono" font-weight="700">HSL</text>
       <text x="720" y="772" font-size="9" fill="#0f172a" font-weight="700">$1,000.00</text>
-
-      <!-- Summary bar -->
       <rect x="340" y="790" width="520" height="20" rx="5" fill="rgba(124,58,237,0.06)" stroke="rgba(124,58,237,0.12)"/>
       <text x="600" y="804" text-anchor="middle" font-size="9" fill="#6d28d9">Every field on this ACDOCA line traces back through the WBS to its source master data object</text>
 
-      </g>
+    </svg>
+  </div>
 
-    </svg>iv class="narr-grid c3" style="margin-top:20px;">
+  <div class="narr-grid c2" style="margin-top:20px;">
     <div class="narr-card" data-c="purple">
       <h4>WBS = The Cost Gravity Well</h4>
       <p>Every dollar on a Boeing program ultimately lands on a WBS element. Direct labor flows in via activity confirmations. Materials flow in via goods issues. Overhead flows in via allocation cycles. Subcontract costs flow in via purchase order commitments. The WBS is where planned cost, actual cost, and commitments converge — making it the single source of truth for program financial health.</p>
@@ -864,7 +778,11 @@
     </div>
     <div class="narr-card" data-c="gold">
       <h4>Org Hierarchy Flows Through the WBS</h4>
-      <p>The WBS inherits its Company Code (legal entity), Controlling Area (cost accounting boundary), and Plant (physical location) through its organizational assignments. These aren't optional metadata — they determine which chart of accounts governs the posting, which indirect rate structure applies, and which tax jurisdiction calculates obligations. The WBS is the junction point where organizational structure meets operational execution.</p>
+      <p>The WBS inherits its Company Code (legal entity), Controlling Area (cost accounting boundary), and Plant (physical location) through its organizational assignments. These determine which chart of accounts governs the posting, which indirect rate structure applies, and which tax jurisdiction calculates obligations. The WBS is the junction point where organizational structure meets operational execution.</p>
+    </div>
+    <div class="narr-card" data-c="purple">
+      <h4>Results Analysis Reads the WBS</h4>
+      <p>At period-end, Results Analysis (RA) runs against WBS elements to compute WIP, accrued/deferred revenue, cost reserves, and POC revenue recognition. The RA key assigned to the WBS determines the calculation method — cost-based, revenue-based, or quantity-based. RA compares actual costs and revenues against plan, then generates the accounting entries that move costs from WIP to COGS and recognize revenue per ASC 606. Settlement (KO88) then posts these calculated values to FI. Without accurate costs on the WBS, RA produces garbage — and the financial statements reflect it.</p>
     </div>
   </div>
 </div>
@@ -1263,377 +1181,31 @@
 <!-- ═══ ACDOCA FIELD-LEVEL TABLE ═══ -->
 <div class="section">
   <div class="sec-eyebrow">Reference Table</div>
-  <div class="sec-title">ACDOCA Field-Level <em>Cost &amp; Revenue Collection Matrix</em></div>
-  <p class="sec-desc">How each master data field populates ACDOCA across all major cost and revenue transaction scenarios in an A&amp;D / GovCon environment. Master data elements on the left; cost collection and revenue recognition scenarios across the top.</p>
+  <div class="sec-title">ACDOCA Field-Level <em>Master Data Origin Map</em></div>
+  <p class="sec-desc">Example: Engineer confirms 8 hours to WBS D-1000.01.03 (Fighter Program, Avionics Software). Each field traced to source master data and derivation mechanism.</p>
 
   <div class="acdoca-table-wrap">
-    <div class="acdoca-table-title">Master Data → ACDOCA Population by Transaction Scenario</div>
-    <div class="acdoca-table-subtitle">Each cell shows the populated value and its derivation source. Fields marked "—" are not populated by that transaction type.</div>
-    <div class="acdoca-table-scroll">
+    <div class="acdoca-table-title">Labor Confirmation — CATS → ACDOCA Field Population</div>
     <table class="acdoca">
-      <thead>
-        <tr>
-          <th class="th-field">ACDOCA Field</th>
-          <th class="th-tech">Tech Name</th>
-          <th class="th-scenario">Direct Labor<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">CATS → CO</span></th>
-          <th class="th-scenario">Direct Material<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">101 GR / Acct-Assigned PO</span></th>
-          <th class="th-scenario">Subcontract / Services<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">SES / MIRO → CO</span></th>
-          <th class="th-scenario">ODC / Travel<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">FI Posting → CO</span></th>
-          <th class="th-scenario">Overhead Allocation<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">KGI2 / KSV5 Cycle</span></th>
-          <th class="th-scenario">Revenue Recognition<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">DP90 / VF01</span></th>
-          <th class="th-scenario">WIP / Settlement<br><span style="font-weight:400;letter-spacing:0;text-transform:none;font-size:8px;color:#94a3b8">KO88 → FI</span></th>
-        </tr>
-      </thead>
+      <thead><tr><th>ACDOCA Field</th><th>Tech Name</th><th>Value</th><th>Source Master Data</th><th>Derivation</th><th>Boeing Significance</th></tr></thead>
       <tbody>
-
-        <!-- ═══ ORGANIZATIONAL FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Organizational Structure Fields</td></tr>
-
-        <tr>
-          <td class="row-label">Company Code</td>
-          <td class="f-org">RBUKRS</td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">WBS master assignment</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">Plant → Co Code (T001K)</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">Purchasing Org → Co Code</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">FI document header</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">Receiver WBS → Co Code</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">Sales Org → Co Code</span></td>
-          <td class="cell-val"><span class="cv-val">1000</span><span class="cv-src">Settlement rule receiver</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Controlling Area</td>
-          <td class="f-org">KOKRS</td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Co Code → CO Area (OX19)</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Co Code → CO Area (OX19)</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Co Code → CO Area (OX19)</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Co Code → CO Area (OX19)</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Cycle header config</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Co Code → CO Area (OX19)</span></td>
-          <td class="cell-val"><span class="cv-val">A000</span><span class="cv-src">Project → CO Area</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Functional Area</td>
-          <td class="f-org">RFAREA</td>
-          <td class="cell-val"><span class="cv-val">0400</span><span class="cv-src">Cost Center master</span></td>
-          <td class="cell-val"><span class="cv-val">0400</span><span class="cv-src">Substitution rule</span></td>
-          <td class="cell-val"><span class="cv-val">0400</span><span class="cv-src">GL Account → Func Area</span></td>
-          <td class="cell-val"><span class="cv-val">0300</span><span class="cv-src">GL Account → Func Area</span></td>
-          <td class="cell-val"><span class="cv-val">0400</span><span class="cv-src">Receiver CC → Func Area</span></td>
-          <td class="cell-val"><span class="cv-val">0100</span><span class="cv-src">Revenue GL → Func Area</span></td>
-          <td class="cell-val"><span class="cv-val">0400</span><span class="cv-src">Settlement receiver GL</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Segment</td>
-          <td class="f-org">SEGMENT</td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Profit Center attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Profit Center attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Profit Center attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Profit Center attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Receiver PC attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Profit Center attribute</span></td>
-          <td class="cell-val"><span class="cv-val">BDS</span><span class="cv-src">Settlement receiver PC</span></td>
-        </tr>
-
-        <!-- ═══ COST / CONTROLLING FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Cost &amp; Controlling Fields</td></tr>
-
-        <tr>
-          <td class="row-label">GL Account</td>
-          <td class="f-cost">RACCT</td>
-          <td class="cell-val"><span class="cv-val">620100</span><span class="cv-src">Activity Type → Primary CE</span></td>
-          <td class="cell-val"><span class="cv-val">400100</span><span class="cv-src">PO Acct Assignment → GL</span></td>
-          <td class="cell-val"><span class="cv-val">421000</span><span class="cv-src">PO Account Assign → GL</span></td>
-          <td class="cell-val"><span class="cv-val">625000</span><span class="cv-src">FI line item GL</span></td>
-          <td class="cell-val"><span class="cv-val">680100</span><span class="cv-src">Secondary CE on cycle</span></td>
-          <td class="cell-val"><span class="cv-val">410000</span><span class="cv-src">Revenue GL from billing</span></td>
-          <td class="cell-val"><span class="cv-val">795000</span><span class="cv-src">Settlement profile GL</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Cost Center</td>
-          <td class="f-cost">RCNTR</td>
-          <td class="cell-val"><span class="cv-val">ENG-1100</span><span class="cv-src">Personnel # → HCM IT0001</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">TRVL-200</span><span class="cv-src">FI line item assignment</span></td>
-          <td class="cell-val"><span class="cv-val">OH-FRG-100</span><span class="cv-src">Sender CC on cycle seg</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Profit Center</td>
-          <td class="f-cost">PRCTR</td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">WBS Element assignment</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">WBS / Order → PC</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">WBS Element assignment</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">WBS / IO → PC</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">Receiver WBS → PC</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">SD Sales Order → PC</span></td>
-          <td class="cell-val"><span class="cv-val">PC-DEF-BDS</span><span class="cv-src">Receiver GL / CC → PC</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Activity Type</td>
-          <td class="f-cost">LSTAR</td>
-          <td class="cell-val"><span class="cv-val">DIR-ENG</span><span class="cv-src">CATS time entry selection</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Origin Group</td>
-          <td class="f-cost">RKORG</td>
-          <td class="cell-val"><span class="cv-val">DLABR</span><span class="cv-src">CE → Origin (OKB9)</span></td>
-          <td class="cell-val"><span class="cv-val">DMATL</span><span class="cv-src">CE → Origin (OKB9)</span></td>
-          <td class="cell-val"><span class="cv-val">DSUBC</span><span class="cv-src">CE → Origin (OKB9)</span></td>
-          <td class="cell-val"><span class="cv-val">DODC</span><span class="cv-src">CE → Origin (OKB9)</span></td>
-          <td class="cell-val"><span class="cv-val">OHEAD</span><span class="cv-src">Secondary CE → Origin</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <!-- ═══ PROJECT / WBS FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Project System &amp; Cost Object Fields</td></tr>
-
-        <tr>
-          <td class="row-label">WBS Element</td>
-          <td class="f-proj">PS_POSID</td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">CATS receiver object</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">PO account assignment</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">PO account assignment</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">FI line acct assignment</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">Cycle segment receiver</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">Sales Order → WBS link</span></td>
-          <td class="cell-val"><span class="cv-val">D-1000.01.03</span><span class="cv-src">Settlement rule sender</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Network / Activity</td>
-          <td class="f-proj">NPLNR / VORNR</td>
-          <td class="cell-val"><span class="cv-val">N-001 / 0010</span><span class="cv-src">CATS network assignment</span></td>
-          <td class="cell-val"><span class="cv-val">N-001 / 0020</span><span class="cv-src">PO line → Network activity</span></td>
-          <td class="cell-val"><span class="cv-val">N-001 / 0030</span><span class="cv-src">External service activity</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Production Order</td>
-          <td class="f-proj">AUFNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">100045678</span><span class="cv-src">OH applied to Prod Order</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">100045678</span><span class="cv-src">Prod Order → settlement</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Internal Order</td>
-          <td class="f-proj">AUFNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">800012345</span><span class="cv-src">IO as cost collector</span></td>
-          <td class="cell-val"><span class="cv-val">800012345</span><span class="cv-src">OH applied to IO</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">800012345</span><span class="cv-src">IO settlement to WBS</span></td>
-        </tr>
-
-        <!-- ═══ LOGISTICS / MATERIAL FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Logistics &amp; Material Fields</td></tr>
-
-        <tr>
-          <td class="row-label">Plant</td>
-          <td class="f-log">WERKS</td>
-          <td class="cell-val"><span class="cv-val">1100</span><span class="cv-src">Cost Center → Plant</span></td>
-          <td class="cell-val"><span class="cv-val">1100</span><span class="cv-src">PO delivering plant</span></td>
-          <td class="cell-val"><span class="cv-val">1100</span><span class="cv-src">PO delivering plant</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">1100</span><span class="cv-src">Sales Order plant</span></td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Material</td>
-          <td class="f-log">MATNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">MAT-AV-2200</span><span class="cv-src">PO line item material</span></td>
-          <td class="cell-val"><span class="cv-val">SRV-EXT-001</span><span class="cv-src">Service master / PO line</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">FP-DLVR-100</span><span class="cv-src">Sales Order item material</span></td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Valuation Class</td>
-          <td class="f-log">BKLAS</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">3000</span><span class="cv-src">Material master Acctg view</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Material Group</td>
-          <td class="f-log">MATKL</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">AVIONICS</span><span class="cv-src">Material master Basic view</span></td>
-          <td class="cell-val"><span class="cv-val">EXT-SVC</span><span class="cv-src">PO item category</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Vendor / Supplier</td>
-          <td class="f-log">LIFNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">V-50001</span><span class="cv-src">PO header vendor</span></td>
-          <td class="cell-val"><span class="cv-val">V-70200</span><span class="cv-src">PO / SES vendor</span></td>
-          <td class="cell-val"><span class="cv-val">V-90100</span><span class="cv-src">FI document vendor line</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Customer</td>
-          <td class="f-log">KUNNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">C-USG-001</span><span class="cv-src">Sales Order sold-to party</span></td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <!-- ═══ VALUATION / QUANTITY FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Valuation, Personnel &amp; Quantity Fields</td></tr>
-
-        <tr>
-          <td class="row-label">Personnel #</td>
-          <td class="f-val">PERNR</td>
-          <td class="cell-val"><span class="cv-val">00045821</span><span class="cv-src">CATS session (logged-in)</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Purchasing Doc</td>
-          <td class="f-val">EBELN</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">45000123</span><span class="cv-src">PO document number</span></td>
-          <td class="cell-val"><span class="cv-val">45000456</span><span class="cv-src">Service PO / SES ref</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Sales Document</td>
-          <td class="f-val">KDAUF</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">80001000</span><span class="cv-src">SD Contract / Sales Order</span></td>
-          <td class="cell-val"><span class="cv-val">80001000</span><span class="cv-src">Revenue element ref</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Billing Document</td>
-          <td class="f-val">BELNR</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">90001500</span><span class="cv-src">VF01 billing doc</span></td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <!-- ═══ TAX / COMPLIANCE FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Tax &amp; Compliance Fields</td></tr>
-
-        <tr>
-          <td class="row-label">Tax Jurisdiction</td>
-          <td class="f-tax">TXJCD</td>
-          <td class="cell-val"><span class="cv-val">AZ0130000</span><span class="cv-src">Plant → Vertex geocode</span></td>
-          <td class="cell-val"><span class="cv-val">AZ0130000</span><span class="cv-src">PO plant → Vertex geocode</span></td>
-          <td class="cell-val"><span class="cv-val">WA0330000</span><span class="cv-src">Ship-from → Vertex</span></td>
-          <td class="cell-val"><span class="cv-val">AZ0130000</span><span class="cv-src">Expense posting location</span></td>
-          <td class="cell-na">—</td>
-          <td class="cell-val"><span class="cv-val">DC0110000</span><span class="cv-src">Ship-to → Vertex geocode</span></td>
-          <td class="cell-na">—</td>
-        </tr>
-
-        <!-- ═══ AMOUNT / POSTING FIELDS ═══ -->
-        <tr class="section-row"><td colspan="9">Amounts &amp; Posting Logic</td></tr>
-
-        <tr>
-          <td class="row-label">Amount (LC)</td>
-          <td class="f-amt">HSL</td>
-          <td class="cell-val"><span class="cv-val">$1,000.00</span><span class="cv-src">Rate × Qty ($125 × 8h)</span></td>
-          <td class="cell-val"><span class="cv-val">$24,500.00</span><span class="cv-src">PO Net Price × Qty (GR)</span></td>
-          <td class="cell-val"><span class="cv-val">$185,000.00</span><span class="cv-src">SES / Invoice amount</span></td>
-          <td class="cell-val"><span class="cv-val">$3,200.00</span><span class="cv-src">FI posting amount</span></td>
-          <td class="cell-val"><span class="cv-val">$42,000.00</span><span class="cv-src">Cycle tracing factor calc</span></td>
-          <td class="cell-val"><span class="cv-val">$2,500,000</span><span class="cv-src">Billing plan milestone</span></td>
-          <td class="cell-val"><span class="cv-val">$1,850,000</span><span class="cv-src">Settlement rule %/amount</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Debit / Credit</td>
-          <td class="f-val">DRCRK</td>
-          <td class="cell-val"><span class="cv-val">S (Debit)</span><span class="cv-src">Receiver = Debit</span></td>
-          <td class="cell-val"><span class="cv-val">S (Debit)</span><span class="cv-src">GR to project = Debit</span></td>
-          <td class="cell-val"><span class="cv-val">S (Debit)</span><span class="cv-src">Expense = Debit</span></td>
-          <td class="cell-val"><span class="cv-val">S (Debit)</span><span class="cv-src">Expense = Debit</span></td>
-          <td class="cell-val"><span class="cv-val">S (Debit)</span><span class="cv-src">Receiver = Debit</span></td>
-          <td class="cell-val"><span class="cv-val">H (Credit)</span><span class="cv-src">Revenue = Credit</span></td>
-          <td class="cell-val"><span class="cv-val">H (Credit)</span><span class="cv-src">WIP reversal = Credit</span></td>
-        </tr>
-
-        <tr>
-          <td class="row-label">Value Type</td>
-          <td class="f-val">VRGNG</td>
-          <td class="cell-val"><span class="cv-val">COIN</span><span class="cv-src">CO internal posting</span></td>
-          <td class="cell-val"><span class="cv-val">COIN</span><span class="cv-src">CO internal posting</span></td>
-          <td class="cell-val"><span class="cv-val">COIN</span><span class="cv-src">CO internal posting</span></td>
-          <td class="cell-val"><span class="cv-val">RFBU</span><span class="cv-src">FI real-time posting</span></td>
-          <td class="cell-val"><span class="cv-val">COIN</span><span class="cv-src">CO allocation posting</span></td>
-          <td class="cell-val"><span class="cv-val">RFBU</span><span class="cv-src">FI billing posting</span></td>
-          <td class="cell-val"><span class="cv-val">KOAO</span><span class="cv-src">Settlement posting</span></td>
-        </tr>
-
+        <tr><td class="row-label">Company Code</td><td class="f-org">RBUKRS</td><td class="f-org">1000</td><td>WBS Element assignment</td><td>Direct on WBS master</td><td class="row-desc">Legal entity — FAR Part 31</td></tr>
+        <tr><td class="row-label">Controlling Area</td><td class="f-org">KOKRS</td><td class="f-org">A000</td><td>Company Code config</td><td>OX19 assignment</td><td class="row-desc">CO boundary — unified rate pools</td></tr>
+        <tr><td class="row-label">GL Account</td><td class="f-cost">RACCT</td><td class="f-cost">620100</td><td>Activity Type → CE</td><td>Primary CE = GL in S/4</td><td class="row-desc">BOE "Direct Engr Labor"</td></tr>
+        <tr><td class="row-label">Cost Center</td><td class="f-cost">RCNTR</td><td class="f-cost">ENG-1100</td><td>Personnel → Org Assign</td><td>HCM IT0001</td><td class="row-desc">Determines OH rate pool</td></tr>
+        <tr><td class="row-label">WBS Element</td><td class="f-proj">PS_POSID</td><td class="f-proj">D-1000.01.03</td><td>CATS time entry</td><td>User enters receiver</td><td class="row-desc">Contract cost collection point</td></tr>
+        <tr><td class="row-label">Profit Center</td><td class="f-cost">PRCTR</td><td class="f-cost">PC-DEF-AERO</td><td>WBS Element assign</td><td>Direct on WBS master</td><td class="row-desc">Segment attribution</td></tr>
+        <tr><td class="row-label">Segment</td><td class="f-log">SEGMENT</td><td class="f-log">BDS</td><td>Profit Center attribute</td><td>Assigned on PC master</td><td class="row-desc">Aligns to 10-K/10-Q reporting segments & CAS segments</td></tr>
+        <tr><td class="row-label">Activity Type</td><td class="f-val">LSTAR</td><td class="f-val">DIR-ENG</td><td>CATS time entry</td><td>User selects</td><td class="row-desc">Rate calc: $125/hr</td></tr>
+        <tr><td class="row-label">Personnel #</td><td class="f-val">PERNR</td><td class="f-val">00045821</td><td>CATS session</td><td>Logged-in user</td><td class="row-desc">DCAA labor audit trail</td></tr>
+        <tr><td class="row-label">Plant</td><td class="f-log">WERKS</td><td class="f-log">1100</td><td>Cost Center master</td><td>CC → Plant assign</td><td class="row-desc">Site-level rates</td></tr>
+        <tr><td class="row-label">Functional Area</td><td class="f-org">RFAREA</td><td class="f-org">0400</td><td>Cost Center master</td><td>Substitution rule</td><td class="row-desc">COS vs SGA vs R&D</td></tr>
+        <tr><td class="row-label">Tax Jurisdiction</td><td class="f-tax">TXJCD</td><td class="f-tax">AZ0130000</td><td>Plant → Tax mapping</td><td>Vertex geocode</td><td class="row-desc">Payroll situs</td></tr>
+        <tr><td class="row-label">Origin Group</td><td class="f-val">RKORG</td><td class="f-val">DLABR</td><td>Cost Element → Origin</td><td>OKB9 default</td><td class="row-desc">FAR cost proposal cats</td></tr>
+        <tr><td class="row-label">Amount (Local)</td><td class="f-val">HSL</td><td class="f-amt">$1,000.00</td><td>Rate × Quantity</td><td>$125/hr × 8 hrs</td><td class="row-desc">Actual cost for billing & reporting</td></tr>
+        <tr><td class="row-label">Debit/Credit</td><td class="f-val">DRCRK</td><td class="f-val">S (Debit)</td><td>Transaction logic</td><td>Receiver = Debit</td><td class="row-desc">Double-entry</td></tr>
       </tbody>
     </table>
-    </div>
   </div>
 </div>
 
