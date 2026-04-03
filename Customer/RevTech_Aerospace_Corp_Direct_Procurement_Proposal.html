@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revelation Technologies - AERO-RFP-KB-03262026 - Direct Procurement Transformation Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628; --navy-mid: #132240; --navy-light: #1a3055;
+  --gold: #c9a84c; --gold-light: #e2c97e; --gold-dim: rgba(201,168,76,0.15);
+  --white: #ffffff; --off-white: #f4f2ed; --warm-gray: #b8b2a6;
+  --text-primary: #1a1a1a; --text-secondary: #555555;
+  --border-light: rgba(10,22,40,0.08); --shadow-card: 0 4px 24px rgba(10,22,40,0.08);
+  --green-accent: #2a7d4f;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size:A4; margin:0; }
+@media print { .page{page-break-after:always;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+body { font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.65; color:var(--text-primary); background:#e8e6e1; -webkit-font-smoothing:antialiased; }
+.document-wrapper { max-width:900px; margin:0 auto; padding:40px 20px; }
+
+/* COVER */
+.cover-page { background:var(--navy); min-height:100vh; display:flex; flex-direction:column; position:relative; overflow:hidden; border-radius:2px; margin-bottom:32px; }
+.cover-page::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%,rgba(201,168,76,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(26,48,85,.4) 0%,transparent 50%),linear-gradient(160deg,var(--navy),var(--navy-mid)); }
+.cover-geometric { position:absolute; top:0; right:0; width:45%; height:100%; opacity:.04; background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,168,76,.5) 40px,rgba(201,168,76,.5) 41px); }
+.cover-accent-line { position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(to bottom,var(--gold),var(--gold-light),transparent); }
+.cover-header { position:relative; z-index:1; padding:48px 56px 0; display:flex; justify-content:space-between; align-items:flex-start; }
+.cover-logo img { height:38px; filter:brightness(0) invert(1); }
+.cover-doc-type { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); padding:6px 14px; border:1px solid rgba(201,168,76,.3); border-radius:2px; }
+.cover-body { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 56px; }
+.cover-tag { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:24px; }
+.cover-title { font-family:'Playfair Display',serif; font-size:44px; font-weight:600; line-height:1.15; color:var(--white); margin-bottom:16px; max-width:600px; }
+.cover-subtitle { font-size:18px; font-weight:300; color:rgba(255,255,255,.6); max-width:500px; line-height:1.6; }
+.cover-divider { width:64px; height:2px; background:var(--gold); margin:32px 0; }
+.cover-meta-grid { display:grid; grid-template-columns:repeat(2,1fr); border-top:1px solid rgba(255,255,255,.08); padding-top:28px; gap:20px; position:relative; z-index:1; padding-left:56px; padding-right:56px; }
+.cover-meta-item { padding-right:24px; }
+.cover-meta-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.cover-meta-value { font-size:14px; font-weight:500; color:var(--white); line-height:1.4; }
+.cover-options-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; position:relative; z-index:1; padding:0 56px 48px; }
+.cover-option { border:1px solid rgba(255,255,255,.12); border-radius:4px; padding:20px 24px; }
+.cover-option-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.cover-option-price { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; margin-bottom:4px; }
+.cover-option-note { font-size:12px; color:rgba(255,255,255,.45); line-height:1.4; }
+
+/* CONTENT PAGES */
+.content-page { background:var(--white); border-radius:2px; margin-bottom:32px; box-shadow:var(--shadow-card); overflow:hidden; }
+.page-header { background:var(--navy); padding:16px 48px; display:flex; justify-content:space-between; align-items:center; }
+.page-header-logo img { height:24px; filter:brightness(0) invert(1); }
+.page-header-section { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); text-align:right; line-height:1.4; }
+.page-content { padding:48px; }
+
+/* TYPOGRAPHY */
+.section-number { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; display:block; }
+.section-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--navy); margin-bottom:24px; line-height:1.25; }
+.section-intro { font-size:16px; font-weight:300; color:var(--text-secondary); line-height:1.7; margin-bottom:32px; max-width:680px; }
+h3 { font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin:32px 0 12px; letter-spacing:.3px; }
+h3:first-of-type { margin-top:0; }
+p { margin-bottom:14px; color:var(--text-primary); line-height:1.7; }
+
+/* CALLOUT */
+.callout { background:var(--gold-dim); border-left:3px solid var(--gold); padding:20px 24px; margin:24px 0; border-radius:0 4px 4px 0; }
+.callout p { margin-bottom:0; font-weight:500; color:var(--navy); }
+.callout-navy { background:rgba(10,22,40,.04); border-left-color:var(--navy); }
+.callout-green { background:rgba(42,125,79,.06); border-left-color:var(--green-accent); }
+.callout-green p { color:var(--green-accent); }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; margin:24px 0; font-size:13px; }
+thead th { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--white); background:var(--navy); padding:14px 16px; text-align:left; font-weight:500; }
+thead th:last-child,thead th.align-right { text-align:right; }
+tbody td { padding:13px 16px; border-bottom:1px solid var(--border-light); color:var(--text-primary); }
+tbody td:last-child,tbody td.align-right { text-align:right; font-family:'JetBrains Mono',monospace; font-size:13px; }
+tbody tr:nth-child(even) { background:rgba(244,242,237,.5); }
+tbody tr:hover { background:var(--gold-dim); }
+tfoot td { padding:16px; font-weight:700; border-top:2px solid var(--navy); background:rgba(10,22,40,.03); color:var(--navy); }
+tfoot td:last-child { text-align:right; font-family:'JetBrains Mono',monospace; font-size:15px; }
+
+/* DISCOUNT */
+.complimentary-row { background:rgba(42,125,79,.06)!important; }
+.complimentary-row:hover { background:rgba(42,125,79,.1)!important; }
+.complimentary-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--white); background:var(--green-accent); padding:2px 8px; border-radius:2px; margin-left:8px; vertical-align:middle; }
+.strike { text-decoration:line-through; color:var(--warm-gray); }
+
+/* EIS TAG */
+.eis-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:1px; text-transform:uppercase; color:var(--white); background:#8b5e3c; padding:2px 6px; border-radius:2px; margin-left:6px; vertical-align:middle; }
+
+/* TIMELINE */
+.timeline { position:relative; margin:32px 0; padding-left:28px; }
+.timeline::before { content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:linear-gradient(to bottom,var(--gold),var(--navy-light),var(--gold)); }
+.timeline-item { position:relative; padding:0 0 28px 24px; }
+.timeline-item:last-child { padding-bottom:0; }
+.timeline-dot { position:absolute; left:-25px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--gold); border:2px solid var(--white); box-shadow:0 0 0 3px rgba(201,168,76,.2); }
+.timeline-dot.freeze { background:var(--warm-gray); box-shadow:0 0 0 3px rgba(184,178,166,.2); }
+.timeline-dot.golive { background:var(--navy); box-shadow:0 0 0 3px rgba(10,22,40,.15); width:14px; height:14px; left:-26px; top:4px; }
+.timeline-phase { font-weight:700; color:var(--navy); font-size:14px; margin-bottom:3px; }
+.timeline-dates { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--gold); letter-spacing:.5px; margin-bottom:6px; }
+.timeline-desc { font-size:13px; color:var(--text-secondary); line-height:1.5; }
+.timeline-item.freeze-period { opacity:.55; }
+
+/* PHASE CARDS */
+.phase-card { border:1px solid var(--border-light); border-radius:4px; margin-bottom:20px; overflow:hidden; }
+.phase-card-header { background:var(--navy); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+.phase-card-number { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); }
+.phase-card-title { font-weight:600; color:var(--white); font-size:14px; }
+.phase-card-body { padding:20px; }
+.phase-card-body h4 { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.phase-card-body ul { list-style:none; padding:0; margin-bottom:16px; }
+.phase-card-body ul:last-child { margin-bottom:0; }
+.phase-card-body li { position:relative; padding-left:18px; margin-bottom:6px; font-size:13px; line-height:1.5; color:var(--text-primary); }
+.phase-card-body li::before { content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:1px; background:var(--gold); }
+
+/* PRICING */
+.dual-pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:32px 0; }
+.dual-pricing-card { border-radius:4px; padding:28px; text-align:center; position:relative; overflow:hidden; }
+.dual-pricing-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.dual-pricing-card.tm { background:var(--navy); }
+.dual-pricing-card.tm::before { background:var(--gold); }
+.dual-pricing-card.ffp { background:var(--navy-mid); border:1px solid rgba(201,168,76,.2); }
+.dual-pricing-card.ffp::before { background:linear-gradient(90deg,var(--gold),var(--gold-light)); }
+.dual-pricing-card .card-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.dual-pricing-card .card-price { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--white); margin-bottom:6px; }
+.dual-pricing-card .card-note { font-size:12px; color:rgba(255,255,255,.45); line-height:1.4; }
+.ffp-premium-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--gold-light); background:rgba(201,168,76,.15); padding:3px 10px; border-radius:2px; margin-top:8px; }
+
+/* PHASE PRICING */
+.phase-pricing-label { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.phase-pricing-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:600; color:var(--navy); margin-bottom:4px; }
+.phase-pricing-dates { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-secondary); margin-bottom:16px; }
+.phase-pricing-block { margin-bottom:36px; padding-bottom:36px; border-bottom:1px solid var(--border-light); }
+.phase-pricing-block:last-of-type { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.phase-pricing-block table { margin:12px 0 0; }
+.phase-summary-bar { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px; }
+.phase-summary-item { border-radius:4px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; }
+.phase-summary-item.tm-bar { background:rgba(10,22,40,.04); border:1px solid var(--border-light); }
+.phase-summary-item.ffp-bar { background:var(--gold-dim); border:1px solid rgba(201,168,76,.25); }
+.phase-summary-item .bar-label { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-secondary); }
+.phase-summary-item.ffp-bar .bar-label { color:var(--gold); }
+.phase-summary-item .bar-value { font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:700; color:var(--navy); }
+.phase-capex { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px; margin-top:6px; }
+.phase-capex-item { border-radius:3px; padding:6px 10px; display:flex; justify-content:space-between; align-items:center; }
+.phase-capex-item .cx-label { font-family:'JetBrains Mono',monospace; font-size:7px; letter-spacing:1px; text-transform:uppercase; }
+.phase-capex-item .cx-value { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; }
+.cx-cap { background:rgba(10,22,40,.03); border:1px solid rgba(10,22,40,.06); }
+.cx-cap .cx-label { color:var(--navy); }
+.cx-cap .cx-value { color:var(--navy); }
+.cx-exp { background:rgba(184,178,166,.08); border:1px solid rgba(184,178,166,.15); }
+.cx-exp .cx-label { color:var(--warm-gray); }
+.cx-exp .cx-value { color:var(--text-secondary); }
+.freeze-notice { background:rgba(244,242,237,.7); border:1px dashed var(--warm-gray); border-radius:4px; padding:20px 24px; text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:36px; }
+.freeze-notice strong { color:var(--navy); }
+
+/* GRAND TOTAL */
+.grand-total-bar { display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:16px; margin-top:8px; }
+.grand-total-stat { background:var(--navy); border-radius:4px; padding:20px; text-align:center; }
+.grand-total-stat .label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.grand-total-stat .value { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:var(--white); }
+.grand-total-stat.savings { background:var(--green-accent); }
+.grand-total-stat.savings .label { color:rgba(255,255,255,.7); }
+
+/* VALUE / RISK / CONSTRAINT */
+.value-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:24px 0; }
+.value-card { background:rgba(244,242,237,.5); border-radius:4px; padding:24px; border-top:3px solid var(--gold); }
+.value-card h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.value-card p { font-size:13px; color:var(--text-secondary); margin-bottom:0; line-height:1.55; }
+.risk-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.risk-item { border:1px solid var(--border-light); border-radius:4px; padding:18px; }
+.risk-item-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.risk-item h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.risk-item p { font-size:12.5px; color:var(--text-secondary); margin-bottom:0; line-height:1.55; }
+.constraint-list { margin:20px 0; }
+.constraint-item { display:flex; align-items:flex-start; gap:14px; padding:12px 0; border-bottom:1px solid var(--border-light); }
+.constraint-item:last-child { border-bottom:none; }
+.constraint-num { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; color:var(--gold); background:var(--gold-dim); width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:4px; flex-shrink:0; margin-top:2px; }
+.constraint-text { font-size:13.5px; color:var(--text-primary); line-height:1.55; }
+
+/* SIGNATURE */
+.signature-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:40px; padding-top:32px; border-top:1px solid var(--border-light); }
+.signature-line { border-bottom:1px solid var(--navy); height:48px; margin-bottom:8px; }
+.signature-name { font-weight:600; font-size:13px; color:var(--navy); }
+.signature-title-text { font-size:12px; color:var(--text-secondary); }
+.signature-date { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--warm-gray); margin-top:4px; }
+
+/* PERSONNEL TABLE */
+.personnel-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.personnel-card { border:1px solid var(--border-light); border-radius:4px; padding:18px; }
+.personnel-card .p-name { font-weight:700; color:var(--navy); font-size:14px; margin-bottom:4px; }
+.personnel-card .p-role { font-size:12px; color:var(--text-secondary); }
+.personnel-card.tbd { border-style:dashed; }
+
+/* FOOTER */
+.doc-footer { text-align:center; padding:24px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--warm-gray); }
+
+/* ─── PASSWORD GATE ─── */
+#password-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a1628 0%, #1a3055 100%);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+}
+#password-gate .gate-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  max-width: 400px;
+  width: 90%;
+}
+#password-gate .gate-box h2 {
+  font-size: 20px;
+  color: #0a1628;
+  margin-bottom: 6px;
+}
+#password-gate .gate-box p {
+  font-size: 13px;
+  color: #64748B;
+  margin-bottom: 24px;
+}
+#password-gate .gate-box input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+#password-gate .gate-box input:focus {
+  border-color: var(--gold);
+}
+#password-gate .gate-box button {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #0a1628, #1a3055);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#password-gate .gate-box button:hover {
+  opacity: .9;
+}
+#password-gate .gate-error {
+  color: #DC2626;
+  font-size: 13px;
+  margin-top: 12px;
+  display: none;
+}
+body.locked { overflow: hidden; }
+body.locked > *:not(#password-gate) { display: none; }
+</style>
+</head>
+<body class="locked">
+
+<div id="password-gate">
+  <div class="gate-box">
+    <h2>Confidential Document</h2>
+    <p>Please enter the access code to view this proposal.</p>
+    <input type="password" id="gate-input" placeholder="Access Code" autofocus>
+    <button onclick="checkGatePassword()">Unlock</button>
+    <div class="gate-error" id="gate-error">Incorrect access code. Please try again.</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+(function() {
+  var SB_URL = 'https://xdwduopeyxxtlzugyrtu.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkd2R1b3BleXh4dGx6dWd5cnR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NDc2MzcsImV4cCI6MjA5MDEyMzYzN30.yz-fJAPVeRrq7ftlXmGjwqlfOY3IEz26eDtZLmAaGlQ';
+  var gateSb = supabase.createClient(SB_URL, SB_KEY);
+
+  async function sha256(str) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+  }
+
+  window.checkGatePassword = async function() {
+    var input = document.getElementById('gate-input').value;
+    if (!input) return;
+    var hash = await sha256(input);
+    try {
+      var { data, error } = await gateSb
+        .from('access_keys')
+        .select('id')
+        .eq('key_hash', hash)
+        .eq('document', 'aerospace-direct-procurement')
+        .single();
+      if (!error && data) {
+        document.getElementById('password-gate').remove();
+        document.body.classList.remove('locked');
+      } else {
+        document.getElementById('gate-error').style.display = 'block';
+        document.getElementById('gate-input').value = '';
+        document.getElementById('gate-input').focus();
+      }
+    } catch(e) {
+      document.getElementById('gate-error').style.display = 'block';
+      document.getElementById('gate-input').value = '';
+      document.getElementById('gate-input').focus();
+    }
+  };
+
+  document.getElementById('gate-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkGatePassword();
+  });
+})();
+</script>
+
+<div class="document-wrapper">
+
+  <!-- ═══════ COVER ═══════ -->
+  <div class="cover-page page">
+    <div class="cover-geometric"></div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-header">
+      <div class="cover-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="Revelation Technologies"></div>
+      <div class="cover-doc-type">AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="cover-body">
+      <div class="cover-tag">Prepared for The Aerospace Corporation</div>
+      <h1 class="cover-title">SAP S/4HANA Direct Procurement Transformation</h1>
+      <p class="cover-subtitle">Transitioning procurement execution from SAP Ariba to S/4HANA - reducing technical debt, eliminating custom integrations, and aligning to SAP-recommended architecture.</p>
+      <div class="cover-divider"></div>
+    </div>
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item"><div class="cover-meta-label">Prepared By</div><div class="cover-meta-value">Revelation Technologies LLC</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">March 31, 2026</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Solicitation</div><div class="cover-meta-value">AERO‑RFP‑KB‑03262026</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Classification</div><div class="cover-meta-value">Confidential</div></div>
+    </div>
+    <div class="cover-options-grid">
+      <div class="cover-option">
+        <div class="cover-option-label">Option A - Time &amp; Materials</div>
+        <div class="cover-option-price" style="color:var(--gold-light);">$394,710</div>
+        <div class="cover-option-note">Billed on actual hours consumed<br>at discounted project rates<br>Includes $5,000 Shared Services credit</div>
+      </div>
+      <div class="cover-option">
+        <div class="cover-option-label">Option B - Firm Fixed Price</div>
+        <div class="cover-option-price" style="color:var(--white);">$454,667</div>
+        <div class="cover-option-note">Milestone‑based payments tied to<br>phase deliverable acceptance<br>Includes $5,000 Shared Services credit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 01 - EXECUTIVE SUMMARY ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 01</span>
+      <h2 class="section-title">Executive Summary</h2>
+      <p class="section-intro">In response to Solicitation No. AERO‑RFP‑KB‑03262026, Revelation Technologies proposes an engagement to transition The Aerospace Corporation's Direct Procurement execution from SAP Ariba into SAP S/4HANA, establishing S/4 as the authoritative system of execution for all direct procurement activity.</p>
+      <p>The Aerospace Corporation currently executes direct procurement workflows through SAP Ariba, requiring a layer of custom integrations between Ariba and S/4HANA to manage PR-to-PO handoffs. This customization introduces technical debt, elevates sustainment costs, and creates an integration surface area that is increasingly difficult to maintain as both platforms evolve.</p>
+      <p>This engagement consolidates direct procurement into SAP S/4HANA, including PR entry, PR approval, and PR-to-PO processing, eliminating the custom Ariba-to-S/4 integration layer and aligning Aerospace's procurement architecture to SAP-recommended standard functionality. The scope encompasses S/4HANA configuration, Dassian Contract Flow Down implementation, workflow enablement, integration updates across EPIC, ServiceNow, Metrology API, and Ariba systems, end-to-end testing, training materials development, and two months of post go-live hyper care support.</p>
+
+      <div class="callout">
+        <p>This proposal offers two commercial structures for The Aerospace Corporation's consideration:</p>
+        <p style="margin-top:10px;"><strong>Option A - Time &amp; Materials ($394,710):</strong> Billed on actual hours consumed at discounted project rates. Provides maximum flexibility with cost based on effort delivered.</p>
+        <p style="margin-top:10px;"><strong>Option B - Firm Fixed Price ($454,667):</strong> Milestone‑based payments tied to deliverable acceptance at each phase gate. Includes a 15% risk contingency and provides budget certainty. Payment is contingent upon completion and formal acceptance of each phase's defined deliverables.</p>
+        <p style="margin-top:10px;">Both options include a complimentary Principal Solution Architect (216 hours, valued at $48,600) at no charge, a $5,000 credit toward SAP Ariba Shared Services support, and - contingent upon proposal acceptance - a complimentary Enterprise AI Evaluation and Assessment (80 hours, valued at $18,000) led by the Principal Solution Architect. Total complimentary value: $71,600. The engagement timeline runs April 13 through December 14, with a planned fiscal blackout during August and September, followed by two months of hyper care support.</p>
+        <p style="margin-top:10px;"><strong>Rate Condition:</strong> The discounted consulting rates reflected in this proposal are contingent upon The Aerospace Corporation's commitment to a minimum of three (3) sustainment resources under the separately proposed Sustainment / Staff Augmentation engagement provided to Aerospace on March 26, 2026.</p>
+      </div>
+
+      <p>Revelation Technologies brings deep SAP S/4HANA and Aerospace &amp; Defense domain expertise to this engagement. Our team has executed procurement, supply chain, and ERP transformations for organizations operating under comparable regulatory and compliance frameworks. We understand the operational sensitivity of this transition and have structured the delivery to minimize disruption while maximizing process integrity.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 02 - BUSINESS OBJECTIVES ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 02</span>
+      <h2 class="section-title">Business Objectives &amp; Value</h2>
+      <p class="section-intro">This transformation addresses architectural, operational, and financial imperatives - delivering measurable value to Source to Pay BPO, Aerospace Leadership, and the Executive Steering Committee.</p>
+      <div class="value-grid">
+        <div class="value-card"><h4>Technical Debt Reduction</h4><p>The current Ariba-to-S/4 integration layer for direct procurement relies on custom interfaces that compound maintenance complexity with every platform upgrade. Consolidating into S/4HANA eliminates this customization and aligns to SAP-recommended standard architecture.</p></div>
+        <div class="value-card"><h4>Reduced Sustainment Costs</h4><p>Operating procurement across two platforms compounds support and operational overhead. Consolidation reduces long-term TCO by eliminating dual-platform sustainment, training, and incident resolution workflows.</p></div>
+        <div class="value-card"><h4>Process Integrity &amp; Controls</h4><p>Executing procurement within the ERP core ensures authorization controls, approval workflows, and audit trails are governed by a single system of record - with controls to prevent direct submission in Ariba and indirect submission in S/4.</p></div>
+        <div class="value-card"><h4>Operational Continuity</h4><p>The phased delivery approach with built-in validation checkpoints ensures no procurement process is disrupted without validated alternatives in place. The engagement is structured to maintain business continuity throughout the transition.</p></div>
+      </div>
+      <div class="callout callout-navy"><p><strong>For the Source to Pay BPO:</strong> This engagement preserves process integrity, ensures auditability, and delivers operational continuity. Every procurement control currently executed in Ariba will be mapped, validated, and operationalized within S/4HANA before go-live.</p></div>
+      <div class="callout callout-navy"><p><strong>For Aerospace Leadership:</strong> This is a technical debt play. Removing the custom integration layer between Ariba and S/4 for direct procurement reduces the customization footprint, eliminates a redundant platform dependency, and lowers the long-term sustainment burden on EIS.</p></div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 03 - SCOPE ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 03</span>
+      <h2 class="section-title">Project Scope &amp; Approach</h2>
+
+      <h3>S/4HANA Direct Procurement Scope</h3>
+      <p>This engagement encompasses the end‑to‑end transition of Direct Procurement processes from SAP Ariba to SAP S/4HANA. The following S/4HANA functional areas are in scope: Direct PR entry in S/4HANA (Fiori/SAP GUI), Direct PR approvals and workflow enablement, PR‑to‑PO creation rules and release strategies, prime contract flow down on PR/PO, WBS assignment on PR/PO, DPAS rating on PR/PO, PR and PO output updates, account assignment and costing, purchasing info records and sourcing record dependencies, supplier contract management, and internal compliance requirements. Controls will be implemented to prevent direct procurement submission in Ariba and indirect procurement submission in S/4.</p>
+
+      <h3>Dassian Contract Flow Down</h3>
+      <p>The engagement includes Dassian Contract Flow Down implementation covering configuration, documentation, testing, and training. A dedicated Dassian Contract Management resource will support design, build, and testing phases to ensure contract flow down requirements are properly integrated into the S/4HANA direct procurement process.</p>
+
+      <h3>Integration Scope</h3>
+      <p>The following integrations are in scope for this engagement and will require validation, updates, or reconfiguration to support the transition from Ariba to S/4HANA as the system of execution for direct procurement:</p>
+      <table>
+        <thead><tr><th>Integration</th><th>Scope</th><th class="align-right">Technical Lead</th></tr></thead>
+        <tbody>
+          <tr><td>EPIC</td><td>Integration updates with S/4HANA; field format restrictions reenabled</td><td class="align-right">Aerospace EIS <span class="eis-badge">EIS</span></td></tr>
+          <tr><td>ServiceNow (SNOW)</td><td>Interface updates to support new process flow and system of record changes</td><td class="align-right">Aerospace EIS <span class="eis-badge">EIS</span></td></tr>
+          <tr><td>Metrology API</td><td>Updates with S/4HANA; volume validation required</td><td class="align-right">Aerospace EIS <span class="eis-badge">EIS</span></td></tr>
+          <tr><td>SAP Ariba</td><td>Remove existing Ariba‑to‑S/4 Direct PR integrations; reconfigure Ariba workflows, Guided Buying, and B&I integration points</td><td class="align-right">RevTech + Ariba Shared Services</td></tr>
+          <tr><td>AP Essentials</td><td>Validate continuity of invoice processing with S/4-originated POs</td><td class="align-right">Aerospace EIS <span class="eis-badge">EIS</span></td></tr>
+          <tr><td>Sunflower</td><td>Assess applicability; include if found to be impacted by procurement transition</td><td class="align-right">RevTech</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-navy">
+        <p><strong>EIS Technical Responsibilities:</strong> Aerospace EIS retains technical responsibility for EPIC integration, ServiceNow interface updates, Metrology API updates, AP Essentials validation, and S/4HANA workflow development. RevTech owns SAP Custom Fields and Logic (CFL) configuration on PR and will provide functional requirements, design specifications, and testing support for all EIS-owned technical deliverables.</p>
+      </div>
+
+      <h3>Training</h3>
+      <p>RevTech will develop updated end-user training content covering the future-state Direct Procurement process in S/4HANA, including Dassian Contract Flow Down. RevTech will deliver end-user training directly to the Source-to-Pay (STP) team and provide training content to the Aerospace Training team for non-STP training needs. A dedicated Training Lead will be engaged part-time during the Build phase and part-time during Full Testing.</p>
+
+      <h3>Ariba AP Validation</h3>
+      <p>While invoice processing redesign is not in scope, this engagement includes validation that the existing Ariba AP and invoice processing workflows - including three‑way match, invoice verification, and payment execution - continue to function correctly when Purchase Orders and line items originate from S/4HANA rather than Ariba. This validation ensures downstream invoice matching is not disrupted by the procurement transition.</p>
+
+      <h3>Out of Scope</h3>
+      <p>Redesign of indirect procurement processes (except where UX guidance overlaps), implementation of catalog buying for Direct Procurement in S/4HANA, broad redesign of supplier onboarding or lifecycle management, major enhancements to receiving/inventory beyond PR‑to‑PO and invoice continuity requirements, large‑scale replacement of Ariba B&I invoicing, organizational change management (OCM), and security/basis management are excluded from this engagement.</p>
+
+      <h3>SAP Ariba Shared Services</h3>
+      <p>Revelation Technologies estimates that Aerospace will require approximately 80 hours of SAP Ariba Shared Services support during this engagement. To offset this cost, RevTech is providing a $5,000 credit applied to the total engagement investment. Coordination with SAP Ariba Shared Services is the responsibility of Aerospace; RevTech will collaborate with the Shared Services team as needed.</p>
+
+      <h3>Delivery Approach</h3>
+      <p>Revelation Technologies will execute this engagement using a structured, phase‑gated methodology aligned with SAP Activate principles. Under the Firm Fixed Price option, phase gates serve as formal milestone acceptance points. Under T&M, they serve as governance checkpoints. This proposal reflects a primarily remote delivery model with select on‑site support at Aerospace's El Segundo, CA offices as mutually agreed.</p>
+
+      <h3>TAC‑Furnished Property &amp; Security</h3>
+      <p>RevTech acknowledges that Aerospace will provide necessary business infrastructure including laptops, office space, and network access. No RevTech (or other non‑TAC) laptops or computers will be used in support of deliverables. All data, deliverables, status reports, and information generated for or used on this engagement will remain within Aerospace systems.</p>
+
+      <div class="callout"><p><strong>Fiscal Freeze Compliance:</strong> No project activity will occur during August and September. The delivery timeline is structured to accommodate this constraint, with initial testing completed before the freeze and full testing resuming in October.</p></div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 04 - TIMELINE ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 04</span>
+      <h2 class="section-title">Delivery Timeline</h2>
+      <p class="section-intro">The engagement spans approximately eight active months plus two months of hyper care, structured around Aerospace's fiscal blackout period.</p>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-phase">Phase 1 - Prep</div><div class="timeline-dates">April 13 – May 1</div><div class="timeline-desc">Establish governance, RACI, project task schedule, and migration strategy. Mobilize team and align stakeholders.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-phase">Phase 2 - Prepare / Discovery / Design</div><div class="timeline-dates">May 4 – May 29</div><div class="timeline-desc">Document current‑state processes, design future‑state S/4 solution including Dassian Flow Down. Produce architecture and functional specifications. Obtain Aerospace design sign‑off (EIS + STP BPO).</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-phase">Phase 3 - Build</div><div class="timeline-dates">June 1 – July 10</div><div class="timeline-desc">Configure S/4HANA, implement Dassian Flow Down, update integrations, develop training materials, execute unit testing.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-phase">Phase 4 - Initial Testing</div><div class="timeline-dates">July 20 – July 31</div><div class="timeline-desc">Push to sandbox, smoke testing, defect burndown, validate Dassian Flow Down, draft SIT/UAT test scripts for STP/EIS review.</div></div>
+        <div class="timeline-item freeze-period"><div class="timeline-dot freeze"></div><div class="timeline-phase">Fiscal Blackout - No Project Activity</div><div class="timeline-dates">August – September</div><div class="timeline-desc">All project activity suspended per Aerospace's fiscal calendar requirements.</div></div>
+        <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-phase">Phase 5 - Full Testing (BRT / UAT)</div><div class="timeline-dates">October – November</div><div class="timeline-desc">BRT and UAT execution (treated synonymously for this engagement), regression testing, cutover planning, go-live readiness. STP end-user training delivery and training content handoff to Aerospace Training team.</div></div>
+        <div class="timeline-item"><div class="timeline-dot golive"></div><div class="timeline-phase">Phase 6 - Go‑Live &amp; Hyper Care</div><div class="timeline-dates">December 14 + 2 Months</div><div class="timeline-desc">Production cutover, two months of hyper care support at half run‑rate resourcing, knowledge transfer and acquisition to Aerospace sustainment resources.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 04b - GANTT & ACCEPTANCE GATES ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content" style="padding:36px 36px 48px;">
+      <span class="section-number">Section 04 - Continued</span>
+      <h2 class="section-title">Project Schedule &amp; Acceptance Gates</h2>
+      <p class="section-intro" style="margin-bottom:24px;">The Gantt view illustrates the phase sequence, key deliverables, and dual stakeholder acceptance gates required from both EIS (IT) and the STP Business Process Owner (Functional) at each phase boundary.</p>
+
+      <div style="overflow-x:auto;">
+        <svg viewBox="0 0 820 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:700px;font-family:'Source Sans 3',sans-serif;">
+          <defs>
+            <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#0a1628"/><stop offset="100%" style="stop-color:#1a3055"/></linearGradient>
+            <linearGradient id="freezeGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#b8b2a6;stop-opacity:0.2"/><stop offset="100%" style="stop-color:#b8b2a6;stop-opacity:0.1"/></linearGradient>
+            <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#2a7d4f"/><stop offset="100%" style="stop-color:#3a9d6f"/></linearGradient>
+            <filter id="barShadow" x="-2%" y="-10%" width="104%" height="130%"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0a1628" flood-opacity="0.15"/></filter>
+            <pattern id="freezePattern" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#b8b2a6" stroke-width="1" stroke-opacity="0.25"/></pattern>
+          </defs>
+
+          <rect x="0" y="0" width="820" height="760" fill="#ffffff"/>
+
+          <!-- MONTH HEADERS -->
+          <rect x="170" y="20" width="630" height="32" fill="#0a1628" rx="2"/>
+          <text x="205" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">APR</text>
+          <text x="275" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">MAY</text>
+          <text x="345" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">JUN</text>
+          <text x="415" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">JUL</text>
+          <text x="485" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">AUG</text>
+          <text x="555" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">SEP</text>
+          <text x="625" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">OCT</text>
+          <text x="695" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">NOV</text>
+          <text x="765" y="41" fill="#c9a84c" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1.5" text-anchor="middle" font-weight="500">DEC</text>
+
+          <!-- GRID -->
+          <line x1="240" y1="52" x2="240" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="310" y1="52" x2="310" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="380" y1="52" x2="380" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="450" y1="52" x2="450" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="520" y1="52" x2="520" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="590" y1="52" x2="590" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="660" y1="52" x2="660" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+          <line x1="730" y1="52" x2="730" y2="700" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- FREEZE ZONE -->
+          <rect x="450" y="52" width="140" height="648" fill="url(#freezePattern)"/>
+          <rect x="450" y="52" width="140" height="648" fill="url(#freezeGrad)"/>
+          <text x="520" y="70" fill="#b8b2a6" font-size="8" font-family="'JetBrains Mono',monospace" letter-spacing="2" text-anchor="middle" font-weight="500">FISCAL FREEZE</text>
+
+          <!-- ═══ P1 - PREP ═══ -->
+          <text x="10" y="94" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P1</text>
+          <text x="30" y="94" fill="#0a1628" font-size="11" font-weight="700">Prep</text>
+          <text x="10" y="107" fill="#888" font-size="9">Apr 13 – May 1</text>
+          <rect x="200" y="82" width="42" height="22" rx="3" fill="url(#navyGrad)" filter="url(#barShadow)"/>
+          <text x="221" y="97" fill="#fff" font-size="8" font-weight="600" text-anchor="middle">3 WK</text>
+
+          <text x="30" y="126" fill="#555" font-size="8.5">• Detailed Project Task Schedule</text>
+          <text x="30" y="138" fill="#555" font-size="8.5">• Governance, Cadence, and RACI Framework</text>
+          <text x="30" y="150" fill="#555" font-size="8.5">• RAID Log Initialized and Updated</text>
+          <text x="30" y="162" fill="#555" font-size="8.5">• Ariba Work Item (Feature) List</text>
+          <text x="30" y="174" fill="#555" font-size="8.5">• S/4HANA Work Item (Feature) List</text>
+          <text x="30" y="186" fill="#555" font-size="8.5">• Direct Procurement Migration Strategy</text>
+
+          <!-- Milestone M1 -->
+          <polygon points="246,93 254,85 262,93 254,101" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="270" y="97" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M1</text>
+
+          <line x1="10" y1="198" x2="800" y2="198" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- ═══ P2 - DISCOVERY / DESIGN ═══ -->
+          <text x="10" y="218" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P2</text>
+          <text x="30" y="218" fill="#0a1628" font-size="11" font-weight="700">Prepare / Discovery / Design</text>
+          <text x="10" y="231" fill="#888" font-size="9">May 4 – May 29</text>
+          <rect x="249" y="206" width="56" height="22" rx="3" fill="url(#navyGrad)" filter="url(#barShadow)"/>
+          <text x="277" y="221" fill="#fff" font-size="8" font-weight="600" text-anchor="middle">4 WK</text>
+
+          <text x="30" y="252" fill="#555" font-size="8.5">• Review Current‑State Process Maps / Variance</text>
+          <text x="30" y="264" fill="#555" font-size="8.5">• Future‑State S/4 Process Design</text>
+          <text x="30" y="276" fill="#555" font-size="8.5">• Architecture Design Documentation</text>
+          <text x="30" y="288" fill="#555" font-size="8.5">• Functional Specs (All Features)</text>
+          <text x="30" y="300" fill="#555" font-size="8.5">• Technical Architecture Design Document</text>
+          <text x="30" y="312" fill="#555" font-size="8.5">• Security &amp; Authorization Design Doc(s)</text>
+          <text x="30" y="324" fill="#555" font-size="8.5">• Dassian Contract Flow Down Design</text>
+          <text x="30" y="336" fill="#555" font-size="8.5">• RICEFW Specifications</text>
+          <text x="30" y="350" fill="#2a7d4f" font-size="7.5" font-style="italic">STP &amp; EIS SMEs required participants in design development</text>
+
+          <!-- Milestone M2 -->
+          <polygon points="309,217 317,209 325,217 317,225" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="333" y="221" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M2</text>
+
+          <line x1="10" y1="362" x2="800" y2="362" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- ═══ P3 - BUILD ═══ -->
+          <text x="10" y="382" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P3</text>
+          <text x="30" y="382" fill="#0a1628" font-size="11" font-weight="700">Build</text>
+          <text x="10" y="395" fill="#888" font-size="9">Jun 1 – Jul 10</text>
+          <rect x="312" y="370" width="91" height="22" rx="3" fill="url(#navyGrad)" filter="url(#barShadow)"/>
+          <text x="357" y="385" fill="#fff" font-size="8" font-weight="600" text-anchor="middle">6 WK</text>
+
+          <text x="30" y="414" fill="#555" font-size="8.5">• S/4HANA Configuration</text>
+          <text x="30" y="426" fill="#555" font-size="8.5">• Integration Updates</text>
+          <text x="30" y="438" fill="#555" font-size="8.5">• Dassian Contract Flow Down Config &amp; Documentation</text>
+          <text x="30" y="450" fill="#555" font-size="8.5">• Unit Test Scripts and Results</text>
+          <text x="30" y="462" fill="#555" font-size="8.5">• Training Materials (Direct Procurement + Dassian)</text>
+          <text x="30" y="474" fill="#555" font-size="8.5">• Updated Signavio Process Flows</text>
+
+          <!-- Milestone M3 -->
+          <polygon points="407,381 415,373 423,381 415,389" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="431" y="385" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M3</text>
+
+          <line x1="10" y1="486" x2="800" y2="486" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- ═══ P4 - INITIAL TESTING ═══ -->
+          <text x="10" y="506" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P4</text>
+          <text x="30" y="506" fill="#0a1628" font-size="11" font-weight="700">Initial Testing (Pre‑Freeze)</text>
+          <text x="10" y="519" fill="#888" font-size="9">Jul 20 – Jul 31</text>
+          <rect x="425" y="494" width="25" height="22" rx="3" fill="url(#navyGrad)" filter="url(#barShadow)"/>
+          <text x="437" y="509" fill="#fff" font-size="7" font-weight="600" text-anchor="middle">2W</text>
+
+          <text x="30" y="538" fill="#555" font-size="8.5">• Push Config &amp; Development to Sandbox</text>
+          <text x="30" y="550" fill="#555" font-size="8.5">• Smoke Testing in Sandbox (recent refresh from Prod)</text>
+          <text x="30" y="562" fill="#555" font-size="8.5">• Dassian Contract Flow Down Validation</text>
+          <text x="30" y="574" fill="#555" font-size="8.5">• Defect Log Burndown (≤ 2 high/critical)</text>
+          <text x="30" y="586" fill="#555" font-size="8.5">• Test Readiness Assessment</text>
+          <text x="30" y="598" fill="#555" font-size="8.5">• SIT/UAT Test Scripts Drafted / Reviewed by STP &amp; EIS</text>
+
+          <!-- Milestone M4 -->
+          <polygon points="454,505 462,497 470,505 462,513" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="478" y="509" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M4</text>
+
+          <line x1="10" y1="610" x2="800" y2="610" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- ═══ FISCAL FREEZE ═══ -->
+          <text x="10" y="630" fill="#b8b2a6" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1" opacity="0.6"> - </text>
+          <text x="30" y="630" fill="#b8b2a6" font-size="11" font-weight="700" opacity="0.6">Fiscal Blackout</text>
+          <text x="10" y="643" fill="#b8b2a6" font-size="9" opacity="0.5">Aug – Sep</text>
+          <rect x="450" y="618" width="140" height="22" rx="3" fill="none" stroke="#b8b2a6" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="520" y="633" fill="#b8b2a6" font-size="8" font-weight="500" text-anchor="middle" opacity="0.6">NO ACTIVITY</text>
+
+          <line x1="10" y1="655" x2="800" y2="655" stroke="#e8e6e1" stroke-width="0.5"/>
+
+          <!-- ═══ P5 - FULL TESTING ═══ -->
+          <text x="10" y="675" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P5</text>
+          <text x="30" y="675" fill="#0a1628" font-size="11" font-weight="700">Full Testing (BRT / UAT)</text>
+          <text x="10" y="688" fill="#888" font-size="9">Oct – Nov</text>
+          <rect x="592" y="663" width="136" height="22" rx="3" fill="url(#navyGrad)" filter="url(#barShadow)"/>
+          <text x="660" y="678" fill="#fff" font-size="8" font-weight="600" text-anchor="middle">8 WK</text>
+
+          <text x="592" y="700" fill="#555" font-size="8.5">• BRT / UAT Execution</text>
+          <text x="592" y="712" fill="#555" font-size="8.5">• Regression Testing</text>
+          <text x="592" y="724" fill="#555" font-size="8.5">• Cutover Plan</text>
+          <text x="592" y="736" fill="#555" font-size="8.5">• Go‑Live Readiness</text>
+          <text x="592" y="748" fill="#555" font-size="8.5">• STP Training Delivery</text>
+
+          <!-- Milestone M5 -->
+          <polygon points="732,674 740,666 748,674 740,682" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="756" y="678" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M5</text>
+
+          <!-- ═══ P6 - GO-LIVE ═══ -->
+          <text x="30" y="700" fill="#0a1628" font-size="10" font-weight="700" font-family="'JetBrains Mono',monospace" letter-spacing="1">P6</text>
+          <text x="50" y="700" fill="#0a1628" font-size="11" font-weight="700">Go‑Live &amp; HC</text>
+          <text x="30" y="713" fill="#888" font-size="9">Dec 14 + 2 Mo</text>
+          <rect x="762" y="688" width="38" height="22" rx="3" fill="url(#greenGrad)" filter="url(#barShadow)"/>
+          <text x="781" y="703" fill="#fff" font-size="7" font-weight="700" text-anchor="middle">LIVE</text>
+          <polygon points="758,699 766,691 774,699 766,707" fill="#c9a84c" filter="url(#barShadow)"/>
+          <text x="780" y="720" fill="#c9a84c" font-size="8" font-family="'JetBrains Mono',monospace" font-weight="700">M6</text>
+
+          <!-- LEGEND -->
+          <rect x="10" y="738" width="800" height="1" fill="#e8e6e1"/>
+          <rect x="10" y="746" width="10" height="10" rx="1" fill="url(#navyGrad)"/>
+          <text x="24" y="755" fill="#555" font-size="8">Active Phase</text>
+          <polygon points="80,751 85,746 90,751 85,756" fill="#c9a84c"/>
+          <text x="94" y="755" fill="#555" font-size="8">Milestone Gate</text>
+          <rect x="160" y="746" width="10" height="10" rx="1" fill="none" stroke="#b8b2a6" stroke-width="1" stroke-dasharray="2,1"/>
+          <text x="174" y="755" fill="#555" font-size="8">Fiscal Freeze</text>
+          <rect x="240" y="746" width="10" height="10" rx="1" fill="url(#greenGrad)"/>
+          <text x="254" y="755" fill="#555" font-size="8">Go‑Live</text>
+
+        </svg>
+      </div>
+
+      <div style="margin-top:20px;padding:20px 24px;background:rgba(244,242,237,0.5);border-radius:4px;border:1px solid var(--border-light);">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Milestone Acceptance Gates</p>
+        <table style="margin:0;font-size:12px;">
+          <thead><tr><th style="padding:8px 12px;">Milestone</th><th style="padding:8px 12px;">Phase</th><th style="padding:8px 12px;">Acceptance Requirement</th></tr></thead>
+          <tbody>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M1</td><td style="padding:8px 12px;">Prep Complete</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP Business Process Owner on governance framework, RACI, and migration strategy</td></tr>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M2</td><td style="padding:8px 12px;">Design Sign‑Off</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP BPO on all design documentation, functional specifications, and Dassian Flow Down design</td></tr>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M3</td><td style="padding:8px 12px;">Build Complete</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP BPO on configuration, integration updates, and unit test results</td></tr>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M4</td><td style="padding:8px 12px;">Pre‑Freeze Testing</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP BPO on test readiness, defect burndown, and SIT/UAT test scripts</td></tr>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M5</td><td style="padding:8px 12px;">BRT / UAT Acceptance</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP BPO on BRT results (0C/0H/1M/2L) and UAT results (no C/H/M defects)</td></tr>
+            <tr><td style="padding:8px 12px;font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">M6</td><td style="padding:8px 12px;">Go‑Live &amp; HC Exit</td><td style="padding:8px 12px;">Dual sign‑off from EIS and STP BPO on production stability, KT completion, and hyper care exit criteria</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Under the FFP option, milestone payments for each phase are released only after both EIS and STP BPO have provided formal written acceptance of the phase deliverables.</p>
+      </div>
+
+      <div class="callout" style="margin-top:24px;">
+        <p><strong>Stakeholder Acceptance Requirement:</strong> Every phase gate requires dual sign‑off from both the <strong>EIS Organization</strong> (technical/IT acceptance) and the <strong>STP Business Process Owner</strong> (functional/business acceptance) before the engagement advances. Under the FFP option, milestone payments are released only after both stakeholders have provided formal written acceptance of the phase deliverables.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 05 - DELIVERABLES ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 05</span>
+      <h2 class="section-title">Phase Outcomes &amp; Deliverables</h2>
+      <p class="section-intro">Under the FFP option, formal acceptance of phase deliverables constitutes the milestone trigger for payment. Under T&M, deliverables serve as quality gates. For this engagement, Business Requirements Testing (BRT) and User Acceptance Testing (UAT) are treated synonymously.</p>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 01</span><span class="phase-card-title">Prep</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>Project governance and readiness established</li></ul><h4>Deliverables</h4><ul><li>Detailed Project Task Schedule</li><li>Governance, Cadence, and RACI Framework</li><li>RAID Log Initialized and Updated</li><li>Ariba Work Item (Feature) List</li><li>S/4HANA Work Item (Feature) List</li><li>Direct Procurement Migration Strategy (freeze periods, cutover sequencing, data migration approach)</li></ul></div></div>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 02</span><span class="phase-card-title">Prepare / Discovery / Design</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>Current‑state Ariba processes documented</li><li>Future‑state S/4 Direct Procurement design approved</li></ul><h4>Deliverables</h4><ul><li>Review Current‑State Process Maps and Note Variance to Current State Working Process</li><li>Future‑State S/4 Process Design</li><li>Architecture Design Documentation</li><li>Functional Specifications for All Applicable Features</li><li>Technical Architecture Design Document</li><li>Security and Authorization Design Document(s)</li><li>Dassian Contract Flow Down Design and Requirements</li><li>RICEFW Specifications (as applicable)</li><li>Aerospace Design Documentation Sign‑Off</li></ul><p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Note: Aerospace SMEs from both STP and EIS are required participants in building the design rationale and details - not solely reviewers at the acceptance gate.</p></div></div>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 03</span><span class="phase-card-title">Build</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>S/4 Direct Procurement solution configured and built</li></ul><h4>Deliverables</h4><ul><li>S/4HANA Configuration</li><li>Integration Updates</li><li>Enhancements as Required</li><li>Dassian Contract Flow Down Configuration and Documentation</li><li>Unit Test Scripts and Results</li><li>Configuration Documentation</li><li>Updated Training Materials (Direct Procurement + Dassian Flow Down)</li><li>Updated Signavio Process Flows</li></ul></div></div>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 04</span><span class="phase-card-title">Initial Testing (Pre‑Freeze)</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>Early validation completed prior to fiscal freeze</li></ul><h4>Deliverables</h4><ul><li>Push Configuration and Development to Sandbox</li><li>Smoke Testing in Sandbox (should be a recent refresh from Prod)</li><li>Dassian Contract Flow Down Validation in Sandbox</li><li>Defect Log Burndown (no more than 2 high/critical issues)</li><li>Test Readiness Assessment</li><li>SIT and UAT Test Scripts Drafted and Reviewed by Aerospace STP and EIS</li></ul></div></div>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 05</span><span class="phase-card-title">Full Testing (BRT / UAT)</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>End‑to‑end solution validated</li><li>Business acceptance achieved</li></ul><h4>BRT Acceptance Criteria</h4><ul><li>Completion of test scripts with a maximum of 0 critical, 0 high, 1 medium, and 2 low defects</li></ul><h4>UAT Acceptance Criteria</h4><ul><li>Completion of test scripts with no critical, high, or medium defects</li></ul><h4>Deliverables</h4><ul><li>BRT / UAT Execution and Results</li><li>Regression Testing</li><li>Cutover Plan</li><li>Go‑Live Readiness Assessment</li><li>Finalized Training Content, STP End-User Training Delivery, and Training Content Handoff to Aerospace Training Team</li></ul></div></div>
+
+      <div class="phase-card"><div class="phase-card-header"><span class="phase-card-number">Phase 06</span><span class="phase-card-title">Go‑Live &amp; Hyper Care (2 Months)</span></div><div class="phase-card-body"><h4>Outcomes</h4><ul><li>Stable production deployment</li><li>Transition to steady‑state support</li></ul><h4>Deliverables</h4><ul><li>Production Cutover</li><li>Hyper Care Support (2 months at half run‑rate resourcing)</li><li>Knowledge Transfer and Acquisition to Aerospace Sustainment Resources</li></ul><p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Hyper care exit criteria will be mutually defined during the Prep phase and documented in the Governance, Cadence, and RACI Framework.</p></div></div>
+
+      <div class="phase-card" style="border-color:var(--green-accent);">
+        <div class="phase-card-header" style="background:var(--green-accent);">
+          <span class="phase-card-number" style="color:rgba(255,255,255,0.7);">Complimentary Add‑On</span>
+          <span class="phase-card-title">Enterprise AI Evaluation &amp; Assessment</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Overview</h4>
+          <p style="font-size:13px;color:var(--text-primary);line-height:1.6;margin-bottom:14px;">Contingent upon Aerospace's acceptance of this proposal, Revelation Technologies will deliver a complimentary Enterprise AI Evaluation and Assessment led by the Principal Solution Architect. This assessment evaluates Aerospace's data and process readiness across the current‑state landscape and identifies the highest‑value opportunities for AI‑driven transformation.</p>
+          <h4>Why RevTech</h4>
+          <p style="font-size:13px;color:var(--text-primary);line-height:1.6;margin-bottom:14px;">Revelation Technologies is a recognized trailblazer in the application of artificial intelligence within U.S. Government Contracting and Aerospace &amp; Defense organizations. Unlike generalist AI consultancies, RevTech brings a rare combination of deep SAP ERP domain expertise and hands‑on AI implementation experience purpose‑built for the GovCon operating environment - where compliance frameworks (FAR, DFARS, CAS, CMMC), data sensitivity, and auditability requirements fundamentally shape how AI can and should be deployed. RevTech's AI practice is grounded in real‑world application - not theoretical frameworks - with a focus on identifying where AI delivers measurable operational value while respecting the regulatory and security boundaries that define government contracting. This assessment draws on that experience to deliver actionable, compliance‑aware AI recommendations specific to Aerospace's enterprise landscape.</p>
+          <h4>Scope &amp; Approach</h4>
+          <ul>
+            <li>Current‑state data readiness evaluation across STP and adjacent workstreams</li>
+            <li>Process maturity assessment for AI applicability (automation potential, data quality, integration readiness)</li>
+            <li>Identification of the <strong>Top 10 AI use cases</strong> ranked by business value, feasibility, and implementation complexity</li>
+            <li>Use case categories include: agentic AI workflows, process accelerators, AI‑powered analytics, intelligent document processing, add‑on tool replacements, and predictive capabilities</li>
+            <li>Executive summary deliverable with prioritized roadmap and recommended sequencing</li>
+          </ul>
+          <h4>Resource &amp; Investment</h4>
+          <ul>
+            <li>Led by: Principal Solution Architect (Joshua Lee)</li>
+            <li>Duration: 2 weeks (approximately 80 hours)</li>
+            <li>Value: $18,000 (at $225/hr) - provided at no charge</li>
+          </ul>
+          <h4>Deliverable</h4>
+          <ul>
+            <li>Aerospace Enterprise AI Evaluation Report - Top 10 AI Use Cases, Readiness Assessment, and Prioritized Roadmap</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--green-accent);margin-top:12px;margin-bottom:0;font-style:italic;">This complimentary engagement is contingent upon Aerospace's acceptance and execution of the SAP S/4HANA Direct Procurement Transformation proposal. The assessment may be conducted concurrently with or following the primary engagement at a mutually agreed timeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 06 - KEY PERSONNEL & RESOURCE PLAN ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 06</span>
+      <h2 class="section-title">Resource Plan</h2>
+
+      <h3>Resource Summary</h3>
+      <table>
+        <thead><tr><th>Role</th><th class="align-right">Total Hours</th><th class="align-right">T&amp;M Rate</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+        <tbody>
+          <tr class="complimentary-row"><td>Principal Solution Architect <span class="complimentary-badge">Complimentary</span></td><td class="align-right">216</td><td class="align-right"><span class="strike">$225</span></td><td class="align-right">$0</td></tr>
+          <tr><td>Senior Program Manager</td><td class="align-right">408</td><td class="align-right">$175</td><td class="align-right">$71,400</td></tr>
+          <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">814</td><td class="align-right">$175</td><td class="align-right">$142,450</td></tr>
+          <tr><td>Dassian Contract Management</td><td class="align-right">120</td><td class="align-right">$280</td><td class="align-right">$33,600</td></tr>
+          <tr><td>Associate Functional Consultant - Training</td><td class="align-right">280</td><td class="align-right">$150</td><td class="align-right">$42,000</td></tr>
+          <tr><td>Senior Technical Architect</td><td class="align-right">596</td><td class="align-right">$185</td><td class="align-right">$110,260</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Total: 2,434 Hours</td><td></td><td>$399,710</td></tr></tfoot>
+      </table>
+
+      <h3>Estimated Monthly Cost Breakout by Role</h3>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:16px;">Estimated monthly distribution of billable hours and cost by role. Complimentary hours excluded. Actual monthly invoicing may vary based on delivery cadence.</p>
+      <table style="font-size:10px;margin-top:12px;table-layout:fixed;width:100%;">
+        <colgroup>
+          <col style="width:16%;">
+          <col style="width:6.5%;"><col style="width:6.5%;"><col style="width:6.5%;"><col style="width:6.5%;">
+          <col style="width:5%;">
+          <col style="width:6.5%;"><col style="width:6.5%;"><col style="width:6.5%;"><col style="width:6.5%;"><col style="width:6.5%;">
+          <col style="width:8%;">
+          <col style="width:7%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="padding:10px 6px;font-size:8px;letter-spacing:1.5px;">Role</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">APR</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">MAY</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">JUN</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">JUL</th>
+            <th style="padding:10px 2px;text-align:center;font-size:7px;letter-spacing:1px;color:var(--warm-gray);background:rgba(184,178,166,0.08);">FREEZE</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">OCT</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">NOV</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">DEC</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">JAN</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;">FEB</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;background:var(--navy);color:var(--gold);">HRS</th>
+            <th style="padding:10px 4px;text-align:center;font-size:8px;letter-spacing:1px;background:var(--navy);color:var(--gold);">$/MO AVG</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px 6px;font-weight:600;font-size:10px;">Sr Program Mgr</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">27</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">93</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">107</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">85</td>
+            <td style="padding:8px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">28</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">28</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">13</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">13</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">14</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(10,22,40,0.03);">408</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:rgba(10,22,40,0.03);">$7.9k</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px;font-weight:600;font-size:10px;">Sr Functional</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">19</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">193</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">184</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">184</td>
+            <td style="padding:8px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">50</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">50</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">45</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">45</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">44</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(10,22,40,0.03);">814</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:rgba(10,22,40,0.03);">$15.8k</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px;font-weight:600;font-size:10px;">Dassian Contract</td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">40</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">40</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">40</td>
+            <td style="padding:8px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(10,22,40,0.03);">120</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:rgba(10,22,40,0.03);">$11.2k</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px;font-weight:600;font-size:10px;">Training</td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">80</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">40</td>
+            <td style="padding:8px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">80</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">80</td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(10,22,40,0.03);">280</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:rgba(10,22,40,0.03);">$6.0k</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px;font-weight:600;font-size:10px;">Sr Technical Arch</td>
+            <td style="padding:8px 4px;text-align:center;color:var(--warm-gray);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">102</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">136</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">122</td>
+            <td style="padding:8px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">51</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">51</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">45</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">45</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;">44</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(10,22,40,0.03);">596</td>
+            <td style="padding:8px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:rgba(10,22,40,0.03);">$12.3k</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding:10px 6px;font-weight:700;font-size:10px;">Total Hrs</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">46</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">428</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">547</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">471</td>
+            <td style="padding:10px 2px;text-align:center;color:var(--warm-gray);background:rgba(184,178,166,0.04);font-size:9px;"> - </td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">209</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">209</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">103</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">103</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;">102</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;background:rgba(10,22,40,0.03);">2,218</td>
+            <td style="padding:10px 4px;text-align:center;background:rgba(10,22,40,0.03);"></td>
+          </tr>
+          <tr style="background:var(--gold-dim);">
+            <td style="padding:10px 6px;font-weight:700;font-size:10px;">Est. Cost</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$8.1k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$80.1k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$99.3k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$86.8k</td>
+            <td style="padding:10px 2px;text-align:center;color:var(--warm-gray);font-size:9px;">$0</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$35.1k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$35.1k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$18.5k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$18.5k</td>
+            <td style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9px;">$18.3k</td>
+            <td colspan="2" style="padding:10px 4px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;background:rgba(10,22,40,0.06);color:var(--navy);">$399,710</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p style="font-size:11px;color:var(--warm-gray);margin-top:8px;font-style:italic;">Billable hours exclude 216 complimentary Principal Solution Architect hours (total engagement: 2,434 hrs). Aug–Sep consolidated as fiscal freeze. $/Mo Avg reflects active months only.</p>
+
+      <h3>Estimated Capital vs. Expense Allocation</h3>
+      <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:16px;">The following estimates align investment to ASC 350-40 (internal-use software) capitalization guidance under both commercial options. The 15% FFP risk premium is allocated pro-rata based on the capital/expense ratio within each phase, consistent with standard practice for fixed-price software development engagements. Aerospace's finance and controllership teams should validate against their specific capitalization policies and CAS requirements.</p>
+
+      <!-- Dual phase tables side by side -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;">
+
+        <!-- T&M Phase Table -->
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Option A - Time &amp; Materials</div>
+          <table style="font-size:11px;margin:0;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;font-size:8px;">Phase</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Total</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Capital</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Expense</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:7px 8px;">P1 Prep</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$11,900</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$11,900</td></tr>
+              <tr><td style="padding:7px 8px;">P2 Design</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$76,270</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$22,880</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$53,390</td></tr>
+              <tr><td style="padding:7px 8px;">P3 Build</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$148,840</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$130,840</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$18,000</td></tr>
+              <tr><td style="padding:7px 8px;">P4 Testing</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$37,290</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$37,290</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td></tr>
+              <tr><td style="padding:7px 8px;">P5 Full Test</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$70,170</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$46,170</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$24,000</td></tr>
+              <tr><td style="padding:7px 8px;">P6 HC</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$55,240</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$55,240</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td style="padding:10px 8px;font-weight:700;">Total</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$399,710</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$237,180</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$162,530</td></tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- FFP Phase Table -->
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Option B - Firm Fixed Price (15%)</div>
+          <table style="font-size:11px;margin:0;">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;font-size:8px;">Phase</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Total</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Capital</th>
+                <th style="padding:10px 6px;text-align:right;font-size:8px;">Expense</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="padding:7px 8px;">P1 Prep</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$13,685</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$13,685</td></tr>
+              <tr><td style="padding:7px 8px;">P2 Design</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$87,710</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$26,312</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$61,398</td></tr>
+              <tr><td style="padding:7px 8px;">P3 Build</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$171,166</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$150,466</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$20,700</td></tr>
+              <tr><td style="padding:7px 8px;">P4 Testing</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$42,884</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$42,884</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td></tr>
+              <tr><td style="padding:7px 8px;">P5 Full Test</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$80,696</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$53,096</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$27,600</td></tr>
+              <tr><td style="padding:7px 8px;">P6 HC</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$63,526</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--warm-gray);">$0</td><td style="padding:7px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10px;">$63,526</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><td style="padding:10px 8px;font-weight:700;">Total</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$459,667</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$272,758</td><td style="padding:10px 6px;text-align:right;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;">$186,909</td></tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Stat cards: T&M on left, FFP on right -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--navy);border-radius:4px;padding:14px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">T&amp;M Capital</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--white);">$237,180</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">59%</div>
+          </div>
+          <div style="background:var(--navy);border-radius:4px;padding:14px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">T&amp;M Expense</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--white);">$162,530</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">41%</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div style="background:var(--navy-mid);border-radius:4px;padding:14px;text-align:center;border:1px solid rgba(201,168,76,0.15);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">FFP Capital</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--white);">$272,758</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">59%</div>
+          </div>
+          <div style="background:var(--navy-mid);border-radius:4px;padding:14px;text-align:center;border:1px solid rgba(201,168,76,0.15);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;">FFP Expense</div>
+            <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--white);">$186,909</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;">41%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role-level breakdown (T&M basis) -->
+      <h3 style="margin-top:32px;">Capital vs. Expense by Role (T&amp;M Basis)</h3>
+      <table style="font-size:11px;margin-top:12px;">
+        <thead>
+          <tr>
+            <th style="padding:10px 10px;">Role</th>
+            <th style="padding:10px 8px;text-align:right;">Total</th>
+            <th style="padding:10px 8px;text-align:right;">Capital</th>
+            <th style="padding:10px 8px;text-align:right;">Expense</th>
+            <th style="padding:10px 10px;">Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;">Sr Program Manager</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$71,400</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$47,600</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$23,800</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">P1, HC = expense; P2 split 30/70; P3-P5 = capital</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;">Sr Functional Delivery</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$142,450</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$91,560</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$50,890</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">P1, HC = expense; P2 split 30/70; P3-P5 = capital</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;">Dassian Contract Mgmt</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$33,600</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$25,760</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$7,840</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">P2 split 30/70; P3-P4 config/test = capital</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;">Training</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$42,000</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;color:var(--warm-gray);">$0</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$42,000</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">Training always period cost under ASC 350-40</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 10px;font-weight:600;">Sr Technical Architect</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$110,260</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$72,260</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$38,000</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">P2 split 30/70; P3-P5 = capital; HC = expense</td>
+          </tr>
+          <tr class="complimentary-row">
+            <td style="padding:8px 10px;font-weight:600;">Principal SA (Comp.)</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$0</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;color:var(--warm-gray);">$0</td>
+            <td style="padding:8px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">$0</td>
+            <td style="padding:8px 10px;font-size:10px;color:var(--text-secondary);">Complimentary - no cost to Aerospace</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td style="padding:10px 10px;font-weight:700;">Total</td>
+            <td style="text-align:right;padding:10px 8px;font-family:'JetBrains Mono',monospace;font-weight:700;">$399,710</td>
+            <td style="text-align:right;padding:10px 8px;font-family:'JetBrains Mono',monospace;font-weight:700;">$237,180</td>
+            <td style="text-align:right;padding:10px 8px;font-family:'JetBrains Mono',monospace;font-weight:700;">$162,530</td>
+            <td style="padding:10px;"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <p style="font-size:11px;color:var(--warm-gray);margin-top:8px;font-style:italic;">Capital/expense estimates are based on ASC 350-40 guidance for internal-use software. The 15% FFP risk premium is allocated pro-rata within each phase based on the capital/expense ratio of the underlying T&amp;M cost, consistent with standard treatment for fixed-price software development. The capital/expense split (59/41) is identical under both options. PM is treated as capitalizable during Build and Testing where effort is directly attributable to solution delivery. Aerospace's controllership should validate against their capitalization policies and CAS requirements.</p>
+
+      <div class="callout callout-green">
+        <p>Revelation Technologies is providing the Principal Solution Architect (216 hours, valued at $48,600) at no charge, a <strong>$5,000 credit</strong> toward SAP Ariba Shared Services support, and - upon proposal acceptance - a complimentary <strong>Enterprise AI Evaluation &amp; Assessment</strong> (80 hours, valued at $18,000). Total complimentary investment: <strong>$71,600</strong>. These investments apply to both commercial options.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 07 - PRICING ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 07</span>
+      <h2 class="section-title">Pricing &amp; Commercial Options</h2>
+      <p class="section-intro">Two commercial structures are offered. Both deliver the same scope, team, and deliverables. Aerospace may select the model that best aligns with its procurement requirements.</p>
+
+      <h3>Option A - Time &amp; Materials</h3>
+      <p>Billing based on actual hours consumed at discounted project rates. Monthly invoicing against approved timesheets. Travel costs align with Aerospace Travel Policy (P250) and FAR 31.205‑46 guidelines.</p>
+
+      <h3>Option B - Firm Fixed Price (Milestone‑Based)</h3>
+      <p>Each phase carries a fixed price including a 15% risk contingency over the T&M baseline. Payment contingent upon formal deliverable acceptance. Budget certainty with delivery risk on RevTech. The total FFP will not exceed $454,667 USD.</p>
+
+      <div class="callout callout-navy">
+        <p><strong>Discounted Rate Condition:</strong> The discounted consulting rates applied across both options are contingent upon Aerospace's agreement to engage a minimum of three (3) sustainment resources under the Sustainment / Staff Augmentation proposal separately provided to Aerospace on Thursday, March 26, 2026. Should Aerospace elect not to proceed with the sustainment engagement, RevTech reserves the right to apply standard (non‑discounted) project rates.</p>
+      </div>
+
+      <div style="height:24px;"></div>
+
+      <!-- P1 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 01</div>
+        <div class="phase-pricing-title">Prep</div>
+        <div class="phase-pricing-dates">April 13 – May 1</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr class="complimentary-row"><td>Principal Solution Architect <span class="complimentary-badge">Complimentary</span></td><td class="align-right">24</td><td class="align-right">$0</td></tr>
+            <tr><td>Senior Program Manager</td><td class="align-right">40</td><td class="align-right">$7,000</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">28</td><td class="align-right">$4,900</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$11,900</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$13,685</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$0</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$11,900</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$0</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$13,685</span></div>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 02</div>
+        <div class="phase-pricing-title">Prepare / Discovery / Design</div>
+        <div class="phase-pricing-dates">May 4 – May 29</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr class="complimentary-row"><td>Principal Solution Architect <span class="complimentary-badge">Complimentary</span></td><td class="align-right">120</td><td class="align-right">$0</td></tr>
+            <tr><td>Senior Program Manager</td><td class="align-right">40</td><td class="align-right">$7,000</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">184</td><td class="align-right">$32,200</td></tr>
+            <tr><td>Dassian Contract Management</td><td class="align-right">40</td><td class="align-right">$11,200</td></tr>
+            <tr><td>Senior Technical Architect</td><td class="align-right">102</td><td class="align-right">$18,870</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$76,270</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$87,710</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$22,880</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$53,390</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$26,312</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$61,398</span></div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 03</div>
+        <div class="phase-pricing-title">Build</div>
+        <div class="phase-pricing-dates">June – July 10</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr class="complimentary-row"><td>Principal Solution Architect <span class="complimentary-badge">Complimentary</span></td><td class="align-right">48</td><td class="align-right">$0</td></tr>
+            <tr><td>Senior Program Manager</td><td class="align-right">160</td><td class="align-right">$28,000</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">276</td><td class="align-right">$48,300</td></tr>
+            <tr><td>Dassian Contract Management</td><td class="align-right">60</td><td class="align-right">$16,800</td></tr>
+            <tr><td>Associate Functional - Training</td><td class="align-right">120</td><td class="align-right">$18,000</td></tr>
+            <tr><td>Senior Technical Architect</td><td class="align-right">204</td><td class="align-right">$37,740</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$148,840</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$171,166</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$130,840</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$18,000</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$150,466</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$20,700</span></div>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 04</div>
+        <div class="phase-pricing-title">Initial Testing (Pre‑Freeze)</div>
+        <div class="phase-pricing-dates">July 20 – July 31</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Senior Program Manager</td><td class="align-right">32</td><td class="align-right">$5,600</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">92</td><td class="align-right">$16,100</td></tr>
+            <tr><td>Dassian Contract Management</td><td class="align-right">20</td><td class="align-right">$5,600</td></tr>
+            <tr><td>Senior Technical Architect</td><td class="align-right">54</td><td class="align-right">$9,990</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$37,290</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$42,884</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$37,290</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$0</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$42,884</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$0</span></div>
+        </div>
+      </div>
+
+      <!-- Freeze -->
+      <div class="freeze-notice"><strong>Fiscal Freeze - August – September</strong><br>No project resources or costs applied during fiscal blackout period.</div>
+
+      <!-- P6 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 05</div>
+        <div class="phase-pricing-title">Full Testing (BRT / UAT)</div>
+        <div class="phase-pricing-dates">October – November</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr class="complimentary-row"><td>Principal Solution Architect <span class="complimentary-badge">Complimentary</span></td><td class="align-right">24</td><td class="align-right">$0</td></tr>
+            <tr><td>Senior Program Manager</td><td class="align-right">56</td><td class="align-right">$9,800</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">100</td><td class="align-right">$17,500</td></tr>
+            <tr><td>Associate Functional - Training</td><td class="align-right">160</td><td class="align-right">$24,000</td></tr>
+            <tr><td>Senior Technical Architect</td><td class="align-right">102</td><td class="align-right">$18,870</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$70,170</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$80,696</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$46,170</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$24,000</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$53,096</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$27,600</span></div>
+        </div>
+      </div>
+
+      <!-- P7 -->
+      <div class="phase-pricing-block">
+        <div class="phase-pricing-label">Phase 06</div>
+        <div class="phase-pricing-title">Go‑Live &amp; Hyper Care (2 Months)</div>
+        <div class="phase-pricing-dates">December 14 + 2 Months</div>
+        <table>
+          <thead><tr><th>Role</th><th class="align-right">Hours</th><th class="align-right">T&amp;M Cost</th></tr></thead>
+          <tbody>
+            <tr><td>Senior Program Manager</td><td class="align-right">40</td><td class="align-right">$7,000</td></tr>
+            <tr><td>Senior Functional Delivery Consultant</td><td class="align-right">134</td><td class="align-right">$23,450</td></tr>
+            <tr><td>Senior Technical Architect</td><td class="align-right">134</td><td class="align-right">$24,790</td></tr>
+          </tbody>
+        </table>
+        <div class="phase-summary-bar">
+          <div class="phase-summary-item tm-bar"><span class="bar-label">T&amp;M Total</span><span class="bar-value">$55,240</span></div>
+          <div class="phase-summary-item ffp-bar"><span class="bar-label">FFP Milestone</span><span class="bar-value">$63,526</span></div>
+        </div>
+        <div class="phase-capex">
+          <div class="phase-capex-item cx-cap"><span class="cx-label">T&amp;M Cap</span><span class="cx-value">$0</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">T&amp;M Exp</span><span class="cx-value">$55,240</span></div>
+          <div class="phase-capex-item cx-cap"><span class="cx-label">FFP Cap</span><span class="cx-value">$0</span></div>
+          <div class="phase-capex-item cx-exp"><span class="cx-label">FFP Exp</span><span class="cx-value">$63,526</span></div>
+        </div>
+      </div>
+
+      <!-- Grand Total -->
+      <div class="dual-pricing-grid">
+        <div class="dual-pricing-card tm">
+          <div class="card-label">Option A - Time &amp; Materials</div>
+          <div class="card-price">$394,710</div>
+          <div class="card-note">2,434 hours at discounted project rates<br>Billed monthly on actual consumption<br>Includes $5,000 Shared Services credit</div>
+        </div>
+        <div class="dual-pricing-card ffp">
+          <div class="card-label">Option B - Firm Fixed Price</div>
+          <div class="card-price">$454,667</div>
+          <div class="card-note">Milestone payments on deliverable acceptance<br>Includes 15% risk contingency<br>Includes $5,000 Shared Services credit</div>
+          <div class="ffp-premium-badge">$59,957 risk contingency included</div>
+        </div>
+      </div>
+
+      <div class="grand-total-bar">
+        <div class="grand-total-stat"><div class="label">Total Hours</div><div class="value">2,434</div></div>
+        <div class="grand-total-stat savings"><div class="label">Complimentary Value</div><div class="value">$71,600</div></div>
+        <div class="grand-total-stat savings"><div class="label">Shared Svcs Credit</div><div class="value">$5,000</div></div>
+        <div class="grand-total-stat"><div class="label">FFP Premium</div><div class="value">15%</div></div>
+      </div>
+
+      <p style="margin-top:28px;">Both options deliver the same scope, team, and deliverables. Under Option B, payment is released only upon formal written acceptance of each phase's deliverables. Travel expenses align with Aerospace Travel Policy (P250) and FAR 31.205‑46, billed separately at cost with prior approval under both options.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 08 - ASSUMPTIONS ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 08</span>
+      <h2 class="section-title">Assumptions &amp; Constraints</h2>
+      <div class="constraint-list">
+        <div class="constraint-item"><div class="constraint-num">01</div><div class="constraint-text">Redesign or re‑implementation of AP invoice processing workflows is not in scope. The existing Ariba AP process will remain as‑is. This engagement validates that AP and invoice processing continue to function correctly when POs originate from S/4HANA, but does not modify, migrate, or re‑architect the invoice processing solution.</div></div>
+        <div class="constraint-item"><div class="constraint-num">02</div><div class="constraint-text">Aerospace is expected to engage SAP Ariba Shared Services for approximately 80 hours. RevTech is providing a $5,000 credit toward this cost. Procurement and coordination of SAP Ariba Shared Services is the responsibility of Aerospace.</div></div>
+        <div class="constraint-item"><div class="constraint-num">03</div><div class="constraint-text">No project activity will occur during August and September to accommodate Aerospace's fiscal blackout period.</div></div>
+        <div class="constraint-item"><div class="constraint-num">04</div><div class="constraint-text">Aerospace will provide timely access to subject matter experts, system environments, master data, and current-state process documentation. Aerospace EIS retains technical responsibility for EPIC integration, ServiceNow interface updates, Metrology API updates, AP Essentials validation, and S/4HANA workflow development. RevTech owns SAP Custom Fields and Logic (CFL) configuration on PR.</div></div>
+        <div class="constraint-item"><div class="constraint-num">05</div><div class="constraint-text">Design sign‑off, testing acceptance, and go‑live authorization require dual acceptance from both the EIS organization and STP Business Process Owner. Delays in approvals may impact the delivery schedule and FFP milestone payment gates.</div></div>
+        <div class="constraint-item"><div class="constraint-num">06</div><div class="constraint-text">The S/4HANA system landscape will be provisioned and available prior to the Build phase. Environment provisioning is the responsibility of Aerospace. Sandbox environments should reflect a recent refresh from production for testing phases.</div></div>
+        <div class="constraint-item"><div class="constraint-num">07</div><div class="constraint-text">Travel expenses align with Aerospace Travel Policy (P250) and FAR 31.205‑46 guidelines, billed separately at cost with prior approval. This engagement is primarily remote with select on‑site support at Aerospace's El Segundo, CA offices as mutually agreed.</div></div>
+        <div class="constraint-item"><div class="constraint-num">08</div><div class="constraint-text">Any scope changes after design sign‑off will be managed through formal change control and may result in additional cost and timeline adjustments under either option.</div></div>
+        <div class="constraint-item"><div class="constraint-num">09</div><div class="constraint-text">SAP licensing, third‑party software licenses, and infrastructure hosting costs are the responsibility of Aerospace.</div></div>
+        <div class="constraint-item"><div class="constraint-num">10</div><div class="constraint-text">RevTech acknowledges that Aerospace will provide necessary business infrastructure including laptops, office space, and network access. No RevTech laptops or computers will be used in support of deliverables. All data and deliverables will remain within Aerospace systems.</div></div>
+        <div class="constraint-item"><div class="constraint-num">11</div><div class="constraint-text">Under Option B (FFP), milestone payments are contingent upon formal written acceptance of phase deliverables. Acceptance criteria will be defined during the Prep phase and documented in the Governance, Cadence, and RACI Framework. Aerospace will have ten (10) business days to provide acceptance or document deficiencies.</div></div>
+        <div class="constraint-item"><div class="constraint-num">12</div><div class="constraint-text">Under Option A (T&M), RevTech will invoice monthly based on actual hours consumed. Invoices are payable per the negotiated Master Services Agreement (MSA) terms.</div></div>
+        <div class="constraint-item"><div class="constraint-num">13</div><div class="constraint-text">The discounted consulting rates in both options are contingent upon Aerospace's commitment to a minimum of three (3) sustainment resources under the Sustainment / Staff Augmentation engagement provided to Aerospace on March 26, 2026. If Aerospace does not proceed with the sustainment engagement, RevTech reserves the right to apply standard rates.</div></div>
+        <div class="constraint-item"><div class="constraint-num">14</div><div class="constraint-text">For this engagement, Business Requirements Testing (BRT) and User Acceptance Testing (UAT) are treated synonymously. BRT acceptance criteria: maximum 0 critical, 0 high, 1 medium, 2 low defects. UAT acceptance criteria: no critical, high, or medium defects.</div></div>
+        <div class="constraint-item"><div class="constraint-num">15</div><div class="constraint-text">Hyper care support will be provided for two (2) months following go‑live at approximately half the active‑phase run‑rate resourcing. Hyper care exit criteria will be mutually defined during Prep and documented in the Governance, Cadence, and RACI Framework.</div></div>
+      </div>
+
+      <h3>Service Level Agreements</h3>
+      <p>Aerospace and RevTech will develop and mutually agree to Service Level Agreements (SLAs) during the Prep phase. SLAs will cover response times, escalation protocols, deliverable review and acceptance timelines, and defect resolution expectations. The agreed SLAs will be documented as an addendum to the Governance, Cadence, and RACI Framework and will govern the engagement for both commercial options.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 09 - RISKS ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 09</span>
+      <h2 class="section-title">Risks &amp; Mitigations</h2>
+      <div class="risk-grid">
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Fiscal Freeze Momentum Loss</h4><p>The two‑month suspension may result in loss of context, team readiness, or stakeholder engagement when work resumes.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Pre‑Freeze Validation &amp; Re‑Mobilization</h4><p>Initial testing validates core functionality before the freeze. A structured re‑mobilization plan will be executed in October.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Ariba Process Complexity</h4><p>Undocumented customizations or non‑standard configurations in Ariba may surface during discovery, expanding design complexity.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Structured Discovery &amp; Early Escalation</h4><p>Prepare phase includes dedicated current‑state documentation with STP and EIS SMEs. Scope‑expanding discoveries are escalated via change control.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>EIS Technical Dependency</h4><p>EIS-owned technical deliverables (EPIC, SNOW, Metrology API, AP Essentials, S/4 workflows) may not align with the project timeline, creating downstream delays.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Joint RACI &amp; Governance</h4><p>EIS dependencies documented in the RACI and tracked in weekly governance. RevTech provides functional specs and testing support to accelerate EIS execution.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Integration Complexity</h4><p>Six integration touchpoints (EPIC, SNOW, Metrology, Ariba, AP Essentials, Sunflower) increase the surface area for unforeseen technical issues.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Architecture Review &amp; Interface Mapping</h4><p>Comprehensive integration architecture review during Design phase. Principal TA owns integration risk tracking. Sunflower included conditionally if found applicable.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Client Resource Availability</h4><p>Delayed access to SMEs, test data, or environments could compress the timeline given the fixed go‑live date.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Early Engagement &amp; Governance</h4><p>Resource requirements documented in the Governance, Cadence, and RACI Framework. Weekly cadence tracks fulfillment with defined escalation paths.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 10 - ACCEPTANCE ═══════ -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">The Aerospace Corporation<br>AERO‑RFP‑KB‑03262026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 10</span>
+      <h2 class="section-title">Acceptance &amp; Next Steps</h2>
+      <p>This proposal constitutes a formal response to Solicitation No. AERO‑RFP‑KB‑03262026 from Revelation Technologies LLC to deliver the SAP S/4HANA Direct Procurement Transformation engagement for The Aerospace Corporation. Both commercial options include validation that existing Ariba AP and invoice processing workflows remain fully functional following the procurement transition to S/4HANA.</p>
+
+      <table>
+        <thead><tr><th>Commercial Element</th><th class="align-right">Option A - T&amp;M</th><th class="align-right">Option B - FFP</th></tr></thead>
+        <tbody>
+          <tr><td>Total Investment</td><td class="align-right">$394,710</td><td class="align-right">$454,667</td></tr>
+          <tr><td>Billing Basis</td><td class="align-right">Actual hours</td><td class="align-right">Milestone acceptance</td></tr>
+          <tr><td>Risk Contingency</td><td class="align-right">N/A</td><td class="align-right">15% included</td></tr>
+          <tr><td>Invoice Frequency</td><td class="align-right">Monthly</td><td class="align-right">Per phase gate</td></tr>
+          <tr><td>Complimentary SA (216 hrs)</td><td class="align-right">$48,600</td><td class="align-right">$48,600</td></tr>
+          <tr><td>Complimentary AI Evaluation (80 hrs)</td><td class="align-right">$18,000</td><td class="align-right">$18,000</td></tr>
+          <tr><td>SAP Shared Services Credit</td><td class="align-right">$5,000</td><td class="align-right">$5,000</td></tr>
+          <tr style="background:var(--gold-dim);"><td style="font-weight:700;">Total Complimentary Value</td><td class="align-right" style="font-weight:700;font-family:'JetBrains Mono',monospace;">$71,600</td><td class="align-right" style="font-weight:700;font-family:'JetBrains Mono',monospace;">$71,600</td></tr>
+          <tr><td>Discounted Rate Condition</td><td class="align-right" colspan="2" style="text-align:center;">Minimum 3 sustainment resources (per March 26 proposal)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Communications</h3>
+      <p>All communications regarding this engagement shall be directed through the following points of contact:</p>
+      <table>
+        <thead><tr><th>Role</th><th>Name</th><th class="align-right">Contact</th></tr></thead>
+        <tbody>
+          <tr><td>RevTech Program Manager</td><td>Joshua Lee</td><td class="align-right">jlee@revtech.consulting</td></tr>
+          <tr><td>TAC Program Manager</td><td>Simi Miyamoto</td><td class="align-right">simi.miyamoto@aero.org</td></tr>
+          <tr><td>TAC Procurement</td><td>Kathleen Badiang</td><td class="align-right">kathleen.badiang@aero.org</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Acceptance</h3>
+      <p>Upon mutual agreement and selection of the preferred commercial option, this proposal - together with the executed Attachment D Statement of Work and Master Services Agreement - will govern the engagement.</p>
+
+      <h3>Validity</h3>
+      <p>This proposal is valid for sixty (60) calendar days from submission, consistent with the RFP requirements.</p>
+
+      <h3>Immediate Next Steps</h3>
+      <div class="constraint-list">
+        <div class="constraint-item"><div class="constraint-num">01</div><div class="constraint-text">Executive review of this proposal by the Source to Pay BPO, Aerospace Leadership, and Executive Steering Committee.</div></div>
+        <div class="constraint-item"><div class="constraint-num">02</div><div class="constraint-text">Selection of preferred commercial option (T&amp;M or Firm Fixed Price).</div></div>
+        <div class="constraint-item"><div class="constraint-num">03</div><div class="constraint-text">Clarification session (if required) to address questions on scope, pricing, or delivery approach.</div></div>
+        <div class="constraint-item"><div class="constraint-num">04</div><div class="constraint-text">Execution of Attachment D SOW and Master Services Agreement. Anticipated award date: April 30, 2026.</div></div>
+        <div class="constraint-item"><div class="constraint-num">05</div><div class="constraint-text">Team mobilization and Prep phase kickoff - targeted for April 13.</div></div>
+      </div>
+
+      <div class="signature-grid">
+        <div class="signature-block" style="padding-top:8px;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Revelation Technologies LLC</p>
+          <div class="signature-line"></div>
+          <div class="signature-name">Authorized Representative</div>
+          <div class="signature-title-text">Revelation Technologies LLC</div>
+          <div class="signature-date">Date: _______________</div>
+        </div>
+        <div class="signature-block" style="padding-top:8px;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">The Aerospace Corporation</p>
+          <div class="signature-line"></div>
+          <div class="signature-name">Authorized Representative</div>
+          <div class="signature-title-text">The Aerospace Corporation</div>
+          <div class="signature-date">Date: _______________</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Revelation Technologies LLC · AERO‑RFP‑KB‑03262026 · Confidential · revtech.consulting</div>
+</div>
+</body>
+</html>
