@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mach12.ai — 90-Day Startup Funding Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --m12-midnight: #0A0E1A;
+    --m12-deep-navy: #0F1629;
+    --m12-steel: #1A2342;
+    --m12-blue: #2563EB;
+    --m12-electric: #3B82F6;
+    --m12-cyan: #06B6D4;
+    --m12-ice: #E0F2FE;
+    --m12-white: #F8FAFC;
+    --m12-ember: #F97316;
+    --m12-flame: #FB923C;
+    --m12-gray-100: #F1F5F9;
+    --m12-gray-300: #CBD5E1;
+    --m12-gray-500: #64748B;
+    --m12-gray-700: #334155;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #060912;
+    color: var(--m12-white);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; position: relative;
+    overflow: hidden; text-align: center; padding: 60px 40px;
+    background:
+      radial-gradient(ellipse 90% 50% at 50% 30%, rgba(37,99,235,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 70% 70%, rgba(6,182,212,0.06) 0%, transparent 60%),
+      var(--m12-midnight);
+  }
+  .cover::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.12), transparent),
+      radial-gradient(1px 1px at 45% 65%, rgba(255,255,255,0.08), transparent),
+      radial-gradient(1px 1px at 75% 15%, rgba(255,255,255,0.10), transparent),
+      radial-gradient(1px 1px at 85% 80%, rgba(255,255,255,0.06), transparent),
+      radial-gradient(1px 1px at 30% 90%, rgba(255,255,255,0.09), transparent),
+      radial-gradient(1px 1px at 60% 40%, rgba(255,255,255,0.07), transparent);
+  }
+  .cover-logo { position: relative; z-index: 1; margin-bottom: 20px; }
+  .cover-logo .tesseract { width: 80px; height: 80px; margin: 0 auto 24px; }
+  .cover-logo .wordmark {
+    font-family: 'Orbitron', sans-serif; font-weight: 800;
+    font-size: 48px; letter-spacing: 6px; color: var(--m12-white);
+  }
+  .cover-logo .wordmark .ai {
+    background: linear-gradient(135deg, var(--m12-blue), var(--m12-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cover-tagline {
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--m12-gray-500);
+    margin-bottom: 60px; position: relative; z-index: 1;
+  }
+  .cover-title {
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 28px;
+    letter-spacing: 2px; color: var(--m12-white); margin-bottom: 12px;
+    position: relative; z-index: 1;
+  }
+  .cover-subtitle {
+    font-size: 17px; color: var(--m12-gray-300); max-width: 560px;
+    margin: 0 auto 60px; position: relative; z-index: 1; line-height: 1.7;
+  }
+  .cover-meta {
+    position: relative; z-index: 1; display: flex; gap: 48px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .cover-meta-item { text-align: center; }
+  .cover-meta-item .label {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-gray-500); margin-bottom: 4px;
+  }
+  .cover-meta-item .value {
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--m12-gray-300);
+  }
+  .cover-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--m12-blue), var(--m12-cyan));
+    margin: 32px auto; position: relative; z-index: 1;
+  }
+  .cover-revtech {
+    position: relative; z-index: 1; font-size: 11px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-gray-500); margin-top: 80px;
+  }
+
+  /* ===== PAGES ===== */
+  .page { max-width: 900px; margin: 0 auto; padding: 80px 48px; position: relative; }
+  .page + .page { border-top: 1px solid rgba(37,99,235,0.12); }
+  .section-number {
+    font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 11px;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--m12-cyan);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-number::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(6,182,212,0.3), transparent);
+  }
+  .section-title {
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 22px;
+    letter-spacing: 1px; color: var(--m12-white); margin-bottom: 24px;
+  }
+  .section-body p {
+    font-size: 15px; color: var(--m12-gray-300); margin-bottom: 16px; line-height: 1.75;
+  }
+  .section-body strong { color: var(--m12-white); font-weight: 600; }
+  .section-body .accent { color: var(--m12-cyan); font-weight: 600; }
+
+  /* ===== CARDS ===== */
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+  .pillar-card {
+    background: linear-gradient(135deg, rgba(15,22,41,0.9), rgba(26,35,66,0.6));
+    border: 1px solid rgba(37,99,235,0.15); border-radius: 8px;
+    padding: 28px 24px; position: relative; overflow: hidden;
+  }
+  .pillar-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--m12-blue), var(--m12-cyan));
+  }
+  .pillar-card .pillar-icon { font-size: 24px; margin-bottom: 14px; }
+  .pillar-card h3 {
+    font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--m12-white); margin-bottom: 10px;
+  }
+  .pillar-card p { font-size: 13px; color: var(--m12-gray-500); line-height: 1.6; }
+
+  /* ===== MARKET CARDS ===== */
+  .market-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 32px 0; }
+  .market-card {
+    background: linear-gradient(135deg, rgba(15,22,41,0.9), rgba(26,35,66,0.5));
+    border: 1px solid rgba(37,99,235,0.12); border-radius: 8px;
+    padding: 28px 24px; position: relative; overflow: hidden;
+  }
+  .market-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+  }
+  .market-card.external::before { background: linear-gradient(180deg, var(--m12-blue), var(--m12-cyan)); }
+  .market-card.internal::before { background: linear-gradient(180deg, var(--m12-ember), var(--m12-flame)); }
+  .market-card .market-tag {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 2px; text-transform: uppercase; padding: 3px 8px;
+    border-radius: 3px; display: inline-block; margin-bottom: 14px;
+  }
+  .market-card.external .market-tag {
+    background: rgba(6,182,212,0.15); color: var(--m12-cyan); border: 1px solid rgba(6,182,212,0.25);
+  }
+  .market-card.internal .market-tag {
+    background: rgba(249,115,22,0.12); color: var(--m12-ember); border: 1px solid rgba(249,115,22,0.25);
+  }
+  .market-card h3 {
+    font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: 1px; color: var(--m12-white); margin-bottom: 10px;
+  }
+  .market-card p { font-size: 13px; color: var(--m12-gray-500); line-height: 1.6; }
+  .market-card .examples { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(37,99,235,0.08); }
+  .market-card .example-item {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    color: var(--m12-gray-300); margin-bottom: 4px;
+  }
+
+  /* ===== ORG CHART ===== */
+  .org-chart { margin: 32px 0; display: flex; flex-direction: column; align-items: center; }
+  .org-node {
+    background: linear-gradient(135deg, rgba(15,22,41,0.9), rgba(26,35,66,0.6));
+    border: 1px solid rgba(37,99,235,0.15); border-radius: 8px;
+    padding: 20px 28px; text-align: center; min-width: 240px;
+  }
+  .org-node.primary {
+    border-color: rgba(37,99,235,0.35);
+    background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(26,35,66,0.8));
+  }
+  .org-node.oversight {
+    border-color: rgba(249,115,22,0.25);
+    background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(26,35,66,0.6));
+  }
+  .org-node .org-name {
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
+    color: var(--m12-white); margin-bottom: 2px;
+  }
+  .org-node .org-role {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--m12-cyan);
+  }
+  .org-node.oversight .org-role { color: var(--m12-ember); }
+  .org-node .org-detail { font-size: 12px; color: var(--m12-gray-500); margin-top: 6px; }
+  .org-connector {
+    width: 2px; height: 24px;
+    background: linear-gradient(180deg, rgba(37,99,235,0.3), rgba(6,182,212,0.3));
+  }
+  .org-row { display: flex; gap: 20px; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
+  .org-branch { display: flex; flex-direction: column; align-items: center; }
+  .org-label {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-gray-500);
+    margin: 20px 0 8px; text-align: center;
+  }
+
+  /* ===== BUDGET TABLE ===== */
+  .budget-table-wrapper {
+    margin: 32px 0; border: 1px solid rgba(37,99,235,0.15);
+    border-radius: 8px; overflow: hidden;
+  }
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .budget-table thead th {
+    font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-cyan);
+    background: rgba(10,14,26,0.8); padding: 14px 20px; text-align: left;
+    border-bottom: 1px solid rgba(37,99,235,0.15);
+  }
+  .budget-table thead th:last-child, .budget-table thead th:nth-child(3) { text-align: right; }
+  .budget-table tbody td {
+    padding: 13px 20px; border-bottom: 1px solid rgba(37,99,235,0.06);
+    color: var(--m12-gray-300); vertical-align: top;
+  }
+  .budget-table tbody td:last-child, .budget-table tbody td:nth-child(3) {
+    text-align: right; font-family: 'Space Mono', monospace; font-size: 13px;
+  }
+  .budget-table tbody tr:hover { background: rgba(37,99,235,0.04); }
+  .budget-table .category-row td {
+    font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--m12-electric);
+    background: rgba(37,99,235,0.06); padding: 10px 20px;
+    border-bottom: 1px solid rgba(37,99,235,0.10);
+  }
+  .budget-table .total-row td {
+    font-weight: 700; color: var(--m12-white);
+    background: rgba(37,99,235,0.08); border-top: 2px solid rgba(37,99,235,0.25);
+    font-family: 'Space Mono', monospace; font-size: 14px; padding: 16px 20px;
+  }
+  .budget-table .total-row td:first-child {
+    font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 2px;
+  }
+  .budget-table .subtotal-row td {
+    font-weight: 600; color: var(--m12-gray-300);
+    border-top: 1px solid rgba(37,99,235,0.12); font-style: italic;
+  }
+  .budget-table .offset-row td {
+    color: var(--m12-cyan); font-weight: 600;
+    background: rgba(6,182,212,0.04); border-top: 1px solid rgba(6,182,212,0.12);
+  }
+  .budget-table .net-row td {
+    font-weight: 800; color: var(--m12-ember);
+    background: rgba(249,115,22,0.06); border-top: 2px solid rgba(249,115,22,0.20);
+    font-family: 'Space Mono', monospace; font-size: 15px; padding: 18px 20px;
+  }
+  .budget-table .net-row td:first-child {
+    font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 2px;
+  }
+  .line-detail { font-size: 12px; color: var(--m12-gray-500); display: block; margin-top: 2px; }
+
+  /* ===== STATS ===== */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0; }
+  .stat-row.four-col { grid-template-columns: repeat(4, 1fr); }
+  .stat-card {
+    background: linear-gradient(135deg, rgba(15,22,41,0.9), rgba(26,35,66,0.5));
+    border: 1px solid rgba(37,99,235,0.12); border-radius: 8px;
+    padding: 28px 24px; text-align: center;
+  }
+  .stat-card .stat-value {
+    font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: 32px;
+    background: linear-gradient(135deg, var(--m12-white), var(--m12-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 6px;
+  }
+  .stat-card .stat-value.ember {
+    background: linear-gradient(135deg, var(--m12-ember), var(--m12-flame));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .stat-card .stat-label {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-gray-500);
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline { margin: 32px 0; position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(180deg, var(--m12-blue), var(--m12-cyan), rgba(6,182,212,0.2));
+  }
+  .timeline-item { position: relative; margin-bottom: 32px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -29px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--m12-midnight); border: 2px solid var(--m12-cyan);
+  }
+  .timeline-phase {
+    font-family: 'Orbitron', sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-ember); margin-bottom: 4px;
+  }
+  .timeline-title {
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 16px;
+    color: var(--m12-white); margin-bottom: 6px;
+  }
+  .timeline-desc { font-size: 13px; color: var(--m12-gray-500); line-height: 1.6; }
+
+  /* ===== RISK ===== */
+  .risk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .risk-card {
+    background: rgba(15,22,41,0.6); border: 1px solid rgba(37,99,235,0.10);
+    border-radius: 8px; padding: 20px;
+  }
+  .risk-card h4 {
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px;
+    color: var(--m12-white); margin-bottom: 6px;
+  }
+  .risk-card p { font-size: 13px; color: var(--m12-gray-500); line-height: 1.5; }
+  .risk-card .risk-tag {
+    font-family: 'Space Mono', monospace; font-size: 9px;
+    letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px;
+    border-radius: 3px; display: inline-block; margin-bottom: 10px;
+  }
+  .risk-tag.mitigated {
+    background: rgba(6,182,212,0.15); color: var(--m12-cyan); border: 1px solid rgba(6,182,212,0.25);
+  }
+  .risk-tag.monitor {
+    background: rgba(249,115,22,0.12); color: var(--m12-ember); border: 1px solid rgba(249,115,22,0.25);
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(6,182,212,0.04));
+    border: 1px solid rgba(37,99,235,0.18); border-left: 3px solid var(--m12-cyan);
+    border-radius: 0 8px 8px 0; padding: 24px 28px; margin: 28px 0;
+  }
+  .callout p { font-size: 14px; color: var(--m12-gray-300); line-height: 1.7; margin-bottom: 0; }
+  .callout strong { color: var(--m12-white); }
+
+  /* ===== FOOTER ===== */
+  .doc-footer {
+    max-width: 900px; margin: 0 auto; padding: 40px 48px 60px;
+    border-top: 1px solid rgba(37,99,235,0.10);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .doc-footer .footer-brand {
+    font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 14px;
+    letter-spacing: 2px; color: var(--m12-gray-500);
+  }
+  .doc-footer .footer-brand .ai {
+    background: linear-gradient(135deg, var(--m12-blue), var(--m12-cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .doc-footer .footer-class {
+    font-family: 'Space Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--m12-gray-700);
+  }
+
+  @media print {
+    body { background: var(--m12-midnight); }
+    .page { break-inside: avoid; padding: 40px 48px; }
+    .cover { min-height: 100vh; }
+  }
+  @media (max-width: 700px) {
+    .pillar-grid, .market-grid, .risk-grid { grid-template-columns: 1fr; }
+    .stat-row, .stat-row.four-col { grid-template-columns: 1fr 1fr; }
+    .cover-meta { flex-direction: column; gap: 16px; }
+    .page { padding: 48px 24px; }
+    .cover { padding: 40px 24px; }
+    .cover-logo .wordmark { font-size: 32px; }
+    .cover-title { font-size: 20px; }
+    .section-title { font-size: 18px; }
+    .org-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-logo">
+    <svg class="tesseract" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,4 76,22 76,58 40,76 4,58 4,22" fill="none" stroke="url(#grad1)" stroke-width="1.5" opacity="0.6"/>
+      <polygon points="40,18 60,28 60,52 40,62 20,52 20,28" fill="none" stroke="url(#grad1)" stroke-width="1.5" opacity="0.9"/>
+      <line x1="40" y1="4" x2="40" y2="18" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <line x1="76" y1="22" x2="60" y2="28" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <line x1="76" y1="58" x2="60" y2="52" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <line x1="40" y1="76" x2="40" y2="62" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <line x1="4" y1="58" x2="20" y2="52" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <line x1="4" y1="22" x2="20" y2="28" stroke="url(#grad1)" stroke-width="1" opacity="0.4"/>
+      <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#06B6D4"/>
+      </linearGradient></defs>
+    </svg>
+    <div class="wordmark">MACH12<span class="ai">.AI</span></div>
+  </div>
+  <div class="cover-tagline">Intelligence at the Speed of Mission</div>
+  <div class="cover-divider"></div>
+  <h1 class="cover-title">90-DAY STARTUP FUNDING PROPOSAL</h1>
+  <p class="cover-subtitle">Initial investment to stand up Mach12.ai as a wholly owned subsidiary of Revelation Technologies, productizing deep GovCon domain expertise into AI-powered software at scale.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="label">Prepared By</div><div class="value">Josh Lee, CEO</div></div>
+    <div class="cover-meta-item"><div class="label">Date</div><div class="value">April 2026</div></div>
+    <div class="cover-meta-item"><div class="label">Period</div><div class="value">90 Days (Q2 2026)</div></div>
+    <div class="cover-meta-item"><div class="label">Gross Investment</div><div class="value">$114,209 &ndash; $118,860</div><div class="label" style="margin-top:4px;font-size:9px;letter-spacing:1px;">(incl. ~$68K in founder and intercompany RevTech labor)</div></div>
+    <div class="cover-meta-item"><div class="label">Net After Offset</div><div class="value">TBD w/ Intercompany</div></div>
+  </div>
+  <div class="cover-revtech">A Revelation Technologies Company</div>
+</section>
+
+<!-- 01 — EXECUTIVE SUMMARY -->
+<section class="page">
+  <div class="section-number">01 // Executive Summary</div>
+  <h2 class="section-title">FROM CUSTOM SOLUTIONS TO SCALABLE PRODUCTS</h2>
+  <div class="section-body">
+    <p>Revelation Technologies has spent years embedded inside the most complex ERP environments in the US Government Contracting and Aerospace &amp; Defense industry. In that time, we haven&rsquo;t just consulted. <strong>We&rsquo;ve built.</strong> Custom tools, accelerators, workarounds, and solutions that our clients needed because nothing on the market addressed their specific compliance, reporting, and operational requirements.</p>
+    <p>The pattern is unmistakable. Across engagements (FAR/DFARS cost compliance, EVMS reporting, WBS-driven program management), RevTech consultants have repeatedly designed and deployed custom solutions to fill the same gaps. These solutions work. Clients depend on them. But they live as one-off deliverables, rebuilt and re-scoped at every new engagement.</p>
+    <p><strong>Mach12.ai exists to change that equation.</strong> Instead of rebuilding custom solutions engagement by engagement, we productize the most commonly deployed patterns into AI-powered software that can be delivered at scale and at an aggressive pace. We already know what the market needs because we&rsquo;ve been building it by hand for years. Now, with AI as the accelerant, we can ship in weeks what used to take months, and serve the entire market instead of one client at a time.</p>
+    <p>This isn&rsquo;t speculative product development. This is <span class="accent">a consultancy with deep domain authority operationalizing its own institutional knowledge into software.</span> No other AI company entering this space has that foundation.</p>
+  </div>
+  <div class="stat-row four-col">
+    <div class="stat-card"><div class="stat-value">$114K</div><div class="stat-label">Gross 90-Day Ask</div></div>
+    <div class="stat-card"><div class="stat-value">$750M+</div><div class="stat-label">Target Client Revenue</div></div>
+    <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">Revenue Pillars</div></div>
+    <div class="stat-card"><div class="stat-value">2</div><div class="stat-label">Market Segments</div></div>
+  </div>
+</section>
+
+<!-- 02 — DUAL MARKET FOCUS -->
+<section class="page">
+  <div class="section-number">02 // Market Focus</div>
+  <h2 class="section-title">TWO MARKETS, ONE PLATFORM</h2>
+  <div class="section-body">
+    <p>Mach12.ai serves two distinct but reinforcing markets. External products target GovCon and A&amp;D buyers directly, as well as professional services companies beyond the SAP ecosystem. Internal products accelerate and differentiate RevTech&rsquo;s consulting delivery, creating an intercompany revenue stream that offsets startup costs while stress-testing products in live client environments.</p>
+  </div>
+  <div class="market-grid">
+    <div class="market-card external">
+      <div class="market-tag">External Market</div>
+      <h3>GovCon, A&amp;D &amp; Professional Services</h3>
+      <p>AI-powered software for US Government Contractors, Aerospace &amp; Defense companies ($750M&ndash;$3B revenue), and professional services firms. While Mach12.ai products naturally integrate with SAP, they are not exclusive to SAP, opening the addressable market to any organization running complex project-driven operations regardless of ERP platform.</p>
+      <div class="examples">
+        <div class="example-item">&#8227; AI Contract Analytics</div>
+        <div class="example-item">&#8227; EVMS Intelligence Suite</div>
+        <div class="example-item">&#8227; Predictive Cost &amp; Schedule</div>
+        <div class="example-item">&#8227; Compliance Automation Engine</div>
+      </div>
+    </div>
+    <div class="market-card internal">
+      <div class="market-tag">Internal Market</div>
+      <h3>RevTech Delivery Acceleration</h3>
+      <p>Tools built by Mach12.ai that RevTech consultants use to deliver faster, differentiate from competitors, and demonstrate AI-augmented consulting in live engagements. RevTech pays Mach12.ai through an intercompany licensing arrangement, creating revenue that offsets initial startup costs.</p>
+      <div class="examples">
+        <div class="example-item">&#8227; Diagrams App (piloting at Boeing)</div>
+        <div class="example-item">&#8227; Tesseract PPM Platform</div>
+        <div class="example-item">&#8227; Consultant Productivity Suite</div>
+        <div class="example-item">&#8227; Client Reporting Accelerators</div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <p><strong>Intercompany Revenue Model:</strong> RevTech will license Mach12.ai&rsquo;s internal tools through a formal intercompany agreement, creating a recurring revenue stream that offsets Mach12.ai&rsquo;s startup costs. RevTech receives differentiated tooling that improves delivery margins and win rates. Both entities benefit, and the revenue is structured to reflect fair market value for the software provided.</p>
+  </div>
+</section>
+
+<!-- 03 — BUSINESS MODEL -->
+<section class="page">
+  <div class="section-number">03 // Business Model</div>
+  <h2 class="section-title">THREE PILLARS OF REVENUE</h2>
+  <div class="section-body">
+    <p>Across both markets, Mach12.ai operates three distinct business models, each targeting different buyer needs, creating multiple entry points into the ecosystem, and expanding RevTech&rsquo;s reach into new customers and industries.</p>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon">&#9670;</div>
+      <h3>Custom AI Solutions</h3>
+      <p>Bespoke AI-powered software built directly to mission requirements. Your problem, your data, your competitive advantage. High-touch, high-margin engagements for complex use cases that off-the-shelf tools can&rsquo;t address.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">&#9674;</div>
+      <h3>Partner-Ready Platforms</h3>
+      <p>Pre-built AI modules designed for software partners to integrate into existing platforms. Accelerate roadmaps without building from scratch. Recurring license revenue at scale.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">&#9632;</div>
+      <h3>Client Delivery &amp; Acquisition Tools</h3>
+      <p>Free-to-client applications that accelerate project delivery and demonstrate immediate value. These tools open doors to new customers, including organizations outside the SAP ecosystem, giving RevTech a broader footprint and a natural on-ramp to deeper consulting engagements.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <p><strong>Platform Independence:</strong> Mach12.ai products are designed with native SAP integration where applicable, drawing on RevTech&rsquo;s deep SAP expertise, but are <strong>not exclusive to SAP.</strong> This deliberate architectural decision expands the addressable market beyond RevTech&rsquo;s traditional SAP client base, positioning Mach12.ai as a gateway to new customers, new industries, and new consulting opportunities that RevTech would not otherwise access.</p>
+  </div>
+</section>
+
+<!-- 04 — TEAM STRUCTURE -->
+<section class="page">
+  <div class="section-number">04 // Team Structure</div>
+  <h2 class="section-title">PROPOSED TEAMING</h2>
+  <div class="section-body">
+    <p>The initial team is lean and execution-focused. Josh Lee serves as CEO and Chief Product Officer: setting product direction, defining requirements from domain expertise, and managing the development roadmap. A full-time contractor handles day-to-day engineering and product build-out. Keith and Ryan provide executive oversight as Mach12.ai stakeholders and RevTech leadership. RevTech subject matter experts are pulled in on an as-needed basis, with their time expensed directly to Mach12.ai.</p>
+  </div>
+  <div class="org-chart">
+    <!-- Executive Oversight -->
+    <div class="org-label">Executive Oversight</div>
+    <div class="org-row" style="margin-bottom: 0;">
+      <div class="org-node oversight">
+        <div class="org-name">Keith</div>
+        <div class="org-role">Executive Oversight</div>
+        <div class="org-detail">Strategic direction &amp; investment governance</div>
+      </div>
+      <div class="org-node oversight">
+        <div class="org-name">Ryan</div>
+        <div class="org-role">Executive Oversight</div>
+        <div class="org-detail">Strategic direction &amp; investment governance</div>
+      </div>
+    </div>
+    <div class="org-connector"></div>
+
+    <!-- CEO -->
+    <div class="org-node primary">
+      <div class="org-name">Josh Lee</div>
+      <div class="org-role">CEO / Chief Product Officer</div>
+      <div class="org-detail">25% allocation &middot; Product vision, architecture, market strategy</div>
+    </div>
+    <div class="org-connector"></div>
+
+    <!-- Direct Reports -->
+    <div class="org-row">
+      <div class="org-branch">
+        <div class="org-connector"></div>
+        <div class="org-node">
+          <div class="org-name">Full-Time Contractor</div>
+          <div class="org-role">Lead Developer</div>
+          <div class="org-detail">40 hrs/wk &middot; Full-stack engineering &amp; product build</div>
+        </div>
+      </div>
+      <div class="org-branch">
+        <div class="org-connector"></div>
+        <div class="org-node">
+          <div class="org-name">RevTech SME Pool</div>
+          <div class="org-role">Domain Experts (As Needed)</div>
+          <div class="org-detail">~400 hrs &middot; Requirements, validation, client engagement</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">
+    <p><strong>RevTech Resource Model:</strong> RevTech consultants contribute domain expertise, requirements definition, and client-side validation. Their time is tracked and expensed to Mach12.ai at an average blended rate of $135/hr. This ensures Mach12.ai carries its true cost of operations while giving RevTech personnel direct visibility into the products they&rsquo;ll use in their own delivery work.</p>
+  </div>
+</section>
+
+<!-- 05 — BUDGET DETAIL -->
+<section class="page">
+  <div class="section-number">05 // Budget Detail</div>
+  <h2 class="section-title">90-DAY INVESTMENT BREAKDOWN</h2>
+  <div class="section-body">
+    <p>All costs projected for a 90-day operating period (13 work weeks). Conservative and aggressive ranges account for variable infrastructure usage and discretionary spend. Intercompany revenue offset shown separately.</p>
+  </div>
+  <div class="budget-table-wrapper">
+    <table class="budget-table">
+      <thead><tr><th>Line Item</th><th>Basis</th><th>Conservative</th><th>Aggressive</th></tr></thead>
+      <tbody>
+        <tr class="category-row"><td colspan="4">People: Mach12.ai Core Team</td></tr>
+        <tr><td>Josh Lee, CEO / CPO<span class="line-detail">25% allocation to Mach12.ai</span></td><td>$220k/yr &times; 25% &divide; 4</td><td>$13,750</td><td>$13,750</td></tr>
+        <tr><td>Full-Time Contractor<span class="line-detail">Lead developer: engineering &amp; product build</span></td><td>40 hrs/wk &times; 13 wks &times; $75/hr</td><td>$39,000</td><td>$39,000</td></tr>
+        <tr class="subtotal-row"><td colspan="2">Core Team Subtotal</td><td>$52,750</td><td>$52,750</td></tr>
+
+        <tr class="category-row"><td colspan="4">People: RevTech SME Support</td></tr>
+        <tr><td>RevTech Domain Experts<span class="line-detail">Requirements, validation, client engagement, expensed to Mach12.ai</span></td><td>~400 hrs &times; $135/hr avg</td><td>$54,000</td><td>$54,000</td></tr>
+        <tr class="subtotal-row"><td colspan="2">Total People</td><td>$106,750</td><td>$106,750</td></tr>
+
+        <tr class="category-row"><td colspan="4">Software &amp; Infrastructure</td></tr>
+        <tr><td>Claude AI Subscriptions<span class="line-detail">Max 20x &times; 3 users</span></td><td>$200 &times; 3 /mo &times; 3</td><td>$1,800</td><td>$1,800</td></tr>
+        <tr><td>Anthropic API Credits<span class="line-detail">Product development &amp; testing</span></td><td>Variable usage</td><td>$300</td><td>$1,000</td></tr>
+        <tr><td>Supabase Pro<span class="line-detail">Database &amp; auth for ~10 apps</span></td><td>$25/mo base + compute</td><td>$75</td><td>$300</td></tr>
+        <tr><td>Vercel Pro<span class="line-detail">Hosting &amp; deployment, 2 seats</span></td><td>$20/seat/mo &times; 2 &times; 3</td><td>$120</td><td>$120</td></tr>
+        <tr><td>Figma Professional<span class="line-detail">Design, 2 editor seats</span></td><td>$15/editor/mo &times; 2 &times; 3</td><td>$90</td><td>$90</td></tr>
+        <tr class="subtotal-row"><td colspan="2">Software Subtotal</td><td>$2,385</td><td>$3,310</td></tr>
+
+        <tr class="category-row"><td colspan="4">Marketing</td></tr>
+        <tr><td>Ads &amp; Brand Awareness<span class="line-detail">Initial market positioning campaign</span></td><td>Fixed initial investment</td><td>$5,000</td><td>$5,000</td></tr>
+
+        <tr class="category-row"><td colspan="4">Operations &amp; Overhead</td></tr>
+        <tr><td>Domain, Email &amp; DNS<span class="line-detail">mach12.ai + workspace email</span></td><td>One-time + monthly</td><td>$50</td><td>$100</td></tr>
+        <tr><td>GitHub Team<span class="line-detail">Source control, 2 users</span></td><td>$4/user/mo &times; 2 &times; 3</td><td>$24</td><td>$24</td></tr>
+        <tr><td>Monitoring &amp; Observability<span class="line-detail">Error tracking, analytics</span></td><td>Free tiers + upgrades</td><td>$0</td><td>$100</td></tr>
+        <tr><td>Trademark Filings<span class="line-detail">Mach12 + Tesseract, USPTO</span></td><td>~$275/class &times; 2 marks</td><td>$0</td><td>$550</td></tr>
+        <tr><td>Transactional Email<span class="line-detail">Resend / SendGrid for app notifications</span></td><td>Free tier likely sufficient</td><td>$0</td><td>$26</td></tr>
+        <tr><td>Travel &amp; Customer Discovery<span class="line-detail">Prospect meetings, demos</span></td><td>Discretionary</td><td>$0</td><td>$3,000</td></tr>
+        <tr class="subtotal-row"><td colspan="2">Operations Subtotal</td><td>$74</td><td>$3,800</td></tr>
+
+        <tr class="total-row"><td colspan="2">GROSS 90-DAY INVESTMENT</td><td>$114,209</td><td>$118,860</td></tr>
+        <tr class="offset-row"><td>Intercompany Revenue Offset<span class="line-detail">RevTech licensing fees for Mach12 internal tools (Diagrams App, Tesseract PPM, etc.)</span></td><td>Per intercompany agreement</td><td colspan="2" style="text-align:center;font-family:'Space Mono',monospace;font-size:13px;">TBD per Intercompany Agreement</td></tr>
+        <tr class="net-row"><td colspan="2">NET INVESTMENT (AFTER OFFSET)</td><td colspan="2" style="text-align:center;">Gross Less Intercompany Revenue</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 06 — MILESTONE PLAN -->
+<section class="page">
+  <div class="section-number">06 // Milestone Plan</div>
+  <h2 class="section-title">90-DAY EXECUTION ROADMAP</h2>
+  <div class="section-body">
+    <p>Three 30-day sprints, each delivering concrete outputs across both external products and internal RevTech tools.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-phase">Days 1&ndash;30 // Foundation</div>
+      <div class="timeline-title">Infrastructure, Identity &amp; Architecture</div>
+      <div class="timeline-desc">Stand up development environment (Supabase, Vercel, GitHub). Deploy mach12.ai website. Define product architecture for initial AI modules. Begin RevTech SME discovery sessions to catalog the most commonly deployed custom solutions. Establish intercompany structure and licensing agreement. Advance Diagrams App pilot at Boeing.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Days 31&ndash;60 // Build</div>
+      <div class="timeline-title">First Products &amp; Internal Tool Delivery</div>
+      <div class="timeline-desc">Ship MVP of first external product (target: contract analytics or EVMS intelligence). Deliver Tesseract PPM initial release for RevTech consultant use. Begin customer discovery interviews with GovCon prospects and professional services targets. Launch targeted brand awareness campaign. Iterate both internal and external products based on early feedback.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-phase">Days 61&ndash;90 // Traction</div>
+      <div class="timeline-title">Demo-Ready, Pipeline &amp; Revenue Activation</div>
+      <div class="timeline-desc">Deliver demo-ready external products with gated access on mach12.ai. Deploy free client-facing tools to generate new customer relationships beyond the SAP ecosystem. Activate intercompany revenue as RevTech begins licensing Mach12 internal tools. Build initial sales pipeline with qualified prospects. Define go/no-go criteria for Phase 2.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 — RISK -->
+<section class="page">
+  <div class="section-number">07 // Risk &amp; Mitigation</div>
+  <h2 class="section-title">KEY RISK FACTORS</h2>
+  <div class="risk-grid">
+    <div class="risk-card">
+      <div class="risk-tag mitigated">Mitigated</div>
+      <h4>Domain Credibility</h4>
+      <p>Mach12.ai launches from inside an established GovCon consultancy. RevTech&rsquo;s existing client relationships, domain authority, and years of custom solution delivery de-risk market entry and product-market fit.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-tag mitigated">Mitigated</div>
+      <h4>Product Validation Risk</h4>
+      <p>Internal tools deployed to RevTech consultants create a built-in validation loop. Products are tested in real client environments before external launch, reducing the risk of building something the market doesn&rsquo;t want.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-tag mitigated">Mitigated</div>
+      <h4>Revenue Runway</h4>
+      <p>The intercompany licensing model generates revenue from Day 1 of tool deployment, reducing dependence on external sales cycles that can run 6&ndash;12 months in GovCon.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-tag mitigated">Mitigated</div>
+      <h4>Market Concentration</h4>
+      <p>Platform-independent architecture (SAP-native but not SAP-exclusive) and free client-facing tools expand the addressable market beyond RevTech&rsquo;s traditional SAP base into new industries and customer segments.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-tag monitor">Monitor</div>
+      <h4>Founder Time Dilution</h4>
+      <p>At 25% allocation, Josh maintains RevTech obligations while providing strategic direction. Keith and Ryan provide executive oversight to ensure alignment and accountability across both entities.</p>
+    </div>
+    <div class="risk-card">
+      <div class="risk-tag monitor">Monitor</div>
+      <h4>Single Contractor Dependency</h4>
+      <p>Development velocity relies on one full-time contractor. Mitigation: document architecture from day one, maintain clean codebase standards, and identify backup resources from the RevTech network.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 — STRATEGIC ADVANTAGE -->
+<section class="page">
+  <div class="section-number">08 // Strategic Advantage</div>
+  <h2 class="section-title">WHY MACH12.AI WINS</h2>
+  <div class="section-body">
+    <p>Every AI startup entering the GovCon space is technology-first, domain-second. They build generic tools and hope defense contractors adapt. Mach12.ai is the inverse. <strong>We start with the solutions we&rsquo;ve already built by hand, validated in production, and depended on by clients,</strong> then apply AI to deliver them at scale.</p>
+    <p>RevTech consultants have spent years inside FAR/DFARS compliance environments, CAS implementations, EVMS reporting structures, and S/4HANA transformations. In every engagement, they&rsquo;ve had to build custom tools because the market doesn&rsquo;t offer what these organizations actually need. Those custom builds are the product roadmap. The institutional knowledge is the moat.</p>
+    <p>The dual-market structure compounds this advantage. Free client-facing tools open doors to organizations RevTech has never reached, including companies outside the SAP ecosystem entirely. Internal tools harden products in real client environments. And the intercompany revenue they generate funds external product development. Each cycle reinforces the next.</p>
+    <p><strong>This $114K gross investment is not speculative R&amp;D.</strong> It&rsquo;s a focused, 90-day sprint to operationalize institutional knowledge that already exists, validate products with users who are already engaged, and open new markets through tools that demonstrate immediate value. The team is in place. The domain expertise is proven. The brand is built. This proposal funds execution.</p>
+  </div>
+  <div class="stat-row four-col">
+    <div class="stat-card"><div class="stat-value">90</div><div class="stat-label">Days to Demo-Ready</div></div>
+    <div class="stat-card"><div class="stat-value">~10</div><div class="stat-label">Apps in Development</div></div>
+    <div class="stat-card"><div class="stat-value">2</div><div class="stat-label">Market Segments</div></div>
+    <div class="stat-card"><div class="stat-value ember">DAY 1</div><div class="stat-label">Intercompany Revenue</div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-brand">MACH12<span class="ai">.AI</span></div>
+  <div class="footer-class">Confidential | For Internal Distribution Only</div>
+</div>
+
+</body>
+</html>
