@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revelation Technologies - ARCH-SOW-04092026 - Archer Aviation SAP S/4HANA Assessment Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628; --navy-mid: #132240; --navy-light: #1a3055;
+  --gold: #c9a84c; --gold-light: #e2c97e; --gold-dim: rgba(201,168,76,0.15);
+  --white: #ffffff; --off-white: #f4f2ed; --warm-gray: #b8b2a6;
+  --text-primary: #1a1a1a; --text-secondary: #555555;
+  --border-light: rgba(10,22,40,0.08); --shadow-card: 0 4px 24px rgba(10,22,40,0.08);
+  --green-accent: #2a7d4f;
+  --option-a: #1a3055; --option-b: #2a7d4f;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size:A4; margin:0; }
+@media print { .page{page-break-after:always;} body{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+body { font-family:'Source Sans 3',sans-serif; font-size:14px; line-height:1.65; color:var(--text-primary); background:#e8e6e1; -webkit-font-smoothing:antialiased; }
+.document-wrapper { max-width:900px; margin:0 auto; padding:40px 20px; }
+
+/* COVER */
+.cover-page { background:var(--navy); min-height:100vh; display:flex; flex-direction:column; position:relative; overflow:hidden; border-radius:2px; margin-bottom:32px; }
+.cover-page::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 80%,rgba(201,168,76,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(26,48,85,.4) 0%,transparent 50%),linear-gradient(160deg,var(--navy),var(--navy-mid)); }
+.cover-geometric { position:absolute; top:0; right:0; width:45%; height:100%; opacity:.04; background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,168,76,.5) 40px,rgba(201,168,76,.5) 41px); }
+.cover-accent-line { position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(to bottom,var(--gold),var(--gold-light),transparent); }
+.cover-header { position:relative; z-index:1; padding:48px 56px 0; display:flex; justify-content:space-between; align-items:flex-start; }
+.cover-logo img { height:38px; filter:brightness(0) invert(1); }
+.cover-doc-type { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); padding:6px 14px; border:1px solid rgba(201,168,76,.3); border-radius:2px; }
+.cover-body { position:relative; z-index:1; flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 56px; }
+.cover-tag { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:24px; }
+.cover-title { font-family:'Playfair Display',serif; font-size:42px; font-weight:600; line-height:1.15; color:var(--white); margin-bottom:16px; max-width:650px; }
+.cover-subtitle { font-size:17px; font-weight:300; color:rgba(255,255,255,.6); max-width:550px; line-height:1.6; }
+.cover-divider { width:64px; height:2px; background:var(--gold); margin:32px 0; }
+.cover-meta-grid { display:grid; grid-template-columns:repeat(2,1fr); border-top:1px solid rgba(255,255,255,.08); padding-top:28px; gap:20px; position:relative; z-index:1; padding-left:56px; padding-right:56px; }
+.cover-meta-item { padding-right:24px; }
+.cover-meta-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.cover-meta-value { font-size:14px; font-weight:500; color:var(--white); line-height:1.4; }
+.cover-options-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; position:relative; z-index:1; padding:0 56px 48px; }
+.cover-option { border:1px solid rgba(255,255,255,.12); border-radius:4px; padding:20px 24px; }
+.cover-option-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.cover-option-price { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; margin-bottom:4px; }
+.cover-option-note { font-size:12px; color:rgba(255,255,255,.45); line-height:1.4; }
+
+/* CONTENT PAGES */
+.content-page { background:var(--white); border-radius:2px; margin-bottom:32px; box-shadow:var(--shadow-card); overflow:hidden; }
+.page-header { background:var(--navy); padding:16px 48px; display:flex; justify-content:space-between; align-items:center; }
+.page-header-logo img { height:24px; filter:brightness(0) invert(1); }
+.page-header-section { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); text-align:right; line-height:1.4; }
+.page-content { padding:48px; }
+
+/* TYPOGRAPHY */
+.section-number { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; display:block; }
+.section-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--navy); margin-bottom:24px; line-height:1.25; }
+.section-intro { font-size:16px; font-weight:300; color:var(--text-secondary); line-height:1.7; margin-bottom:32px; max-width:680px; }
+h3 { font-family:'Source Sans 3',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin:32px 0 12px; letter-spacing:.3px; }
+h3:first-of-type { margin-top:0; }
+p { margin-bottom:14px; color:var(--text-primary); line-height:1.7; }
+
+/* CALLOUT */
+.callout { background:var(--gold-dim); border-left:3px solid var(--gold); padding:20px 24px; margin:24px 0; border-radius:0 4px 4px 0; }
+.callout p { margin-bottom:0; font-weight:500; color:var(--navy); }
+.callout-navy { background:rgba(10,22,40,.04); border-left-color:var(--navy); }
+.callout-green { background:rgba(42,125,79,.06); border-left-color:var(--green-accent); }
+.callout-green p { color:var(--green-accent); }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; margin:24px 0; font-size:13px; }
+thead th { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--white); background:var(--navy); padding:14px 16px; text-align:left; font-weight:500; }
+thead th:last-child, thead th.align-right { text-align:right; }
+tbody td { padding:13px 16px; border-bottom:1px solid var(--border-light); color:var(--text-primary); }
+tbody td:last-child, tbody td.align-right { text-align:right; font-family:'JetBrains Mono',monospace; font-size:13px; }
+tbody tr:nth-child(even) { background:rgba(244,242,237,.5); }
+tbody tr:hover { background:var(--gold-dim); }
+tfoot td { padding:16px; font-weight:700; border-top:2px solid var(--navy); background:rgba(10,22,40,.03); color:var(--navy); }
+tfoot td:last-child { text-align:right; font-family:'JetBrains Mono',monospace; font-size:15px; }
+
+/* OPTION BADGE */
+.option-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:4px 12px; border-radius:2px; margin-bottom:12px; }
+.option-badge.opt-a { background:var(--navy); color:var(--gold); }
+.option-badge.opt-b { background:var(--green-accent); color:var(--white); }
+
+/* TIMELINE */
+.timeline { position:relative; margin:32px 0; padding-left:28px; }
+.timeline::before { content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:linear-gradient(to bottom,var(--gold),var(--navy-light),var(--gold)); }
+.timeline-item { position:relative; padding:0 0 28px 24px; }
+.timeline-item:last-child { padding-bottom:0; }
+.timeline-dot { position:absolute; left:-25px; top:5px; width:12px; height:12px; border-radius:50%; background:var(--gold); border:2px solid var(--white); box-shadow:0 0 0 3px rgba(201,168,76,.2); }
+.timeline-dot.review { background:var(--navy); box-shadow:0 0 0 3px rgba(10,22,40,.15); }
+.timeline-phase { font-weight:700; color:var(--navy); font-size:14px; margin-bottom:3px; }
+.timeline-dates { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--gold); letter-spacing:.5px; margin-bottom:6px; }
+.timeline-desc { font-size:13px; color:var(--text-secondary); line-height:1.5; }
+
+/* PHASE CARDS */
+.phase-card { border:1px solid var(--border-light); border-radius:4px; margin-bottom:20px; overflow:hidden; }
+.phase-card-header { background:var(--navy); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+.phase-card-header.green { background:var(--green-accent); padding:20px 24px; }
+.phase-card-number { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--gold); }
+.phase-card-header.green .phase-card-number { color:rgba(255,255,255,.7); font-size:12px; }
+.phase-card-header.green .phase-card-title { font-size:16px; }
+.phase-card-title { font-weight:600; color:var(--white); font-size:14px; }
+.phase-card-price { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold-light); }
+.phase-card-header.green .phase-card-price { color:rgba(255,255,255,.7); font-size:14px; }
+.phase-card-body { padding:20px; }
+.phase-card-body h4 { font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.phase-card-body ul { list-style:none; padding:0; margin-bottom:16px; }
+.phase-card-body ul:last-child { margin-bottom:0; }
+.phase-card-body li { position:relative; padding-left:18px; margin-bottom:8px; font-size:13px; line-height:1.5; color:var(--text-primary); }
+.phase-card-body li::before { content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:1px; background:var(--gold); }
+.phase-card-body li strong { color:var(--navy); }
+
+/* RISK GRID */
+.risk-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+.risk-item { border:1px solid var(--border-light); border-radius:4px; padding:18px; }
+.risk-item-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.risk-item h4 { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.risk-item p { font-size:12.5px; color:var(--text-secondary); margin-bottom:0; line-height:1.55; }
+
+/* CONSTRAINT LIST */
+.constraint-list { margin:20px 0; }
+.constraint-item { display:flex; align-items:flex-start; gap:14px; padding:12px 0; border-bottom:1px solid var(--border-light); }
+.constraint-item:last-child { border-bottom:none; }
+.constraint-num { font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700; color:var(--gold); background:var(--gold-dim); width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:4px; flex-shrink:0; margin-top:2px; }
+.constraint-text { font-size:13.5px; color:var(--text-primary); line-height:1.55; }
+
+/* COMPARISON */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:32px 0; }
+.compare-card { border-radius:4px; padding:28px; text-align:center; position:relative; overflow:hidden; }
+.compare-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+.compare-card.opt-a { background:var(--navy); }
+.compare-card.opt-a::before { background:var(--gold); }
+.compare-card.opt-b { background:var(--green-accent); padding:36px; }
+.compare-card.opt-b::before { background:var(--gold-light); }
+.compare-card .card-label { font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.compare-card.opt-b .card-label { color:rgba(255,255,255,.7); }
+.compare-card .card-price { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--white); margin-bottom:6px; }
+.compare-card .card-note { font-size:12px; color:rgba(255,255,255,.45); line-height:1.4; }
+
+/* RECOMMENDATION */
+.rec-block { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%); border-radius:4px; padding:36px 40px; margin:32px 0; position:relative; overflow:hidden; border:2px solid var(--gold); }
+.rec-block::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); }
+.rec-block h3 { color:var(--gold-light); margin:0 0 16px; font-family:'Playfair Display',serif; font-size:22px; font-weight:600; }
+.rec-block p { color:rgba(255,255,255,.8); margin-bottom:12px; font-size:14px; line-height:1.7; }
+.rec-block p:last-child { margin-bottom:0; }
+.rec-block strong { color:var(--white); }
+
+/* CREDIT CARD */
+.credit-card { background:linear-gradient(135deg,var(--green-accent) 0%,#1e6b3f 100%); border-radius:4px; padding:32px; margin:32px 0; position:relative; overflow:hidden; }
+.credit-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); }
+.credit-card h3 { color:var(--white); margin:0 0 12px; font-size:18px; }
+.credit-card p { color:rgba(255,255,255,.85); margin-bottom:10px; font-size:14px; line-height:1.65; }
+.credit-card .credit-conditions { list-style:none; padding:0; margin:16px 0 0; }
+.credit-card .credit-conditions li { position:relative; padding-left:18px; margin-bottom:6px; font-size:13px; color:rgba(255,255,255,.75); line-height:1.5; }
+.credit-card .credit-conditions li::before { content:''; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:1px; background:var(--gold-light); }
+
+/* SIGNATURE */
+.signature-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:40px; padding-top:32px; border-top:1px solid var(--border-light); }
+.signature-line { border-bottom:1px solid var(--navy); height:48px; margin-bottom:8px; }
+.signature-name { font-weight:600; font-size:13px; color:var(--navy); }
+.signature-title-text { font-size:12px; color:var(--text-secondary); }
+.signature-date { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--warm-gray); margin-top:4px; }
+
+/* FOOTER */
+.doc-footer { text-align:center; padding:24px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1px; color:var(--warm-gray); }
+
+</style>
+</head>
+<body>
+
+<div class="document-wrapper">
+
+  <!-- COVER -->
+  <div class="cover-page page">
+    <div class="cover-geometric"></div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-header">
+      <div class="cover-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="Revelation Technologies"></div>
+      <div class="cover-doc-type">ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="cover-body">
+      <div class="cover-tag">Prepared for Archer Aviation</div>
+      <h1 class="cover-title">SAP S/4HANA Assessment &amp; Proof of Concept</h1>
+      <p class="cover-subtitle">Two engagement options to address Archer's SAP environment: a targeted PS/PMMO proof of concept for project-based manufacturing, and a broader people, process, technology, and data assessment to prepare Archer for AI-driven operations.</p>
+      <div class="cover-divider"></div>
+    </div>
+    <div class="cover-meta-grid">
+      <div class="cover-meta-item"><div class="cover-meta-label">Prepared By</div><div class="cover-meta-value">Revelation Technologies LLC</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Date</div><div class="cover-meta-value">April 9, 2026</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Document ID</div><div class="cover-meta-value">ARCH&#8209;SOW&#8209;04092026</div></div>
+      <div class="cover-meta-item"><div class="cover-meta-label">Classification</div><div class="cover-meta-value">Confidential</div></div>
+    </div>
+    <div class="cover-options-grid">
+      <div class="cover-option">
+        <div class="cover-option-label">Option 1 - PS / PMMO Proof of Concept</div>
+        <div class="cover-option-price" style="color:var(--gold-light);">$180,000</div>
+        <div class="cover-option-note">12 weeks - 3 phases<br>Current state + POC build + from/to assessment<br>Milestone-based billing</div>
+      </div>
+      <div class="cover-option">
+        <div class="cover-option-label">Option 2 - AI Data &amp; Process Assessment</div>
+        <div class="cover-option-price" style="color:var(--white);">$225,000</div>
+        <div class="cover-option-note">12 weeks - 3 phases<br>Full workstream assessment + KDDs + roadmap<br>Milestone-based billing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 01 - EXECUTIVE SUMMARY -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 01</span>
+      <h2 class="section-title">Executive Summary</h2>
+      <p class="section-intro">Revelation Technologies proposes two engagement options to address the challenges and opportunities in Archer Aviation's SAP S/4HANA environment.</p>
+
+      <p>Archer is live on SAP S/4HANA, but the current implementation was designed with limited scope and does not provide a scalable foundation for producing multiple aircraft. Demand management signals are unreliable, the costing strategy is inconsistent across plants (some plants use standard or moving average valuation, others expense on receipt and track costs at the top line), and the current configuration does not give leadership the accounting, finance, and demand alignment data they need to make decisions at scale.</p>
+
+      <p>Archer has also initiated a transition from PEO to Siemens OpCenter as its Manufacturing Execution System (MES), which adds another dimension to any solution design - any changes to the SAP environment need to account for where the MES integration is headed.</p>
+
+      <p>This proposal presents two options that can be executed independently or sequentially:</p>
+
+      <div class="callout">
+        <p><strong>Option 1 - SAP PS / PMMO Proof of Concept ($180,000):</strong> A targeted 12-week engagement to assess Archer's current state, build a working proof of concept for SAP Project Systems and PMMO (Grouping, Pegging, and Distribution) in Archer's environment, and deliver a from/to change impact assessment.</p>
+      </div>
+
+      <div class="callout callout-green">
+        <p><strong>Option 2 - AI Data &amp; Process Assessment ($225,000):</strong> A broader 12-week assessment across all functional workstreams, evaluating people, process, technology, and data readiness - with a focus on identifying what needs to change at a foundational level before Archer can take advantage of AI and advanced analytics.</p>
+      </div>
+
+      <div class="rec-block">
+        <h3>RevTech's Recommendation</h3>
+        <p><strong>We recommend Archer execute Option 2 before Option 1.</strong></p>
+        <p>Project Systems and PMMO are powerful capabilities, but they should not be used as a band-aid for more systemic people, process, data, and technology issues. The current challenges with demand management, inconsistent costing strategies, and limited ERP utilization are symptoms of foundational gaps that need to be understood and addressed first.</p>
+        <p>Option 2 gives Archer a full picture of the current state across all workstreams and produces a prioritized roadmap that puts PS/PMMO in the right place in the sequence - after the prerequisites are in place, not before. This approach reduces the risk of building a POC on top of an unstable foundation and ensures that when PS/PMMO is implemented, it has the supporting data, processes, and integrations to deliver real value.</p>
+        <p>That said, both options are structured to stand on their own, and we are prepared to execute either one based on Archer's priorities and timeline.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 02 - OPTION 1: PS / PMMO POC -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 02</span>
+      <div class="option-badge opt-a">Option 1</div>
+      <h2 class="section-title">SAP PS / PMMO Proof of Concept</h2>
+      <p class="section-intro">A targeted engagement to assess Archer's current state, build a working proof of concept for SAP Project Systems with PMMO, and deliver a change impact assessment with implementation recommendations.</p>
+
+      <h3>What is PMMO?</h3>
+      <p>PMMO (Project Manufacturing Management &amp; Optimization) is SAP's S/4HANA capability for project-based manufacturing. It addresses a core challenge for aircraft manufacturers: how to consolidate procurement and production across multiple aircraft programs for cost efficiency while maintaining per-program cost traceability. PMMO operates through three integrated functions:</p>
+
+      <table>
+        <thead><tr><th>Function</th><th>What It Does</th><th class="align-right">Why It Matters</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">Grouping</td><td>Groups demand across multiple demand sources (aircraft programs, contracts, projects) into shared procurement and production orders.</td><td class="align-right">Fewer POs, better lot sizes, lower unit costs</td></tr>
+          <tr><td style="font-weight:700;">Pegging</td><td>Allocates grouped replenishments back to the individual demand sources that generated the original demand.</td><td class="align-right">Tracks which program gets which units</td></tr>
+          <tr><td style="font-weight:700;">Distribution</td><td>Distributes actual costs from grouped orders back to individual demand sources based on pegging assignments.</td><td class="align-right">Accurate per-program cost traceability</td></tr>
+        </tbody>
+      </table>
+
+      <p>For Archer, PMMO with Project Systems would replace the current flat planning approach with a structured model that scales across multiple aircraft builds, gives finance accurate per-program costing, and aligns demand signals across the production network.</p>
+
+      <h3>MES Integration Considerations</h3>
+      <p>Archer's planned transition from PEO to Siemens OpCenter is factored into this engagement. The PS/PMMO design will account for OpCenter as the target MES, ensuring the project structure and production order model supports the future integration for shop floor confirmations, goods movements, and production order feedback.</p>
+
+      <h3>Delivery Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 1 - Current State Deep Dive &amp; Assessment</div>
+          <div class="timeline-dates">Weeks 1-3 (Sprint) / Week 4 (Review)</div>
+          <div class="timeline-desc">Document existing processes, assess costing inconsistencies across plants, evaluate demand management gaps, and determine PS/PMMO readiness.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 2 - PS / PMMO Proof of Concept Build</div>
+          <div class="timeline-dates">Weeks 5-7 (Sprint) / Week 8 (Review)</div>
+          <div class="timeline-desc">Design and configure PS structures and PMMO Grouping, Pegging, and Distribution in Archer's sandbox environment using representative data. Execute end-to-end scenarios.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 3 - Readout &amp; From/To Assessment</div>
+          <div class="timeline-dates">Weeks 9-11 (Sprint) / Week 12 (Review)</div>
+          <div class="timeline-desc">Map current-to-future process changes, deliver full change impact assessment, costing harmonization recommendations, and implementation roadmap.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 03 - OPTION 1 DELIVERABLES -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 03</span>
+      <div class="option-badge opt-a">Option 1</div>
+      <h2 class="section-title">Proposed Phase Deliverables</h2>
+
+      <!-- Phase 1 -->
+      <div class="phase-card">
+        <div class="phase-card-header">
+          <div><span class="phase-card-number">Phase 01</span><br><span class="phase-card-title">Current State Deep Dive &amp; Assessment</span></div>
+          <span class="phase-card-price">$60,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>Current State Process Documentation</strong> - End-to-end documentation of existing production planning, costing, demand management, and material valuation processes across all plants.</li>
+            <li><strong>Plant-Level Costing Strategy Assessment</strong> - Evaluation of the current costing approach (standard/moving average at some plants vs. expensed on receipt at others), documenting where and why each strategy is used and the downstream financial and reporting impact.</li>
+            <li><strong>Demand Management Assessment</strong> - Evaluation of current demand signals, MRP configuration, and where the current approach falls short for scaling to multi-aircraft production.</li>
+            <li><strong>MES Integration Baseline</strong> - Documentation of current PEO integration points and assessment of how the planned Siemens OpCenter transition impacts PS/PMMO design (confirmation flows, goods movements, production order feedback).</li>
+            <li><strong>SAP PS &amp; PMMO Readiness Assessment</strong> - Evaluation of current system configuration, master data quality, and organizational readiness for Project Systems and PMMO adoption.</li>
+            <li><strong>Change Impact Preliminary Assessment</strong> - Initial identification of process, people, and system changes that PS/PMMO would introduce to the current operating model.</li>
+            <li><strong>Phase 1 Executive Readout</strong> - Presentation of findings to Archer leadership for alignment before entering the POC phase.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $60,000 upon Archer acceptance of Phase 1 deliverables.</p>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-card">
+        <div class="phase-card-header">
+          <div><span class="phase-card-number">Phase 02</span><br><span class="phase-card-title">PS / PMMO Proof of Concept Build</span></div>
+          <span class="phase-card-price">$60,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>PS/PMMO POC Design Document</strong> - WBS structure design, PMMO grouping strategy, pegging rules, and distribution approach tailored to Archer's multi-aircraft production model. Includes OpCenter integration considerations.</li>
+            <li><strong>POC Environment Configuration</strong> - Configure Project Systems structures and PMMO Grouping, Pegging, and Distribution in Archer's sandbox/development environment using representative data.</li>
+            <li><strong>Demand-to-Delivery POC Scenario Execution</strong> - End-to-end scenarios demonstrating how PS/PMMO consolidates demand across multiple demand sources while maintaining per-program cost traceability.</li>
+            <li><strong>Costing Flow Validation</strong> - Demonstrate how costs flow from grouped procurement/production through pegging and distribution back to individual demand sources, addressing the current plant-level valuation inconsistencies.</li>
+            <li><strong>POC Test Results &amp; Findings Documentation</strong> - Documented results of all POC scenarios including what worked, what needs further design, and identified gaps or constraints.</li>
+            <li><strong>Phase 2 Executive Readout</strong> - Presentation of POC results to Archer leadership with live demonstration of configured scenarios.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $60,000 upon Archer acceptance of Phase 2 deliverables.</p>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-card">
+        <div class="phase-card-header">
+          <div><span class="phase-card-number">Phase 03</span><br><span class="phase-card-title">Readout &amp; From/To Assessment</span></div>
+          <span class="phase-card-price">$60,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>From/To Process Assessment</strong> - Detailed mapping of current state processes to future state PS/PMMO processes, documenting what changes at each step across planning, procurement, production, and finance.</li>
+            <li><strong>Full Change Impact Assessment</strong> - Impact analysis across people, process, technology, and data including training needs, role changes, integration updates, and MES transition dependencies.</li>
+            <li><strong>Costing Strategy Harmonization Recommendations</strong> - Recommendations for aligning plant-level costing and valuation approaches under the PS/PMMO model to give finance consistent, reliable data across the production network.</li>
+            <li><strong>MES Transition Sequencing Recommendations</strong> - Assessment of dependencies between PS/PMMO implementation and the PEO-to-OpCenter migration, with recommendations on what should happen first and where parallel execution is possible.</li>
+            <li><strong>Implementation Roadmap &amp; Effort Estimate</strong> - Sequenced plan for full PS/PMMO implementation with resource requirements, timeline, and estimated investment.</li>
+            <li><strong>Final Executive Readout &amp; Recommendations Presentation</strong> - Presentation to leadership covering full assessment findings, POC results, from/to analysis, and the recommended path forward.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $60,000 upon Archer acceptance of Phase 3 deliverables.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 04 - OPTION 2: AI DATA & PROCESS ASSESSMENT -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 04</span>
+      <div class="option-badge opt-b">Option 2</div>
+      <h2 class="section-title">AI Data &amp; Process Assessment</h2>
+      <p class="section-intro">A broader assessment across all functional workstreams, evaluating people, process, technology, and data readiness - with a focus on building the foundation Archer needs before pursuing AI, advanced analytics, or targeted solutions like PS/PMMO.</p>
+
+      <p>This option takes a step back from the specific PS/PMMO question and asks a more important one: is Archer's current SAP environment, process design, and data quality ready to support the next stage of growth - whether that's project-based manufacturing, AI-driven operations, or both?</p>
+
+      <p>The assessment covers ten functional workstreams through a People, Process, Technology, and Data lens, with the PEO-to-OpCenter MES transition factored into the technology and data integration evaluation across all workstreams.</p>
+
+      <h3>Functional Workstreams</h3>
+      <table>
+        <thead><tr><th>#</th><th style="text-align:left;">Workstream</th></tr></thead>
+        <tbody>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">01</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Proposal Management, Estimating &amp; Contract Intake</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">02</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Cost Accounting &amp; Finance Design</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">03</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Production Planning &amp; Execution / Supply Chain</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">04</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Logistics, Material Management &amp; Inventory</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">05</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">SAP Project Systems (PS) Design</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">06</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Program / Project / Resource Management</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">07</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Billing, Revenue Recognition &amp; Cash Management</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">08</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Time Recording, Labor Costing &amp; Timesheets</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">09</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Procurement &amp; Source-to-Pay</td></tr>
+          <tr><td style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-weight:700;">10</td><td style="text-align:left;font-family:'Source Sans 3',sans-serif;">Available-to-Promise (ATP) &amp; Order Fulfillment</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Delivery Timeline</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--green-accent);box-shadow:0 0 0 3px rgba(42,125,79,.2);"></div>
+          <div class="timeline-phase">Phase 1 - Current State Assessment Across Workstreams</div>
+          <div class="timeline-dates">Weeks 1-3 (Sprint) / Week 4 (Review)</div>
+          <div class="timeline-desc">Evaluate all 10 workstreams through People, Process, Technology, and Data lenses. Document current state, identify opportunities, and surface preliminary Key Design Decisions.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--green-accent);box-shadow:0 0 0 3px rgba(42,125,79,.2);"></div>
+          <div class="timeline-phase">Phase 2 - Key Design Decision Analysis &amp; Recommendations</div>
+          <div class="timeline-dates">Weeks 5-7 (Sprint) / Week 8 (Review)</div>
+          <div class="timeline-desc">Develop KDDs with evaluated solution options per workstream. Assess AI readiness across process, data, and systems. Identify and prioritize AI use cases.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--green-accent);box-shadow:0 0 0 3px rgba(42,125,79,.2);"></div>
+          <div class="timeline-phase">Phase 3 - Future Feature Roadmap &amp; Leadership Review</div>
+          <div class="timeline-dates">Weeks 9-11 (Sprint) / Week 12 (Review)</div>
+          <div class="timeline-desc">Produce a sequenced digital transformation and AI roadmap. Deliver business case and present findings with recommendations to leadership.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 05 - OPTION 2 DELIVERABLES -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 05</span>
+      <div class="option-badge opt-b">Option 2</div>
+      <h2 class="section-title">Proposed Phase Deliverables</h2>
+
+      <!-- Phase 1 -->
+      <div class="phase-card">
+        <div class="phase-card-header green">
+          <div><span class="phase-card-number">Phase 01</span><br><span class="phase-card-title">Current State Assessment Across Workstreams</span></div>
+          <span class="phase-card-price">$75,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>Current State Assessment Report</strong> - Per-workstream evaluation across all 10 functional domains, each assessed through a People, Process, Technology, and Data lens. Includes documentation of the PEO-to-OpCenter MES transition impact across workstreams.</li>
+            <li><strong>Key Findings &amp; Opportunity Catalog</strong> - Optimization opportunities per workstream focused on where manual processes can be reduced, where S/4HANA capabilities are not being used, and where data quality or process gaps are blocking better decision-making.</li>
+            <li><strong>Draft KDD List</strong> - Preliminary Key Design Decisions organized by workstream, giving Phase 2 a head start on which decisions need to be evaluated.</li>
+            <li><strong>Phase 1 Executive Readout</strong> - Presentation of findings and opportunity catalog to Archer leadership for alignment before entering Phase 2.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $75,000 upon Archer acceptance of Phase 1 deliverables.</p>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-card">
+        <div class="phase-card-header green">
+          <div><span class="phase-card-number">Phase 02</span><br><span class="phase-card-title">Key Design Decision Analysis &amp; Recommendations</span></div>
+          <span class="phase-card-price">$75,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>KDD Workbook by Workstream</strong> - Building on the Phase 1 draft KDD list, a fully developed set of Key Design Decisions per workstream documenting: the finding or opportunity from Phase 1, solution options evaluated, pros/cons, and RevTech's recommended direction with rationale.</li>
+            <li><strong>AI Readiness Assessment</strong> - Evaluation of process, data, and systems readiness for AI adoption across Archer's SAP environment and adjacent systems. Includes assessment of data quality, completeness, and integration maturity.</li>
+            <li><strong>AI Use Case Identification &amp; Prioritization</strong> - High-value AI use cases mapped to Archer's context (demand forecasting, production scheduling optimization, quality analytics, predictive maintenance, automated compliance) with feasibility, data readiness, and expected ROI ratings.</li>
+            <li><strong>MES Integration Architecture Recommendations</strong> - KDD analysis covering MES integration decisions related to the PEO-to-OpCenter transition and its intersection with other workstream recommendations.</li>
+            <li><strong>Phase 2 Executive Readout</strong> - Presentation of KDD outcomes, AI readiness findings, and recommended direction for stakeholder alignment before entering Phase 3.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $75,000 upon Archer acceptance of Phase 2 deliverables.</p>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-card">
+        <div class="phase-card-header green">
+          <div><span class="phase-card-number">Phase 03</span><br><span class="phase-card-title">Future Feature Roadmap &amp; Leadership Review</span></div>
+          <span class="phase-card-price">$75,000</span>
+        </div>
+        <div class="phase-card-body">
+          <h4>Deliverables</h4>
+          <ul>
+            <li><strong>Digital Transformation Roadmap</strong> - Sequenced implementation plan by workstream, prioritized by effort and business impact. Includes dependency mapping, resource requirements, and estimated level of effort per initiative. Sequences the MES transition alongside other transformation work.</li>
+            <li><strong>AI Use Case Roadmap</strong> - Sequenced AI initiatives from quick wins to longer-term items, with data prerequisites and platform dependencies identified for each.</li>
+            <li><strong>Business Case &amp; Investment Summary</strong> - Cost/benefit framework for the recommended roadmap to support Archer leadership decision-making and budget planning.</li>
+            <li><strong>Final Executive Readout &amp; Recommendations Presentation</strong> - Presentation to leadership covering the full picture: current state findings, KDD decisions, transformation roadmap, and AI readiness with recommended next steps.</li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-top:12px;margin-bottom:0;font-style:italic;">Milestone Payment: $75,000 upon Archer acceptance of Phase 3 deliverables.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 06 - PRICING COMPARISON -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 06</span>
+      <h2 class="section-title">Investment &amp; Milestone Billing</h2>
+      <p class="section-intro">Both options are firm fixed price with milestone-based billing tied to deliverable acceptance at each phase gate.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card opt-a">
+          <div class="card-label">Option 1 - PS / PMMO POC</div>
+          <div class="card-price">$180,000</div>
+          <div class="card-note">3 milestones of $60,000<br>12 weeks - 3 phases<br>Current state + POC + from/to</div>
+        </div>
+        <div class="compare-card opt-b">
+          <div class="card-label">Option 2 - AI Data &amp; Process</div>
+          <div class="card-price">$225,000</div>
+          <div class="card-note">3 milestones of $75,000<br>12 weeks - 3 phases<br>Assessment + KDDs + roadmap</div>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>Phase</th><th>Option 1</th><th class="align-right">Option 2</th></tr></thead>
+        <tbody>
+          <tr><td>Phase 1 - Current State Assessment</td><td>$60,000</td><td class="align-right">$75,000</td></tr>
+          <tr><td>Phase 2 - POC Build / KDD Analysis</td><td>$60,000</td><td class="align-right">$75,000</td></tr>
+          <tr><td>Phase 3 - Readout &amp; Roadmap</td><td>$60,000</td><td class="align-right">$75,000</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total Investment</td><td style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;">$180,000</td><td style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;">$225,000</td></tr></tfoot>
+      </table>
+
+      <div class="callout callout-navy">
+        <p><strong>Billing Terms:</strong> Milestone payments are contingent upon formal written acceptance of phase deliverables. Archer will have ten (10) business days from deliverable submission to provide acceptance or document deficiencies.</p>
+      </div>
+
+      <!-- IMPLEMENTATION CREDIT -->
+      <div class="credit-card">
+        <h3>Implementation Credit Incentive</h3>
+        <p>As a commitment to long-term partnership, Revelation Technologies will apply a credit of <strong>15% of total billings</strong> from the selected engagement option toward future implementation and/or digital transformation work, contingent upon Archer selecting RevTech to perform the work.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:20px 0;">
+          <div style="background:rgba(255,255,255,.1);border-radius:4px;padding:16px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;">Option 1 Credit</div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--white);">$27,000</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">15% of $180,000</div>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:4px;padding:16px;text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;">Option 2 Credit</div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--white);">$33,750</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">15% of $225,000</div>
+          </div>
+        </div>
+        <p style="font-weight:600;">Applied against the first milestone of the future engagement.</p>
+        <ul class="credit-conditions">
+          <li>Future engagement must be executed within 6 months of the completion of Phase 3</li>
+          <li>Credit is non-transferable and applies only to RevTech-delivered implementation and/or digital transformation services</li>
+          <li>Credit is applied upon execution of a signed Statement of Work for the future engagement</li>
+          <li>If Archer executes both options, credits are cumulative ($60,750 total)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 07 - RISKS -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 07</span>
+      <h2 class="section-title">Risks &amp; Mitigations</h2>
+
+      <div class="risk-grid">
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Inconsistent Costing Foundation</h4><p>The current plant-level costing inconsistencies (standard/moving average vs. expensed on receipt) may limit the effectiveness of PS/PMMO cost distribution in the POC. Results may not fully represent production-scale behavior until costing is harmonized.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Phase 1 Costing Baseline</h4><p>Phase 1 documents the costing strategy per plant before the POC begins. The POC design will account for the current state while the Phase 3 deliverables will include costing harmonization recommendations for full implementation.</p></div>
+
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Concurrent MES Migration</h4><p>The PEO-to-OpCenter transition creates a moving target for integration design. PS/PMMO relies on MES for shop floor confirmations and goods movements - if OpCenter timelines shift, the integration assumptions in the POC may need to be revisited.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Dual-State Design</h4><p>The POC will be designed to work with the current PEO integration while documenting the target-state OpCenter integration model. Phase 3 includes explicit MES transition sequencing recommendations.</p></div>
+
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Data Quality &amp; Completeness</h4><p>The POC requires representative data in the sandbox environment. If master data (material masters, BOMs, cost center structures) is incomplete or inconsistent, POC scenarios may not produce meaningful results.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Early Data Requirements</h4><p>Data requirements will be defined during kickoff and validated in Phase 1. RevTech does not need production data, but needs data that is representative of real operating conditions. Gaps identified early will be addressed before the POC build begins.</p></div>
+
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>SME Availability &amp; Timeliness</h4><p>Delayed access to Archer subject matter experts or slow feedback cycles could compress sprint timelines and reduce the depth of deliverables.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Pre-Engagement Scheduling</h4><p>SME requirements and interview schedules will be defined during kickoff and tracked weekly. RevTech will provide session agendas and materials in advance. Deliverable review timelines are built into each phase's review week.</p></div>
+
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Scope Expansion During Discovery</h4><p>Discovery may reveal undocumented configurations, workarounds, or process variations that expand the assessment scope beyond what is estimated.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Change Control</h4><p>Scope is defined by the deliverables listed in this proposal. Discoveries that fall outside the agreed scope will be documented and managed through formal change control. RevTech will flag scope-expanding findings early rather than absorbing them silently.</p></div>
+
+        <div class="risk-item"><div class="risk-item-label">Risk</div><h4>Environment Access Delays</h4><p>The POC requires a sandbox or development environment with representative configuration and data. Delays in provisioning or refreshing the environment will directly impact the Phase 2 timeline.</p></div>
+        <div class="risk-item"><div class="risk-item-label">Mitigation</div><h4>Environment Readiness as Phase 1 Exit Criteria</h4><p>Environment provisioning and data loading requirements will be identified in Phase 1 and treated as an exit criterion before Phase 2 begins. This gives Archer four weeks of lead time to prepare the environment.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 08 - ASSUMPTIONS -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 08</span>
+      <h2 class="section-title">Assumptions &amp; Constraints</h2>
+
+      <div class="constraint-list">
+        <div class="constraint-item"><div class="constraint-num">01</div><div class="constraint-text">Both options are fixed-scope advisory engagements with defined deliverables and timelines. They are not open-ended retainers. Any scope changes after phase commencement will be managed through formal change control and may result in additional cost and timeline adjustments.</div></div>
+        <div class="constraint-item"><div class="constraint-num">02</div><div class="constraint-text">Archer will provide timely access to subject matter experts, system environments, current-state documentation, configuration data, and process documentation required for the engagement. Delays in access may impact the delivery schedule and milestone payment gates.</div></div>
+        <div class="constraint-item"><div class="constraint-num">03</div><div class="constraint-text">For Option 1, Archer will provision a sandbox or development environment with representative data prior to the start of Phase 2. Environment readiness is an exit criterion of Phase 1.</div></div>
+        <div class="constraint-item"><div class="constraint-num">04</div><div class="constraint-text">RevTech does not need access to live production data, but requires data that is representative of real operating conditions (anonymized or masked datasets are acceptable).</div></div>
+        <div class="constraint-item"><div class="constraint-num">05</div><div class="constraint-text">Senior, US-citizen resources with direct Aerospace &amp; Defense SAP delivery experience will be assigned to this engagement. No offshore resources. No junior-led delivery.</div></div>
+        <div class="constraint-item"><div class="constraint-num">06</div><div class="constraint-text">Milestone payments are contingent upon formal written acceptance of phase deliverables. Archer will have ten (10) business days from deliverable submission to provide acceptance or document deficiencies.</div></div>
+        <div class="constraint-item"><div class="constraint-num">07</div><div class="constraint-text">All deliverables produced during the engagement will be owned by Archer Aviation upon payment of applicable fees.</div></div>
+        <div class="constraint-item"><div class="constraint-num">08</div><div class="constraint-text">This engagement is primarily remote with select on-site support at Archer's facilities as mutually agreed. Travel expenses, if applicable, will be billed separately at cost with prior approval.</div></div>
+        <div class="constraint-item"><div class="constraint-num">09</div><div class="constraint-text">SAP licensing, third-party software licenses, and infrastructure hosting costs are the responsibility of Archer Aviation.</div></div>
+        <div class="constraint-item"><div class="constraint-num">10</div><div class="constraint-text">Neither option includes implementation of recommended changes. Implementation is a separate engagement to be scoped upon completion of the assessment.</div></div>
+        <div class="constraint-item"><div class="constraint-num">11</div><div class="constraint-text">The POC (Option 1) is a proof of concept, not a production-ready implementation. Configuration performed during the POC is intended to validate the approach, not to serve as the final production build.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 09 - ACCEPTANCE -->
+  <div class="content-page page">
+    <div class="page-header">
+      <div class="page-header-logo"><img src="https://img1.wsimg.com/isteam/ip/6c133a9a-f3c9-4ebc-89ff-b6c686559ccf/Revelation%20Technologies%20Logo.png/:/rs=w:935,h:160,cg:true,m/cr=w:935,h:160/qt=q:95" alt="RevTech"></div>
+      <div class="page-header-section">Archer Aviation<br>ARCH&#8209;SOW&#8209;04092026</div>
+    </div>
+    <div class="page-content">
+      <span class="section-number">Section 09</span>
+      <h2 class="section-title">Acceptance &amp; Next Steps</h2>
+
+      <p>This proposal presents two engagement options for Archer Aviation's consideration. Both are structured as firm fixed price, milestone-based advisory engagements with deliverable acceptance gates at each phase boundary.</p>
+
+      <table>
+        <thead><tr><th>Commercial Element</th><th>Option 1</th><th class="align-right">Option 2</th></tr></thead>
+        <tbody>
+          <tr><td>Total Investment</td><td>$180,000</td><td class="align-right">$225,000</td></tr>
+          <tr><td>Billing Structure</td><td>3 x $60,000</td><td class="align-right">3 x $75,000</td></tr>
+          <tr><td>Duration</td><td>12 weeks</td><td class="align-right">12 weeks</td></tr>
+          <tr><td>Delivery Model</td><td>3 sprints + 3 review gates</td><td class="align-right">3 sprints + 3 review gates</td></tr>
+          <tr><td>Focus</td><td>PS / PMMO POC</td><td class="align-right">Full workstream + AI readiness</td></tr>
+          <tr><td>Implementation Credit (15%)</td><td>$27,000</td><td class="align-right">$33,750</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Validity</h3>
+      <p>This proposal is valid for sixty (60) calendar days from the date of submission.</p>
+
+      <h3>Next Steps</h3>
+      <div class="constraint-list">
+        <div class="constraint-item"><div class="constraint-num">01</div><div class="constraint-text">Executive review of this proposal by Archer leadership.</div></div>
+        <div class="constraint-item"><div class="constraint-num">02</div><div class="constraint-text">Selection of preferred engagement option (Option 1 or Option 2).</div></div>
+        <div class="constraint-item"><div class="constraint-num">03</div><div class="constraint-text">Alignment call to confirm scope, identify stakeholders, and finalize timing.</div></div>
+        <div class="constraint-item"><div class="constraint-num">04</div><div class="constraint-text">Execution of Statement of Work and engagement kickoff.</div></div>
+      </div>
+
+      <div class="signature-grid">
+        <div class="signature-block" style="padding-top:8px;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Revelation Technologies LLC</p>
+          <div class="signature-line"></div>
+          <div class="signature-name">Authorized Representative</div>
+          <div class="signature-title-text">Revelation Technologies LLC</div>
+          <div class="signature-date">Date: _______________</div>
+        </div>
+        <div class="signature-block" style="padding-top:8px;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Archer Aviation</p>
+          <div class="signature-line"></div>
+          <div class="signature-name">Authorized Representative</div>
+          <div class="signature-title-text">Archer Aviation</div>
+          <div class="signature-date">Date: _______________</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">Revelation Technologies LLC / ARCH&#8209;SOW&#8209;04092026 / Confidential / revtech.consulting</div>
+</div>
+</body>
+</html>
